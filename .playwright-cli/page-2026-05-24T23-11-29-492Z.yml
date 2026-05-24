@@ -1,0 +1,292 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Universidad Mayor de San Simón webSISS UMSS · Cochabamba" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Universidad Mayor de San Simón" [ref=e6]
+        - generic [ref=e7]:
+          - generic [ref=e8]: webSISS
+          - generic [ref=e9]: UMSS · Cochabamba
+      - button "Cambiar tema" [ref=e11]:
+        - img
+  - main [ref=e12]:
+    - generic [ref=e14]:
+      - generic:
+        - img
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - generic [ref=e18]:
+            - img "Universidad Mayor de San Simón" [ref=e19]
+            - generic [ref=e20]:
+              - generic [ref=e21]: Portal académico oficial
+              - generic [ref=e22]: Universidad Mayor de San Simón · Cochabamba
+          - heading "webSISS" [level=1] [ref=e23]
+          - paragraph [ref=e24]: Tu portal único para inscripciones, calificaciones, horarios y gestión académica en la UMSS.
+          - generic [ref=e25]:
+            - generic [ref=e26]: Sistema operativo
+            - generic [ref=e29]:
+              - generic [ref=e30]: DTIC
+              - generic [ref=e31]: · soporte 24/7
+        - generic [ref=e38]:
+          - tablist "Tipo de usuario" [ref=e39]:
+            - tab "Estudiante" [selected] [ref=e40]
+            - tab "Docente" [ref=e41]
+            - tab "Postulante" [ref=e42]
+          - generic [ref=e43]:
+            - heading "Iniciar sesión" [level=2] [ref=e44]
+            - generic [ref=e45]: Estudiante
+          - paragraph [ref=e46]: Acceso a inscripciones, calificaciones y horarios.
+          - generic [ref=e47]:
+            - generic [ref=e48]:
+              - generic [ref=e49]: Código SIS
+              - generic [ref=e50]:
+                - img
+                - textbox "Código SIS" [ref=e51]:
+                  - /placeholder: "202012345"
+            - generic [ref=e52]:
+              - generic [ref=e53]:
+                - generic [ref=e54]: Contraseña
+                - link "¿Olvidaste?" [ref=e55] [cursor=pointer]:
+                  - /url: "#recuperar-est"
+              - generic [ref=e56]:
+                - img
+                - textbox "Contraseña" [ref=e57]:
+                  - /placeholder: ••••••••
+            - generic [ref=e58]:
+              - generic [ref=e60]:
+                - img [ref=e61]
+                - text: Fecha de nacimiento
+              - generic [ref=e63]:
+                - combobox "Día" [ref=e64]:
+                  - option "Día" [disabled] [selected]
+                  - option "1"
+                  - option "2"
+                  - option "3"
+                  - option "4"
+                  - option "5"
+                  - option "6"
+                  - option "7"
+                  - option "8"
+                  - option "9"
+                  - option "10"
+                  - option "11"
+                  - option "12"
+                  - option "13"
+                  - option "14"
+                  - option "15"
+                  - option "16"
+                  - option "17"
+                  - option "18"
+                  - option "19"
+                  - option "20"
+                  - option "21"
+                  - option "22"
+                  - option "23"
+                  - option "24"
+                  - option "25"
+                  - option "26"
+                  - option "27"
+                  - option "28"
+                  - option "29"
+                  - option "30"
+                  - option "31"
+                - combobox "Mes" [ref=e65]:
+                  - option "Mes" [disabled] [selected]
+                  - option "Enero"
+                  - option "Febrero"
+                  - option "Marzo"
+                  - option "Abril"
+                  - option "Mayo"
+                  - option "Junio"
+                  - option "Julio"
+                  - option "Agosto"
+                  - option "Septiembre"
+                  - option "Octubre"
+                  - option "Noviembre"
+                  - option "Diciembre"
+                - combobox "Año" [ref=e66]:
+                  - option "Año" [disabled] [selected]
+                  - option "2012"
+                  - option "2011"
+                  - option "2010"
+                  - option "2009"
+                  - option "2008"
+                  - option "2007"
+                  - option "2006"
+                  - option "2005"
+                  - option "2004"
+                  - option "2003"
+                  - option "2002"
+                  - option "2001"
+                  - option "2000"
+                  - option "1999"
+                  - option "1998"
+                  - option "1997"
+                  - option "1996"
+                  - option "1995"
+                  - option "1994"
+                  - option "1993"
+                  - option "1992"
+                  - option "1991"
+                  - option "1990"
+                  - option "1989"
+                  - option "1988"
+                  - option "1987"
+                  - option "1986"
+                  - option "1985"
+                  - option "1984"
+                  - option "1983"
+                  - option "1982"
+                  - option "1981"
+                  - option "1980"
+                  - option "1979"
+                  - option "1978"
+                  - option "1977"
+                  - option "1976"
+                  - option "1975"
+                  - option "1974"
+                  - option "1973"
+                  - option "1972"
+                  - option "1971"
+                  - option "1970"
+                  - option "1969"
+                  - option "1968"
+                  - option "1967"
+                  - option "1966"
+                  - option "1965"
+                  - option "1964"
+                  - option "1963"
+                  - option "1962"
+                  - option "1961"
+                  - option "1960"
+                  - option "1959"
+                  - option "1958"
+                  - option "1957"
+                  - option "1956"
+                  - option "1955"
+                  - option "1954"
+                  - option "1953"
+                  - option "1952"
+                  - option "1951"
+                  - option "1950"
+                  - option "1949"
+                  - option "1948"
+                  - option "1947"
+                  - option "1946"
+            - button "Ingresar al sistema" [ref=e67]:
+              - generic [ref=e68]: Ingresar al sistema
+              - img
+          - generic [ref=e70]:
+            - generic [ref=e71]: Otros accesos
+            - generic [ref=e72]:
+              - button "Autoridad" [ref=e73]
+              - button "USR-SIS" [ref=e74]
+    - generic [ref=e76]:
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - generic [ref=e81]: Comunicados
+          - heading "Avisos institucionales" [level=2] [ref=e82]
+        - link "Ver todos los avisos →" [ref=e83] [cursor=pointer]:
+          - /url: "#todos-avisos"
+          - text: Ver todos los avisos
+          - generic [ref=e84]: →
+      - generic [ref=e85]:
+        - article [ref=e86]:
+          - generic [ref=e88]: Inscripciones
+          - heading "Inscripciones del próximo semestre" [level=3] [ref=e89]
+          - paragraph [ref=e90]: Consulta las fechas oficiales publicadas por tu facultad para inscripción y reinscripción de materias.
+          - link "Leer comunicado →" [ref=e91] [cursor=pointer]:
+            - /url: "#"
+            - text: Leer comunicado
+            - generic [ref=e92]: →
+        - article [ref=e93]:
+          - generic [ref=e95]: Postulantes
+          - heading "Examen de ingreso facultativo" [level=3] [ref=e96]
+          - paragraph [ref=e97]: Información sobre modalidades de admisión, requisitos y procedimientos para nuevos postulantes a la UMSS.
+          - link "Leer comunicado →" [ref=e98] [cursor=pointer]:
+            - /url: "#"
+            - text: Leer comunicado
+            - generic [ref=e99]: →
+        - article [ref=e100]:
+          - generic [ref=e102]: Académico
+          - heading "Comunicados del Honorable Consejo Universitario" [level=3] [ref=e103]
+          - paragraph [ref=e104]: Resoluciones, calendarios académicos y disposiciones oficiales emitidas por las autoridades de la UMSS.
+          - link "Leer comunicado →" [ref=e105] [cursor=pointer]:
+            - /url: "#"
+            - text: Leer comunicado
+            - generic [ref=e106]: →
+    - generic [ref=e109]:
+      - generic [ref=e110]:
+        - generic [ref=e113]: Para postulantes
+        - heading "¿Es tu primera vez en la UMSS?" [level=2] [ref=e114]:
+          - text: ¿Es tu primera vez
+          - text: en la UMSS?
+        - paragraph [ref=e115]: Conoce el proceso de admisión paso a paso. Si ya completaste alguno, puedes continuar donde lo dejaste.
+        - generic [ref=e116]:
+          - link "Empezar postulación →" [ref=e117] [cursor=pointer]:
+            - /url: "#registro"
+            - text: Empezar postulación
+            - generic [ref=e118]: →
+          - link "Ver carreras" [ref=e119] [cursor=pointer]:
+            - /url: "#carreras"
+      - list [ref=e120]:
+        - listitem [ref=e121]:
+          - link "01 Crea tu cuenta de postulante Registra tus datos personales con cédula vigente. Solo toma unos minutos. →" [ref=e122] [cursor=pointer]:
+            - /url: "#registro"
+            - generic [ref=e123]: "01"
+            - generic [ref=e124]:
+              - heading "Crea tu cuenta de postulante" [level=3] [ref=e125]
+              - paragraph [ref=e126]: Registra tus datos personales con cédula vigente. Solo toma unos minutos.
+            - generic [ref=e127]: →
+        - listitem [ref=e128]:
+          - link "02 Elige facultad y carrera Revisa la oferta académica y los requisitos por unidad facultativa de la UMSS. →" [ref=e129] [cursor=pointer]:
+            - /url: "#carreras"
+            - generic [ref=e130]: "02"
+            - generic [ref=e131]:
+              - heading "Elige facultad y carrera" [level=3] [ref=e132]
+              - paragraph [ref=e133]: Revisa la oferta académica y los requisitos por unidad facultativa de la UMSS.
+            - generic [ref=e134]: →
+        - listitem [ref=e135]:
+          - link "03 Rinde el examen de ingreso Modalidad presencial en Campus Central. Consulta fechas y aulas asignadas. →" [ref=e136] [cursor=pointer]:
+            - /url: "#examen"
+            - generic [ref=e137]: "03"
+            - generic [ref=e138]:
+              - heading "Rinde el examen de ingreso" [level=3] [ref=e139]
+              - paragraph [ref=e140]: Modalidad presencial en Campus Central. Consulta fechas y aulas asignadas.
+            - generic [ref=e141]: →
+        - listitem [ref=e142]:
+          - link "04 Recibe tu código SIS Una vez admitido, accede a webSISS con las credenciales que te enviaremos. →" [ref=e143] [cursor=pointer]:
+            - /url: "#admision"
+            - generic [ref=e144]: "04"
+            - generic [ref=e145]:
+              - heading "Recibe tu código SIS" [level=3] [ref=e146]
+              - paragraph [ref=e147]: Una vez admitido, accede a webSISS con las credenciales que te enviaremos.
+            - generic [ref=e148]: →
+  - contentinfo [ref=e149]:
+    - generic [ref=e150]:
+      - generic [ref=e151]:
+        - img "UMSS" [ref=e152]
+        - generic [ref=e153]:
+          - generic [ref=e154]: webSISS
+          - generic [ref=e155]: Universidad Mayor de San Simón · Cochabamba, Bolivia
+      - generic [ref=e156]:
+        - link "Soporte técnico" [ref=e157] [cursor=pointer]:
+          - /url: "#"
+        - link "Mesa de ayuda" [ref=e158] [cursor=pointer]:
+          - /url: "#"
+        - link "www.umss.edu.bo" [ref=e159] [cursor=pointer]:
+          - /url: https://www.umss.edu.bo
+      - generic [ref=e160]: © 2026 · DTIC UMSS
+  - generic [ref=e163]:
+    - button "Menu" [ref=e164]:
+      - img [ref=e166]
+      - generic: Menu
+    - button "Inspect" [ref=e170]:
+      - img [ref=e172]
+      - generic: Inspect
+    - button "Audit" [ref=e174]:
+      - img [ref=e176]
+      - generic: Audit
+    - button "Settings" [ref=e179]:
+      - img [ref=e181]
+      - generic: Settings

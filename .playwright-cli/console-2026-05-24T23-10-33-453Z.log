@@ -1,0 +1,16 @@
+[    3352ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=032a2d79:20102
+[   56034ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=032a2d79:20102
+[  185379ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=032a2d79:20102
+[  191518ms] [LOG] [vite] server connection lost. Polling for restart... @ http://127.0.0.1:4322/@vite/client:1598
+[  229922ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=312b5e3b:20102
+[  295132ms] [ERROR] Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep) @ http://127.0.0.1:4322/@id/astro/runtime/client/dev-toolbar/entrypoint.js:0
+[  295583ms] [ERROR] Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep) @ http://127.0.0.1:4322/node_modules/.vite/deps/react.js?v=3a427059:0
+[  295584ms] [ERROR] Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep) @ http://127.0.0.1:4322/node_modules/.vite/deps/react-dom_client.js?v=3a427059:0
+[  295610ms] [ERROR] Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep) @ http://127.0.0.1:4322/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=3a427059:0
+[  295701ms] [ERROR] Failed to load resource: the server responded with a status of 504 (Outdated Optimize Dep) @ http://127.0.0.1:4322/node_modules/.vite/deps/lucide-react.js?v=3a427059:0
+[  296601ms] [ERROR] [astro-island] Error hydrating /src/components/Navbar.tsx TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4322/node_modules/@astrojs/react/dist/client.js#astro-retry=1779664530043 @ http://127.0.0.1:4322/:2882
+[  296605ms] [ERROR] [astro-island] Error hydrating /src/components/Hero.tsx TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:4322/node_modules/@astrojs/react/dist/client.js#astro-retry=1779664530042 @ http://127.0.0.1:4322/:2882
+[  301277ms] [LOG] [vite] server connection lost. Polling for restart... @ http://127.0.0.1:4322/@vite/client:1598
+[  318529ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:20102
+[  362654ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:20102
+[  454854ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:20102

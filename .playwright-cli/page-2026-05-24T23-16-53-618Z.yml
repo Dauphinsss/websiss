@@ -1,0 +1,377 @@
+- generic [ref=e1]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Universidad Mayor de San Simón webSISS UMSS · Cochabamba" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Universidad Mayor de San Simón" [ref=e6]
+        - generic [ref=e7]:
+          - generic [ref=e8]: webSISS
+          - generic [ref=e9]: UMSS · Cochabamba
+      - navigation [ref=e10]:
+        - link "Estudiantes" [ref=e11] [cursor=pointer]:
+          - /url: "#estudiantes"
+        - link "Docentes" [ref=e12] [cursor=pointer]:
+          - /url: "#docentes"
+        - link "Postulantes" [ref=e13] [cursor=pointer]:
+          - /url: "#postulantes"
+      - generic [ref=e14]:
+        - button "Cambiar tema" [ref=e15]:
+          - img
+        - link "Iniciar sesión" [ref=e16] [cursor=pointer]:
+          - /url: "#login"
+  - main [ref=e17]:
+    - generic [ref=e19]:
+      - generic:
+        - img
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e23]:
+            - img "Universidad Mayor de San Simón" [ref=e24]
+            - generic [ref=e25]:
+              - generic [ref=e26]: Portal académico oficial
+              - generic [ref=e27]: Universidad Mayor de San Simón · Cochabamba
+          - heading "webSISS" [level=1] [ref=e28]
+          - paragraph [ref=e29]: Tu portal único para inscripciones, calificaciones, horarios y gestión académica en la UMSS.
+          - generic [ref=e30]:
+            - generic [ref=e31]: Sistema operativo
+            - generic [ref=e34]:
+              - generic [ref=e35]: DTIC
+              - generic [ref=e36]: · soporte 24/7
+        - generic [ref=e38]:
+          - generic:
+            - generic: acceso oficial · UMSS
+          - generic [ref=e43]:
+            - tablist "Tipo de usuario" [ref=e44]:
+              - tab "Estudiante" [selected] [ref=e45]
+              - tab "Docente" [ref=e46]
+              - tab "Postulante" [ref=e47]
+            - generic [ref=e48]:
+              - heading "Iniciar sesión" [level=2] [ref=e49]
+              - generic [ref=e50]: Estudiante
+            - paragraph [ref=e51]: Acceso a inscripciones, calificaciones y horarios.
+            - generic [ref=e52]:
+              - generic [ref=e53]:
+                - generic [ref=e54]: Código SIS
+                - generic [ref=e55]:
+                  - img
+                  - textbox "Código SIS" [ref=e56]:
+                    - /placeholder: "202012345"
+              - generic [ref=e57]:
+                - generic [ref=e58]:
+                  - generic [ref=e59]: Contraseña
+                  - link "¿Olvidaste?" [ref=e60] [cursor=pointer]:
+                    - /url: "#recuperar-est"
+                - generic [ref=e61]:
+                  - img
+                  - textbox "Contraseña" [ref=e62]:
+                    - /placeholder: ••••••••
+              - generic [ref=e63]:
+                - generic [ref=e65]:
+                  - img [ref=e66]
+                  - text: Fecha de nacimiento
+                - button "Fecha de nacimiento" [expanded] [ref=e68]:
+                  - img
+                  - generic [ref=e69]: Seleccionar fecha
+              - button "Ingresar al sistema" [ref=e70]:
+                - generic [ref=e71]: Ingresar al sistema
+                - img
+            - generic [ref=e73]:
+              - generic [ref=e74]: Otros accesos
+              - generic [ref=e75]:
+                - button "Autoridad" [ref=e76]
+                - button "USR-SIS" [ref=e77]
+    - generic [ref=e79]:
+      - generic [ref=e80]:
+        - generic [ref=e81]:
+          - generic [ref=e84]: Comunicados
+          - heading "Avisos institucionales" [level=2] [ref=e85]
+        - link "Ver todos los avisos →" [ref=e86] [cursor=pointer]:
+          - /url: "#todos-avisos"
+          - text: Ver todos los avisos
+          - generic [ref=e87]: →
+      - generic [ref=e88]:
+        - article [ref=e89]:
+          - generic [ref=e91]: Inscripciones
+          - heading "Inscripciones del próximo semestre" [level=3] [ref=e92]
+          - paragraph [ref=e93]: Consulta las fechas oficiales publicadas por tu facultad para inscripción y reinscripción de materias.
+          - link "Leer comunicado →" [ref=e94] [cursor=pointer]:
+            - /url: "#"
+            - text: Leer comunicado
+            - generic [ref=e95]: →
+        - article [ref=e96]:
+          - generic [ref=e98]: Postulantes
+          - heading "Examen de ingreso facultativo" [level=3] [ref=e99]
+          - paragraph [ref=e100]: Información sobre modalidades de admisión, requisitos y procedimientos para nuevos postulantes a la UMSS.
+          - link "Leer comunicado →" [ref=e101] [cursor=pointer]:
+            - /url: "#"
+            - text: Leer comunicado
+            - generic [ref=e102]: →
+        - article [ref=e103]:
+          - generic [ref=e105]: Académico
+          - heading "Comunicados del Honorable Consejo Universitario" [level=3] [ref=e106]
+          - paragraph [ref=e107]: Resoluciones, calendarios académicos y disposiciones oficiales emitidas por las autoridades de la UMSS.
+          - link "Leer comunicado →" [ref=e108] [cursor=pointer]:
+            - /url: "#"
+            - text: Leer comunicado
+            - generic [ref=e109]: →
+    - generic [ref=e112]:
+      - generic [ref=e113]:
+        - generic [ref=e116]: Para postulantes
+        - heading "¿Es tu primera vez en la UMSS?" [level=2] [ref=e117]:
+          - text: ¿Es tu primera vez
+          - text: en la UMSS?
+        - paragraph [ref=e118]: Conoce el proceso de admisión paso a paso. Si ya completaste alguno, puedes continuar donde lo dejaste.
+        - generic [ref=e119]:
+          - link "Empezar postulación →" [ref=e120] [cursor=pointer]:
+            - /url: "#registro"
+            - text: Empezar postulación
+            - generic [ref=e121]: →
+          - link "Ver carreras" [ref=e122] [cursor=pointer]:
+            - /url: "#carreras"
+      - list [ref=e123]:
+        - listitem [ref=e124]:
+          - link "01 Crea tu cuenta de postulante Registra tus datos personales con cédula vigente. Solo toma unos minutos. →" [ref=e125] [cursor=pointer]:
+            - /url: "#registro"
+            - generic [ref=e126]: "01"
+            - generic [ref=e127]:
+              - heading "Crea tu cuenta de postulante" [level=3] [ref=e128]
+              - paragraph [ref=e129]: Registra tus datos personales con cédula vigente. Solo toma unos minutos.
+            - generic [ref=e130]: →
+        - listitem [ref=e131]:
+          - link "02 Elige facultad y carrera Revisa la oferta académica y los requisitos por unidad facultativa de la UMSS. →" [ref=e132] [cursor=pointer]:
+            - /url: "#carreras"
+            - generic [ref=e133]: "02"
+            - generic [ref=e134]:
+              - heading "Elige facultad y carrera" [level=3] [ref=e135]
+              - paragraph [ref=e136]: Revisa la oferta académica y los requisitos por unidad facultativa de la UMSS.
+            - generic [ref=e137]: →
+        - listitem [ref=e138]:
+          - link "03 Rinde el examen de ingreso Modalidad presencial en Campus Central. Consulta fechas y aulas asignadas. →" [ref=e139] [cursor=pointer]:
+            - /url: "#examen"
+            - generic [ref=e140]: "03"
+            - generic [ref=e141]:
+              - heading "Rinde el examen de ingreso" [level=3] [ref=e142]
+              - paragraph [ref=e143]: Modalidad presencial en Campus Central. Consulta fechas y aulas asignadas.
+            - generic [ref=e144]: →
+        - listitem [ref=e145]:
+          - link "04 Recibe tu código SIS Una vez admitido, accede a webSISS con las credenciales que te enviaremos. →" [ref=e146] [cursor=pointer]:
+            - /url: "#admision"
+            - generic [ref=e147]: "04"
+            - generic [ref=e148]:
+              - heading "Recibe tu código SIS" [level=3] [ref=e149]
+              - paragraph [ref=e150]: Una vez admitido, accede a webSISS con las credenciales que te enviaremos.
+            - generic [ref=e151]: →
+  - contentinfo [ref=e152]:
+    - generic [ref=e153]:
+      - generic [ref=e154]:
+        - img "UMSS" [ref=e155]
+        - generic [ref=e156]:
+          - generic [ref=e157]: webSISS
+          - generic [ref=e158]: Universidad Mayor de San Simón · Cochabamba, Bolivia
+      - generic [ref=e159]:
+        - link "Soporte técnico" [ref=e160] [cursor=pointer]:
+          - /url: "#"
+        - link "Mesa de ayuda" [ref=e161] [cursor=pointer]:
+          - /url: "#"
+        - link "www.umss.edu.bo" [ref=e162] [cursor=pointer]:
+          - /url: https://www.umss.edu.bo
+      - generic [ref=e163]: © 2026 · DTIC UMSS
+  - generic [ref=e166]:
+    - button "Menu" [ref=e167]:
+      - img [ref=e169]
+      - generic: Menu
+    - button "Inspect" [ref=e173]:
+      - img [ref=e175]
+      - generic: Inspect
+    - button "Audit" [ref=e177]:
+      - generic [ref=e178]:
+        - img [ref=e179]
+        - img [ref=e190]
+      - generic: Audit
+    - button "Settings" [ref=e182]:
+      - img [ref=e184]
+      - generic: Settings
+  - dialog [ref=e193]:
+    - generic [ref=e196]:
+      - generic [ref=e198]:
+        - generic [ref=e199]:
+          - combobox "Choose the Month" [active] [ref=e200]:
+            - option "ene" [selected]
+            - option "feb"
+            - option "mar"
+            - option "abr"
+            - option "may"
+            - option "jun"
+            - option "jul"
+            - option "ago"
+            - option "sept"
+            - option "oct"
+            - option "nov"
+            - option "dic"
+          - generic [ref=e201]:
+            - text: ene
+            - img [ref=e202]
+        - generic [ref=e204]:
+          - combobox "Choose the Year" [ref=e205]:
+            - option "2012"
+            - option "2011"
+            - option "2010"
+            - option "2009"
+            - option "2008" [selected]
+            - option "2007"
+            - option "2006"
+            - option "2005"
+            - option "2004"
+            - option "2003"
+            - option "2002"
+            - option "2001"
+            - option "2000"
+            - option "1999"
+            - option "1998"
+            - option "1997"
+            - option "1996"
+            - option "1995"
+            - option "1994"
+            - option "1993"
+            - option "1992"
+            - option "1991"
+            - option "1990"
+            - option "1989"
+            - option "1988"
+            - option "1987"
+            - option "1986"
+            - option "1985"
+            - option "1984"
+            - option "1983"
+            - option "1982"
+            - option "1981"
+            - option "1980"
+            - option "1979"
+            - option "1978"
+            - option "1977"
+            - option "1976"
+            - option "1975"
+            - option "1974"
+            - option "1973"
+            - option "1972"
+            - option "1971"
+            - option "1970"
+            - option "1969"
+            - option "1968"
+            - option "1967"
+            - option "1966"
+            - option "1965"
+            - option "1964"
+            - option "1963"
+            - option "1962"
+            - option "1961"
+            - option "1960"
+            - option "1959"
+            - option "1958"
+            - option "1957"
+            - option "1956"
+            - option "1955"
+            - option "1954"
+            - option "1953"
+            - option "1952"
+            - option "1951"
+            - option "1950"
+            - option "1949"
+            - option "1948"
+            - option "1947"
+            - option "1946"
+          - generic [ref=e206]:
+            - text: "2008"
+            - img [ref=e207]
+        - status [ref=e209]: enero 2008
+      - navigation "Navigation bar" [ref=e210]:
+        - button "Go to the Previous Month" [ref=e211]:
+          - img
+        - button "Go to the Next Month" [ref=e212]:
+          - img
+      - grid "enero 2008" [ref=e213]:
+        - rowgroup [ref=e214]:
+          - row [ref=e215]:
+            - columnheader [ref=e216]: lu
+            - columnheader [ref=e217]: ma
+            - columnheader [ref=e218]: mi
+            - columnheader [ref=e219]: ju
+            - columnheader [ref=e220]: vi
+            - columnheader [ref=e221]: sá
+            - columnheader [ref=e222]: do
+        - rowgroup [ref=e223]:
+          - row "lunes, 31 de diciembre de 2007 martes, 1 de enero de 2008 miércoles, 2 de enero de 2008 jueves, 3 de enero de 2008 viernes, 4 de enero de 2008 sábado, 5 de enero de 2008 domingo, 6 de enero de 2008" [ref=e224]:
+            - gridcell "lunes, 31 de diciembre de 2007" [ref=e225]:
+              - button "lunes, 31 de diciembre de 2007" [ref=e226]: "31"
+            - gridcell "martes, 1 de enero de 2008" [ref=e227]:
+              - button "martes, 1 de enero de 2008" [ref=e228]: "1"
+            - gridcell "miércoles, 2 de enero de 2008" [ref=e229]:
+              - button "miércoles, 2 de enero de 2008" [ref=e230]: "2"
+            - gridcell "jueves, 3 de enero de 2008" [ref=e231]:
+              - button "jueves, 3 de enero de 2008" [ref=e232]: "3"
+            - gridcell "viernes, 4 de enero de 2008" [ref=e233]:
+              - button "viernes, 4 de enero de 2008" [ref=e234]: "4"
+            - gridcell "sábado, 5 de enero de 2008" [ref=e235]:
+              - button "sábado, 5 de enero de 2008" [ref=e236]: "5"
+            - gridcell "domingo, 6 de enero de 2008" [ref=e237]:
+              - button "domingo, 6 de enero de 2008" [ref=e238]: "6"
+          - row "lunes, 7 de enero de 2008 martes, 8 de enero de 2008 miércoles, 9 de enero de 2008 jueves, 10 de enero de 2008 viernes, 11 de enero de 2008 sábado, 12 de enero de 2008 domingo, 13 de enero de 2008" [ref=e239]:
+            - gridcell "lunes, 7 de enero de 2008" [ref=e240]:
+              - button "lunes, 7 de enero de 2008" [ref=e241]: "7"
+            - gridcell "martes, 8 de enero de 2008" [ref=e242]:
+              - button "martes, 8 de enero de 2008" [ref=e243]: "8"
+            - gridcell "miércoles, 9 de enero de 2008" [ref=e244]:
+              - button "miércoles, 9 de enero de 2008" [ref=e245]: "9"
+            - gridcell "jueves, 10 de enero de 2008" [ref=e246]:
+              - button "jueves, 10 de enero de 2008" [ref=e247]: "10"
+            - gridcell "viernes, 11 de enero de 2008" [ref=e248]:
+              - button "viernes, 11 de enero de 2008" [ref=e249]: "11"
+            - gridcell "sábado, 12 de enero de 2008" [ref=e250]:
+              - button "sábado, 12 de enero de 2008" [ref=e251]: "12"
+            - gridcell "domingo, 13 de enero de 2008" [ref=e252]:
+              - button "domingo, 13 de enero de 2008" [ref=e253]: "13"
+          - row "lunes, 14 de enero de 2008 martes, 15 de enero de 2008 miércoles, 16 de enero de 2008 jueves, 17 de enero de 2008 viernes, 18 de enero de 2008 sábado, 19 de enero de 2008 domingo, 20 de enero de 2008" [ref=e254]:
+            - gridcell "lunes, 14 de enero de 2008" [ref=e255]:
+              - button "lunes, 14 de enero de 2008" [ref=e256]: "14"
+            - gridcell "martes, 15 de enero de 2008" [ref=e257]:
+              - button "martes, 15 de enero de 2008" [ref=e258]: "15"
+            - gridcell "miércoles, 16 de enero de 2008" [ref=e259]:
+              - button "miércoles, 16 de enero de 2008" [ref=e260]: "16"
+            - gridcell "jueves, 17 de enero de 2008" [ref=e261]:
+              - button "jueves, 17 de enero de 2008" [ref=e262]: "17"
+            - gridcell "viernes, 18 de enero de 2008" [ref=e263]:
+              - button "viernes, 18 de enero de 2008" [ref=e264]: "18"
+            - gridcell "sábado, 19 de enero de 2008" [ref=e265]:
+              - button "sábado, 19 de enero de 2008" [ref=e266]: "19"
+            - gridcell "domingo, 20 de enero de 2008" [ref=e267]:
+              - button "domingo, 20 de enero de 2008" [ref=e268]: "20"
+          - row "lunes, 21 de enero de 2008 martes, 22 de enero de 2008 miércoles, 23 de enero de 2008 jueves, 24 de enero de 2008 viernes, 25 de enero de 2008 sábado, 26 de enero de 2008 domingo, 27 de enero de 2008" [ref=e269]:
+            - gridcell "lunes, 21 de enero de 2008" [ref=e270]:
+              - button "lunes, 21 de enero de 2008" [ref=e271]: "21"
+            - gridcell "martes, 22 de enero de 2008" [ref=e272]:
+              - button "martes, 22 de enero de 2008" [ref=e273]: "22"
+            - gridcell "miércoles, 23 de enero de 2008" [ref=e274]:
+              - button "miércoles, 23 de enero de 2008" [ref=e275]: "23"
+            - gridcell "jueves, 24 de enero de 2008" [ref=e276]:
+              - button "jueves, 24 de enero de 2008" [ref=e277]: "24"
+            - gridcell "viernes, 25 de enero de 2008" [ref=e278]:
+              - button "viernes, 25 de enero de 2008" [ref=e279]: "25"
+            - gridcell "sábado, 26 de enero de 2008" [ref=e280]:
+              - button "sábado, 26 de enero de 2008" [ref=e281]: "26"
+            - gridcell "domingo, 27 de enero de 2008" [ref=e282]:
+              - button "domingo, 27 de enero de 2008" [ref=e283]: "27"
+          - row "lunes, 28 de enero de 2008 martes, 29 de enero de 2008 miércoles, 30 de enero de 2008 jueves, 31 de enero de 2008 viernes, 1 de febrero de 2008 sábado, 2 de febrero de 2008 domingo, 3 de febrero de 2008" [ref=e284]:
+            - gridcell "lunes, 28 de enero de 2008" [ref=e285]:
+              - button "lunes, 28 de enero de 2008" [ref=e286]: "28"
+            - gridcell "martes, 29 de enero de 2008" [ref=e287]:
+              - button "martes, 29 de enero de 2008" [ref=e288]: "29"
+            - gridcell "miércoles, 30 de enero de 2008" [ref=e289]:
+              - button "miércoles, 30 de enero de 2008" [ref=e290]: "30"
+            - gridcell "jueves, 31 de enero de 2008" [ref=e291]:
+              - button "jueves, 31 de enero de 2008" [ref=e292]: "31"
+            - gridcell "viernes, 1 de febrero de 2008" [ref=e293]:
+              - button "viernes, 1 de febrero de 2008" [ref=e294]: "1"
+            - gridcell "sábado, 2 de febrero de 2008" [ref=e295]:
+              - button "sábado, 2 de febrero de 2008" [ref=e296]: "2"
+            - gridcell "domingo, 3 de febrero de 2008" [ref=e297]:
+              - button "domingo, 3 de febrero de 2008" [ref=e298]: "3"

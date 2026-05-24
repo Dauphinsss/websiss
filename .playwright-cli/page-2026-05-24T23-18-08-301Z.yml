@@ -1,0 +1,178 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Universidad Mayor de San Simón webSISS UMSS · Cochabamba" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Universidad Mayor de San Simón" [ref=e6]
+        - generic [ref=e7]:
+          - generic [ref=e8]: webSISS
+          - generic [ref=e9]: UMSS · Cochabamba
+      - button "Cambiar tema" [ref=e11]:
+        - img
+  - main [ref=e12]:
+    - generic [ref=e14]:
+      - generic:
+        - img
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - generic [ref=e18]:
+            - img "Universidad Mayor de San Simón" [ref=e19]
+            - generic [ref=e20]:
+              - generic [ref=e21]: Portal académico oficial
+              - generic [ref=e22]: Universidad Mayor de San Simón · Cochabamba
+          - heading "webSISS" [level=1] [ref=e23]
+          - paragraph [ref=e24]: Tu portal único para inscripciones, calificaciones, horarios y gestión académica en la UMSS.
+          - generic [ref=e25]:
+            - generic [ref=e26]: Sistema operativo
+            - generic [ref=e29]:
+              - generic [ref=e30]: DTIC
+              - generic [ref=e31]: · soporte 24/7
+        - generic [ref=e38]:
+          - tablist "Tipo de usuario" [ref=e39]:
+            - tab "Estudiante" [selected] [ref=e40]
+            - tab "Docente" [ref=e41]
+            - tab "Postulante" [ref=e42]
+          - generic [ref=e43]:
+            - heading "Iniciar sesión" [level=2] [ref=e44]
+            - generic [ref=e45]: Estudiante
+          - paragraph [ref=e46]: Acceso a inscripciones, calificaciones y horarios.
+          - generic [ref=e47]:
+            - generic [ref=e48]:
+              - generic [ref=e49]: Código SIS
+              - generic [ref=e50]:
+                - img
+                - textbox "Código SIS" [ref=e51]:
+                  - /placeholder: "202012345"
+            - generic [ref=e52]:
+              - generic [ref=e53]:
+                - generic [ref=e54]: Contraseña
+                - link "¿Olvidaste?" [ref=e55] [cursor=pointer]:
+                  - /url: "#recuperar-est"
+              - generic [ref=e56]:
+                - img
+                - textbox "Contraseña" [ref=e57]:
+                  - /placeholder: ••••••••
+            - generic [ref=e58]:
+              - generic [ref=e60]:
+                - img [ref=e61]
+                - text: Fecha de nacimiento
+              - button "Fecha de nacimiento" [ref=e63]:
+                - img
+                - generic [ref=e64]: Seleccionar fecha
+            - button "Ingresar al sistema" [ref=e65]:
+              - generic [ref=e66]: Ingresar al sistema
+              - img
+          - generic [ref=e68]:
+            - generic [ref=e69]: Otros accesos
+            - generic [ref=e70]:
+              - button "Autoridad" [ref=e71]
+              - button "USR-SIS" [ref=e72]
+    - generic [ref=e74]:
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - generic [ref=e79]: Comunicados
+          - heading "Avisos institucionales" [level=2] [ref=e80]
+        - link "Ver todos los avisos →" [ref=e81] [cursor=pointer]:
+          - /url: "#todos-avisos"
+          - text: Ver todos los avisos
+          - generic [ref=e82]: →
+      - generic [ref=e83]:
+        - article [ref=e84]:
+          - generic [ref=e86]: Inscripciones
+          - heading "Inscripciones del próximo semestre" [level=3] [ref=e87]
+          - paragraph [ref=e88]: Consulta las fechas oficiales publicadas por tu facultad para inscripción y reinscripción de materias.
+          - link "Leer comunicado →" [ref=e89] [cursor=pointer]:
+            - /url: "#"
+            - text: Leer comunicado
+            - generic [ref=e90]: →
+        - article [ref=e91]:
+          - generic [ref=e93]: Postulantes
+          - heading "Examen de ingreso facultativo" [level=3] [ref=e94]
+          - paragraph [ref=e95]: Información sobre modalidades de admisión, requisitos y procedimientos para nuevos postulantes a la UMSS.
+          - link "Leer comunicado →" [ref=e96] [cursor=pointer]:
+            - /url: "#"
+            - text: Leer comunicado
+            - generic [ref=e97]: →
+        - article [ref=e98]:
+          - generic [ref=e100]: Académico
+          - heading "Comunicados del Honorable Consejo Universitario" [level=3] [ref=e101]
+          - paragraph [ref=e102]: Resoluciones, calendarios académicos y disposiciones oficiales emitidas por las autoridades de la UMSS.
+          - link "Leer comunicado →" [ref=e103] [cursor=pointer]:
+            - /url: "#"
+            - text: Leer comunicado
+            - generic [ref=e104]: →
+    - generic [ref=e107]:
+      - generic [ref=e108]:
+        - generic [ref=e111]: Para postulantes
+        - heading "¿Es tu primera vez en la UMSS?" [level=2] [ref=e112]:
+          - text: ¿Es tu primera vez
+          - text: en la UMSS?
+        - paragraph [ref=e113]: Conoce el proceso de admisión paso a paso. Si ya completaste alguno, puedes continuar donde lo dejaste.
+        - generic [ref=e114]:
+          - link "Empezar postulación →" [ref=e115] [cursor=pointer]:
+            - /url: "#registro"
+            - text: Empezar postulación
+            - generic [ref=e116]: →
+          - link "Ver carreras" [ref=e117] [cursor=pointer]:
+            - /url: "#carreras"
+      - list [ref=e118]:
+        - listitem [ref=e119]:
+          - link "01 Crea tu cuenta de postulante Registra tus datos personales con cédula vigente. Solo toma unos minutos. →" [ref=e120] [cursor=pointer]:
+            - /url: "#registro"
+            - generic [ref=e121]: "01"
+            - generic [ref=e122]:
+              - heading "Crea tu cuenta de postulante" [level=3] [ref=e123]
+              - paragraph [ref=e124]: Registra tus datos personales con cédula vigente. Solo toma unos minutos.
+            - generic [ref=e125]: →
+        - listitem [ref=e126]:
+          - link "02 Elige facultad y carrera Revisa la oferta académica y los requisitos por unidad facultativa de la UMSS. →" [ref=e127] [cursor=pointer]:
+            - /url: "#carreras"
+            - generic [ref=e128]: "02"
+            - generic [ref=e129]:
+              - heading "Elige facultad y carrera" [level=3] [ref=e130]
+              - paragraph [ref=e131]: Revisa la oferta académica y los requisitos por unidad facultativa de la UMSS.
+            - generic [ref=e132]: →
+        - listitem [ref=e133]:
+          - link "03 Rinde el examen de ingreso Modalidad presencial en Campus Central. Consulta fechas y aulas asignadas. →" [ref=e134] [cursor=pointer]:
+            - /url: "#examen"
+            - generic [ref=e135]: "03"
+            - generic [ref=e136]:
+              - heading "Rinde el examen de ingreso" [level=3] [ref=e137]
+              - paragraph [ref=e138]: Modalidad presencial en Campus Central. Consulta fechas y aulas asignadas.
+            - generic [ref=e139]: →
+        - listitem [ref=e140]:
+          - link "04 Recibe tu código SIS Una vez admitido, accede a webSISS con las credenciales que te enviaremos. →" [ref=e141] [cursor=pointer]:
+            - /url: "#admision"
+            - generic [ref=e142]: "04"
+            - generic [ref=e143]:
+              - heading "Recibe tu código SIS" [level=3] [ref=e144]
+              - paragraph [ref=e145]: Una vez admitido, accede a webSISS con las credenciales que te enviaremos.
+            - generic [ref=e146]: →
+  - contentinfo [ref=e147]:
+    - generic [ref=e148]:
+      - generic [ref=e149]:
+        - img "UMSS" [ref=e150]
+        - generic [ref=e151]:
+          - generic [ref=e152]: webSISS
+          - generic [ref=e153]: Universidad Mayor de San Simón · Cochabamba, Bolivia
+      - generic [ref=e154]:
+        - link "Soporte técnico" [ref=e155] [cursor=pointer]:
+          - /url: "#"
+        - link "Mesa de ayuda" [ref=e156] [cursor=pointer]:
+          - /url: "#"
+        - link "www.umss.edu.bo" [ref=e157] [cursor=pointer]:
+          - /url: https://www.umss.edu.bo
+      - generic [ref=e158]: © 2026 · DTIC UMSS
+  - generic [ref=e161]:
+    - button "Menu" [ref=e162]:
+      - img [ref=e164]
+      - generic: Menu
+    - button "Inspect" [ref=e168]:
+      - img [ref=e170]
+      - generic: Inspect
+    - button "Audit" [ref=e172]:
+      - img [ref=e174]
+      - generic: Audit
+    - button "Settings" [ref=e177]:
+      - img [ref=e179]
+      - generic: Settings
