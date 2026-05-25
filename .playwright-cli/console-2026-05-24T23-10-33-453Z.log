@@ -14,3 +14,27 @@
 [  318529ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:20102
 [  362654ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:20102
 [  454854ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:20102
+[ 1136716ms] ReferenceError: isInputInvalid is not defined
+    at LoginPanel (http://127.0.0.1:4322/src/components/LoginPanel.tsx?t=1779665369848:385:35)
+    at Object.react_stack_bottom_frame (http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:18509:20)
+    at renderWithHooks (http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:5654:24)
+    at updateFunctionComponent (http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:7475:21)
+    at beginWork (http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:8525:20)
+    at runWithFiberInDEV (http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:997:72)
+    at performUnitOfWork (http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:12561:98)
+    at workLoopSync (http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:12424:43)
+    at renderRootSync (http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:12408:13)
+    at performWorkOnRoot (http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:11827:37)
+[ 1136710ms] [WARNING] %s
+
+%s
+ An error occurred in the <LoginPanel> component. Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries. @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:6965
+[ 3299750ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:20102
+[ 3306149ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:20102
+[ 3313975ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:20102
+[ 3338382ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:20102
+[ 3434831ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:20102
+[ 3464970ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:20102
+[ 3473964ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:20102
+[ 3480801ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:4322/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=7c88e5b4:20102

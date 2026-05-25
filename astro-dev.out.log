@@ -35,3 +35,29 @@ Error: Failed to load url astro:server-app.js (resolved id: astro:server-app.js)
 [2m19:15:37[22m [34m[200][39m / [2m267ms[22m
 [2m19:16:35[22m [34m[200][39m / [2m49ms[22m
 [2m19:18:08[22m [34m[200][39m / [2m41ms[22m
+[2m19:23:39[22m [34m[watch][39m /src/styles/global.css, /src/components/LoginPanel.tsx
+[2m19:23:39[22m [34m[watch][39m src/components/LoginPanel.tsx
+[vite] program reload
+[2m19:26:05[22m [34m[watch][39m /src/styles/global.css, /src/components/LoginPanel.tsx
+[2m19:26:05[22m [34m[watch][39m src/components/LoginPanel.tsx
+[vite] program reload
+[2m19:26:17[22m [34m[watch][39m /src/styles/global.css, /src/components/LoginPanel.tsx
+[2m19:26:17[22m [34m[watch][39m src/components/LoginPanel.tsx
+[vite] program reload
+[2m19:26:41[22m [34m[watch][39m /src/styles/global.css, /src/components/LoginPanel.tsx
+[2m19:26:41[22m [34m[watch][39m src/components/LoginPanel.tsx
+[vite] program reload
+[2m19:29:19[22m [34m[watch][39m /src/styles/global.css, /src/components/LoginPanel.tsx
+[2m19:29:19[22m [34m[watch][39m src/components/LoginPanel.tsx
+[vite] program reload
+[2m19:29:29[22m [34m[watch][39m /src/styles/global.css, /src/components/LoginPanel.tsx
+[2m19:29:29[22m [34m[watch][39m src/components/LoginPanel.tsx
+[vite] program reload
+[2m19:29:51[22m [34m[watch][39m /src/styles/global.css, /src/components/LoginPanel.tsx
+[2m19:29:51[22m [34m[watch][39m src/components/LoginPanel.tsx
+[vite] program reload
+[2m19:43:41[22m [34m[watch][39m /src/styles/global.css, /src/components/LoginPanel.tsx
+[2m19:43:41[22m [34m[watch][39m src/components/LoginPanel.tsx
+[vite] program reload
+[vite] program reload
+[2m20:05:32[22m [34m[200][39m / [2m68ms[22m

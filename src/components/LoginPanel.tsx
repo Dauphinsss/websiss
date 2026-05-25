@@ -133,6 +133,9 @@ export function LoginPanel() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (role === 'estudiante') {
+      window.location.href = '/dashboard';
+    }
   };
 
   return (
@@ -290,7 +293,6 @@ export function LoginPanel() {
                         { after: maxBirthDate },
                       ]}
                       captionLayout="dropdown"
-                      navLayout="after"
                       reverseYears
                       locale={es}
                       onSelect={(date) => {
