@@ -44,7 +44,7 @@ const student = {
   sisCode: '202012345',
   email: 'marcos.velasquez@est.umss.edu',
   ci: '12345678 CB',
-  avatarUrl: '',
+  avatarUrl: '/umss.png',
 };
 
 const secondaryActions = [
@@ -150,8 +150,12 @@ export function StudentDashboard() {
                   variant="ghost"
                   className="h-11 gap-2.5 px-2 pr-2.5 hover:bg-muted/60"
                 >
-                  <Avatar className="size-8 border border-border/60">
-                    <AvatarImage src={student.avatarUrl} alt={student.fullName} />
+                  <Avatar className="size-8 border border-border/60 bg-card">
+                    <AvatarImage
+                      src={student.avatarUrl}
+                      alt={student.fullName}
+                      className="object-contain p-0.5"
+                    />
                     <AvatarFallback className="bg-primary text-primary-foreground text-xs font-medium">
                       {initials}
                     </AvatarFallback>
@@ -173,12 +177,16 @@ export function StudentDashboard() {
               <DropdownMenuContent
                 align="end"
                 sideOffset={8}
-                className="w-72 p-0"
+                className="w-80 p-0"
               >
                 {/* Cabecera del menú: foto + nombre completo */}
                 <div className="flex items-center gap-3 p-4">
-                  <Avatar className="size-12 border border-border/60">
-                    <AvatarImage src={student.avatarUrl} alt={student.fullName} />
+                  <Avatar className="size-12 border border-border/60 bg-card">
+                    <AvatarImage
+                      src={student.avatarUrl}
+                      alt={student.fullName}
+                      className="object-contain p-1"
+                    />
                     <AvatarFallback className="bg-primary text-primary-foreground text-sm font-medium">
                       {initials}
                     </AvatarFallback>
@@ -200,7 +208,7 @@ export function StudentDashboard() {
                   Datos personales
                 </DropdownMenuLabel>
                 <div className="px-2 pb-2 space-y-0.5 text-sm">
-                  <ProfileRow icon={IdCard} label="Código SIS" value={student.sisCode} mono />
+                  <ProfileRow icon={IdCard} label="SIS" value={student.sisCode} mono />
                   <ProfileRow icon={Mail} label="Correo" value={student.email} />
                   <ProfileRow icon={User} label="CI" value={student.ci} mono />
                   <ProfileRow icon={School} label="Facultad" value={student.faculty} />
@@ -245,19 +253,6 @@ export function StudentDashboard() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-
-            {/* Cerrar sesión visible en desktop, separado del menú */}
-            <Button
-              asChild
-              variant="outline"
-              size="sm"
-              className="hidden md:inline-flex"
-            >
-              <a href="/">
-                <LogOut aria-hidden="true" />
-                <span>Cerrar sesión</span>
-              </a>
-            </Button>
           </div>
         </div>
       </header>
@@ -334,7 +329,7 @@ export function StudentDashboard() {
               return (
                 <Card
                   key={action.href}
-                  className="group relative transition-all hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5 focus-within:border-primary/40 focus-within:shadow-md"
+                  className="group relative transition-all hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-ring has-[a:focus-visible]:border-primary/40 has-[a:focus-visible]:shadow-md"
                 >
                   <CardHeader className="gap-3">
                     <div className="flex size-10 items-center justify-center rounded-md bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
@@ -344,7 +339,7 @@ export function StudentDashboard() {
                       <CardTitle className="text-base font-medium">
                         <a
                           href={action.href}
-                          className="after:absolute after:inset-0 after:content-[''] focus-visible:outline-none"
+                          className="after:absolute after:inset-0 after:content-[''] after:rounded-[inherit] focus:outline-none focus-visible:outline-none"
                         >
                           {action.title}
                         </a>
@@ -355,7 +350,7 @@ export function StudentDashboard() {
                     </div>
                   </CardHeader>
                   <CardContent className="pt-0">
-                    <div className="flex items-center gap-1.5 text-xs font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                    <div className="flex items-center gap-1.5 text-xs font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100 group-has-[a:focus-visible]:opacity-100">
                       <span>Abrir</span>
                       <ArrowRight aria-hidden="true" className="size-3.5" />
                     </div>
@@ -390,16 +385,16 @@ interface ProfileRowProps {
 
 function ProfileRow({ icon: Icon, label, value, mono }: ProfileRowProps) {
   return (
-    <div className="flex items-center gap-2.5 rounded-sm px-2 py-1.5">
+    <div className="flex items-start gap-2.5 rounded-sm px-2 py-1.5">
       <Icon
         aria-hidden="true"
-        className="size-3.5 shrink-0 text-muted-foreground"
+        className="size-3.5 shrink-0 text-muted-foreground mt-0.5"
       />
-      <span className="text-[11px] uppercase tracking-wider text-muted-foreground w-16 shrink-0">
+      <span className="text-[11px] uppercase tracking-wider text-muted-foreground w-14 shrink-0 mt-0.5">
         {label}
       </span>
       <span
-        className={`text-xs text-foreground truncate ${mono ? 'font-mono' : ''}`}
+        className={`text-xs text-foreground wrap-break-word min-w-0 flex-1 ${mono ? 'font-mono' : ''}`}
       >
         {value}
       </span>

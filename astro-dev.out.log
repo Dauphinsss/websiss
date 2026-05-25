@@ -75,3 +75,24 @@ Error: Failed to load url astro:server-app.js (resolved id: astro:server-app.js)
 [2m20:08:27[22m [34m[200][39m / [2m48ms[22m
 [vite] program reload
 [2m20:08:34[22m [34m[200][39m / [2m46ms[22m
+[vite] program reload
+[2m20:16:20[22m [34m[200][39m / [2m47ms[22m
+[vite] program reload
+[2m20:16:34[22m [34m[200][39m / [2m51ms[22m
+[vite] program reload
+[2m20:16:40[22m [34m[200][39m / [2m41ms[22m
+[vite] program reload
+[2m20:16:48[22m [34m[200][39m / [2m48ms[22m
+[vite] program reload
+[2m20:18:43[22m [34m[200][39m / [2m35ms[22m
+[vite] program reload
+[2m20:18:49[22m [34m[200][39m / [2m47ms[22m
+[vite] program reload
+[2m20:19:20[22m [34m[200][39m / [2m37ms[22m
+[vite] program reload
+[2m20:19:30[22m [34m[200][39m / [2m55ms[22m
+[2m20:20:33[22m [34m[watch][39m /src/styles/global.css
+[2m20:20:34[22m [34m[200][39m / [2m288ms[22m
+[2m20:21:12[22m [34m[watch][39m /src/styles/global.css
+[vite] program reload
+[2m20:22:43[22m [34m[200][39m / [2m74ms[22m
