@@ -104,9 +104,9 @@ La jerarquia evita menus ambiguos y reduce el backtracking. El estudiante no nec
   \item Visualiza el limite maximo de materias disponible para la gestion.
   \item Revisa la oferta de materias recomendadas para su carrera.
   \item Selecciona grupo y modalidad para cada materia.
-  \item El sistema muestra la materia elegida en un resumen lateral persistente.
+  \item El sistema muestra las materias elegidas en un resumen lateral persistente.
   \item El estudiante confirma la accion y accede a \textit{Estado de inscripcion}.
-  \item El sistema muestra materia, grupo, horario, docente y estado final del registro.
+  \item El sistema muestra materia, grupo, modalidad, horario, docente y estado final del registro.
 \end{enumerate}
 
 \subsubsection*{Flujo 3: consulta de horario}
@@ -137,133 +137,231 @@ La jerarquia evita menus ambiguos y reduce el backtracking. El estudiante no nec
 
 \subsection{Wireframes de baja fidelidad}
 
-Los wireframes de baja fidelidad definen la distribucion de bloques, la jerarquia visual y la secuencia de acciones antes de cualquier tratamiento visual de alta fidelidad.
+Los wireframes de baja fidelidad definen la distribucion espacial de bloques, la jerarquia visual y la secuencia de acciones de cada pantalla antes de cualquier tratamiento de alta fidelidad. Cada esquema representa la posicion relativa de los elementos en la interfaz, no su estilo final.
 
-\subsubsection*{Wireframe 1: panel principal}
-
-\begin{tcolorbox}[title=Estructura base del panel principal, colback=white, colframe=black]
-\textbf{[Barra superior]} logo + acceso a perfil + cambio de tema
-
-\textbf{[Saludo / contexto]} nombre del estudiante + carrera + gestion
-
-\textbf{[Bloque principal]} accion destacada: Inscribirse
-
-\textbf{[Estado visible]} matricula pagada + comprobante resumido
-
-\textbf{[Acciones secundarias]} Pagar matricula + Validar codigos
-
-\textbf{[Accesos directos compactos]}
-\begin{itemize}
-  \item Kardex
-  \item Horario de clases
-  \item Estado de inscripcion
-  \item Codigo de inscripcion
-  \item Matricula
-\end{itemize}
-\end{tcolorbox}
+% ---- Estilos de wireframe (uniformes para toda la subseccion) ----
+\newcommand{\wfhead}[1]{%
+  \setlength{\fboxsep}{8pt}%
+  \colorbox{black!75}{\parbox[c][0.5cm][c]{0.96\linewidth}{\centering\color{white}\footnotesize\bfseries #1}}\\[12pt]%
+}
+\newcommand{\wfsection}[1]{%
+  \par\vspace{4pt}%
+  \noindent\textcolor{black!50}{\rule{0.96\linewidth}{0.3pt}}\\[4pt]%
+  {\footnotesize\bfseries\color{black!80} #1}\\[8pt]%
+}
+\newcommand{\wfbox}[2][0.96\linewidth]{%
+  \setlength{\fboxsep}{8pt}%
+  \fbox{\parbox[c][0.55cm][c]{#1}{\centering\footnotesize\color{black!80} #2}}%
+}
+\newcommand{\wfboxleft}[2][0.96\linewidth]{%
+  \setlength{\fboxsep}{8pt}%
+  \fbox{\parbox[c][0.55cm][c]{#1}{\footnotesize\color{black!80} #2}}%
+}
+\newcommand{\wfprimary}[2][0.96\linewidth]{%
+  \setlength{\fboxsep}{10pt}%
+  \fcolorbox{black!75}{black!12}{\parbox[c][0.7cm][c]{#1}{\centering\footnotesize\bfseries #2}}%
+}
+\newcommand{\wfsoft}[2][0.96\linewidth]{%
+  \setlength{\fboxsep}{8pt}%
+  \fcolorbox{black!25}{black!4}{\parbox[c][0.55cm][c]{#1}{\centering\footnotesize\color{black!75} #2}}%
+}
+\newcommand{\wfframe}[2]{%
+  \setlength{\fboxsep}{14pt}%
+  \fcolorbox{black!70}{white}{\begin{minipage}{#1}#2\end{minipage}}%
+}
 
 \subsubsection*{Wireframe 0: inicio de sesion}
 
-\begin{tcolorbox}[title=Estructura base del acceso al sistema, colback=white, colframe=black]
-\textbf{[Selector de rol]} estudiante + docente + postulante
+\begin{figure}[H]
+\centering
+\resizebox{0.62\textwidth}{!}{%
+\wfframe{12cm}{%
+\centering
+\wfhead{Acceso al sistema}
+\wfsoft{Selector de rol: estudiante / docente / postulante}\\[14pt]
+\wfsection{Acceso de estudiante}
+\wfbox{Codigo SIS}\\[8pt]
+\wfbox{Contrase\~na}\\[8pt]
+\wfbox{Fecha de nacimiento (formato visible / calendario)}\\[16pt]
+\wfprimary[0.5\linewidth]{Ingresar}\\[16pt]
+\wfsoft[0.7\linewidth]{Recuperar contrase\~na}\\[12pt]
+{\scriptsize\itshape\color{black!55} Sin pantalla de bienvenida previa.\\Sin CAPTCHA visual.}%
+}}
+\caption{Wireframe de baja fidelidad: pantalla de inicio de sesion.}
+\label{fig:wf-login}
+\end{figure}
 
-\textbf{[Formulario estudiante]}
-\begin{itemize}
-  \item codigo SIS
-  \item contraseña
-  \item fecha de nacimiento escrita con formato visible
-  \item boton de ingreso
-\end{itemize}
+\subsubsection*{Wireframe 1: panel principal}
 
-\textbf{[Soporte]} enlace de recuperacion de contraseña
-\end{tcolorbox}
+\begin{figure}[H]
+\centering
+\resizebox{0.94\textwidth}{!}{%
+\wfframe{18cm}{%
+\centering
+\wfhead{Logo \hfill Perfil \quad | \quad Tema}
+\wfsoft{Hola, [Estudiante] -- [Carrera] -- Gestion [A\~no/Periodo]}\\[16pt]
+\begin{minipage}[t]{0.60\linewidth}\centering
+\setlength{\fboxsep}{12pt}%
+\fcolorbox{black!75}{black!12}{\parbox[c][1.6cm][c]{0.94\linewidth}{\centering\bfseries Inscribirse\\[3pt]\scriptsize\mdseries\itshape accion principal}}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.34\linewidth}\centering
+\setlength{\fboxsep}{10pt}%
+\fcolorbox{black!30}{black!4}{\parbox[c][1.6cm][c]{0.94\linewidth}{\centering\footnotesize\color{black!75} Matricula: \bfseries pagada\\[3pt]\mdseries\scriptsize comprobante resumido}}
+\end{minipage}\\[18pt]
+\begin{minipage}{0.46\linewidth}\centering\wfbox[0.94\linewidth]{Pagar matricula}\end{minipage}\hfill
+\begin{minipage}{0.46\linewidth}\centering\wfbox[0.94\linewidth]{Validar codigos}\end{minipage}\\[16pt]
+\wfsection{Accesos directos}
+\begin{minipage}{0.17\linewidth}\centering\wfbox[0.92\linewidth]{Kardex}\end{minipage}\hfill
+\begin{minipage}{0.17\linewidth}\centering\wfbox[0.92\linewidth]{Horario}\end{minipage}\hfill
+\begin{minipage}{0.17\linewidth}\centering\wfbox[0.92\linewidth]{Estado}\end{minipage}\hfill
+\begin{minipage}{0.17\linewidth}\centering\wfbox[0.92\linewidth]{Codigos}\end{minipage}\hfill
+\begin{minipage}{0.17\linewidth}\centering\wfbox[0.92\linewidth]{Matricula}\end{minipage}%
+}}
+\caption{Wireframe de baja fidelidad: panel principal del estudiante.}
+\label{fig:wf-panel}
+\end{figure}
 
-\subsubsection*{Wireframe 6: matricula}
+\subsubsection*{Wireframe 2: inscripcion a materias}
 
-\begin{tcolorbox}[title=Estructura base del estado de matricula, colback=white, colframe=black]
-\textbf{[Cabecera]} titulo + estado pagada / pendiente
-
-\textbf{[Bloque de estado]}
-\begin{itemize}
-  \item mensaje claro: matricula pagada
-  \item comprobante
-  \item entidad de pago
-  \item fecha de registro
-\end{itemize}
-
-\textbf{[Acciones]} Pagar matricula + Validar codigos + Continuar inscripcion
-\end{tcolorbox}
-
-\subsubsection*{Wireframe 2: inscripcion}
-
-\begin{tcolorbox}[title=Estructura base del modulo de inscripcion, colback=white, colframe=black]
-\textbf{[Cabecera]} titulo + estado de cuenta habilitada + contador de materias
-
-\textbf{[Columna principal]}
-\begin{itemize}
-  \item lista de materias
-  \item selector de grupo
-  \item selector de modalidad
-  \item boton de inscribir
-\end{itemize}
-
-\textbf{[Columna lateral]}
-\begin{itemize}
-  \item materias seleccionadas
-  \item limite maximo
-  \item confirmacion final
-\end{itemize}
-\end{tcolorbox}
-
-\subsubsection*{Wireframe 5: perfil y seguridad}
-
-\begin{tcolorbox}[title=Estructura base del menu de perfil, colback=white, colframe=black]
-\textbf{[Datos generales]} nombre + codigo SIS + correo + CI + facultad
-
-\textbf{[Acciones de seguridad]}
-\begin{itemize}
-  \item cambiar contraseña
-  \item cerrar sesion
-\end{itemize}
-
-\textbf{[Enlaces academicos]} aula virtual + biblioteca + calendario
-\end{tcolorbox}
+\begin{figure}[H]
+\centering
+\resizebox{0.94\textwidth}{!}{%
+\wfframe{18cm}{%
+\centering
+\wfhead{Inscripcion \hfill cuenta habilitada \quad | \quad [n/max] materias}
+\begin{minipage}[t]{0.62\linewidth}\centering
+\wfsection{Oferta de materias}
+\wfboxleft{Materia [nombre]}\\[10pt]
+\begin{minipage}{0.46\linewidth}\centering\wfbox[0.94\linewidth]{Grupo $\downarrow$}\end{minipage}\hfill
+\begin{minipage}{0.46\linewidth}\centering\wfbox[0.94\linewidth]{Modalidad $\downarrow$}\end{minipage}\\[12pt]
+\wfboxleft{Materia [nombre]}\\[10pt]
+\wfboxleft{Materia [nombre]}\\[18pt]
+\wfprimary[0.5\linewidth]{Inscribir}%
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\centering
+\wfsection{Resumen}
+\setlength{\fboxsep}{12pt}%
+\fcolorbox{black!30}{black!4}{\parbox[c][4cm][c]{0.94\linewidth}{\centering\footnotesize\color{black!75} Materias\\seleccionadas\\[12pt]\itshape Limite maximo\\visible}}\\[16pt]
+\wfprimary[0.94\linewidth]{Confirmar}%
+\end{minipage}%
+}}
+\caption{Wireframe de baja fidelidad: modulo de inscripcion a materias.}
+\label{fig:wf-inscripcion}
+\end{figure}
 
 \subsubsection*{Wireframe 3: estado de inscripcion}
 
-\begin{tcolorbox}[title=Estructura base del resumen final, colback=white, colframe=black]
-\textbf{[Cabecera]} titulo + accion para modificar
-
-\textbf{[Listado de materias inscritas]}
-\begin{itemize}
-  \item nombre de materia
-  \item grupo
-  \item modalidad
-  \item horario
-  \item docente
-\end{itemize}
-
-\textbf{[Resumen lateral]} cupos usados + gestion + carrera
-\end{tcolorbox}
+\begin{figure}[H]
+\centering
+\resizebox{0.94\textwidth}{!}{%
+\wfframe{18cm}{%
+\centering
+\wfhead{Estado de inscripcion \hfill Modificar}
+\begin{minipage}[t]{0.64\linewidth}\centering
+\wfsection{Materias inscritas}
+\wfboxleft{Materia \hfill Grupo \hfill Modalidad}\\[5pt]
+\wfboxleft{Horario \hfill Docente}\\[14pt]
+\wfboxleft{Materia \hfill Grupo \hfill Modalidad}\\[5pt]
+\wfboxleft{Horario \hfill Docente}\\[14pt]
+\wfboxleft{Materia \hfill Grupo \hfill Modalidad}\\[5pt]
+\wfboxleft{Horario \hfill Docente}%
+\end{minipage}\hfill
+\begin{minipage}[t]{0.32\linewidth}\centering
+\wfsection{Resumen}
+\setlength{\fboxsep}{12pt}%
+\fcolorbox{black!30}{black!4}{\parbox[c][4.6cm][c]{0.94\linewidth}{\centering\footnotesize\color{black!75} Cupos usados\\[8pt]Gestion\\[8pt]Carrera}}%
+\end{minipage}%
+}}
+\caption{Wireframe de baja fidelidad: estado final de inscripcion.}
+\label{fig:wf-estado}
+\end{figure}
 
 \subsubsection*{Wireframe 4: Kardex}
 
-\begin{tcolorbox}[title=Estructura base del Kardex, colback=white, colframe=black]
-\textbf{[Cabecera]} titulo + acciones de impresion / descarga
+\begin{figure}[H]
+\centering
+\resizebox{0.94\textwidth}{!}{%
+\wfframe{18cm}{%
+\centering
+\wfhead{Kardex \hfill Imprimir \quad | \quad Descargar}
+\begin{minipage}{0.22\linewidth}\centering
+  \setlength{\fboxsep}{10pt}%
+  \fcolorbox{black!30}{black!4}{\parbox[c][1.1cm][c]{0.94\linewidth}{\centering\footnotesize\color{black!75} Cursadas\\[3pt]\bfseries\large\color{black!85} [n]}}%
+\end{minipage}\hfill
+\begin{minipage}{0.22\linewidth}\centering
+  \setlength{\fboxsep}{10pt}%
+  \fcolorbox{black!30}{black!4}{\parbox[c][1.1cm][c]{0.94\linewidth}{\centering\footnotesize\color{black!75} Aprobadas\\[3pt]\bfseries\large\color{black!85} [n]}}%
+\end{minipage}\hfill
+\begin{minipage}{0.22\linewidth}\centering
+  \setlength{\fboxsep}{10pt}%
+  \fcolorbox{black!30}{black!4}{\parbox[c][1.1cm][c]{0.94\linewidth}{\centering\footnotesize\color{black!75} Reprobadas\\[3pt]\bfseries\large\color{black!85} [n]}}%
+\end{minipage}\hfill
+\begin{minipage}{0.22\linewidth}\centering
+  \setlength{\fboxsep}{10pt}%
+  \fcolorbox{black!30}{black!4}{\parbox[c][1.1cm][c]{0.94\linewidth}{\centering\footnotesize\color{black!75} Promedio\\[3pt]\bfseries\large\color{black!85} [n]}}%
+\end{minipage}\\[18pt]
+\setlength{\fboxsep}{8pt}%
+\colorbox{black!75}{\parbox[c][0.5cm][c]{0.95\linewidth}{\centering\scriptsize\color{white}\bfseries Codigo \quad Materia \quad Gestion \quad Grupo \quad Avance \quad Nota \quad Estado}}\\[6pt]
+\wfboxleft[0.94\linewidth]{[fila materia cerrada]}\\[5pt]
+\wfboxleft[0.94\linewidth]{[fila materia cerrada]}\\[5pt]
+\wfsoft[0.94\linewidth]{[fila materia en curso -- avance por parciales]}\\[5pt]
+\wfboxleft[0.94\linewidth]{[fila materia cerrada]}\\[14pt]
+{\scriptsize\itshape\color{black!55} Materias en curso diferenciadas de materias finalizadas}%
+}}
+\caption{Wireframe de baja fidelidad: kardex academico.}
+\label{fig:wf-kardex}
+\end{figure}
 
-\textbf{[Resumen superior]} cursadas + aprobadas + reprobadas + promedio
+\subsubsection*{Wireframe 5: perfil y seguridad}
 
-\textbf{[Tabla academica]}
-\begin{itemize}
-  \item codigo
-  \item materia
-  \item gestion
-  \item grupo
-  \item avance
-  \item nota final
-  \item estado
-\end{itemize}
-\end{tcolorbox}
+\begin{figure}[H]
+\centering
+\resizebox{0.72\textwidth}{!}{%
+\wfframe{14cm}{%
+\centering
+\wfhead{Perfil y seguridad}
+\wfsection{Datos generales}
+\wfbox{Nombre completo}\\[10pt]
+\begin{minipage}{0.46\linewidth}\centering\wfbox[0.94\linewidth]{Codigo SIS}\end{minipage}\hfill
+\begin{minipage}{0.46\linewidth}\centering\wfbox[0.94\linewidth]{Correo}\end{minipage}\\[10pt]
+\begin{minipage}{0.46\linewidth}\centering\wfbox[0.94\linewidth]{CI}\end{minipage}\hfill
+\begin{minipage}{0.46\linewidth}\centering\wfbox[0.94\linewidth]{Facultad}\end{minipage}\\[16pt]
+\wfsection{Acciones de seguridad}
+\begin{minipage}{0.46\linewidth}\centering\wfprimary[0.94\linewidth]{Cambiar contrase\~na}\end{minipage}\hfill
+\begin{minipage}{0.46\linewidth}\centering\wfbox[0.94\linewidth]{Cerrar sesion}\end{minipage}\\[16pt]
+\wfsection{Enlaces academicos}
+\begin{minipage}{0.30\linewidth}\centering\wfbox[0.94\linewidth]{Aula virtual}\end{minipage}\hfill
+\begin{minipage}{0.30\linewidth}\centering\wfbox[0.94\linewidth]{Biblioteca}\end{minipage}\hfill
+\begin{minipage}{0.30\linewidth}\centering\wfbox[0.94\linewidth]{Calendario}\end{minipage}%
+}}
+\caption{Wireframe de baja fidelidad: perfil y seguridad.}
+\label{fig:wf-perfil}
+\end{figure}
+
+\subsubsection*{Wireframe 6: matricula}
+
+\begin{figure}[H]
+\centering
+\resizebox{0.82\textwidth}{!}{%
+\wfframe{16cm}{%
+\centering
+\wfhead{Matricula \hfill Estado: pagada}
+\setlength{\fboxsep}{12pt}%
+\fcolorbox{black!75}{black!12}{\parbox[c][1.1cm][c]{0.95\linewidth}{\centering\footnotesize\bfseries Matricula pagada -- cuenta habilitada para inscripcion}}\\[16pt]
+\wfsection{Detalles del comprobante}
+\wfboxleft{Comprobante \hfill N$^\circ$ [---]}\\[8pt]
+\wfboxleft{Entidad de pago \hfill [---]}\\[8pt]
+\wfboxleft{Fecha de registro \hfill [---]}\\[18pt]
+\begin{minipage}{0.31\linewidth}\centering
+  \setlength{\fboxsep}{8pt}%
+  \fcolorbox{black!20}{black!7}{\parbox[c][0.8cm][c]{0.94\linewidth}{\centering\footnotesize\color{black!40} Pagar matricula\\\scriptsize(deshabilitado)}}%
+\end{minipage}\hfill
+\begin{minipage}{0.31\linewidth}\centering\wfbox[0.94\linewidth]{Validar codigos}\end{minipage}\hfill
+\begin{minipage}{0.31\linewidth}\centering\wfprimary[0.94\linewidth]{Continuar inscripcion}\end{minipage}%
+}}
+\caption{Wireframe de baja fidelidad: estado de matricula.}
+\label{fig:wf-matricula}
+\end{figure}
 
 \subsection{Prototipo inicial}
 
@@ -292,7 +390,7 @@ Esta decision permite:
 
 \subsection{Capturas del prototipo}
 
-Para complementar los wireframes de baja fidelidad, se generaron capturas reales del prototipo con Playwright. Estas imagenes muestran la aplicacion funcionando en navegador y permiten verificar visualmente la jerarquia, los estados y los flujos rediseñados.
+Para complementar los wireframes de baja fidelidad, se generaron capturas reales del prototipo con Playwright. Se incluyen solo las pantallas representativas del flujo principal para evitar repetir vistas con la misma estructura visual.
 
 \begin{figure}[H]
   \centering
@@ -314,20 +412,8 @@ Para complementar los wireframes de baja fidelidad, se generaron capturas reales
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/04-codigos.png}
-  \caption{Validacion previa de codigos de acceso antes del periodo critico de inscripcion.}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
   \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/05-inscripcion.png}
   \caption{Modulo de inscripcion con limite visible, seleccion de grupo, modalidad y resumen lateral.}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/06-estado.png}
-  \caption{Resumen final de materias inscritas con grupo, modalidad, horario y estado.}
 \end{figure}
 
 \begin{figure}[H]
@@ -342,49 +428,46 @@ Para complementar los wireframes de baja fidelidad, se generaron capturas reales
   \caption{Kardex reorganizado con materias cerradas y materias en curso diferenciadas.}
 \end{figure}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/09-seguridad.png}
-  \caption{Cambio de contraseña ubicado dentro del contexto de perfil y seguridad.}
-\end{figure}
-
 \subsection{Justificacion del rediseño}
 
 \subsubsection*{Justificacion basada en usabilidad}
 
-La propuesta responde a los principales problemas detectados heuristicamente en WebSIS:
+La propuesta responde a los principales problemas detectados heuristicamente en WebSIS y los traduce en decisiones concretas de interfaz. No se trata solo de cambiar la apariencia, sino de reducir pasos innecesarios, hacer visibles los estados criticos y usar un lenguaje cercano al estudiante de la UMSS.
 
 \begin{itemize}
-  \item \textbf{Visibilidad del estado del sistema:} se incorporan estados claros como \textit{matricula pagada}, \textit{cuenta habilitada}, \textit{validacion pendiente}, \textit{materia en curso} y \textit{inscripcion finalizada}.
-  \item \textbf{Correspondencia con el mundo real:} los modulos se nombran segun tareas comprensibles para el estudiante: horario, kardex, inscripcion, estado.
-  \item \textbf{Control y libertad del usuario:} el estudiante puede agregar, retirar o modificar materias dentro del flujo sin perder contexto.
-  \item \textbf{Prevencion de errores:} se separa la validacion de codigos del momento critico de inscripcion y se evita marcar como reprobada una materia sin nota final.
-  \item \textbf{Reconocimiento antes que recuerdo:} el panel principal concentra accesos directos a tareas de alta frecuencia, reduciendo la necesidad de memorizar rutas.
+  \item \textbf{Visibilidad del estado del sistema:} el sistema anterior obligaba al estudiante a inferir si podia inscribirse, si la matricula estaba pagada o si los codigos ya estaban habilitados. Por eso se incorporan estados explicitos como \textit{matricula pagada}, \textit{cuenta habilitada}, \textit{validacion pendiente}, \textit{materia en curso} e \textit{inscripcion finalizada}.
+  \item \textbf{Correspondencia con el mundo real:} se evita terminologia tecnica o ajena al contexto local y se usa \textit{Panel del estudiante}. Las secciones se nombran segun tareas reconocibles: pagar matricula, validar codigos, inscribirse, ver horario, consultar Kardex y cambiar contraseña.
+  \item \textbf{Control y libertad del usuario:} en la inscripcion el estudiante puede revisar materias, elegir grupo, seleccionar modalidad normal o mesa, retirar materias y confirmar solo cuando el resumen sea correcto. Esto evita que una accion parcial se perciba como irreversible.
+  \item \textbf{Prevencion de errores:} se separa la validacion de codigos del momento critico de inscripcion, se deshabilita el boton de pagar matricula cuando el pago ya fue confirmado y se evita marcar como reprobada una materia sin nota final.
+  \item \textbf{Reconocimiento antes que recuerdo:} el panel principal concentra accesos directos a tareas frecuentes, evitando que el estudiante tenga que recordar rutas, pasos o menus internos del sistema.
+  \item \textbf{Eficiencia de uso:} horario, Kardex y estado de inscripcion se muestran directamente con la gestion vigente, sin pedir años, periodos o planes que no aportan valor para la tarea inmediata.
 \end{itemize}
 
 \subsubsection*{Justificacion basada en leyes de la Gestalt}
 
-La organizacion visual del prototipo se apoya en principios de percepcion que facilitan lectura y orientacion:
+La organizacion visual del prototipo se apoya en principios de percepcion que facilitan lectura, orientacion y toma de decisiones:
 
 \begin{itemize}
-  \item \textbf{Proximidad:} elementos relacionados como materia, grupo y modalidad se presentan juntos dentro de una misma unidad visual.
-  \item \textbf{Similitud:} los accesos directos y las tarjetas de accion comparten estructura coherente para que el usuario reconozca rapidamente patrones de uso.
-  \item \textbf{Jerarquia figura-fondo:} las acciones prioritarias se destacan visualmente frente a las secundarias, favoreciendo la identificacion del siguiente paso.
-  \item \textbf{Continuidad:} los flujos se ordenan de forma secuencial, haciendo visible la progresion natural entre matricula, validacion, inscripcion y confirmacion.
-  \item \textbf{Region comun:} las agrupaciones dentro de tarjetas, paneles laterales y tablas ayudan a delimitar contextos de informacion sin mezclar tareas distintas.
+  \item \textbf{Proximidad:} los datos que forman una misma decision se presentan juntos. En inscripcion, materia, grupo, modalidad, docente y horario aparecen dentro de una misma unidad; en matricula, comprobante, entidad y fecha se agrupan en el mismo bloque.
+  \item \textbf{Similitud:} los accesos directos usan la misma estructura visual para que el estudiante reconozca que son acciones equivalentes. Esto reduce exploracion innecesaria y mejora la lectura en movil.
+  \item \textbf{Jerarquia figura-fondo:} las acciones prioritarias, como \textit{Inscribirse}, \textit{Pagar matricula} o \textit{Validar codigos}, se distinguen de informacion secundaria. Asi el siguiente paso no queda oculto entre avisos o paneles laterales.
+  \item \textbf{Continuidad:} los flujos se ordenan de forma secuencial y comprensible: matricula, validacion de codigos, seleccion de materias y estado final. Esta progresion coincide con el orden real del proceso academico.
+  \item \textbf{Region comun:} las tarjetas, tablas y paneles delimitan contextos de informacion. Kardex, horario, inscripcion y seguridad no compiten en una sola pantalla, sino que se separan por ruta y por objetivo.
 \end{itemize}
 
 \subsubsection*{Justificacion basada en carga cognitiva}
 
-El rediseño busca disminuir la carga cognitiva extrinseca que actualmente impone WebSIS:
+El rediseño busca disminuir la carga cognitiva extrinseca que actualmente impone WebSIS, especialmente durante tareas de alta presion como la inscripcion. La interfaz anterior obligaba a interpretar informacion dispersa, repetir codigos, revisar pantallas intermedias y decidir entre opciones que no siempre correspondian al estudiante.
 
 \begin{itemize}
-  \item se eliminan pasos irrelevantes en horario y kardex;
+  \item se elimina la pantalla de bienvenida porque no aporta a la tarea principal de ingreso;
+  \item se simplifica el inicio de sesion al usar una fecha escrita con formato visible y eliminar el CAPTCHA visual;
   \item se hace visible el estado de matricula para que el estudiante no tenga que inferir si puede inscribirse;
-  \item se reduce la repeticion innecesaria de codigos durante inscripcion;
+  \item se reduce la repeticion innecesaria de codigos durante inscripcion mediante una habilitacion previa;
+  \item se eliminan filtros irrelevantes en horario y Kardex, como gestiones o periodos que no corresponden al estudiante;
+  \item se evita que una materia en curso sea interpretada como reprobada cuando solo existen notas parciales;
   \item se divide el proceso en estados comprensibles y con retroalimentacion inmediata;
-  \item se evita que el estudiante interprete datos ambiguos como si fueran resultados definitivos;
-  \item se adapta la densidad de informacion a movil mediante accesos compactos y jerarquia progresiva.
+  \item se adapta la densidad de informacion a movil mediante accesos compactos, resumen progresivo y separacion de pantallas.
 \end{itemize}
 
-En conjunto, estas decisiones permiten que el estudiante concentre su esfuerzo en la tarea academica real y no en descifrar como funciona la interfaz.
+En conjunto, estas decisiones permiten que el estudiante concentre su esfuerzo en la tarea academica real y no en descifrar como funciona la interfaz. El rediseño mejora la utilidad percibida, disminuye ansiedad en periodos criticos y hace que el sistema se comporte de acuerdo con el modelo mental del estudiante.
