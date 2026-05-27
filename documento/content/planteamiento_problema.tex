@@ -1,0 +1,51 @@
+\section{Planteamiento del Problema}
+
+    El Sistema de Información San Simón (WebSIS) es una plataforma web desarrollada por el DTIC de la Universidad Mayor de San Simón, que centraliza los servicios académicos en línea para la comunidad estudiantil. Sus módulos principales comprenden la inscripción a materias, la consulta de notas, la visualización de horarios y el acceso a la situación académica. El sistema constituye el único canal institucional habilitado para estos trámites, por lo que su uso es obligatorio e irremplazable para cualquier estudiante activo de la UMSS, independientemente de la facultad o carrera a la que pertenezca.
+
+    Los usuarios de la plataforma se dividen en dos perfiles con características distintas frente al sistema:
+
+        \begin{itemize}
+
+            \item \textbf{Estudiantes ingresantes:} se enfrentan por primera vez a una interfaz desconocida en un contexto de alta presión académica, sin experiencia previa que les permita anticipar la lógica de navegación ni los procedimientos requeridos.
+
+            \item \textbf{Estudiantes avanzados:} han acumulado semestres de uso continuo, pero han desarrollado atajos y rutinas no evidentes para compensar las deficiencias del sistema. Esta adaptación individual no constituye una experiencia de uso exitosa, sino la normalización de fallos de diseño que el sistema debería haber resuelto.
+
+        \end{itemize}
+
+    En ambos casos, la experiencia de uso se ve comprometida por las mismas deficiencias estructurales de la interfaz, con independencia del nivel de familiaridad del usuario.
+
+    Los escenarios de uso de mayor criticidad son los siguientes:
+
+        \begin{itemize}
+
+            \item \textbf{Inscripción a materias:} proceso que ocurre en ventanas de tiempo acotadas con consecuencias académicas directas si no se completa correctamente dentro del plazo habilitado.
+
+            \item \textbf{Consulta de notas y situación académica:} concentra accesos masivos inmediatamente después de los periodos evaluativos, cuando el estudiante necesita obtener información con rapidez y certeza.
+
+            \item \textbf{Consulta de horarios al inicio del semestre:} la información debe ser localizada y comprendida con rapidez para organizar la carga académica antes del inicio de clases.
+            
+        \end{itemize}
+
+    En los tres escenarios, las dificultades de navegación tienen un impacto directo en el desempeño y la tranquilidad del estudiante.
+
+    La problemática se manifiesta en un conjunto de deficiencias observables desde la perspectiva de la Interacción Humano-Computadora:
+
+        \begin{itemize}
+
+            \item \textbf{Ausencia de visibilidad del estado del sistema:} la plataforma no informa al usuario su posición dentro del sistema ni el siguiente paso esperado, generando desorientación durante la navegación.
+
+            \item \textbf{Desajuste con el modelo mental del usuario:} la estructura responde a una lógica técnica interna que no coincide con la forma en que el estudiante concibe y ejecuta sus trámites académicos, convirtiendo tareas simples en procesos poco intuitivos.
+
+            \item \textbf{Arquitectura de información deficiente:} los contenidos y opciones carecen de jerarquía clara, dificultando tanto la localización de información como la finalización de procesos completos.
+
+            \item \textbf{Carga cognitiva elevada:} como consecuencia directa de la organización anterior, el usuario se ve obligado a memorizar rutas de acceso en lugar de reconocerlas dentro de la interfaz, incrementando el esfuerzo requerido en cada sesión.
+
+            \item \textbf{Falta de control y recuperación ante errores:} el sistema no facilita la corrección de errores ni ofrece retroalimentación suficiente para orientar al usuario cuando este se equivoca.
+
+            \item \textbf{Ausencia de soporte en periodos críticos:} en los momentos de mayor demanda, como el inicio de inscripciones o la publicación de calificaciones, estas deficiencias se concentran y afectan a la mayor cantidad de usuarios de forma simultánea, sin que el sistema ofrezca ningún soporte contextual adicional.
+
+        \end{itemize}
+
+    \input{three}
+
+    El estudiante sabe con precisión qué gestión académica necesita realizar y que WebSIS es el único medio disponible para concretarla. Sin embargo, al ingresar a la plataforma se enfrenta a una interfaz cuya organización no responde a su lógica de uso, que no le indica cómo avanzar ni cómo corregir errores, y que lo obliga a operar bajo presión de plazos sin ningún soporte de navegación. Esta situación genera confusión, frustración y dependencia de orientación externa para completar trámites que el sistema debería facilitar por sí mismo. El problema no radica en la ausencia de funcionalidades, sino en la forma en que estas son estructuradas e interactuadas dentro de la plataforma.

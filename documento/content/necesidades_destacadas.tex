@@ -1,0 +1,103 @@
+\clearpage
+\section{Necesidades Detectadas}
+
+Las necesidades detectadas no son una lista de funcionalidades ausentes: representan la traducción de lo que los usuarios dicen, piensan, sienten y hacen en requerimientos concretos que el rediseño debe atender. Estas necesidades fueron construidas a partir de la triangulación de cinco fuentes de información: el cuestionario aplicado a 25 estudiantes, la sección emocional del cuestionario (Sección D), las entrevistas semiestructuradas, las sesiones de observación directa y los mapas de empatía elaborados en la sección 4.6.
+
+Desde la perspectiva del Design Thinking, estas necesidades representan la síntesis de la fase de empatía: traducen lo que los usuarios dicen, piensan, sienten y hacen en requerimientos concretos que deberá atender el rediseño. No se trata únicamente de funcionalidades ausentes, sino de brechas entre la experiencia actual del sistema y la experiencia que el estudiante necesita para gestionar su trayectoria académica con autonomía y confianza.
+
+
+{\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.1}
+
+\begin{longtable}{|>{\bfseries}p{0.6cm}|p{2.1cm}|p{3.1cm}|p{3.1cm}|p{3.6cm}|}
+\hline
+\# & Necesidad & Descripción & Necesidad emocional subyacente & Evidencia \\
+\hline
+\endfirsthead
+
+\hline
+\# & Necesidad & Descripción & Necesidad emocional subyacente & Evidencia \\
+\hline
+\endhead
+
+N1 & Guía en inscripción & El sistema debe guiar paso a paso el proceso de inscripción con indicadores de progreso visibles. & Seguridad y control: el estudiante necesita sentir acompañamiento durante la tarea. & 76\% encontró difícil la inscripción. E1 tardó 40 min con ayuda. S3 no completó la tarea. \\
+\hline
+
+N2 & Confirmación de acciones & El sistema debe confirmar claramente cada acción realizada para evitar incertidumbre. & Cierre y certeza: el usuario necesita saber que su acción fue registrada correctamente. & 56\% quedó con dudas tras completar tareas. E3 y E4 revisaban varias veces la pantalla. \\
+\hline
+
+N3 & Mensajes comprensibles & Los mensajes deben explicar qué ocurrió y cómo solucionarlo en lenguaje claro. & Confianza institucional: el usuario necesita entender los errores para actuar correctamente. & E4 perdió una materia por un mensaje confuso. 40\% reportó pasos no obvios. \\
+\hline
+
+N4 & Compatibilidad móvil & La interfaz debe funcionar correctamente en dispositivos móviles. & Equidad de acceso: muchos estudiantes dependen exclusivamente del celular. & E2: “Desde el celular es imposible”. 24\% usa celular como dispositivo principal. \\
+\hline
+
+N5 & Navegación alineada al modelo mental & El menú debe organizarse según las tareas del estudiante y no según la lógica interna del sistema. & Autonomía cognitiva: el usuario no debería aprender cómo funciona internamente el sistema. & S1 exploró 4 secciones antes de encontrar el módulo correcto. \\
+\hline
+
+N6 & Acceso rápido a tareas frecuentes & Las tareas más usadas deben estar accesibles desde la pantalla principal. & Eficiencia y ahorro de tiempo en períodos críticos. & 96\% usa inscripción y 92\% consulta notas frecuentemente. \\
+\hline
+
+N7 & Estabilidad técnica & El sistema debe mantenerse estable en períodos de alta demanda. & Confianza en la infraestructura del sistema. & E5 perdió una materia por fallas del sistema. \\
+\hline
+
+N8 & Soporte contextual integrado & El sistema debe incluir ayuda y orientación contextual dentro de cada módulo. & Autonomía institucional: reducir dependencia de terceros. & 80\% necesitó ayuda externa. 32\% pidió tutorial integrado. \\
+\hline
+
+N9 & Autonomía académica & El sistema debe permitir gestionar trámites sin depender constantemente de otras personas. & Dignidad y confianza en la propia capacidad de gestión. & 64\% siente que el sistema no brinda información suficiente para actuar solo. \\
+\hline
+
+\caption{Necesidades detectadas en usuarios de WebSIS}
+\label{tab:necesidades-detectadas}
+\end{longtable}
+}
+\subsection {Relación entre necesidades y perfiles de usuario}
+
+Las necesidades detectadas no afectan de igual manera a los dos perfiles identificados. Algunas resultan especialmente críticas para el estudiante ingresante, mientras que otras impactan de forma transversal tanto a usuarios novatos como avanzados. Esta diferenciación permite priorizar intervenciones de diseño según el nivel de vulnerabilidad y las consecuencias académicas asociadas a cada perfil.
+
+{\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{|>{\bfseries}p{3.1cm}|p{5.35cm}|p{5.35cm}|}
+\hline
+Necesidad & Ingresante & Avanzado \\
+\hline
+\endfirsthead
+
+\hline
+Necesidad & Ingresante & Avanzado \\
+\hline
+\endhead
+
+N1 -- Guía en inscripción & Crítica: no puede completar la tarea sin ayuda externa. La ansiedad anticipatoria es máxima porque cualquier error puede afectar su semestre. & Moderada: conoce parcialmente la ruta, pero debe reconstruirla cada semestre. \\
+\hline
+
+N2 -- Confirmación de acciones & Crítica: necesita certeza para cerrar emocionalmente el proceso y confiar en el resultado de sus acciones. & Crítica: revisa múltiples veces las acciones por experiencias previas de errores silenciosos. \\
+\hline
+
+N3 -- Mensajes comprensibles & Crítica: no tiene experiencia suficiente para interpretar mensajes ambiguos o técnicos. & Crítica: errores incomprensibles ya generaron consecuencias académicas reales. \\
+\hline
+
+N4 -- Compatibilidad móvil & Crítica: el celular suele ser su dispositivo principal de acceso. & Crítica: para usuarios sin laptop personal, el celular es el único canal disponible. \\
+\hline
+
+N5 -- Arquitectura de navegación & Crítica: navega por ensayo y error durante tareas fundamentales. & Moderada: ha memorizado rutas no documentadas, pero la estructura continúa siendo confusa. \\
+\hline
+
+N6 -- Acceso rápido a tareas frecuentes & Crítica: cada sesión comienza desde cero sin puntos de entrada claros. & Moderada: las rutas memorizadas compensan parcialmente la falta de accesos directos. \\
+\hline
+
+N7 -- Estabilidad técnica & Crítica: posee menor capacidad para interpretar y reaccionar ante fallos del sistema en momentos críticos. & Crítica: ha normalizado las caídas, pero continúa sufriendo consecuencias académicas reales. \\
+\hline
+
+N8 -- Soporte contextual integrado & Crítica: depende completamente de orientación externa durante sus primeras experiencias. & Moderada: lo requiere principalmente para tareas nuevas o poco frecuentes. \\
+\hline
+
+N9 -- Autonomía académica del estudiante & Crítica: la dependencia desde el primer contacto afecta su confianza y sensación de pertenencia institucional. & Crítica: incluso después de años de uso, muchos estudiantes aún sienten que el sistema no les proporciona suficiente información para actuar de forma autónoma. \\
+\hline
+
+\caption{Relación entre necesidades detectadas y perfiles de usuario}\label{tab:relacion-necesidades-perfiles}
+\end{longtable}
+}
+

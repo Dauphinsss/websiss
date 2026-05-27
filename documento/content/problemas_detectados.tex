@@ -1,0 +1,148 @@
+\section{Problemas Detectados}
+Esta sección sintetiza los problemas identificados a partir de la investigación de usuarios, organizándolos según su naturaleza (usabilidad, arquitectura de información, técnicos, emocionales) y su nivel de severidad. La clasificación sigue los criterios de Nielsen (1994), complementados con la dimensión emocional incorporada en este estudio.
+Un problema de usabilidad es cualquier aspecto de la interfaz que dificulte al usuario completar una tarea de forma eficiente, autónoma y sin errores. Los problemas identificados en WebSIS no son aislados: forman un sistema de deficiencias que se refuerzan mutuamente y cuyo efecto acumulado genera la experiencia de uso negativa documentada en los apartados anteriores.
+
+\subsection{Clasificación por severidad}
+Se emplea la escala de severidad de Nielsen (1994):
+
+\begin{itemize}
+    \item 0 = no es un problema de usabilidad.
+    \item 1 = problema estético (prioridad mínima).
+    \item 2 = problema menor.
+    \item 3 = problema moderado.
+    \item 4 = problema catastrófico (debe corregirse antes de lanzar).
+\end{itemize}
+
+{\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{|>{\bfseries}p{0.9cm}|p{6.5cm}|p{3.5cm}|p{3cm}|}
+\hline
+ID & Problema & Categoría & Severidad (0--4) \\
+\hline
+\endfirsthead
+
+\hline
+ID & Problema & Categoría & Severidad (0--4) \\
+\hline
+\endhead
+
+P1 & Ausencia de indicadores de progreso y estado durante la inscripción a materias & Usabilidad -- Visibilidad del estado & 4 -- Catastrófico \\
+\hline
+
+P2 & Mensajes de error incomprensibles y sin instrucción de acción correctiva & Usabilidad -- Manejo de errores & 4 -- Catastrófico \\
+\hline
+
+P3 & Interfaz no responsive: inutilizable en dispositivos móviles & Técnico / Accesibilidad & 4 -- Catastrófico \\
+\hline
+
+P4 & Arquitectura de información basada en lógica técnica interna, no en tareas del usuario & Arquitectura de información & 3 -- Moderado--Catastrófico \\
+\hline
+
+P5 & Ausencia de confirmación explícita del resultado de las acciones realizadas & Usabilidad -- Retroalimentación & 3 -- Moderado \\
+\hline
+
+P6 & Falta de acceso directo a tareas frecuentes desde la pantalla de inicio & Arquitectura de información & 3 -- Moderado \\
+\hline
+
+P7 & Inestabilidad técnica en períodos de alta demanda (caídas y lentitud) & Técnico & 3 -- Moderado--Catastrófico \\
+\hline
+
+P8 & Ausencia de soporte contextual y guía de ayuda dentro del sistema & Usabilidad -- Soporte al usuario & 3 -- Moderado \\
+\hline
+
+P9 & Etiquetas e íconos del menú con denominaciones ambiguas o poco intuitivas & Usabilidad -- Correspondencia con el modelo mental & 2 -- Menor \\
+\hline
+
+P10 & Información de créditos y situación académica presentada de forma incompleta o poco clara & Arquitectura de información & 2 -- Menor \\
+\hline
+
+\caption{Problemas detectados en WebSIS clasificados por severidad (Nielsen, 1994)}\label{tab:problemas-severidad}
+\end{longtable}
+}
+
+\subsection{Árbol de problemas actualizado}
+El siguiente esquema actualiza la estructura causal identificada en el planteamiento del problema con los hallazgos detallados de la investigación de usuarios. Los problemas raíz identificados en la fase de empatía son los mismos que los señalados en el análisis inicial, pero ahora están respaldados por evidencia empírica específica y cuantificada.
+
+
+
+\begin{tcolorbox}[title={Causa raíz}, colback=white, colframe=black]
+\textbf{El sistema está diseñado desde una lógica técnica interna, no desde las tareas y el modelo mental del usuario.}
+
+\begin{itemize}
+    \item Arquitectura de información que no responde a cómo el estudiante concibe sus gestiones académicas (P4, P6, P9).
+    \item Ausencia de retroalimentación sobre el estado del sistema y el resultado de las acciones (P1, P2, P5).
+    \item Incompatibilidad técnica con los dispositivos que los usuarios realmente utilizan (P3, P7).
+    \item Falta de soporte contextual en los momentos de mayor necesidad y mayor riesgo (P7, P8).
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Efectos de primer nivel: experiencia de uso}, colback=white, colframe=black]
+\begin{itemize}
+    \item Desorientación y backtracking durante la navegación.
+    \item Dependencia de orientación externa (compañeros, secretaría) para completar tareas básicas.
+    \item Incertidumbre sobre el resultado de cada acción realizada.
+    \item Exclusión funcional de usuarios que acceden desde dispositivos móviles.
+    \item Pérdida de información crítica en períodos de alta demanda por inestabilidad técnica.
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Efectos de segundo nivel: consecuencias académicas y emocionales}, colback=white, colframe=black]
+\begin{itemize}
+    \item Pérdida de inscripciones y materias por dificultades con el sistema (56\% reportó algún fracaso).
+    \item Ansiedad crónica asociada al uso del sistema en períodos críticos (72\%).
+    \item Desconfianza duradera hacia el sistema y hacia la institución.
+    \item Sobrecarga de consultas al personal administrativo por tareas que el sistema debería resolver.
+    \item Pérdida de autonomía del estudiante en la gestión de su propia trayectoria académica.
+\end{itemize}
+\end{tcolorbox}
+\subsection{Síntesis: Problemas prioritarios para el rediseño}
+Los cuatro problemas de severidad catastrófica (P1, P2, P3, P7) constituyen la prioridad absoluta del rediseño, ya que tienen consecuencias académicas directas y afectan transversalmente a los dos perfiles de usuario identificados. Su corrección es condición necesaria para que cualquier mejora adicional resulte significativa.
+
+{\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{|p{2.3cm}|p{4.2cm}|p{7.3cm}|}
+\hline
+\textbf{Prioridad} & \textbf{Problema} & \textbf{Intervención requerida} \\
+\hline
+\endfirsthead
+
+\hline
+\textbf{Prioridad} & \textbf{Problema} & \textbf{Intervención requerida} \\
+\hline
+\endhead
+
+1 -- Inmediata & P1: Ausencia de guía en inscripción & Diseñar un flujo de inscripción paso a paso con indicadores de progreso visibles y estado actual del proceso. \\
+\hline
+
+1 -- Inmediata & P2: Mensajes de error incomprensibles & Reescribir todos los mensajes de error con lenguaje orientado al usuario: qué ocurrió, por qué y qué debe hacer. \\
+\hline
+
+1 -- Inmediata & P3: Interfaz no responsive & Diseñar o adaptar la interfaz para que sea completamente funcional en dispositivos móviles. \\
+\hline
+
+1 -- Inmediata & P7: Inestabilidad en períodos críticos & Implementar mecanismos de cola, mensajes de estado del servidor y recuperación de sesión en períodos de alta demanda. \\
+\hline
+
+2 -- Alta & P4: Arquitectura de información deficiente & Rediseñar la estructura del menú centrada en las tareas del usuario (inscripción, notas, horarios, situación académica) con etiquetas claras e intuitivas. \\
+\hline
+
+2 -- Alta & P5: Ausencia de confirmación de acciones & Agregar confirmaciones explícitas tras cada acción relevante: inscripción registrada, modificación guardada, consulta completada. \\
+\hline
+
+2 -- Alta & P6: Sin acceso directo a tareas frecuentes & Crear un panel de inicio con accesos directos a las tres tareas de mayor uso desde la primera pantalla tras el ingreso. \\
+\hline
+
+3 -- Media & P8: Falta de soporte contextual & Incorporar ayuda contextual disponible en cada pantalla, con especial énfasis en los módulos de inscripción durante períodos habilitados. \\
+\hline
+
+3 -- Media & P9: Etiquetas e íconos ambiguos & Revisar y actualizar la denominación de todos los módulos del menú para alinearlos con el vocabulario que los estudiantes utilizan naturalmente. \\
+\hline
+
+4 -- Baja & P10: Información de créditos poco clara & Mejorar la visualización de la situación académica para que el cálculo de créditos y el estado del plan de estudios sean directamente legibles sin cálculos manuales. \\
+\hline
+
+\caption{Problemas prioritarios y sus intervenciones de diseño requeridas}\label{tab:problemas-prioritarios-intervenciones}
+\end{longtable}
+}

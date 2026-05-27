@@ -1,0 +1,691 @@
+\clearpage
+\section{Perfil de Usuarios}
+ 
+El relevamiento de usuarios se realizó aplicando tres técnicas complementarias: cuestionario, entrevistas semiestructuradas y observación directa. La triangulación de estos datos permite construir una comprensión integral del contexto de uso de WebSIS, considerando tanto los aspectos funcionales como los emocionales de la experiencia.
+ 
+% ------------------------------------------------------------
+\subsection{Cuestionario aplicado}
+ 
+Se administró un cuestionario a 25 estudiantes de la UMSS durante la primera quincena de mayo de 2025, mediante distribución digital a través de formulario en línea. La muestra fue seleccionada de forma intencional para incluir ingresantes (semestres 1--2) y estudiantes avanzados (semestres 3 en adelante) de distintas facultades. El instrumento combinó preguntas cerradas y de escala Likert para cuantificar patrones de uso, dificultades percibidas, satisfacción general y experiencia emocional frente al sistema. Las preguntas B2 y C6 admitían selección múltiple, por lo que sus porcentajes suman más del 100\%.
+ 
+El instrumento completo se encuentra en el \hyperref[apx:cuestionario]{Apéndice A}.
+ 
+% ------------------------------------------------------------
+\subsection{Resultados de la encuesta}
+ 
+A continuación se presentan los resultados obtenidos de la aplicación del cuestionario a los 25 estudiantes participantes.
+ 
+% ---- Tabla 1: Perfil de encuestados ------------------------
+\subsubsection{Perfil de los encuestados}
+ 
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{3.5cm}|p{5.8cm}|p{3.5cm}|}
+\hline
+\textbf{Variable} & \textbf{Categoría} & \textbf{Frecuencia (n=25)} \\
+\hline
+\multirow{2}{*}{Sexo}
+  & Femenino  & 13 (52\%) \\
+  & Masculino & 12 (48\%) \\
+\hline
+\multirow{4}{*}{Edad}
+  & 17--19 años  & 8 (32\%)  \\
+  & 20--22 años  & 11 (44\%) \\
+  & 23--25 años  & 4 (16\%)  \\
+  & Más de 25    & 2 (8\%)   \\
+\hline
+\multirow{4}{*}{Semestre}
+  & 1--2 (ingresantes) & 7 (28\%)  \\
+  & 3--4               & 8 (32\%)  \\
+  & 5--6               & 6 (24\%)  \\
+  & 7 o más            & 4 (16\%)  \\
+\hline
+\end{tabular}
+\caption{Perfil de los estudiantes encuestados}
+\label{tab:perfil-encuestados}
+\end{table}
+ 
+% ---- Figura 1: Distribución por semestre -------------------
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  ybar,
+  bar width=18pt,
+  width=0.78\textwidth,
+  height=6cm,
+  xlabel={Semestre},
+  ylabel={Número de estudiantes},
+  symbolic x coords={1--2, 3--4, 5--6, 7+},
+  xtick=data,
+  ymin=0, ymax=12,
+  ytick={0,2,4,6,8,10,12},
+  nodes near coords,
+  nodes near coords align={vertical},
+  every node near coord/.style={font=\small}, 
+  axis lines*=left,
+  enlarge x limits=0.2,
+  tick align=outside,
+  grid=major,
+  grid style={dashed, gray!30},
+  bar shift=0pt,
+]
+\addplot[fill=clPrimary, draw=clPrimary!80!black]
+  coordinates {(1--2,7) (3--4,8) (5--6,6) (7+,4)};
+\end{axis}
+\end{tikzpicture}
+\caption{Distribución de estudiantes encuestados por semestre cursado}
+\label{fig:dist-semestre}
+\end{figure}
+ 
+% ---- Tabla 2: Frecuencia de uso y dispositivo --------------
+\newpage
+\subsubsection{Frecuencia de uso, tareas y dispositivos}
+ 
+\begin{longtable}{|p{7.5cm}|p{2cm}|p{2.5cm}|}
+\hline
+\textbf{Pregunta / Categoría} & \textbf{n} & \textbf{Porcentaje} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Pregunta / Categoría} & \textbf{n} & \textbf{Porcentaje} \\
+\hline
+\endhead
+\hline
+\endfoot
+\endlastfoot
+ 
+\multicolumn{3}{|l|}{\textit{B1. Frecuencia de uso}} \\
+\hline
+Solo en períodos críticos (inscripciones/notas) & 17 & 68\% \\
+Varias veces por semana                          & 6  & 24\% \\
+Raramente                                        & 2  & 8\%  \\
+\hline
+\multicolumn{3}{|l|}{\textit{B2. Tareas principales (selección múltiple)}} \\
+\hline
+Inscripción a materias  & 24 & 96\% \\
+Consulta de notas       & 23 & 92\% \\
+Consulta de horarios    & 18 & 72\% \\
+Situación académica     & 10 & 40\% \\
+\hline
+\multicolumn{3}{|l|}{\textit{B3. Dispositivo de acceso principal}} \\
+\hline
+Laptop           & 18 & 72\% \\
+Teléfono celular & 6  & 24\% \\
+Otro             & 1  & 4\%  \\
+\hline
+\multicolumn{3}{|l|}{\textit{B4. Lugar de acceso habitual}} \\
+\hline
+Casa                         & 20 & 80\% \\
+Universidad / laboratorio    & 4  & 16\% \\
+Otro                         & 1  & 4\%  \\
+\hline
+\caption{Resultados sobre frecuencia de uso, tareas y contexto de acceso}\label{tab:frecuencia-uso}
+\end{longtable}
+ 
+% ---- Figura 2: Dispositivo de acceso (pastel) --------------
+\newpage
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\pie[
+  radius=2.8,
+  color={clPrimary, clAccent, clNeutral},
+  text=legend,
+  /tikz/every pin/.style={align=center, font=\small},
+]
+{72/Laptop (72\%), 24/Celular (24\%), 4/Otro (4\%)}
+\end{tikzpicture}
+\caption{Distribución del dispositivo de acceso principal a WebSIS}
+\label{fig:dispositivo-acceso}
+\end{figure}
+ 
+% ---- Tabla 3: Dificultad y problemas -----------------------
+\subsubsection{Dificultad percibida y problemas de uso}
+ 
+\begin{longtable}{|p{7.5cm}|p{2cm}|p{2.5cm}|}
+\hline
+\textbf{Indicador} & \textbf{n} & \textbf{Porcentaje} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Indicador} & \textbf{n} & \textbf{Porcentaje} \\
+\hline
+\endhead
+\hline
+\endfoot
+\endlastfoot
+ 
+\multicolumn{3}{|l|}{\textit{C1. Dificultad general percibida}} \\
+\hline
+Neutral          & 15 & 60\% \\
+Difícil          & 6  & 24\% \\
+Fácil            & 4  & 16\% \\
+\hline
+\multicolumn{3}{|l|}{\textit{C2. Dificultad en inscripción a materias}} \\
+\hline
+Neutral o Difícil    & 19 & 76\% \\
+Fácil o Muy fácil    & 6  & 24\% \\
+\hline
+\multicolumn{3}{|l|}{\textit{C3. Dificultad en consulta de notas}} \\
+\hline
+Fácil o Muy fácil    & 14 & 56\% \\
+Neutral o Difícil    & 11 & 44\% \\
+\hline
+\multicolumn{3}{|l|}{\textit{C4. Necesidad de ayuda externa}} \\
+\hline
+A veces o Frecuentemente & 20 & 80\% \\
+Nunca                    & 5  & 20\% \\
+\hline
+\multicolumn{3}{|l|}{\textit{C5. Fracaso en tarea académica importante}} \\
+\hline
+Sí, al menos una vez & 14 & 56\% \\
+No                   & 11 & 44\% \\
+\hline
+\multicolumn{3}{|l|}{\textit{C6. Problema más frecuente (selección múltiple)}} \\
+\hline
+Los pasos a seguir no son obvios   & 10 & 40\% \\
+Interfaz confusa o poco clara      & 8  & 32\% \\
+El sistema es lento o falla        & 6  & 24\% \\
+No entiendo los mensajes de error  & 5  & 20\% \\
+No sé dónde encontrar lo que busco & 4  & 16\% \\
+\hline
+\multicolumn{3}{|l|}{\textit{C8. Mejora más prioritaria (selección múltiple)}} \\
+\hline
+Mejor organización del menú      & 11 & 44\% \\
+Guía o tutorial integrado        & 8  & 32\% \\
+Versión móvil optimizada         & 6  & 24\% \\
+Mensajes de error más claros     & 5  & 20\% \\
+Diseño más moderno               & 3  & 12\% \\
+\hline
+\caption{Resultados sobre dificultad percibida, problemas y mejoras prioritarias}\label{tab:dificultad-problemas}
+\end{longtable}
+ 
+% ---- Figura 3: Problemas más frecuentes (barras horizontales)
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  xbar,
+  bar width=14pt,
+  width=0.82\textwidth,
+  height=6.5cm,
+  xlabel={Número de estudiantes},
+  symbolic y coords={
+    {No sé dónde buscar},
+    {Mensajes de error},
+    {Sistema lento},
+    {Interfaz confusa},
+    {Pasos no obvios}
+  },
+  ytick=data,
+  xmin=0, xmax=14,
+  xtick={0,2,4,6,8,10,12,14},
+  nodes near coords,
+  nodes near coords align={horizontal},
+  every node near coord/.style={font=\small},
+  axis lines*=left,
+  enlarge y limits=0.15,
+  grid=major,
+  grid style={dashed, gray!30},
+]
+\addplot[fill=clDanger, draw=clDanger!80!black]
+  coordinates {
+    (4,{No sé dónde buscar})
+    (5,{Mensajes de error})
+    (6,{Sistema lento})
+    (8,{Interfaz confusa})
+    (10,{Pasos no obvios})
+  };
+\end{axis}
+\end{tikzpicture}
+\caption{Problemas más frecuentes reportados por los estudiantes (C6, selección múltiple)}
+\label{fig:problemas-frecuentes}
+\end{figure}
+ 
+% ---- Tabla 4: Satisfacción (distribución completa) ---------
+\subsubsection{Satisfacción general con WebSIS}
+ 
+\begin{longtable}{|p{3cm}|p{2.5cm}|p{2.5cm}|p{4.5cm}|}
+\hline
+\textbf{Valor} & \textbf{n} & \textbf{\%} & \textbf{Descripción} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Valor} & \textbf{n} & \textbf{\%} & \textbf{Descripción} \\
+\hline
+\endhead
+\hline
+\endfoot
+\endlastfoot
+ 
+1 -- Muy insatisfecho & 7  & 28\% & Experiencia claramente negativa \\
+2 -- Insatisfecho     & 9  & 36\% & Insatisfacción predominante      \\
+3 -- Neutral          & 5  & 20\% & Indiferencia o experiencia mixta \\
+4 -- Satisfecho       & 3  & 12\% & Experiencia mayormente positiva  \\
+5 -- Muy satisfecho   & 1  & 4\%  & Experiencia plenamente positiva  \\
+\hline
+\textbf{Promedio}     & \multicolumn{3}{l|}{2.28 / 5 \quad (desv. estándar: 1.06)} \\
+\hline
+\caption{Distribución de satisfacción general con WebSIS (C7, n=25)}\label{tab:satisfaccion}
+\end{longtable}
+ 
+% ---- Figura 4: Distribución de satisfacción ----------------
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  ybar,
+  bar width=22pt,
+  width=0.75\textwidth,
+  height=6cm,
+  xlabel={Nivel de satisfacción},
+  ylabel={Número de estudiantes},
+  symbolic x coords={1,2,3,4,5},
+  xtick=data,
+  xticklabels={1,2,3,4,5},
+  ymin=0, ymax=12,
+  ytick={0,2,4,6,8,10,12},
+  nodes near coords,
+  nodes near coords align={vertical},
+  every node near coord/.style={font=\small},
+  axis lines*=left,
+  enlarge x limits=0.15,
+  grid=major,
+  grid style={dashed, gray!30},
+]
+\addplot[
+  fill={clDanger},
+  draw=clDanger!80!black,
+  postaction={
+    fill=clWarning,
+    opacity=0,
+  }
+]
+  coordinates {(1,7) (2,9) (3,5) (4,3) (5,1)};
+\end{axis}
+\end{tikzpicture}
+\caption{Distribución de frecuencias de satisfacción general con WebSIS (C7, escala 1--5)}
+\label{fig:satisfaccion}
+\end{figure}
+ 
+% ---- Tabla 5: Dimensión emocional --------------------------
+\subsubsection{Dimensión emocional de la experiencia}
+ 
+La experiencia emocional de los estudiantes con WebSIS se caracteriza por ansiedad anticipatoria, alivio condicionado y una relación de tolerancia o dependencia con el sistema.
+ 
+\begin{longtable}{|p{7.5cm}|p{2cm}|p{2.5cm}|}
+\hline
+\textbf{Indicador emocional} & \textbf{n} & \textbf{Porcentaje} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Indicador emocional} & \textbf{n} & \textbf{Porcentaje} \\
+\hline
+\endhead
+\hline
+\endfoot
+\endlastfoot
+ 
+\multicolumn{3}{|l|}{\textit{D1. Estado antes de ingresar en períodos críticos}} \\
+\hline
+Algo ansioso/a o Muy ansioso/a & 18 & 72\% \\
+Tranquilo/a                    & 5  & 20\% \\
+Indiferente                    & 2  & 8\%  \\
+\hline
+\multicolumn{3}{|l|}{\textit{D2. Estado tras completar una tarea}} \\
+\hline
+Aliviado/a pero con dudas sobre si lo hizo bien & 14 & 56\% \\
+Satisfecho/a y seguro/a                         & 7  & 28\% \\
+Frustrado/a                                     & 4  & 16\% \\
+\hline
+\multicolumn{3}{|l|}{\textit{D3. Reacción ante un bloqueo}} \\
+\hline
+Busca ayuda de un compañero   & 17 & 68\% \\
+Lo intenta de nuevo más tarde & 6  & 24\% \\
+Se rinde                      & 2  & 8\%  \\
+\hline
+\multicolumn{3}{|l|}{\textit{D4. Percepción de autonomía informacional}} \\
+\hline
+Rara vez o casi nunca recibe información suficiente & 16 & 64\% \\
+A veces                                             & 7  & 28\% \\
+Sí, siempre                                         & 2  & 8\%  \\
+\hline
+\multicolumn{3}{|l|}{\textit{D5. Palabra que describe la relación con WebSIS}} \\
+\hline
+Frustración  & 11 & 44\% \\
+Tolerancia   & 9  & 36\% \\
+Dependencia  & 3  & 12\% \\
+Indiferencia & 2  & 8\%  \\
+Confianza    & 0  & 0\%  \\
+\hline
+\caption{Indicadores de la dimensión emocional en la experiencia de uso de WebSIS}\label{tab:dimension-emocional}
+\end{longtable}
+ 
+% ---- Figura 5: Relación emocional con WebSIS (D5) ----------
+\newpage
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  xbar,
+  bar width=14pt,
+  width=0.80\textwidth,
+  height=6cm,
+  xlabel={Número de estudiantes},
+  symbolic y coords={
+    Confianza,
+    Indiferencia,
+    Dependencia,
+    Tolerancia,
+    Frustración
+  },
+  ytick=data,
+  xmin=0, xmax=14,
+  xtick={0,2,4,6,8,10,12,14},
+  nodes near coords,
+  nodes near coords align={horizontal},
+  every node near coord/.style={font=\small},
+  axis lines*=left,
+  enlarge y limits=0.15,
+  grid=major,
+  grid style={dashed, gray!30},
+]
+\addplot[fill=clSecondary, draw=clSecondary!80!black]
+  coordinates {
+    (0,Confianza)
+    (2,Indiferencia)
+    (3,Dependencia)
+    (9,Tolerancia)
+    (11,Frustración)
+  };
+\end{axis}
+\end{tikzpicture}
+\caption{Palabra que describe la relación del estudiante con WebSIS (D5, n=25)}
+\label{fig:relacion-emocional}
+\end{figure}
+ 
+% ---- Figura 6: Ansiedad antes de ingresar (D1) -------------
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  ybar,
+  bar width=20pt,
+  width=0.70\textwidth,
+  height=5.5cm,
+  xlabel={Estado emocional},
+  ylabel={Número de estudiantes},
+  symbolic x coords={Ansioso/a, Tranquilo/a, Indiferente},
+  xtick=data,
+  ymin=0, ymax=22,
+  ytick={0,4,8,12,16,20},
+  nodes near coords,
+  nodes near coords align={vertical},
+  every node near coord/.style={font=\small},
+  axis lines*=left,
+  enlarge x limits=0.3,
+  grid=major,
+  grid style={dashed, gray!30},
+]
+\addplot[fill=clWarning, draw=clWarning!80!black]
+  coordinates {(Ansioso/a,18) (Tranquilo/a,5) (Indiferente,2)};
+\end{axis}
+\end{tikzpicture}
+\caption{Estado emocional del estudiante antes de ingresar a WebSIS en períodos críticos (D1, n=25)}
+\label{fig:ansiedad-previa}
+\end{figure}
+ 
+% ------------------------------------------------------------
+\subsection{Síntesis de hallazgos de la encuesta}
+ 
+La triangulación de los datos cuantitativos revela tres dimensiones críticas que caracterizan la experiencia de uso de WebSIS:
+ 
+\textbf{Concentración del uso y alta exposición al error.} El 68\% de los estudiantes accede al sistema únicamente durante períodos críticos, lo que implica que cada interacción ocurre bajo presión temporal y con consecuencias académicas directas. Este patrón convierte cada fallo de usabilidad en un evento de alto impacto.
+ 
+\textbf{Usabilidad deficiente en tareas de alta frecuencia.} El proceso de inscripción a materias, utilizado por el 96\% de los encuestados, es percibido como neutral o difícil por el 76\% de ellos. El 80\% necesitó ayuda externa en algún punto, y el 56\% reportó no haber podido completar al menos una tarea académica importante. El promedio de satisfacción general (2.28/5, $\sigma$=1.06) indica una experiencia predominantemente negativa, con el 64\% de los estudiantes puntuando entre 1 y 2.
+ 
+\textbf{Impacto emocional sistémico.} El problema trasciende la usabilidad técnica: el 72\% experimenta ansiedad antes de ingresar al sistema, el 64\% siente que el sistema no le proporciona información suficiente para actuar de forma autónoma, y el 80\% describe su relación con WebSIS con las palabras ``frustración'' o ``tolerancia''. La ausencia total de respuestas de ``confianza'' en D5 evidencia que ningún perfil de usuario ha alcanzado una experiencia satisfactoria con el sistema.
+
+\subsection{Entrevistas: Guía y hallazgos}
+
+Esta sección profundiza en la experiencia de uso de WebSIS desde la perspectiva directa de los estudiantes entrevistados. A través de sus relatos se identifican dificultades funcionales, emociones recurrentes y estrategias de adaptación frente al sistema. 
+
+\subsubsection{Guía de entrevista}
+
+Se realizaron 5 entrevistas semiestructuradas individuales, con una duración aproximada de 20--30 minutos cada una. Los participantes fueron seleccionados para representar distintos perfiles: 2 estudiantes ingresantes y 3 estudiantes avanzados. Las sesiones se registraron mediante notas y, en dos casos, grabaciones de audio con consentimiento.
+
+\paragraph{Bloque 1: Contexto y perfil}
+\begin{itemize}
+  \item ¿En qué carrera y semestre estás? ¿Trabajas además de estudiar?
+  \item ¿Con qué frecuencia usas WebSIS y desde qué dispositivo?
+  \item ¿Te considerarías una persona con buenas habilidades en tecnología?
+\end{itemize}
+
+\paragraph{Bloque 2: Experiencia general con WebSIS}
+\begin{itemize}
+  \item ¿Cuál fue tu primera experiencia usando WebSIS?
+  \item ¿Qué tareas realizas con mayor frecuencia dentro del sistema?
+  \item ¿Qué aspectos te resultan más claros y cuáles te generan mayor confusión?
+  \item ¿Cómo describirías tu experiencia general con la plataforma?
+\end{itemize}
+
+\paragraph{Bloque 3: Inscripción a materias y momentos críticos}
+\begin{itemize}
+  \item Cuéntame tu proceso al inscribirte a materias, paso a paso.
+  \item ¿Alguna vez tuviste un problema durante una inscripción? ¿Qué pasó y cómo lo resolviste?
+  \item ¿Sueles hacerlo solo/a o pides ayuda? ¿A quién recurres?
+  \item ¿Alguna vez se te venció el plazo o no pudiste inscribirte por dificultades con el sistema?
+\end{itemize}
+
+\paragraph{Bloque 4: Dimensión emocional (Design Thinking -- Fase de Empatía)}
+\begin{itemize}
+  \item ¿Cómo te sientes justo antes de ingresar a WebSIS en período de inscripciones?
+  \item ¿Recuerdas alguna vez haberte sentido perdido/a o desesperado/a dentro del sistema? ¿Qué hiciste?
+  \item ¿Cuánto confías en que lo que hiciste en el sistema quedó bien registrado?
+  \item ¿Sientes que WebSIS te trata como alguien capaz de gestionar tus propios trámites, o sientes que el sistema te hace depender de otros?
+  \item Si el sistema fuera una persona, ¿cómo la describirías?
+\end{itemize}
+
+\paragraph{Bloque 5: Expectativas y propuestas}
+\begin{itemize}
+  \item Si pudieras cambiar una sola cosa de WebSIS, ¿qué sería?
+  \item ¿Hay alguna otra aplicación que uses y que te parezca más fácil? ¿Qué tiene de diferente?
+  \item ¿Qué información o ayuda te hubiera gustado tener la primera vez que usaste WebSIS?
+  \item ¿Considerarías útil una versión mejor para celular?
+\end{itemize}
+
+\subsubsection{Síntesis de las entrevistas}
+
+A continuación se presenta un resumen de los hallazgos principales de cada entrevista, incluyendo la nueva columna de dimensión emocional derivada del bloque 4.
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{longtable}{|p{1.8cm}|p{2.5cm}|p{3.2cm}|p{3.2cm}|p{2.4cm}|}
+\hline
+\textbf{Entrev.} & \textbf{Perfil} & \textbf{Hallazgos principales} & \textbf{Dimensión emocional} & \textbf{Cita} \\
+\hline
+\endfirsthead
+
+\hline
+\textbf{Entrev.} & \textbf{Perfil} & \textbf{Hallazgos principales} & \textbf{Dimensión emocional} & \textbf{Cita} \\
+\hline
+\endhead
+
+E1 -- ``Caleb'' & Ingresante, 1er semestre, Ing. Informática & No encontró el módulo de inscripción en su primer intento. Tardó 40 minutos con ayuda de un compañero. Desconocía los plazos y no recibió orientación sobre WebSIS al ingresar. & Confusión e inseguridad al primer contacto. Sensación de abandono institucional. Dependencia emocional de pares para no sentirse bloqueado. & ``El sistema no te dice qué hacer.'' \\
+\hline
+E2 -- ``Brisa'' & Avanzada, 2do semestre, Ing. Informática & Intentó acceder desde el celular y la interfaz quedó cortada; los botones no eran visibles. Tuvo que esperar a llegar a casa para inscribirse desde la laptop. & Ansiedad por los plazos y sensación de impotencia al no poder actuar desde su dispositivo habitual. Frustración ante la exclusión tecnológica. & ``Desde el celular es imposible.'' \\
+\hline
+E3 -- ``Reynaldo'' & Avanzado, 6to semestre, Ing. Informática & Ha desarrollado una rutina fija para navegar el sistema. Conoce atajos no documentados. Considera que el sistema es tolerable ``una vez que lo aprendes'', pero cada semestre debe reiniciar el proceso. & Resignación adaptativa: acepta el sistema porque no tiene alternativa. Orgullo por dominar rutas que otros desconocen, pero sin satisfacción real con el diseño. & ``Si alguien nuevo lo ve, no entiende nada.'' \\
+\hline
+E4 -- ``Adriana'' & Avanzada, 7mo semestre, Ing. Informática & Explicó que en cada inscripción debe ingresar antes de la hora prevista para poder tomar materias, debido a que la hora del sistema aparece atrasada por algunos minutos. Esta diferencia genera incertidumbre al momento de habilitar cupos. & Ansiedad anticipatoria y desconfianza hacia la sincronización del sistema. La estudiante siente que debe adelantarse y vigilar constantemente la plataforma para no perder materias. & ``Tengo que entrar antes porque la hora del sistema está atrasada.'' \\
+\hline
+E5 -- ``Sebastián'' & Avanzado, 5to semestre, Ing. de Sistemas & No tiene computadora en casa; accede desde la universidad o el celular. En temporada de inscripciones el sistema se cae o es muy lento. Propuso un asistente paso a paso. & Estrés crónico ante la falta de acceso confiable. Sentimiento de injusticia: estudiantes sin laptop en casa quedan en desventaja estructural. Necesidad de control y guía. & ``Necesitamos algo que nos guíe.'' \\
+\hline
+\caption{Síntesis de entrevistas semiestructuradas con dimensión emocional}\label{tab:sintesis-entrevistas}
+\end{longtable}
+\endgroup
+
+\subsubsection{Patrones comunes en las entrevistas}
+
+\begin{itemize}
+  \item Los estudiantes ingresantes identifican WebSIS como un sistema opaco: no entienden la estructura del menú ni el flujo esperado, lo que genera confusión e inseguridad desde el primer contacto.
+  \item Los estudiantes avanzados han construido rutinas personales para compensar las deficiencias del sistema; esto no elimina el problema de diseño, sino que evidencia normalización de los fallos.
+  \item El soporte durante la inscripción es inexistente dentro del sistema: los estudiantes dependen de pares o de secretaría académica, lo que transfiere la carga de orientación al entorno social.
+  \item La incompatibilidad con dispositivos móviles es crítica para estudiantes sin acceso regular a computadora, generando exclusión funcional y emocional.
+  \item Los mensajes de error son incomprensibles y no orientan hacia una acción correctiva; en casos como E4, derivaron en consecuencias académicas concretas.
+  \item La dimensión emocional revela que el problema va más allá de la usabilidad: el sistema genera ansiedad, desconfianza y dependencia, afectando la autonomía del estudiante como gestor de su propia trayectoria académica.
+\end{itemize}
+
+
+\subsection{Observación directa}
+
+Se realizaron 3 sesiones de observación directa en las que los participantes intentaron completar tareas reales en WebSIS. La técnica empleada fue la observación estructurada: se definieron previamente las tareas a observar y los indicadores a registrar.
+
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{|p{1.2cm}|p{2.6cm}|p{3.4cm}|p{1.8cm}|p{4.4cm}|}
+\hline
+\textbf{Sesión} & \textbf{Participante} & \textbf{Tarea observada} & \textbf{Tiempo} & \textbf{Observaciones} \\
+\hline
+\endfirsthead
+
+\hline
+\textbf{Sesión} & \textbf{Participante} & \textbf{Tarea observada} & \textbf{Tiempo} & \textbf{Observaciones} \\
+\hline
+\endhead
+
+S1 & Ingresante, 1er sem. & Localizar horario de materias & 12 min & Navegó por 4 secciones antes de encontrar el módulo correcto. Intentó usar el buscador del navegador como estrategia de rescate. \\
+\hline
+S2 & Avanzado, 5to sem. & Consultar situación académica y verificar créditos & 4 min & Completó la tarea rápidamente pero la información de créditos no es clara. \\
+\hline
+S3 & Ingresante, 2do sem. & Iniciar proceso de inscripción (simulado) & 18 min (incompleto) & No encontró el período de inscripción habilitado. Confundió el módulo de consulta de horarios con el de inscripción. Abandonó la tarea. \\
+\hline
+\caption{Sesiones de observación directa en WebSIS}\label{tab:observacion-directa}
+\end{longtable}
+\endgroup
+
+\newpage
+\subsection{Perfiles de usuario identificados}
+
+Los perfiles de usuario, o personas, son representaciones arquetípicas construidas a partir de los datos recolectados.
+
+\subsubsection{Perfil 1: Estudiante ingresante / usuario novato}
+
+\begin{longtable}{|p{4.5cm}|p{9cm}|}
+\hline
+Aspecto & Descripción \\
+\hline
+\endfirsthead
+
+\hline
+Aspecto & Descripción \\
+\hline
+\endhead
+
+Nombre del perfil & Estudiante ingresante / usuario novato \\
+Edad típica & 17--20 años \\
+Semestre & 1ro o 2do semestre \\
+Experiencia con WebSIS & Nula o muy escasa; primer contacto con el sistema \\
+Dispositivos & Principalmente laptop personal o celular \\
+Nivel tecnológico & Intermedio: usa redes sociales y aplicaciones cotidianas, pero no sistemas académicos institucionales \\
+Motivación principal & Completar la inscripción a materias sin perder los plazos habilitados \\
+Frecuencia de uso & Esporádica; concentrada en períodos críticos (inscripciones y publicación de notas) \\
+Necesita ayuda externa & 80\% de los casos reportados en la encuesta \\
+Tareas principales & Inscripción a materias, consulta de notas, consulta de horarios \\
+Frustraciones funcionales & No saber por dónde empezar; falta de guía en la navegación; mensajes de error incomprensibles; interfaz no responsive en móvil \\
+Estado emocional típico & Ansiedad anticipatoria antes de ingresar al sistema. Confusión e inseguridad durante la navegación. Alivio condicionado tras completar una tarea, acompañado de duda sobre si lo hizo correctamente. Dependencia emocional de compañeros como red de soporte. \\
+Expectativas & Un sistema claro y guiado que indique qué pasos seguir y confirme que cada acción fue completada correctamente \\
+\hline
+\caption{Perfil del estudiante ingresante o usuario novato}\label{tab:perfil-ingresante-novato}
+\end{longtable}
+
+\newpage
+
+\subsubsection{Perfil 2: Estudiante avanzado / usuario experimentado por adaptación}
+
+\begin{longtable}{|p{4.5cm}|p{9cm}|}
+\hline
+Aspecto & Descripción \\
+\hline
+\endfirsthead
+
+\hline
+Aspecto & Descripción \\
+\hline
+\endhead
+
+Nombre del perfil & Estudiante avanzado / usuario experimentado por adaptación \\
+Edad típica & 21--26 años \\
+Semestre & 5to semestre en adelante \\
+Experiencia con WebSIS & Alta, adquirida por repetición y prueba y error a lo largo de varios semestres \\
+Dispositivos & Laptop personal; celular en momentos de urgencia \\
+Nivel tecnológico & Intermedio-alto; usuario frecuente de plataformas digitales \\
+Motivación principal & Completar trámites académicos con el menor tiempo y esfuerzo posible \\
+Frecuencia de uso & Regular; con picos en períodos de inscripción y publicación de evaluaciones \\
+Necesita ayuda externa & 30\% de los casos, principalmente para tareas nuevas o infrecuentes \\
+Tareas principales & Inscripción a materias, situación académica, consulta de notas \\
+Frustraciones funcionales & Invertir tiempo en tareas que deberían ser rápidas; falta de confirmación del estado de las acciones; sistema lento o inestable en períodos críticos; mensajes de error no orientativos \\
+Estado emocional típico & Resignación adaptativa: acepta las limitaciones del sistema como parte del proceso. Orgullo por dominar rutas no documentadas, sin satisfacción genuina con el diseño. Desconfianza latente generada por experiencias de pérdida de inscripciones o errores sin retroalimentación. Estrés puntual en períodos de alta demanda. \\
+Expectativas & Eficiencia, confirmaciones claras de acciones y proceso de inscripción más rápido y sin interrupciones \\
+\hline
+\caption{Perfil del estudiante avanzado o usuario experimentado por adaptación}\label{tab:perfil-avanzado-adaptacion}
+\end{longtable}
+
+\newpage
+\subsection{Mapas de empatía}
+
+Se elaboraron dos mapas de empatía, uno por cada perfil identificado, construidos a partir de la triangulación de los datos de encuesta, entrevistas y observación directa.
+
+\subsubsection{Mapa de empatía - Perfil 1: Estudiante ingresante}
+
+El mapa de empatía del estudiante ingresante sintetiza los hallazgos asociados a los perfiles de Caleb y Brisa, considerando datos de encuesta, entrevistas E1 y E2, y sesiones de observación S1 y S3. Como se observa en la Figura~\ref{fig:mapa-empatia-ingresante}, el perfil ingresante concentra necesidades de orientación, seguridad y confirmación durante el uso de WebSIS.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{images/nuevos.jpg}
+    \caption{Mapa de empatía del estudiante ingresante}
+    \label{fig:mapa-empatia-ingresante}
+\end{figure}
+
+La Figura~\ref{fig:beneficios-puntos-dolor-ingresante} muestra los beneficios esperados y los puntos de dolor identificados en la experiencia del estudiante ingresante con WebSIS.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/nuevos1.jpg}
+    \caption{Beneficios y puntos de dolor del estudiante ingresante}
+    \label{fig:beneficios-puntos-dolor-ingresante}
+\end{figure}
+
+\subsubsection{Mapa de empatía - Perfil 2: Estudiante avanzado}
+
+El mapa de empatía del estudiante avanzado sintetiza los hallazgos asociados a usuarios con mayor experiencia en WebSIS, elaborado en base a los usuarios Reynaldo, Adriana y Sebastián, considerando datos de encuesta, entrevistas E3, E4 y E5, y la sesión de observación S2. Como se observa en la Figura~\ref{fig:mapa-empatia-avanzado}, este perfil evidencia estrategias de adaptación, búsqueda de eficiencia y desconfianza ante errores o caídas del sistema.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{images/avanzados.jpg}{%
+        \includegraphics[width=0.85\textwidth]{images/avanzados.jpg}%
+    }{%
+        \fbox{\parbox{0.85\textwidth}{\centering Imagen pendiente: \texttt{images/avanzados.jpg}}}%
+    }
+    \caption{Mapa de empatía del estudiante avanzado}
+    \label{fig:mapa-empatia-avanzado}
+\end{figure}
+
+La Figura~\ref{fig:beneficios-puntos-dolor-avanzado} presenta los beneficios esperados y los puntos de dolor identificados para el estudiante avanzado, destacando la necesidad de rapidez, confirmaciones claras y estabilidad durante períodos críticos.
+
+\begin{figure}[H]
+    \centering
+    \IfFileExists{images/avanzados1.jpg}{%
+        \includegraphics[width=0.95\textwidth]{images/avanzados1.jpg}%
+    }{%
+        \fbox{\parbox{0.95\textwidth}{\centering Imagen pendiente: \texttt{images/avanzados1.jpg}}}%
+    }
+    \caption{Beneficios y puntos de dolor del estudiante avanzado}
+    \label{fig:beneficios-puntos-dolor-avanzado}
+\end{figure}
+

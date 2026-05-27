@@ -1,10 +1,12 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   ArrowRight,
   BookOpenCheck,
   CalendarClock,
   ClipboardCheck,
   KeyRound,
+  CreditCard,
+  ReceiptText,
   LogOut,
   Mail,
   Moon,
@@ -85,6 +87,14 @@ const student = {
 const activePlan = {
   code: '134111',
   name: 'Licenciatura en Ingeniería Informática',
+};
+
+const tuitionStatus = {
+  paid: true,
+  amount: 'Bs 27',
+  method: 'Banco Unión',
+  receipt: 'MTR-2026-001537',
+  paidAt: '24/05/2026 09:18',
 };
 
 const kardexSummary = {
@@ -639,26 +649,32 @@ const secondaryActions = [
   {
     title: 'Kardex',
     description: 'Historial académico, notas y materias cursadas.',
-    href: '/dashboard/kardex',
+    href: '/panel/kardex',
     icon: BookOpenCheck,
   },
   {
     title: 'Horario de clases',
     description: 'Semana actual con tus grupos inscritos.',
-    href: '/dashboard/horario',
+    href: '/panel/horario',
     icon: CalendarClock,
   },
   {
     title: 'Estado de inscripción',
     description: 'Verifica tus materias y grupos confirmados.',
-    href: '/dashboard/estado',
+    href: '/panel/estado',
     icon: ClipboardCheck,
   },
   {
     title: 'Código de inscripción',
     description: 'Genera el código requerido para inscribirte.',
-    href: '/dashboard/codigo',
+    href: '/panel/codigo',
     icon: KeyRound,
+  },
+  {
+    title: 'Matrícula',
+    description: 'Verifica el pago o accede a las opciones de pago.',
+    href: '/panel/matricula',
+    icon: CreditCard,
   },
 ];
 
@@ -724,31 +740,44 @@ function getInitials(name: string) {
     .join('');
 }
 
-type DashboardPage = 'home' | 'inscripcion' | 'horario' | 'codigo' | 'kardex' | 'estado';
+type PanelPage =
+  | 'home'
+  | 'inscripcion'
+  | 'horario'
+  | 'codigo'
+  | 'kardex'
+  | 'estado'
+  | 'matricula'
+  | 'seguridad';
 
-const pageTitles: Record<DashboardPage, string> = {
+const pageTitles: Record<PanelPage, string> = {
   home: 'Panel del estudiante',
   inscripcion: 'Inscripción',
   horario: 'Horario de clases',
   codigo: 'Código de inscripción',
   kardex: 'Kardex',
   estado: 'Estado de inscripción',
+  matricula: 'Matrícula',
+  seguridad: 'Cambio de contraseña',
 };
 
-interface StudentDashboardProps {
-  page?: DashboardPage;
+interface StudentPanelProps {
+  page?: PanelPage;
 }
 
-export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
+export function StudentPanel({ page = 'home' }: StudentPanelProps) {
   const [isDark, setIsDark] = useState<boolean>(getInitialDark);
-  const [isCodeValidated, setIsCodeValidated] = useState<boolean>(
-    getInitialCodeValidation,
-  );
+  const [isCodeValidated, setIsCodeValidated] = useState<boolean>(false);
   const [kardexQuery, setKardexQuery] = useState('');
   const [accessCodes, setAccessCodes] = useState({ third: '', fifth: '' });
   const [selectedEnrollments, setSelectedEnrollments] = useState<SelectedEnrollment[]>(
-    getInitialSelectedEnrollments,
+    defaultSelectedEnrollments,
   );
+
+  useEffect(() => {
+    setIsCodeValidated(getInitialCodeValidation());
+    setSelectedEnrollments(getInitialSelectedEnrollments());
+  }, []);
 
   const toggleTheme = () => {
     const next = !document.documentElement.classList.contains('dark');
@@ -829,7 +858,7 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
       {/* Navbar única */}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-md supports-backdrop-filter:bg-background/65">
         <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-5 sm:px-8">
-          <a href="/dashboard" className="flex items-center gap-3 shrink-0">
+          <a href="/panel" className="flex items-center gap-3 shrink-0">
             <img
               src="/umss.png"
               alt="Universidad Mayor de San Simón"
@@ -934,6 +963,18 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
 
                 <DropdownMenuSeparator className="my-0" />
 
+                <DropdownMenuLabel className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground pt-3">
+                  Seguridad
+                </DropdownMenuLabel>
+                <DropdownMenuItem asChild>
+                  <a href="/panel/seguridad" className="flex items-center gap-2">
+                    <LockKeyhole aria-hidden="true" />
+                    <span>Cambiar contraseña</span>
+                  </a>
+                </DropdownMenuItem>
+
+                <DropdownMenuSeparator className="my-0" />
+
                 {/* Enlaces académicos externos */}
                 <DropdownMenuLabel className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground pt-3">
                   Enlaces académicos
@@ -1009,6 +1050,10 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
                     <AlertTriangle aria-hidden="true" className="size-3" />
                     Abierto hasta el 31 de mayo
                   </span>
+                  <span className="ml-2 inline-flex items-center gap-1.5 rounded-full bg-success/15 px-2.5 py-1 text-[11px] font-medium text-success ring-1 ring-success/30">
+                    <CheckCircle2 aria-hidden="true" className="size-3" />
+                    Matrícula pagada
+                  </span>
                   <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium leading-tight tracking-tight">
                     Inscribirse a materias
                   </h2>
@@ -1024,7 +1069,7 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
                     variant="secondary"
                     className="group h-12 px-6 bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-sm"
                   >
-                    <a href="/dashboard/inscripcion">
+                    <a href="/panel/inscripcion">
                       <span>Inscribirse</span>
                       <ArrowRight
                         aria-hidden="true"
@@ -1038,9 +1083,20 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
                     variant="outline"
                     className="h-12 border-primary-foreground/35 bg-transparent px-6 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
                   >
-                    <a href="/dashboard/codigo">
+                    <a href="/panel/codigo">
                       <KeyRound aria-hidden="true" />
                       <span>Obtener código</span>
+                    </a>
+                  </Button>
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="h-12 border-primary-foreground/35 bg-transparent px-6 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                  >
+                    <a href="/panel/matricula">
+                      <CreditCard aria-hidden="true" />
+                      <span>Pagar matrícula</span>
                     </a>
                   </Button>
                 </div>
@@ -1058,7 +1114,7 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
                 </span>
               </div>
 
-              <div className="grid gap-2 md:gap-4 md:grid-cols-2 lg:grid-cols-4">
+              <div className="grid gap-2 md:gap-4 md:grid-cols-2 lg:grid-cols-5">
                 {secondaryActions.map((action) => {
                   const Icon = action.icon;
                   return (
@@ -1122,6 +1178,15 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
                 >
                   {isCodeValidated ? 'Cuenta habilitada' : 'Validación pendiente'}
                 </Badge>
+                <Badge
+                  className={`rounded-sm ${
+                    tuitionStatus.paid
+                      ? 'bg-success text-success-foreground'
+                      : 'bg-warning text-warning-foreground'
+                  }`}
+                >
+                  {tuitionStatus.paid ? 'Matrícula pagada' : 'Matrícula pendiente'}
+                </Badge>
               </div>
               <div>
                 <h2 className="font-serif text-2xl sm:text-3xl font-medium tracking-tight">
@@ -1136,7 +1201,7 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
 
             {isCodeValidated && selectedSubjectIds.length > 0 ? (
               <Button asChild>
-                <a href="/dashboard/estado">
+                <a href="/panel/estado">
                   <ListChecks aria-hidden="true" />
                   <span>Finalizar inscripción</span>
                 </a>
@@ -1167,7 +1232,7 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
                       </div>
                     </div>
                     <Button asChild variant="outline" className="bg-background">
-                      <a href="/dashboard/codigo">
+                      <a href="/panel/codigo">
                         <LockKeyhole aria-hidden="true" />
                         <span>Validar códigos</span>
                       </a>
@@ -1234,6 +1299,12 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
                   <div className="grid grid-cols-2 gap-3">
                     <StatusItem icon={GraduationCap} label="Carrera" value="Informática" />
                     <StatusItem icon={CalendarClock} label="Gestión" value="1/2026" />
+                    <StatusItem
+                      icon={CreditCard}
+                      label="Matrícula"
+                      value={tuitionStatus.paid ? 'Pagada' : 'Pendiente'}
+                    />
+                    <StatusItem icon={ReceiptText} label="Comprobante" value={tuitionStatus.receipt} />
                   </div>
 
                   <div className="space-y-3">
@@ -1436,7 +1507,7 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
                     </Badge>
                   </div>
 
-                  <div className="grid gap-3 sm:grid-cols-3">
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                     <StatusItem
                       icon={Mail}
                       label="Correo registrado"
@@ -1446,6 +1517,11 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
                       icon={Clock3}
                       label="Periodo"
                       value="Validación previa"
+                    />
+                    <StatusItem
+                      icon={CreditCard}
+                      label="Matrícula"
+                      value={tuitionStatus.paid ? 'Pagada' : 'Pendiente'}
                     />
                     <StatusItem
                       icon={ShieldCheck}
@@ -1540,7 +1616,7 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
                   <div className="flex flex-col gap-2 sm:flex-row">
                     {isCodeValidated ? (
                       <Button asChild className="sm:w-fit">
-                        <a href="/dashboard/inscripcion">
+                        <a href="/panel/inscripcion">
                           <ArrowRight aria-hidden="true" />
                           <span>Ir a inscripción</span>
                         </a>
@@ -1570,6 +1646,15 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
                       description="La carrera permite inscripción para este periodo."
                     />
                     <ProcessStep
+                      state={tuitionStatus.paid ? 'done' : 'blocked'}
+                      title="Matrícula pagada"
+                      description={
+                        tuitionStatus.paid
+                          ? `Pago registrado por ${tuitionStatus.method}.`
+                          : 'Debe pagarse antes de habilitar la inscripción.'
+                      }
+                    />
+                    <ProcessStep
                       state={isCodeValidated ? 'done' : 'blocked'}
                       title="Códigos verificados"
                       description={
@@ -1588,6 +1673,150 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
               </div>
             </CardContent>
           </Card>
+        </section>
+        )}
+
+        {page === 'matricula' && (
+        <section id="matricula" className="scroll-mt-24 space-y-5">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="space-y-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge variant="secondary" className="rounded-sm">
+                  Matrícula
+                </Badge>
+                <Badge
+                  className={`rounded-sm ${
+                    tuitionStatus.paid
+                      ? 'bg-success text-success-foreground'
+                      : 'bg-warning text-warning-foreground'
+                  }`}
+                >
+                  {tuitionStatus.paid ? 'Pago registrado' : 'Pago pendiente'}
+                </Badge>
+              </div>
+              <div>
+                <h2 className="font-serif text-2xl sm:text-3xl font-medium tracking-tight">
+                  Estado de matrícula
+                </h2>
+                <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
+                  La inscripción depende de que la matrícula esté pagada y
+                  confirmada por el sistema.
+                </p>
+              </div>
+            </div>
+
+            <Button asChild>
+              <a href="/panel/inscripcion">
+                <ArrowRight aria-hidden="true" />
+                <span>Continuar inscripción</span>
+              </a>
+            </Button>
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-[1fr_340px]">
+            <Card className="overflow-hidden border-primary/15">
+              <CardHeader className="border-b border-border/60">
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <CreditCard aria-hidden="true" className="size-5 text-primary" />
+                  Pagar matrícula
+                </CardTitle>
+                <CardDescription>
+                  Pago en caja facultativa o pago electrónico cuando esté disponible.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4 p-5 sm:p-6">
+                <div
+                  className={`rounded-md border p-4 ${
+                    tuitionStatus.paid
+                      ? 'border-success/30 bg-success/10'
+                      : 'border-warning/30 bg-warning/10'
+                  }`}
+                >
+                  <div className="flex gap-3">
+                    {tuitionStatus.paid ? (
+                      <CheckCircle2
+                        aria-hidden="true"
+                        className="mt-0.5 size-5 shrink-0 text-success"
+                      />
+                    ) : (
+                      <AlertTriangle
+                        aria-hidden="true"
+                        className="mt-0.5 size-5 shrink-0 text-warning"
+                      />
+                    )}
+                    <div>
+                      <p className="text-sm font-medium">
+                        {tuitionStatus.paid
+                          ? 'La matrícula ha sido pagada.'
+                          : 'La matrícula aún no registra pago.'}
+                      </p>
+                      <p className="mt-1 text-sm text-muted-foreground">
+                        {tuitionStatus.paid
+                          ? `Comprobante ${tuitionStatus.receipt}, registrado el ${tuitionStatus.paidAt}.`
+                          : 'Paga la matrícula para habilitar la inscripción de materias.'}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-3">
+                  <StatusItem icon={ReceiptText} label="Comprobante" value={tuitionStatus.receipt} />
+                  <StatusItem icon={Building2} label="Entidad" value={tuitionStatus.method} />
+                  <StatusItem icon={CreditCard} label="Monto" value={tuitionStatus.amount} />
+                </div>
+
+                <div className="flex flex-col gap-2 sm:flex-row">
+                  <Button type="button" disabled={tuitionStatus.paid}>
+                    <CreditCard aria-hidden="true" />
+                    <span>Pagar matrícula</span>
+                  </Button>
+                  <Button asChild variant="outline">
+                    <a href="/panel/codigo">
+                      <KeyRound aria-hidden="true" />
+                      <span>Validar códigos</span>
+                    </a>
+                  </Button>
+                </div>
+
+                {tuitionStatus.paid && (
+                  <p className="text-xs text-muted-foreground">
+                    El botón de pago permanece visible para ubicar la función,
+                    pero se desactiva cuando el pago ya fue confirmado.
+                  </p>
+                )}
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Condiciones para inscribirse</CardTitle>
+                <CardDescription>
+                  Orden del flujo propuesto.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <ProcessStep
+                  state={tuitionStatus.paid ? 'done' : 'blocked'}
+                  title="Matrícula"
+                  description={tuitionStatus.paid ? 'Pago confirmado.' : 'Pendiente de pago.'}
+                />
+                <ProcessStep
+                  state={isCodeValidated ? 'done' : 'blocked'}
+                  title="Códigos"
+                  description={
+                    isCodeValidated
+                      ? 'Cuenta habilitada.'
+                      : 'Valida 2 códigos antes del periodo.'
+                  }
+                />
+                <ProcessStep
+                  state={tuitionStatus.paid && isCodeValidated ? 'done' : 'blocked'}
+                  title="Inscripción"
+                  description="Luego solo eliges materias, grupos y modalidad."
+                />
+              </CardContent>
+            </Card>
+          </div>
         </section>
         )}
 
@@ -1614,7 +1843,7 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
             </div>
 
             <Button asChild>
-              <a href="/dashboard/inscripcion">
+              <a href="/panel/inscripcion">
                 <Plus aria-hidden="true" />
                 <span>Modificar inscripción</span>
               </a>
@@ -1817,6 +2046,122 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
               )}
             </CardContent>
           </Card>
+        </section>
+        )}
+
+        {page === 'seguridad' && (
+        <section id="seguridad" className="scroll-mt-24 space-y-5">
+          <div className="flex flex-col gap-2">
+            <Badge variant="secondary" className="w-fit rounded-sm">
+              Seguridad de la cuenta
+            </Badge>
+            <div>
+              <h2 className="font-serif text-2xl sm:text-3xl font-medium tracking-tight">
+                Cambiar contraseña
+              </h2>
+              <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
+                Actualiza tu acceso desde el menú de perfil, sin mezclar esta tarea
+                con inscripción, Kardex u horarios.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-[1fr_320px]">
+            <Card>
+              <CardHeader className="border-b border-border/60">
+                <CardTitle className="flex items-center gap-2 text-lg">
+                  <LockKeyhole aria-hidden="true" className="size-5 text-primary" />
+                  Nueva contraseña
+                </CardTitle>
+                <CardDescription>
+                  Usa una contraseña diferente a la anterior.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="grid gap-4 p-5 sm:p-6">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-1.5">
+                    <label
+                      htmlFor="current-password"
+                      className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground"
+                    >
+                      Contraseña actual
+                    </label>
+                    <Input
+                      id="current-password"
+                      type="password"
+                      autoComplete="current-password"
+                      placeholder="Contraseña actual"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label
+                      htmlFor="new-password"
+                      className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground"
+                    >
+                      Nueva contraseña
+                    </label>
+                    <Input
+                      id="new-password"
+                      type="password"
+                      autoComplete="new-password"
+                      placeholder="Nueva contraseña"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label
+                    htmlFor="confirm-password"
+                    className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground"
+                  >
+                    Confirmar nueva contraseña
+                  </label>
+                  <Input
+                    id="confirm-password"
+                    type="password"
+                    autoComplete="new-password"
+                    placeholder="Repite la nueva contraseña"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                  <p className="text-sm text-muted-foreground">
+                    Se cerrarán otras sesiones activas después del cambio.
+                  </p>
+                  <Button type="button" className="sm:w-fit">
+                    <ShieldCheck aria-hidden="true" />
+                    <span>Guardar cambio</span>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-primary/15">
+              <CardHeader>
+                <CardTitle className="text-lg">Recomendaciones</CardTitle>
+                <CardDescription>
+                  Criterios mínimos para proteger la cuenta.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <ProcessStep
+                  state="done"
+                  title="No compartir credenciales"
+                  description="La contraseña no debe enviarse por correo ni mensajería."
+                />
+                <ProcessStep
+                  state="done"
+                  title="Usar una clave distinta"
+                  description="Evita repetir la contraseña de otros servicios."
+                />
+                <ProcessStep
+                  state="blocked"
+                  title="Cambio periódico"
+                  description="Actualiza la contraseña si sospechas acceso de terceros."
+                />
+              </CardContent>
+            </Card>
+          </div>
         </section>
         )}
       </main>

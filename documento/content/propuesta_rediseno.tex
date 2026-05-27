@@ -1,0 +1,390 @@
+\section{Propuesta de Rediseño}
+
+La propuesta de rediseño se construye a partir de los problemas prioritarios identificados en WebSIS y de las necesidades detectadas en estudiantes ingresantes y avanzados. Su objetivo no es agregar funciones nuevas, sino reorganizar las existentes para que las tareas criticas puedan completarse con menor carga cognitiva, mayor claridad de estado y mejor compatibilidad movil.
+
+\subsection{Funcionalidades intervenidas}
+
+El rediseño considera las secciones criticas observadas en el sistema actual y define una intervencion especifica para cada una:
+
+\begin{itemize}
+  \item \textbf{Pantalla de bienvenida:} se elimina la pantalla informativa inicial que obligaba a entrar manualmente al acceso de estudiantes. El sistema pasa directamente al inicio de sesion, reduciendo un paso sin valor operativo.
+  \item \textbf{Inicio de sesion de estudiante:} se reemplaza el formulario antiguo basado en dia, mes y año separados por una entrada directa de fecha con formato visible. Tambien se elimina el codigo visual tipo CAPTCHA, considerado anticuado y costoso para el usuario.
+  \item \textbf{Panel del estudiante:} se elimina informacion irrelevante y se conservan solamente accesos de uso frecuente, estado academico y acciones prioritarias.
+  \item \textbf{Informacion general:} los datos personales dejan de ocupar un bloque lateral permanente y se trasladan al menu de perfil, donde pueden consultarse cuando el estudiante los necesita.
+  \item \textbf{Pago de matricula:} se agrega un estado visible de matricula pagada y un acceso explicito a \textit{Pagar matricula}. Si el pago ya fue confirmado, el boton permanece visible pero deshabilitado para evitar pagos duplicados.
+  \item \textbf{Kardex:} se reorganiza la visualizacion de notas, se reducen columnas innecesarias y se diferencia entre materias cerradas y materias en curso.
+  \item \textbf{Inscripcion a materias:} se separa la validacion de codigos del proceso de tomar materias, se agrega limite visible, seleccion de grupo, modalidad y resumen final.
+  \item \textbf{Obtencion y validacion de codigos:} los codigos se validan antes del periodo de inscripcion para habilitar la cuenta y evitar repetir el paso durante el momento critico.
+  \item \textbf{Horario de clases:} se muestra directamente el horario vigente del estudiante, sin pedir gestiones o periodos irrelevantes.
+  \item \textbf{Cambio de contraseña:} se traslada al menu de perfil como accion de seguridad, evitando que aparezca mezclado con tareas academicas principales.
+\end{itemize}
+
+\subsection{Estructura del contenido}
+
+La estructura del contenido fue redefinida desde la logica de tareas del estudiante y no desde la organizacion tecnica interna del sistema. Se priorizan las acciones de mayor frecuencia y criticidad:
+
+\begin{itemize}
+  \item \textbf{Acceso al sistema:} inicio de sesion directo, sin pantalla de bienvenida previa ni controles de seguridad obsoletos.
+  \item \textbf{Inicio:} panel principal con accesos directos a las tareas mas frecuentes y estado general de la gestion academica actual.
+  \item \textbf{Matricula:} verificacion del pago, comprobante, entidad y acceso a pago cuando corresponda.
+  \item \textbf{Inscripcion:} flujo principal para seleccionar materias, grupos y modalidad de cursado dentro de un mismo contexto.
+  \item \textbf{Validacion de codigos:} paso previo y separado del modulo de inscripcion, utilizado para habilitar la cuenta antes del periodo critico.
+  \item \textbf{Estado de inscripcion:} resumen posterior al registro de materias con confirmacion clara del resultado de la accion.
+  \item \textbf{Horario de clases:} visualizacion directa del horario vigente sin obligar al estudiante a atravesar filtros irrelevantes.
+  \item \textbf{Kardex:} historial academico con diferenciacion entre materias finalizadas y materias aun en curso.
+  \item \textbf{Perfil y seguridad:} datos generales del estudiante y cambio de contraseña dentro del menu de usuario.
+  \item \textbf{Soporte contextual:} mensajes, aclaraciones y estados integrados dentro de cada pantalla en lugar de depender de ayuda externa.
+\end{itemize}
+
+Esta estructura responde directamente a las necesidades N1, N2, N5, N6 y N8 detectadas en la investigacion.
+
+\subsection{Mapa del sistema}
+
+El sistema rediseñado se organiza a partir de una navegacion corta y reconocible:
+
+\begin{center}
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  node distance=8mm and 8mm,
+  box/.style={draw, rounded corners=2pt, align=center, minimum width=3.5cm, minimum height=0.9cm}
+]
+  \node[box] (login) {\textbf{Inicio de sesion}};
+  \node[box, below=of login] (inicio) {\textbf{Inicio / Panel del estudiante}};
+  \node[box, below left=of inicio] (codigo) {Validacion de codigos};
+  \node[box, below=of inicio] (kardex) {Kardex};
+  \node[box, below right=of inicio] (horario) {Horario de clases};
+  \node[box, left=of codigo] (matricula) {Matricula};
+  \node[box, below=of codigo] (inscripcion) {Inscripcion a materias};
+  \node[box, below=of inscripcion] (estado) {Estado de inscripcion};
+  \node[box, right=of horario] (seguridad) {Perfil y seguridad};
+
+  \draw[-Latex] (login) -- (inicio);
+  \draw[-Latex] (inicio) -- (codigo);
+  \draw[-Latex] (inicio) -- (matricula);
+  \draw[-Latex] (inicio) -- (kardex);
+  \draw[-Latex] (inicio) -- (horario);
+  \draw[-Latex] (inicio) -- (seguridad);
+  \draw[-Latex] (matricula) -- (codigo);
+  \draw[-Latex] (codigo) -- (inscripcion);
+  \draw[-Latex] (inscripcion) -- (estado);
+\end{tikzpicture}
+}
+\end{center}
+
+La jerarquia evita menus ambiguos y reduce el backtracking. El estudiante no necesita recordar rutas escondidas: el panel principal funciona como punto de entrada hacia las tareas clave.
+
+\subsection{Flujos de navegacion}
+
+\subsubsection*{Flujo 0: acceso al sistema}
+
+\begin{enumerate}
+  \item El estudiante ingresa a WebSIS.
+  \item El sistema muestra directamente el formulario de inicio de sesion para estudiantes, sin pantalla de bienvenida intermedia.
+  \item El estudiante introduce codigo SIS, contraseña y fecha de nacimiento en formato escrito o mediante calendario.
+  \item El sistema valida el acceso sin exigir un codigo visual tipo CAPTCHA.
+  \item El estudiante ingresa al panel principal.
+\end{enumerate}
+
+\subsubsection*{Flujo 1: habilitacion para inscripcion}
+
+\begin{enumerate}
+  \item El estudiante ingresa al panel principal.
+  \item Verifica el estado de \textit{Matricula}. Si esta pagada, el sistema muestra comprobante, entidad y fecha de registro.
+  \item Si no esta pagada, utiliza el acceso \textit{Pagar matricula}; si ya fue confirmada, el boton queda visible pero deshabilitado para evitar pagos duplicados.
+  \item Accede a \textit{Validacion de codigos}.
+  \item Ingresa dos codigos de acceso requeridos.
+  \item El sistema confirma que la cuenta quedo habilitada para inscripcion.
+  \item Durante el horario habilitado, el estudiante pasa directamente a \textit{Inscripcion} sin volver a introducir codigos, salvo caso sospechoso.
+\end{enumerate}
+
+\subsubsection*{Flujo 2: inscripcion a materias}
+
+\begin{enumerate}
+  \item El estudiante entra a \textit{Inscripcion}.
+  \item Visualiza el limite maximo de materias disponible para la gestion.
+  \item Revisa la oferta de materias recomendadas para su carrera.
+  \item Selecciona grupo y modalidad para cada materia.
+  \item El sistema muestra la materia elegida en un resumen lateral persistente.
+  \item El estudiante confirma la accion y accede a \textit{Estado de inscripcion}.
+  \item El sistema muestra materia, grupo, horario, docente y estado final del registro.
+\end{enumerate}
+
+\subsubsection*{Flujo 3: consulta de horario}
+
+\begin{enumerate}
+  \item El estudiante accede a \textit{Horario de clases} desde el panel principal.
+  \item El sistema muestra directamente la gestion vigente y los grupos ya inscritos.
+  \item El horario se presenta por dias y bloques, con aula, docente y tipo de clase.
+\end{enumerate}
+
+\subsubsection*{Flujo 4: consulta de Kardex}
+
+\begin{enumerate}
+  \item El estudiante accede a \textit{Kardex}.
+  \item El sistema muestra primero indicadores resumidos del historial academico.
+  \item En la tabla, las materias finalizadas se distinguen de las materias en curso.
+  \item Si una materia no tiene nota final, el sistema muestra avance por parciales y evita marcarla como reprobada prematuramente.
+\end{enumerate}
+
+\subsubsection*{Flujo 5: cambio de contraseña}
+
+\begin{enumerate}
+  \item El estudiante abre el menu de perfil.
+  \item Selecciona \textit{Cambiar contraseña}.
+  \item Ingresa contraseña actual, nueva contraseña y confirmacion.
+  \item El sistema confirma el cambio y recomienda cerrar sesiones activas.
+\end{enumerate}
+
+\subsection{Wireframes de baja fidelidad}
+
+Los wireframes de baja fidelidad definen la distribucion de bloques, la jerarquia visual y la secuencia de acciones antes de cualquier tratamiento visual de alta fidelidad.
+
+\subsubsection*{Wireframe 1: panel principal}
+
+\begin{tcolorbox}[title=Estructura base del panel principal, colback=white, colframe=black]
+\textbf{[Barra superior]} logo + acceso a perfil + cambio de tema
+
+\textbf{[Saludo / contexto]} nombre del estudiante + carrera + gestion
+
+\textbf{[Bloque principal]} accion destacada: Inscribirse
+
+\textbf{[Estado visible]} matricula pagada + comprobante resumido
+
+\textbf{[Acciones secundarias]} Pagar matricula + Validar codigos
+
+\textbf{[Accesos directos compactos]}
+\begin{itemize}
+  \item Kardex
+  \item Horario de clases
+  \item Estado de inscripcion
+  \item Codigo de inscripcion
+  \item Matricula
+\end{itemize}
+\end{tcolorbox}
+
+\subsubsection*{Wireframe 0: inicio de sesion}
+
+\begin{tcolorbox}[title=Estructura base del acceso al sistema, colback=white, colframe=black]
+\textbf{[Selector de rol]} estudiante + docente + postulante
+
+\textbf{[Formulario estudiante]}
+\begin{itemize}
+  \item codigo SIS
+  \item contraseña
+  \item fecha de nacimiento escrita con formato visible
+  \item boton de ingreso
+\end{itemize}
+
+\textbf{[Soporte]} enlace de recuperacion de contraseña
+\end{tcolorbox}
+
+\subsubsection*{Wireframe 6: matricula}
+
+\begin{tcolorbox}[title=Estructura base del estado de matricula, colback=white, colframe=black]
+\textbf{[Cabecera]} titulo + estado pagada / pendiente
+
+\textbf{[Bloque de estado]}
+\begin{itemize}
+  \item mensaje claro: matricula pagada
+  \item comprobante
+  \item entidad de pago
+  \item fecha de registro
+\end{itemize}
+
+\textbf{[Acciones]} Pagar matricula + Validar codigos + Continuar inscripcion
+\end{tcolorbox}
+
+\subsubsection*{Wireframe 2: inscripcion}
+
+\begin{tcolorbox}[title=Estructura base del modulo de inscripcion, colback=white, colframe=black]
+\textbf{[Cabecera]} titulo + estado de cuenta habilitada + contador de materias
+
+\textbf{[Columna principal]}
+\begin{itemize}
+  \item lista de materias
+  \item selector de grupo
+  \item selector de modalidad
+  \item boton de inscribir
+\end{itemize}
+
+\textbf{[Columna lateral]}
+\begin{itemize}
+  \item materias seleccionadas
+  \item limite maximo
+  \item confirmacion final
+\end{itemize}
+\end{tcolorbox}
+
+\subsubsection*{Wireframe 5: perfil y seguridad}
+
+\begin{tcolorbox}[title=Estructura base del menu de perfil, colback=white, colframe=black]
+\textbf{[Datos generales]} nombre + codigo SIS + correo + CI + facultad
+
+\textbf{[Acciones de seguridad]}
+\begin{itemize}
+  \item cambiar contraseña
+  \item cerrar sesion
+\end{itemize}
+
+\textbf{[Enlaces academicos]} aula virtual + biblioteca + calendario
+\end{tcolorbox}
+
+\subsubsection*{Wireframe 3: estado de inscripcion}
+
+\begin{tcolorbox}[title=Estructura base del resumen final, colback=white, colframe=black]
+\textbf{[Cabecera]} titulo + accion para modificar
+
+\textbf{[Listado de materias inscritas]}
+\begin{itemize}
+  \item nombre de materia
+  \item grupo
+  \item modalidad
+  \item horario
+  \item docente
+\end{itemize}
+
+\textbf{[Resumen lateral]} cupos usados + gestion + carrera
+\end{tcolorbox}
+
+\subsubsection*{Wireframe 4: Kardex}
+
+\begin{tcolorbox}[title=Estructura base del Kardex, colback=white, colframe=black]
+\textbf{[Cabecera]} titulo + acciones de impresion / descarga
+
+\textbf{[Resumen superior]} cursadas + aprobadas + reprobadas + promedio
+
+\textbf{[Tabla academica]}
+\begin{itemize}
+  \item codigo
+  \item materia
+  \item gestion
+  \item grupo
+  \item avance
+  \item nota final
+  \item estado
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{Prototipo inicial}
+
+El prototipo inicial implementado se estructuro como un conjunto de rutas independientes para evitar una sola pantalla sobrecargada:
+
+\begin{itemize}
+  \item \texttt{/panel}
+  \item \texttt{/panel/matricula}
+  \item \texttt{/panel/codigo}
+  \item \texttt{/panel/inscripcion}
+  \item \texttt{/panel/estado}
+  \item \texttt{/panel/horario}
+  \item \texttt{/panel/kardex}
+  \item \texttt{/panel/seguridad}
+\end{itemize}
+
+Esta decision permite:
+
+\begin{itemize}
+  \item separar contextos de tarea;
+  \item reducir ruido visual;
+  \item mejorar orientacion en movil;
+  \item ofrecer enlaces directos a tareas frecuentes;
+  \item sostener una arquitectura de informacion consistente con el modelo mental del estudiante.
+\end{itemize}
+
+\subsection{Capturas del prototipo}
+
+Para complementar los wireframes de baja fidelidad, se generaron capturas reales del prototipo con Playwright. Estas imagenes muestran la aplicacion funcionando en navegador y permiten verificar visualmente la jerarquia, los estados y los flujos rediseñados.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/01-login.png}
+  \caption{Inicio de sesion directo para estudiantes, sin pantalla de bienvenida intermedia ni CAPTCHA visual.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/02-panel.png}
+  \caption{Panel principal con acciones priorizadas, estado de matricula y accesos academicos compactos.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/03-matricula.png}
+  \caption{Estado de matricula con comprobante, entidad de pago y boton de pago contextual.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/04-codigos.png}
+  \caption{Validacion previa de codigos de acceso antes del periodo critico de inscripcion.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/05-inscripcion.png}
+  \caption{Modulo de inscripcion con limite visible, seleccion de grupo, modalidad y resumen lateral.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/06-estado.png}
+  \caption{Resumen final de materias inscritas con grupo, modalidad, horario y estado.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/07-horario.png}
+  \caption{Horario vigente mostrado directamente, sin filtros de gestiones irrelevantes.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/08-kardex.png}
+  \caption{Kardex reorganizado con materias cerradas y materias en curso diferenciadas.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/09-seguridad.png}
+  \caption{Cambio de contraseña ubicado dentro del contexto de perfil y seguridad.}
+\end{figure}
+
+\subsection{Justificacion del rediseño}
+
+\subsubsection*{Justificacion basada en usabilidad}
+
+La propuesta responde a los principales problemas detectados heuristicamente en WebSIS:
+
+\begin{itemize}
+  \item \textbf{Visibilidad del estado del sistema:} se incorporan estados claros como \textit{matricula pagada}, \textit{cuenta habilitada}, \textit{validacion pendiente}, \textit{materia en curso} y \textit{inscripcion finalizada}.
+  \item \textbf{Correspondencia con el mundo real:} los modulos se nombran segun tareas comprensibles para el estudiante: horario, kardex, inscripcion, estado.
+  \item \textbf{Control y libertad del usuario:} el estudiante puede agregar, retirar o modificar materias dentro del flujo sin perder contexto.
+  \item \textbf{Prevencion de errores:} se separa la validacion de codigos del momento critico de inscripcion y se evita marcar como reprobada una materia sin nota final.
+  \item \textbf{Reconocimiento antes que recuerdo:} el panel principal concentra accesos directos a tareas de alta frecuencia, reduciendo la necesidad de memorizar rutas.
+\end{itemize}
+
+\subsubsection*{Justificacion basada en leyes de la Gestalt}
+
+La organizacion visual del prototipo se apoya en principios de percepcion que facilitan lectura y orientacion:
+
+\begin{itemize}
+  \item \textbf{Proximidad:} elementos relacionados como materia, grupo y modalidad se presentan juntos dentro de una misma unidad visual.
+  \item \textbf{Similitud:} los accesos directos y las tarjetas de accion comparten estructura coherente para que el usuario reconozca rapidamente patrones de uso.
+  \item \textbf{Jerarquia figura-fondo:} las acciones prioritarias se destacan visualmente frente a las secundarias, favoreciendo la identificacion del siguiente paso.
+  \item \textbf{Continuidad:} los flujos se ordenan de forma secuencial, haciendo visible la progresion natural entre matricula, validacion, inscripcion y confirmacion.
+  \item \textbf{Region comun:} las agrupaciones dentro de tarjetas, paneles laterales y tablas ayudan a delimitar contextos de informacion sin mezclar tareas distintas.
+\end{itemize}
+
+\subsubsection*{Justificacion basada en carga cognitiva}
+
+El rediseño busca disminuir la carga cognitiva extrinseca que actualmente impone WebSIS:
+
+\begin{itemize}
+  \item se eliminan pasos irrelevantes en horario y kardex;
+  \item se hace visible el estado de matricula para que el estudiante no tenga que inferir si puede inscribirse;
+  \item se reduce la repeticion innecesaria de codigos durante inscripcion;
+  \item se divide el proceso en estados comprensibles y con retroalimentacion inmediata;
+  \item se evita que el estudiante interprete datos ambiguos como si fueran resultados definitivos;
+  \item se adapta la densidad de informacion a movil mediante accesos compactos y jerarquia progresiva.
+\end{itemize}
+
+En conjunto, estas decisiones permiten que el estudiante concentre su esfuerzo en la tarea academica real y no en descifrar como funciona la interfaz.

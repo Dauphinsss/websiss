@@ -163,7 +163,7 @@ export function LoginPanel() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (role === 'estudiante') {
-      window.location.href = '/dashboard';
+      window.location.href = '/panel';
     }
   };
 

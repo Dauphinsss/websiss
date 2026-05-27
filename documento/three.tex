@@ -1,0 +1,97 @@
+\begin{figure}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+    font=\small,
+    caja/.style={
+        draw,
+        rectangle,
+        rounded corners=4pt,
+        align=center,
+        minimum height=1cm,
+        text width=3.9cm,
+        fill=white,
+        inner sep=5pt
+    },
+    cajaCentral/.style={
+        draw,
+        rectangle,
+        rounded corners=4pt,
+        align=center,
+        minimum height=1.3cm,
+        text width=6.2cm,
+        fill=white,
+        inner sep=6pt,
+        thick
+    },
+    linea/.style={-{Stealth[length=4mm]}, thick}
+]
+
+
+\node[caja] (e1) at (-8.5, 6.5)
+    {Pérdida de autonomía\\ en gestión académica};
+
+\node[caja] (e2) at (-2.8, 6.5)
+    {Sobrecarga de consultas\\ al personal administrativo};
+
+\node[caja] (e3) at (2.8, 6.5)
+    {Errores en inscripción\\ y plazos vencidos};
+
+\node[caja] (e4) at (8.5, 6.5)
+    {Frustración y abandono\\ del proceso};
+
+\node[caja] (e12) at (-5.6, 4.2)
+    {Dependencia de ayuda\\ externa para tareas básicas};
+
+\node[caja] (e34) at (5.6, 4.2)
+    {Retraso en la gestión\\ académica del estudiante};
+
+
+\node[cajaCentral] (pc) at (0, 1.6)
+    {La interfaz de WebSIS genera barreras\\ de usabilidad que impiden la gestión\\ académica autónoma del estudiante};
+
+
+\node[caja] (c1) at (-9.5, -2.0)
+    {Arquitectura de\\ información deficiente};
+
+\node[caja] (c2) at (-4.9, -2.0)
+    {Ausencia de visibilidad\\ del estado del sistema};
+
+\node[caja] (c3) at (0, -2.0)
+    {Diseño orientado a lógica\\ técnica, no al usuario};
+
+\node[caja] (c4) at (4.9, -2.0)
+    {Falta de control y\\ recuperación ante errores};
+
+\node[caja] (c5) at (9.5, -2.0)
+    {Sin soporte en periodos\\ críticos de uso};
+
+\node[caja] (c12) at (-7.3, -4.8)
+    {Carga cognitiva\\ elevada en el usuario};
+
+
+\draw[linea] (c1.north) -- (pc.south west);
+\draw[linea] (c2.north) -- ($(pc.south) + (-1.5,0)$);
+\draw[linea] (c3.north) -- (pc.south);
+\draw[linea] (c4.north) -- ($(pc.south) + (1.5,0)$);
+\draw[linea] (c5.north) -- (pc.south east);
+
+
+\draw[linea] (c12) -- (c1);
+\draw[linea] (c12) -- (c2);
+
+
+\draw[linea] (pc.north west) -- (e12.south);
+\draw[linea] (pc.north east) -- (e34.south);
+
+
+\draw[linea] (e12) -- (e1);
+\draw[linea] (e12) -- (e2);
+\draw[linea] (e34) -- (e3);
+\draw[linea] (e34) -- (e4);
+
+\end{tikzpicture}%
+}
+\caption{Árbol de problemas del sistema WebSIS -- UMSS}
+\label{fig:arbol-problemas}
+\end{figure}
