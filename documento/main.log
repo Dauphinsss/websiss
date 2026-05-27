@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.11)  27 MAY 2026 11:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.11)  27 MAY 2026 12:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1137,26 +1137,26 @@ Package babel Info: 'spanish' activates 'spanish' shorthands.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Info: Redefining \. on input line 65.
-LaTeX Info: Redefining \% on input line 65.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Info: Redefining \. on input line 64.
+LaTeX Info: Redefining \% on input line 64.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
@@ -1213,8 +1213,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (./main.bbl)
-Package biblatex Info: Reference section=0 on input line 65.
-Package biblatex Info: Reference segment=0 on input line 65.
+Package biblatex Info: Reference section=0 on input line 64.
+Package biblatex Info: Reference segment=0 on input line 64.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1253,7 +1253,7 @@ Package biblatex Info: Reference segment=0 on input line 65.
 Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
-Package hyperref Info: Link coloring OFF on input line 65.
+Package hyperref Info: Link coloring OFF on input line 64.
 (./caratula.tex
 <logo_left.png, id=7, 188.20313pt x 265.74281pt>
 File: logo_left.png Graphic file (type png)
@@ -1351,550 +1351,755 @@ Package pgfplots info on input line 393: Using 'lua backend=false' for axis: x
 coord trafo unsupported.
 Package pgfplots info on input line 430: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
- [13] [14]
-Underfull \hbox (badness 4217) in paragraph at lines 508--508
+ [13]
+Underfull \hbox (badness 4217) in paragraph at lines 464--464
 []|\T1/cmr/bx/n/10 Hallazgos prin-ci-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 508--508
+Underfull \hbox (badness 10000) in paragraph at lines 464--464
 []|\T1/cmr/bx/n/10 Dimensión emo-
  []
 
 
-Underfull \hbox (badness 4217) in paragraph at lines 513--513
+Underfull \hbox (badness 4217) in paragraph at lines 469--469
 []|\T1/cmr/bx/n/10 Hallazgos prin-ci-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 513--513
+Underfull \hbox (badness 10000) in paragraph at lines 469--469
 []|\T1/cmr/bx/n/10 Dimensión emo-
  []
 
 
-Underfull \hbox (badness 1874) in paragraph at lines 517--517
+Underfull \hbox (badness 1874) in paragraph at lines 473--473
 []|\T1/cmr/m/n/10 E1 -- ``Ca-
  []
 
 
-Underfull \hbox (badness 6173) in paragraph at lines 517--517
+Underfull \hbox (badness 6173) in paragraph at lines 473--473
 []|\T1/cmr/m/n/10 Ingresante, 1er
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 517--517
+Underfull \hbox (badness 10000) in paragraph at lines 473--473
 \T1/cmr/m/n/10 se-mes-tre, Ing.
  []
 
 
-Underfull \hbox (badness 1648) in paragraph at lines 517--517
+Underfull \hbox (badness 1648) in paragraph at lines 473--473
 \T1/cmr/m/n/10 du-lo de ins-crip-ción
  []
 
 
-Underfull \hbox (badness 4013) in paragraph at lines 517--517
+Underfull \hbox (badness 4013) in paragraph at lines 473--473
 \T1/cmr/m/n/10 tos con ayu-da de
  []
 
 
-Underfull \hbox (badness 3884) in paragraph at lines 517--517
+Underfull \hbox (badness 3884) in paragraph at lines 473--473
 \T1/cmr/m/n/10 no re-ci-bió orien-ta-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 517--517
+Underfull \hbox (badness 10000) in paragraph at lines 473--473
 []|\T1/cmr/m/n/10 Confusión e in-se-
  []
 
 
-Underfull \hbox (badness 7907) in paragraph at lines 517--517
+Underfull \hbox (badness 7907) in paragraph at lines 473--473
 \T1/cmr/m/n/10 gu-ri-dad al pri-mer
  []
 
 
-Underfull \hbox (badness 4072) in paragraph at lines 517--517
+Underfull \hbox (badness 4072) in paragraph at lines 473--473
 \T1/cmr/m/n/10 con-tac-to. Sen-sa-ción
  []
 
 
-Underfull \hbox (badness 1102) in paragraph at lines 517--517
+Underfull \hbox (badness 1102) in paragraph at lines 473--473
 \T1/cmr/m/n/10 cio-nal. De-pen-den-cia
  []
 
 
-Underfull \hbox (badness 1342) in paragraph at lines 517--517
+Underfull \hbox (badness 1342) in paragraph at lines 473--473
 \T1/cmr/m/n/10 emo-cio-nal de pa-res
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 517--517
+Underfull \hbox (badness 10000) in paragraph at lines 473--473
 \T1/cmr/m/n/10 pa-ra no sen-tir-se
  []
 
 
-Underfull \hbox (badness 1052) in paragraph at lines 519--519
+Underfull \hbox (badness 1052) in paragraph at lines 475--475
 []|\T1/cmr/m/n/10 E2 -- ``Bri-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 519--519
+Underfull \hbox (badness 10000) in paragraph at lines 475--475
 []|\T1/cmr/m/n/10 Avanzada, 2do
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 519--519
+Underfull \hbox (badness 10000) in paragraph at lines 475--475
 \T1/cmr/m/n/10 se-mes-tre, Ing.
  []
 
 
-Underfull \hbox (badness 1292) in paragraph at lines 519--519
+Underfull \hbox (badness 1292) in paragraph at lines 475--475
 \T1/cmr/m/n/10 zos y sen-sa-ción de
  []
 
 
-Underfull \hbox (badness 1552) in paragraph at lines 519--519
+Underfull \hbox (badness 1552) in paragraph at lines 475--475
 \T1/cmr/m/n/10 Frus-tra-ción an-te la
  []
 
 
-Underfull \hbox (badness 4072) in paragraph at lines 519--519
+Underfull \hbox (badness 4072) in paragraph at lines 475--475
 \T1/cmr/m/n/10 ex-clu-sión tec-no-ló-gi-
  []
 
 
-Underfull \hbox (badness 2351) in paragraph at lines 519--520
+Underfull \hbox (badness 2351) in paragraph at lines 475--476
 \T1/cmr/m/n/10 lar es im-po-si-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 521--521
+Underfull \hbox (badness 10000) in paragraph at lines 477--477
 []|\T1/cmr/m/n/10 Avanzado, 6to
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 521--521
+Underfull \hbox (badness 10000) in paragraph at lines 477--477
 \T1/cmr/m/n/10 se-mes-tre, Ing.
  []
 
 
-Underfull \hbox (badness 1502) in paragraph at lines 521--521
+Underfull \hbox (badness 1502) in paragraph at lines 477--477
 \T1/cmr/m/n/10 ti-va: acep-ta el sis-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--523
+Underfull \hbox (badness 10000) in paragraph at lines 479--479
 []|\T1/cmr/m/n/10 E4 --
  []
 
 
-Underfull \hbox (badness 2753) in paragraph at lines 523--523
+Underfull \hbox (badness 2753) in paragraph at lines 479--479
 []|\T1/cmr/m/n/10 Avanzada, 7mo
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--523
+Underfull \hbox (badness 10000) in paragraph at lines 479--479
 \T1/cmr/m/n/10 se-mes-tre, Ing.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--523
+Underfull \hbox (badness 10000) in paragraph at lines 479--479
 []|\T1/cmr/m/n/10 Ansiedad an-ti-ci-pa-
  []
 
 
-Underfull \hbox (badness 2384) in paragraph at lines 523--523
+Underfull \hbox (badness 2384) in paragraph at lines 479--479
 \T1/cmr/m/n/10 de-be ade-lan-tar-se y
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--523
+Underfull \hbox (badness 10000) in paragraph at lines 479--479
 \T1/cmr/m/n/10 vi-gi-lar cons-tan-te-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--523
+Underfull \hbox (badness 10000) in paragraph at lines 479--479
 \T1/cmr/m/n/10 pa-ra no per-der
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--524
+Underfull \hbox (badness 10000) in paragraph at lines 479--480
 []|\T1/cmr/m/n/10 ``Tengo que
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--524
+Underfull \hbox (badness 10000) in paragraph at lines 479--480
 \T1/cmr/m/n/10 en-trar an-tes
  []
 
 
-Underfull \hbox (badness 3668) in paragraph at lines 525--525
+Underfull \hbox (badness 3668) in paragraph at lines 481--481
 []|\T1/cmr/m/n/10 E5 -- ``Se-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 525--525
+Underfull \hbox (badness 10000) in paragraph at lines 481--481
 []|\T1/cmr/m/n/10 Avanzado, 5to
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 525--525
+Underfull \hbox (badness 10000) in paragraph at lines 481--481
 \T1/cmr/m/n/10 se-mes-tre, Ing.
  []
 
 
-Underfull \hbox (badness 1616) in paragraph at lines 525--525
+Underfull \hbox (badness 1616) in paragraph at lines 481--481
 \T1/cmr/m/n/10 ra en ca-sa; ac-ce-de
  []
 
 
-Underfull \hbox (badness 1231) in paragraph at lines 525--525
+Underfull \hbox (badness 1231) in paragraph at lines 481--481
 []|\T1/cmr/m/n/10 Estrés cró-ni-co an-te
  []
 
 
-Underfull \hbox (badness 3449) in paragraph at lines 525--525
+Underfull \hbox (badness 3449) in paragraph at lines 481--481
 \T1/cmr/m/n/10 la fal-ta de ac-ce-so
  []
 
 
-Underfull \hbox (badness 3407) in paragraph at lines 525--525
+Underfull \hbox (badness 3407) in paragraph at lines 481--481
 \T1/cmr/m/n/10 ven-ta-ja es-truc-tu-ral.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 525--526
+Underfull \hbox (badness 10000) in paragraph at lines 481--482
 []|\T1/cmr/m/n/10 ``Necesitamos
  []
 
 
-Underfull \hbox (badness 7522) in paragraph at lines 525--526
+Underfull \hbox (badness 7522) in paragraph at lines 481--482
 \T1/cmr/m/n/10 al-go que nos
  []
 
 
-ignored: Infinite glue shrinkage found in box being split [15] [16]
-Underfull \hbox (badness 5345) in paragraph at lines 564--564
+ignored: Infinite glue shrinkage found in box being split [14] [15]
+Underfull \hbox (badness 5345) in paragraph at lines 520--520
 []|\T1/cmr/m/n/10.95 Avanzado, 5to
  []
 
 
-Underfull \hbox (badness 1122) in paragraph at lines 564--564
+Underfull \hbox (badness 1122) in paragraph at lines 520--520
 []|\T1/cmr/m/n/10.95 Consultar si-tua-ción
  []
 
 
-Underfull \hbox (badness 4181) in paragraph at lines 566--566
+Underfull \hbox (badness 4181) in paragraph at lines 522--522
 []|\T1/cmr/m/n/10.95 Iniciar pro-ce-so de
  []
 
 
-Underfull \hbox (badness 2689) in paragraph at lines 566--567
+Underfull \hbox (badness 2689) in paragraph at lines 522--523
 []|\T1/cmr/m/n/10.95 No en-con-tró el pe-río-do
  []
 
-[17] [18] [19]
-<images/nuevos.jpg, id=216, 1256.695pt x 1251.67625pt>
+[16] [17] [18]
+<images/nuevos.jpg, id=200, 1256.695pt x 1251.67625pt>
 File: images/nuevos.jpg Graphic file (type jpg)
 <use images/nuevos.jpg>
-Package pdftex.def Info: images/nuevos.jpg  used on input line 650.
+Package pdftex.def Info: images/nuevos.jpg  used on input line 606.
 (pdftex.def)             Requested size: 399.29494pt x 397.69884pt.
-<images/nuevos1.jpg, id=218, 1949.2825pt x 807.015pt>
+<images/nuevos1.jpg, id=202, 1949.2825pt x 807.015pt>
 File: images/nuevos1.jpg Graphic file (type jpg)
 <use images/nuevos1.jpg>
-Package pdftex.def Info: images/nuevos1.jpg  used on input line 659.
+Package pdftex.def Info: images/nuevos1.jpg  used on input line 615.
 (pdftex.def)             Requested size: 446.26617pt x 184.74756pt.
- [20 <./images/nuevos.jpg>]
-<images/avanzados.jpg, id=226, 1241.63875pt x 1266.7325pt>
+ [19 <./images/nuevos.jpg>]
+<images/avanzados.jpg, id=211, 1241.63875pt x 1266.7325pt>
 File: images/avanzados.jpg Graphic file (type jpg)
 <use images/avanzados.jpg>
-Package pdftex.def Info: images/avanzados.jpg  used on input line 674.
+Package pdftex.def Info: images/avanzados.jpg  used on input line 630.
 (pdftex.def)             Requested size: 399.29494pt x 407.35355pt.
- [21 <./images/nuevos1.jpg>]
-<images/avanzados1.jpg, id=233, 1968.35374pt x 798.985pt>
+ [20 <./images/nuevos1.jpg>]
+<images/avanzados1.jpg, id=218, 1968.35374pt x 798.985pt>
 File: images/avanzados1.jpg Graphic file (type jpg)
 <use images/avanzados1.jpg>
-Package pdftex.def Info: images/avanzados1.jpg  used on input line 687.
+Package pdftex.def Info: images/avanzados1.jpg  used on input line 643.
 (pdftex.def)             Requested size: 446.26617pt x 181.14151pt.
- [22 <./images/avanzados.jpg>]) [23 <./images/avanzados1.jpg>]
+) [21 <./images/avanzados.jpg>] [22 <./images/avanzados1.jpg>]
 (./content/necesidades_destacadas.tex
-Underfull \hbox (badness 10000) in paragraph at lines 15--15
+Underfull \hbox (badness 10000) in paragraph at lines 12--12
 []|\T1/cmr/m/n/8 Necesidad emo-cio-nal
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--20
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
 []|\T1/cmr/m/n/8 Necesidad emo-cio-nal
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 24.
+(Font)              <5> on input line 21.
 
-Underfull \hbox (badness 10000) in paragraph at lines 27--27
+Underfull \hbox (badness 10000) in paragraph at lines 24--24
 []|\T1/cmr/m/n/8 Confirmación
  []
 
 
-Underfull \hbox (badness 1867) in paragraph at lines 27--27
+Underfull \hbox (badness 1867) in paragraph at lines 24--24
 []|\T1/cmr/m/n/8 El sis-te-ma de-be con-
  []
 
 
-Underfull \hbox (badness 2828) in paragraph at lines 27--27
+Underfull \hbox (badness 2828) in paragraph at lines 24--24
 \T1/cmr/m/n/8 fir-mar cla-ra-men-te ca-
  []
 
 
-Underfull \hbox (badness 7685) in paragraph at lines 27--27
+Underfull \hbox (badness 7685) in paragraph at lines 24--24
 []|\T1/cmr/m/n/8 Cierre y cer-te-za: el
  []
 
 
-Underfull \hbox (badness 1270) in paragraph at lines 27--27
+Underfull \hbox (badness 1270) in paragraph at lines 24--24
 \T1/cmr/m/n/8 usua-rio ne-ce-si-ta sa-ber
  []
 
 
-Underfull \hbox (badness 2042) in paragraph at lines 27--28
+Underfull \hbox (badness 2042) in paragraph at lines 24--25
 \T1/cmr/m/n/8 re-vi-sa-ban va-rias ve-ces la
  []
 
 
-Underfull \hbox (badness 4132) in paragraph at lines 30--30
+Underfull \hbox (badness 4132) in paragraph at lines 27--27
 []|\T1/cmr/m/n/8 Mensajes com-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--33
+Underfull \hbox (badness 10000) in paragraph at lines 30--30
 []|\T1/cmr/m/n/8 Compatibilidad
  []
 
 
-Underfull \hbox (badness 1371) in paragraph at lines 33--33
+Underfull \hbox (badness 1371) in paragraph at lines 30--30
 []|\T1/cmr/m/n/8 La in-ter-faz de-be fun-
  []
 
 
-Underfull \hbox (badness 1052) in paragraph at lines 36--36
+Underfull \hbox (badness 1052) in paragraph at lines 33--33
 []|\T1/cmr/m/n/8 Navegación ali-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--36
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
 []|\T1/cmr/m/n/8 Autonomía cog-ni-ti-va:
  []
 
 
-Underfull \hbox (badness 1496) in paragraph at lines 36--36
+Underfull \hbox (badness 1496) in paragraph at lines 33--33
 \T1/cmr/m/n/8 el usua-rio no de-be-ría
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--36
+Underfull \hbox (badness 10000) in paragraph at lines 33--33
 \T1/cmr/m/n/8 apren-der có-mo fun-
  []
 
 
-Underfull \hbox (badness 2608) in paragraph at lines 36--36
+Underfull \hbox (badness 2608) in paragraph at lines 33--33
 \T1/cmr/m/n/8 cio-na in-ter-na-men-te el
  []
 
 
-Underfull \hbox (badness 4832) in paragraph at lines 39--39
+Underfull \hbox (badness 4832) in paragraph at lines 36--36
 \T1/cmr/m/n/8 ta-reas fre-cuen-
  []
 
 
-Underfull \hbox (badness 1565) in paragraph at lines 39--39
+Underfull \hbox (badness 1565) in paragraph at lines 36--36
 \T1/cmr/m/n/8 de-ben es-tar ac-ce-si-bles
  []
 
 
-Underfull \hbox (badness 4132) in paragraph at lines 39--40
+Underfull \hbox (badness 4132) in paragraph at lines 36--37
 \T1/cmr/m/n/8 con-sul-ta no-tas fre-cuen-te-
  []
 
 
-Underfull \hbox (badness 6332) in paragraph at lines 45--45
+Underfull \hbox (badness 6332) in paragraph at lines 42--42
 []|\T1/cmr/m/n/8 El sis-te-ma de-be in-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 45--45
+Underfull \hbox (badness 10000) in paragraph at lines 42--42
 []|\T1/cmr/m/n/8 Autonomía ins-ti-tu-cio-
  []
 
 
-Underfull \hbox (badness 2237) in paragraph at lines 48--48
+Underfull \hbox (badness 2237) in paragraph at lines 45--45
 []|\T1/cmr/m/n/8 El sis-te-ma de-be per-
  []
 
-[24
 
-
-]
-Underfull \hbox (badness 1215) in paragraph at lines 73--73
+Underfull \hbox (badness 1215) in paragraph at lines 70--70
 []|\T1/cmr/bx/n/10.95 N1 -- Guía en
  []
 
 
-Underfull \hbox (badness 1931) in paragraph at lines 73--73
+Underfull \hbox (badness 1931) in paragraph at lines 70--70
 \T1/cmr/m/n/10.95 por-que cual-quier error pue-de
  []
 
 
-Underfull \hbox (badness 2653) in paragraph at lines 76--77
+Underfull \hbox (badness 2653) in paragraph at lines 73--74
 \T1/cmr/m/n/10.95 las ac-cio-nes por ex-pe-rien-cias
  []
 
 
-Underfull \hbox (badness 1210) in paragraph at lines 85--85
+Underfull \hbox (badness 1210) in paragraph at lines 82--82
 []|\T1/cmr/m/n/10.95 Crítica: na-ve-ga por en-sa-yo y
  []
 
 
-Underfull \hbox (badness 7186) in paragraph at lines 88--88
+Underfull \hbox (badness 7186) in paragraph at lines 85--85
 \T1/cmr/bx/n/10.95 pi-do a ta-reas
  []
 
 
-Underfull \hbox (badness 1168) in paragraph at lines 88--88
+Underfull \hbox (badness 1168) in paragraph at lines 85--85
 []|\T1/cmr/m/n/10.95 Crítica: ca-da se-sión co-mien-za
  []
 
 
-Underfull \hbox (badness 2343) in paragraph at lines 91--91
+Underfull \hbox (badness 2343) in paragraph at lines 88--88
 []|\T1/cmr/bx/n/10.95 N7 -- Es-ta-bi-li-
  []
 
 
-Underfull \hbox (badness 7851) in paragraph at lines 91--92
+Underfull \hbox (badness 7851) in paragraph at lines 88--89
 []|\T1/cmr/m/n/10.95 Crítica: ha nor-ma-li-za-do las
  []
 
 
-Underfull \hbox (badness 1168) in paragraph at lines 91--92
+Underfull \hbox (badness 1168) in paragraph at lines 88--89
 \T1/cmr/m/n/10.95 caí-das, pe-ro con-ti-núa su-frien-
  []
 
 
-Underfull \hbox (badness 7540) in paragraph at lines 91--92
+Underfull \hbox (badness 7540) in paragraph at lines 88--89
 \T1/cmr/m/n/10.95 do con-se-cuen-cias aca-dé-mi-cas
  []
 
 
-Underfull \hbox (badness 4752) in paragraph at lines 94--94
+Underfull \hbox (badness 4752) in paragraph at lines 91--91
 []|\T1/cmr/bx/n/10.95 N8 -- So-por-te
  []
 
 
-Underfull \hbox (badness 2809) in paragraph at lines 97--97
+Underfull \hbox (badness 2809) in paragraph at lines 94--94
 []|\T1/cmr/bx/n/10.95 N9 -- Au-to-no-
  []
 
 
-Underfull \hbox (badness 5908) in paragraph at lines 97--97
+Underfull \hbox (badness 5908) in paragraph at lines 94--94
 \T1/cmr/bx/n/10.95 mía aca-dé-mi-ca
  []
 
-) [25] (./content/problemas_detectados.tex
-Underfull \hbox (badness 5726) in paragraph at lines 39--40
+[23
+
+]) [24] (./content/problemas_detectados.tex
+Underfull \hbox (badness 5726) in paragraph at lines 38--39
 []|\T1/cmr/m/n/10.95 3 -- Moderado--
  []
 
 
-Underfull \hbox (badness 5726) in paragraph at lines 48--49
+Underfull \hbox (badness 5726) in paragraph at lines 47--48
 []|\T1/cmr/m/n/10.95 3 -- Moderado--
  []
 
+[25
 
-ignored: Infinite glue shrinkage found in box being split [26
-
-] [27]
-Underfull \hbox (badness 1270) in paragraph at lines 122--123
+]
+Underfull \hbox (badness 1270) in paragraph at lines 86--87
 []|\T1/cmr/m/n/10.95 Diseñar o adap-tar la in-ter-faz pa-ra que
  []
 
 
-Underfull \hbox (badness 1533) in paragraph at lines 140--140
+Underfull \hbox (badness 1533) in paragraph at lines 104--104
 []|\T1/cmr/m/n/10.95 P9: Eti-que-tas e íco-nos
  []
 
+) [26] (./content/propuesta_rediseno.tex [27
 
-ignored: Infinite glue shrinkage found in box being split [28]) [29] (./content/propuest
-a_rediseno.tex [30
+] [28] [29]
+Overfull \hbox (2.34496pt too wide) in paragraph at lines 189--189
+ [][][][][][][] 
+ []
 
-] [31] [32] [33] [34] [35]
-<images/prototipo/01-login.png, id=342, 1445.4pt x 2223.30624pt>
+
+Overfull \hbox (3.14494pt too wide) in paragraph at lines 189--189
+ [][][][] 
+ []
+
+
+Overfull \hbox (3.14494pt too wide) in paragraph at lines 189--189
+ [][] 
+ []
+
+
+Overfull \hbox (3.14494pt too wide) in paragraph at lines 189--189
+ [][] 
+ []
+
+
+Overfull \hbox (3.14494pt too wide) in paragraph at lines 189--189
+ [][] 
+ []
+
+[30]
+Overfull \hbox (6.36316pt too wide) in paragraph at lines 219--219
+ [][][][] 
+ []
+
+
+Overfull \hbox (10.35266pt too wide) in paragraph at lines 219--219
+ [][][][] 
+ []
+
+
+Overfull \hbox (2.66502pt too wide) in paragraph at lines 219--219
+ [][] 
+ []
+
+
+Overfull \hbox (2.66502pt too wide) in paragraph at lines 219--219
+ [][] 
+ []
+
+
+Overfull \hbox (9.83466pt too wide) in paragraph at lines 219--219
+ [][] 
+ []
+
+
+Overfull \hbox (9.83466pt too wide) in paragraph at lines 219--219
+ [][] 
+ []
+
+
+Overfull \hbox (9.83466pt too wide) in paragraph at lines 219--219
+ [][] 
+ []
+
+
+Overfull \hbox (9.83466pt too wide) in paragraph at lines 219--219
+ [][] 
+ []
+
+
+Overfull \hbox (9.83466pt too wide) in paragraph at lines 219--219
+ [][] 
+ []
+
+[31]
+Overfull \hbox (4.1009pt too wide) in paragraph at lines 247--247
+ [][] 
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 247.
+
+Overfull \hbox (8.03638pt too wide) in paragraph at lines 247--247
+ [][] 
+ []
+
+
+Overfull \hbox (8.03638pt too wide) in paragraph at lines 247--247
+ [][] 
+ []
+
+
+Overfull \hbox (4.1009pt too wide) in paragraph at lines 247--247
+ [][] 
+ []
+
+
+Overfull \hbox (4.1009pt too wide) in paragraph at lines 247--247
+ [][] 
+ []
+
+
+Overfull \hbox (14.96689pt too wide) in paragraph at lines 247--247
+ [][][][] 
+ []
+
+
+Overfull \hbox (10.96689pt too wide) in paragraph at lines 247--247
+ [][][][] 
+ []
+
+[32]
+Overfull \hbox (3.69116pt too wide) in paragraph at lines 274--274
+ [][] 
+ []
+
+
+Overfull \hbox (3.69116pt too wide) in paragraph at lines 274--274
+ [][] 
+ []
+
+
+Overfull \hbox (3.69116pt too wide) in paragraph at lines 274--274
+ [][] 
+ []
+
+
+Overfull \hbox (3.69116pt too wide) in paragraph at lines 274--274
+ [][] 
+ []
+
+
+Overfull \hbox (3.69116pt too wide) in paragraph at lines 274--274
+ [][] 
+ []
+
+
+Overfull \hbox (3.69116pt too wide) in paragraph at lines 274--274
+ [][] 
+ []
+
+
+Overfull \hbox (14.96689pt too wide) in paragraph at lines 274--274
+ [][][][] 
+ []
+
+[33]
+Overfull \hbox (14.03984pt too wide) in paragraph at lines 310--310
+ [][][][] 
+ []
+
+
+Overfull \hbox (14.03984pt too wide) in paragraph at lines 310--310
+ [][][][] 
+ []
+
+
+Overfull \hbox (14.03984pt too wide) in paragraph at lines 310--310
+ [][][][] 
+ []
+
+
+Overfull \hbox (14.03984pt too wide) in paragraph at lines 310--310
+ [][][][] 
+ []
+
+[34]
+Overfull \hbox (0.86911pt too wide) in paragraph at lines 336--336
+ [][] 
+ []
+
+
+Overfull \hbox (5.80612pt too wide) in paragraph at lines 336--336
+ [][] 
+ []
+
+
+Overfull \hbox (5.80612pt too wide) in paragraph at lines 336--336
+ [][] 
+ []
+
+
+Overfull \hbox (5.80612pt too wide) in paragraph at lines 336--336
+ [][] 
+ []
+
+
+Overfull \hbox (5.80612pt too wide) in paragraph at lines 336--336
+ [][] 
+ []
+
+
+Overfull \hbox (9.80612pt too wide) in paragraph at lines 336--336
+ [][][][] 
+ []
+
+
+Overfull \hbox (5.80612pt too wide) in paragraph at lines 336--336
+ [][] 
+ []
+
+
+Overfull \hbox (9.63011pt too wide) in paragraph at lines 336--336
+ [][] 
+ []
+
+
+Overfull \hbox (9.63011pt too wide) in paragraph at lines 336--336
+ [][] 
+ []
+
+
+Overfull \hbox (9.63011pt too wide) in paragraph at lines 336--336
+ [][] 
+ []
+
+[35]
+Overfull \hbox (2.03639pt too wide) in paragraph at lines 361--361
+ [][][][] 
+ []
+
+
+Overfull \hbox (8.33286pt too wide) in paragraph at lines 361--361
+ [][][][] 
+ []
+
+
+Overfull \hbox (8.33286pt too wide) in paragraph at lines 361--361
+ [][] 
+ []
+
+
+Overfull \hbox (12.33286pt too wide) in paragraph at lines 361--361
+ [][][][] 
+ []
+
+[36] [37]
+<images/prototipo/01-login.png, id=353, 1445.4pt x 2223.30624pt>
 File: images/prototipo/01-login.png Graphic file (type png)
 <use images/prototipo/01-login.png>
-Package pdftex.def Info: images/prototipo/01-login.png  used on input line 299.
+Package pdftex.def Info: images/prototipo/01-login.png  used on input line 397.
 
 (pdftex.def)             Requested size: 304.44722pt x 468.29901pt.
-
-[36]
-<images/prototipo/02-panel.png, id=349, 1445.4pt x 1104.125pt>
+ [38]
+<images/prototipo/02-panel.png, id=358, 1445.4pt x 1104.125pt>
 File: images/prototipo/02-panel.png Graphic file (type png)
 <use images/prototipo/02-panel.png>
-Package pdftex.def Info: images/prototipo/02-panel.png  used on input line 305.
+Package pdftex.def Info: images/prototipo/02-panel.png  used on input line 403.
 
 (pdftex.def)             Requested size: 469.74944pt x 358.83638pt.
- [37 <./images/prototipo/01-login.png (PNG copy)>]
-<images/prototipo/03-matricula.png, id=356, 1445.4pt x 1104.125pt>
+ [39 <./images/prototipo/01-login.png (PNG copy)>]
+<images/prototipo/03-matricula.png, id=364, 1445.4pt x 1104.125pt>
 File: images/prototipo/03-matricula.png Graphic file (type png)
 <use images/prototipo/03-matricula.png>
 Package pdftex.def Info: images/prototipo/03-matricula.png  used on input line 
-311.
+409.
 (pdftex.def)             Requested size: 469.74944pt x 358.83638pt.
- [38 <./images/prototipo/02-panel.png (PNG copy)>]
-<images/prototipo/04-codigos.png, id=362, 1445.4pt x 1104.125pt>
-File: images/prototipo/04-codigos.png Graphic file (type png)
-<use images/prototipo/04-codigos.png>
-Package pdftex.def Info: images/prototipo/04-codigos.png  used on input line 31
-7.
-(pdftex.def)             Requested size: 469.74944pt x 358.83638pt.
- [39 <./images/prototipo/03-matricula.png (PNG copy)>]
-<images/prototipo/05-inscripcion.png, id=368, 1445.4pt x 2732.2075pt>
+ [40 <./images/prototipo/02-panel.png (PNG copy)>]
+<images/prototipo/05-inscripcion.png, id=370, 1445.4pt x 2732.2075pt>
 File: images/prototipo/05-inscripcion.png Graphic file (type png)
 <use images/prototipo/05-inscripcion.png>
 Package pdftex.def Info: images/prototipo/05-inscripcion.png  used on input lin
-e 323.
+e 415.
 (pdftex.def)             Requested size: 247.7438pt x 468.30463pt.
-[40 <./images/prototipo/04-codigos.png (PNG copy)>]
-<images/prototipo/06-estado.png, id=374, 1445.4pt x 1104.125pt>
-File: images/prototipo/06-estado.png Graphic file (type png)
-<use images/prototipo/06-estado.png>
-Package pdftex.def Info: images/prototipo/06-estado.png  used on input line 329
-.
-(pdftex.def)             Requested size: 469.74944pt x 358.83638pt.
- [41 <./images/prototipo/05-inscripcion.png (PNG copy)>]
-<images/prototipo/07-horario.png, id=380, 1445.4pt x 2020.54875pt>
+ [41 <./images/prototipo/03-matricula.png (PNG copy)>]
+<images/prototipo/07-horario.png, id=376, 1445.4pt x 2020.54875pt>
 File: images/prototipo/07-horario.png Graphic file (type png)
 <use images/prototipo/07-horario.png>
-Package pdftex.def Info: images/prototipo/07-horario.png  used on input line 33
-5.
+Package pdftex.def Info: images/prototipo/07-horario.png  used on input line 42
+1.
 (pdftex.def)             Requested size: 334.9934pt x 468.29285pt.
- [42 <./images/prototipo/06-estado.png (PNG copy)>]
-<images/prototipo/08-kardex.png, id=386, 1445.4pt x 1461.46pt>
+ [42 <./images/prototipo/05-inscripcion.png (PNG copy)>]
+<images/prototipo/08-kardex.png, id=382, 1445.4pt x 1461.46pt>
 File: images/prototipo/08-kardex.png Graphic file (type png)
 <use images/prototipo/08-kardex.png>
-Package pdftex.def Info: images/prototipo/08-kardex.png  used on input line 341
+Package pdftex.def Info: images/prototipo/08-kardex.png  used on input line 427
 .
 (pdftex.def)             Requested size: 463.155pt x 468.30116pt.
-[43 <./images/prototipo/07-horario.png (PNG copy)>]
-<images/prototipo/09-seguridad.png, id=393, 1445.4pt x 1104.125pt>
-File: images/prototipo/09-seguridad.png Graphic file (type png)
-<use images/prototipo/09-seguridad.png>
-Package pdftex.def Info: images/prototipo/09-seguridad.png  used on input line 
-347.
-(pdftex.def)             Requested size: 469.74944pt x 358.83638pt.
- [44 <./images/prototipo/08-kardex.png (PNG copy)>] [45 <./images/prototipo/09-
-seguridad.png (PNG copy)>])
-[46] (./content/apendice.tex [47
+ [43 <./images/prototipo/07-horario.png (PNG copy)>] [44 <./images/prototipo/08
+-kardex.png (PNG copy)>] [45]) [46] (./content/apendice.tex [47
 
 ]) [48]
 
 Package biblatex Warning: No driver for 'standard'.
-(biblatex)                Using fallback driver on input line 97.
+(biblatex)                Using fallback driver on input line 96.
 
 [49
 
@@ -1917,32 +2122,35 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46366 strings out of 467349
- 1065736 string characters out of 5419862
- 2087383 words of memory out of 5000000
- 74613 multiletter control sequences out of 15000+600000
- 641629 words of font info for 66 fonts, out of 8000000 for 9000
+ 46346 strings out of 467349
+ 1064746 string characters out of 5419862
+ 2087987 words of memory out of 5000000
+ 74595 multiletter control sequences out of 15000+600000
+ 643001 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,13n,107p,1197b,2811s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,16n,107p,1197b,2811s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/tex
 live/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2026/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2026/texmf-dist
-/fonts/type1/public/cm-super/sfbx0800.pfb><c:/texlive/2026/texmf-dist/fonts/typ
-e1/public/cm-super/sfbx1000.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/
-cm-super/sfbx1095.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/s
-fbx1200.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pf
-b><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/texl
-ive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2026/t
-exmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2026/texmf-dist/
-fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2026/texmf-dist/fonts/type
-1/public/cm-super/sfrm1200.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/c
-m-super/sfrm1440.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sf
-ti1200.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb
->
-Output written on main.pdf (49 pages, 3187240 bytes).
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2026/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public
+/cm-super/sfbx0800.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/
+sfbx1000.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1095.p
+fb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/tex
+live/2026/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2026/
+texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/texlive/2026/texmf-dist
+/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2026/texmf-dist/fonts/typ
+e1/public/cm-super/sfrm1000.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/
+cm-super/sfrm1095.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/s
+frm1200.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pf
+b><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb><c:/texl
+ive/2026/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2026/t
+exmf-dist/fonts/type1/public/cm-super/sfti1200.pfb><c:/texlive/2026/texmf-dist/
+fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on main.pdf (49 pages, 2968800 bytes).
 PDF statistics:
  684 PDF objects out of 1000 (max. 8388607)
- 578 compressed objects within 6 object streams
- 193 named destinations out of 1000 (max. 500000)
- 416 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 573 compressed objects within 6 object streams
+ 189 named destinations out of 1000 (max. 500000)
+ 377 words of extra memory for PDF output out of 10000 (max. 10000000)
 
