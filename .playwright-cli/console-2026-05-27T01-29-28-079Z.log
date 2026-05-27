@@ -1,0 +1,16 @@
+[  334856ms] ReferenceError: NativeSelect is not defined
+    at SubjectOfferRow (http://localhost:4321/src/components/StudentDashboard.tsx?t=1779845702004:3315:11)
+    at Object.react_stack_bottom_frame (http://localhost:4321/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=9885e35a:18509:20)
+    at renderWithHooks (http://localhost:4321/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=9885e35a:5654:24)
+    at updateFunctionComponent (http://localhost:4321/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=9885e35a:7475:21)
+    at beginWork (http://localhost:4321/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=9885e35a:8525:20)
+    at runWithFiberInDEV (http://localhost:4321/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=9885e35a:997:72)
+    at performUnitOfWork (http://localhost:4321/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=9885e35a:12561:98)
+    at workLoopSync (http://localhost:4321/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=9885e35a:12424:43)
+    at renderRootSync (http://localhost:4321/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=9885e35a:12408:13)
+    at performWorkOnRoot (http://localhost:4321/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=9885e35a:11827:37)
+[  334857ms] [WARNING] %s
+
+%s
+ An error occurred in the <SubjectOfferRow> component. Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries. @ http://localhost:4321/node_modules/.vite/deps/chunk-XFEUJNJL.js?v=9885e35a:6965

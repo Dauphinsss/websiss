@@ -120,9 +120,38 @@ function toInputDateValue(date: Date) {
   return `${year}-${month}-${day}`;
 }
 
+function toBirthDateText(date: Date) {
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+
+  return `${day}/${month}/${year}`;
+}
+
+function parseBirthDateText(value: string, minDate: Date, maxDate: Date) {
+  const match = value.trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+
+  if (!match) return undefined;
+
+  const day = Number(match[1]);
+  const month = Number(match[2]);
+  const year = Number(match[3]);
+  const parsed = new Date(year, month - 1, day);
+
+  const isRealDate =
+    parsed.getFullYear() === year &&
+    parsed.getMonth() === month - 1 &&
+    parsed.getDate() === day;
+
+  if (!isRealDate || parsed < minDate || parsed > maxDate) return undefined;
+
+  return parsed;
+}
+
 export function LoginPanel() {
   const [role, setRole] = useState<RoleId>('estudiante');
   const [birthDate, setBirthDate] = useState<Date>();
+  const [birthDateText, setBirthDateText] = useState('');
   const [birthDateOpen, setBirthDateOpen] = useState(false);
   const config = roles[role];
   const IdentifierIcon = config.identifierIcon;
@@ -267,20 +296,51 @@ export function LoginPanel() {
                   </span>
                 </label>
                 <Popover open={birthDateOpen} onOpenChange={setBirthDateOpen}>
-                  <PopoverTrigger asChild>
-                    <Button
-                      type="button"
-                      variant="outline"
-                      data-empty={!birthDate}
+                  <div className="relative">
+                    <CalendarDays
+                      aria-hidden="true"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none"
+                    />
+                    <Input
+                      id="birth-date"
+                      name="birthDateText"
+                      type="text"
+                      inputMode="numeric"
+                      placeholder="dd/mm/aaaa"
+                      value={birthDateText}
                       aria-labelledby="birth-date-label"
-                      className="h-11 w-full justify-start rounded-md bg-background px-3 text-left font-normal data-[empty=true]:text-muted-foreground"
-                    >
-                      <CalendarDays aria-hidden="true" data-icon="inline-start" />
-                      <span>
-                        {birthDate ? formatBirthDate(birthDate) : 'Seleccionar fecha'}
-                      </span>
-                    </Button>
-                  </PopoverTrigger>
+                      aria-describedby="birth-date-format"
+                      autoComplete="bday"
+                      className="h-11 pl-10 pr-12"
+                      onChange={(event) => {
+                        const nextValue = event.target.value
+                          .replace(/[^\d/]/g, '')
+                          .slice(0, 10);
+                        const parsedDate = parseBirthDateText(
+                          nextValue,
+                          minBirthDate,
+                          maxBirthDate,
+                        );
+
+                        setBirthDateText(nextValue);
+                        setBirthDate(parsedDate);
+                      }}
+                      onBlur={() => {
+                        if (birthDate) setBirthDateText(toBirthDateText(birthDate));
+                      }}
+                    />
+                    <PopoverTrigger asChild>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        aria-label="Seleccionar fecha"
+                        className="absolute right-1 top-1/2 size-9 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                      >
+                        <CalendarDays aria-hidden="true" className="size-4" />
+                      </Button>
+                    </PopoverTrigger>
+                  </div>
                   <PopoverContent align="start" className="w-auto p-0">
                     <Calendar
                       mode="single"
@@ -297,12 +357,16 @@ export function LoginPanel() {
                       locale={es}
                       onSelect={(date) => {
                         setBirthDate(date);
+                        setBirthDateText(date ? toBirthDateText(date) : '');
                         if (date) setBirthDateOpen(false);
                       }}
                       className="[--cell-size:--spacing(9)]"
                     />
                   </PopoverContent>
                 </Popover>
+                <p id="birth-date-format" className="text-[11px] text-muted-foreground">
+                  Formato: dd/mm/aaaa
+                </p>
                 <input
                   type="hidden"
                   name="birthDate"
