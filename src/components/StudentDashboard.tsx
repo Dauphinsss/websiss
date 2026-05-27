@@ -1058,19 +1058,19 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
                 </span>
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="grid gap-2 md:gap-4 md:grid-cols-2 lg:grid-cols-4">
                 {secondaryActions.map((action) => {
                   const Icon = action.icon;
                   return (
                     <Card
                       key={action.href}
-                      className="group relative transition-all hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-ring has-[a:focus-visible]:border-primary/40 has-[a:focus-visible]:shadow-md"
+                      className="group relative gap-0 py-0 transition-all hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-ring has-[a:focus-visible]:border-primary/40 has-[a:focus-visible]:shadow-md md:gap-6 md:py-6"
                     >
-                      <CardHeader className="gap-3">
-                        <div className="flex size-10 items-center justify-center rounded-md bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                          <Icon aria-hidden="true" className="size-5" />
+                      <CardHeader className="grid grid-cols-[auto_1fr_auto] items-center gap-3 p-3 md:block md:p-6">
+                        <div className="flex size-9 items-center justify-center rounded-md bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground md:size-10">
+                          <Icon aria-hidden="true" className="size-4 md:size-5" />
                         </div>
-                        <div className="space-y-1">
+                        <div className="min-w-0 md:mt-3 md:space-y-1">
                           <CardTitle className="text-base font-medium">
                             <a
                               href={action.href}
@@ -1079,12 +1079,16 @@ export function StudentDashboard({ page = 'home' }: StudentDashboardProps) {
                               {action.title}
                             </a>
                           </CardTitle>
-                          <CardDescription className="text-xs leading-relaxed">
+                          <CardDescription className="hidden text-xs leading-relaxed md:block">
                             {action.description}
                           </CardDescription>
                         </div>
+                        <ArrowRight
+                          aria-hidden="true"
+                          className="size-4 text-muted-foreground md:hidden"
+                        />
                       </CardHeader>
-                      <CardContent className="pt-0">
+                      <CardContent className="hidden pt-0 md:block">
                         <div className="flex items-center gap-1.5 text-xs font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100 group-has-[a:focus-visible]:opacity-100">
                           <span>Abrir</span>
                           <ArrowRight aria-hidden="true" className="size-3.5" />
