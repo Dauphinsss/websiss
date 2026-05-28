@@ -34,6 +34,7 @@ import {
   GraduationCap,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Toaster } from '@/components/ui/sonner';
 import {
   Card,
   CardContent,
@@ -70,6 +71,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { toast } from 'sonner';
 
 const student = {
   firstName: 'Marcos',
@@ -90,7 +92,6 @@ const activePlan = {
 };
 
 const tuitionStatus = {
-  paid: true,
   amount: 'Bs 27',
   method: 'Banco Unión',
   receipt: 'MTR-2026-001537',
@@ -450,6 +451,7 @@ const enrollmentSubjects = [
     availableModes: ['Normal', 'Mesa'] as EnrollmentMode[],
     group: '1',
     availableGroups: ['1', '2', '3'],
+    fullGroups: ['2'],
     teacher: 'Flores Villarroel Corina',
     schedule: 'Mar 6:45-8:15 · Jue 18:45-20:15',
     room: '690D / 690E',
@@ -554,6 +556,7 @@ const enrollmentSubjects = [
     availableModes: ['Normal', 'Mesa'] as EnrollmentMode[],
     group: '3',
     availableGroups: ['1', '2', '3'],
+    fullGroups: ['1'],
     teacher: 'Docente por confirmar',
     schedule: 'Mar 14:15-15:45 · Jue 14:15-15:45',
     room: '692C',
@@ -694,6 +697,11 @@ function getInitialCodeValidation(): boolean {
   return window.localStorage.getItem('websiss-code-validated') === 'true';
 }
 
+function getInitialTuitionPaid(): boolean {
+  if (typeof window === 'undefined') return false;
+  return window.localStorage.getItem('websiss-tuition-paid') === 'true';
+}
+
 function isEnrollmentMode(value: unknown): value is EnrollmentMode {
   return value === 'Normal' || value === 'Mesa';
 }
@@ -768,16 +776,24 @@ interface StudentPanelProps {
 export function StudentPanel({ page = 'home' }: StudentPanelProps) {
   const [isDark, setIsDark] = useState<boolean>(getInitialDark);
   const [isCodeValidated, setIsCodeValidated] = useState<boolean>(false);
+  const [isTuitionPaid, setIsTuitionPaid] = useState<boolean>(false);
   const [kardexQuery, setKardexQuery] = useState('');
   const [accessCodes, setAccessCodes] = useState({ third: '', fifth: '' });
+  const [codeError, setCodeError] = useState('');
+  const [liveMessage, setLiveMessage] = useState('');
   const [selectedEnrollments, setSelectedEnrollments] = useState<SelectedEnrollment[]>(
     defaultSelectedEnrollments,
   );
 
   useEffect(() => {
     setIsCodeValidated(getInitialCodeValidation());
+    setIsTuitionPaid(getInitialTuitionPaid());
     setSelectedEnrollments(getInitialSelectedEnrollments());
   }, []);
+
+  const announce = (message: string) => {
+    setLiveMessage(message);
+  };
 
   const toggleTheme = () => {
     const next = !document.documentElement.classList.contains('dark');
@@ -809,6 +825,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
   }, []);
   const nextClass = scheduleSessions[0];
   const codesReady = accessCodes.third.trim().length >= 4 && accessCodes.fifth.trim().length >= 4;
+  const canValidateCodes = isTuitionPaid && codesReady;
   const selectedSubjectIds = selectedEnrollments.map((enrollment) => enrollment.subjectId);
   const selectedSubjects = selectedEnrollments
     .map((enrollment) => {
@@ -834,27 +851,89 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
       }
 
       const next = [...current, { subjectId, mode, group }];
+      const subject = enrollmentSubjects.find((item) => item.id === subjectId);
       storeSelectedEnrollments(next);
+      if (subject) {
+        const message = `${subject.name} fue agregada a tu inscripción.`;
+        toast.success(subject.name, {
+          description: `Materia agregada · Grupo ${group} · ${mode}`,
+        });
+        announce(message);
+      }
       return next;
     });
   };
 
   const removeSubject = (subjectId: string) => {
     setSelectedEnrollments((current) => {
+      const subject = enrollmentSubjects.find((item) => item.id === subjectId);
       const next = current.filter((enrollment) => enrollment.subjectId !== subjectId);
       storeSelectedEnrollments(next);
+      if (subject) {
+        const message = `${subject.name} fue retirada de tu inscripción.`;
+        toast.info(subject.name, {
+          description: 'Materia retirada.',
+        });
+        announce(message);
+      }
       return next;
     });
   };
 
   const validateAccessCodes = () => {
-    if (!codesReady) return;
+    if (!canValidateCodes) return;
+    if (accessCodes.third.trim() === '0000' || accessCodes.fifth.trim() === '0000') {
+      const message = 'Uno de los códigos ingresados no es válido.';
+      setCodeError(message);
+      toast.error('Códigos incorrectos', {
+        description: 'Revisa los códigos 3 y 5 antes de continuar.',
+      });
+      announce(message);
+      return;
+    }
+
+    setCodeError('');
     window.localStorage.setItem('websiss-code-validated', 'true');
     setIsCodeValidated(true);
+    toast.success('Cuenta habilitada', {
+      description: 'Ya puedes elegir materias y grupos durante el periodo de inscripción.',
+    });
+    announce('Cuenta habilitada para inscripción.');
   };
+
+  const payTuition = () => {
+    window.localStorage.setItem('websiss-tuition-paid', 'true');
+    setIsTuitionPaid(true);
+    toast.success('Matrícula pagada', {
+      description: `Pago registrado por ${tuitionStatus.method}.`,
+    });
+    announce('Matrícula pagada. Puedes continuar el flujo de inscripción.');
+  };
+
+  const finalizeEnrollment = () => {
+    window.sessionStorage.setItem('websiss-enrollment-finalized', 'true');
+    announce('Inscripción lista para revisar. Abriendo estado de inscripción.');
+    window.location.href = '/panel/estado';
+  };
+
+  useEffect(() => {
+    if (page !== 'estado') return;
+    if (window.sessionStorage.getItem('websiss-enrollment-finalized') !== 'true') return;
+
+    window.sessionStorage.removeItem('websiss-enrollment-finalized');
+    toast.success('Inscripción finalizada', {
+      description: 'Tus materias seleccionadas aparecen en el estado de inscripción.',
+    });
+    announce('Inscripción finalizada. Revisa el estado de tus materias.');
+  }, [page]);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Toaster position="bottom-right" closeButton />
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        {liveMessage}
+      </div>
+
       {/* Navbar única */}
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-md supports-backdrop-filter:bg-background/65">
         <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-5 sm:px-8">
@@ -1050,9 +1129,19 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                     <AlertTriangle aria-hidden="true" className="size-3" />
                     Abierto hasta el 31 de mayo
                   </span>
-                  <span className="ml-2 inline-flex items-center gap-1.5 rounded-full bg-success/15 px-2.5 py-1 text-[11px] font-medium text-success ring-1 ring-success/30">
-                    <CheckCircle2 aria-hidden="true" className="size-3" />
-                    Matrícula pagada
+                  <span
+                    className={`ml-2 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium ring-1 ${
+                      isTuitionPaid
+                        ? 'bg-success/15 text-success ring-success/30'
+                        : 'bg-warning/15 text-warning-foreground ring-warning/30'
+                    }`}
+                  >
+                    {isTuitionPaid ? (
+                      <CheckCircle2 aria-hidden="true" className="size-3" />
+                    ) : (
+                      <AlertTriangle aria-hidden="true" className="size-3" />
+                    )}
+                    {isTuitionPaid ? 'Matrícula pagada' : 'Matrícula pendiente'}
                   </span>
                   <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium leading-tight tracking-tight">
                     Inscribirse a materias
@@ -1096,7 +1185,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                   >
                     <a href="/panel/matricula">
                       <CreditCard aria-hidden="true" />
-                      <span>Pagar matrícula</span>
+                      <span>{isTuitionPaid ? 'Ver matrícula' : 'Pagar matrícula'}</span>
                     </a>
                   </Button>
                 </div>
@@ -1120,7 +1209,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                   return (
                     <Card
                       key={action.href}
-                      className="group relative gap-0 py-0 transition-all hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-ring has-[a:focus-visible]:border-primary/40 has-[a:focus-visible]:shadow-md md:gap-6 md:py-6"
+                      className="group relative gap-0 py-0 transition-[border-color,box-shadow,transform] hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5 has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-ring has-[a:focus-visible]:border-primary/40 has-[a:focus-visible]:shadow-md md:gap-6 md:py-6"
                     >
                       <CardHeader className="grid grid-cols-[auto_1fr_auto] items-center gap-3 p-3 md:block md:p-6">
                         <div className="flex size-9 items-center justify-center rounded-md bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground md:size-10">
@@ -1180,12 +1269,12 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                 </Badge>
                 <Badge
                   className={`rounded-sm ${
-                    tuitionStatus.paid
+                    isTuitionPaid
                       ? 'bg-success text-success-foreground'
                       : 'bg-warning text-warning-foreground'
                   }`}
                 >
-                  {tuitionStatus.paid ? 'Matrícula pagada' : 'Matrícula pendiente'}
+                  {isTuitionPaid ? 'Matrícula pagada' : 'Matrícula pendiente'}
                 </Badge>
               </div>
               <div>
@@ -1199,15 +1288,18 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
               </div>
             </div>
 
-            {isCodeValidated && selectedSubjectIds.length > 0 ? (
-              <Button asChild>
-                <a href="/panel/estado">
-                  <ListChecks aria-hidden="true" />
-                  <span>Finalizar inscripción</span>
-                </a>
+            {isTuitionPaid && isCodeValidated && selectedSubjectIds.length > 0 ? (
+              <Button type="button" onClick={finalizeEnrollment}>
+                <ListChecks aria-hidden="true" />
+                <span>Finalizar inscripción</span>
               </Button>
             ) : (
-              <Button type="button" variant="outline" disabled>
+              <Button
+                type="button"
+                variant="outline"
+                disabled
+                aria-describedby="finish-enrollment-requirements"
+              >
                 <ListChecks aria-hidden="true" />
                 <span>Finalizar inscripción</span>
               </Button>
@@ -1216,6 +1308,31 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
 
           <div className="grid gap-4 lg:grid-cols-[1fr_360px]">
             <div className="space-y-4">
+              {!isTuitionPaid && (
+                <Card className="border-warning/30 bg-warning/10">
+                  <CardContent className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="flex gap-3">
+                      <AlertTriangle
+                        aria-hidden="true"
+                        className="mt-0.5 size-5 shrink-0 text-warning"
+                      />
+                      <div>
+                        <h3 className="font-medium">Paga tu matrícula antes de inscribirte</h3>
+                        <p className="mt-1 text-sm text-muted-foreground">
+                          Este prototipo permite simular el pago para mostrar el flujo completo.
+                        </p>
+                      </div>
+                    </div>
+                    <Button asChild variant="outline" className="bg-background">
+                      <a href="/panel/matricula">
+                        <CreditCard aria-hidden="true" />
+                        <span>Pagar matrícula</span>
+                      </a>
+                    </Button>
+                  </CardContent>
+                </Card>
+              )}
+
               {!isCodeValidated && (
                 <Card className="border-warning/30 bg-warning/10">
                   <CardContent className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between">
@@ -1254,7 +1371,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                       <SubjectOfferRow
                         key={subject.id}
                         subject={subject}
-                        disabled={!isCodeValidated || remainingSlots <= 0}
+                        disabled={!isTuitionPaid || !isCodeValidated || remainingSlots <= 0}
                         onAdd={(mode, group) => addSubject(subject.id, mode, group)}
                       />
                     ))}
@@ -1282,13 +1399,13 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                   <div className="rounded-md border border-border/70 bg-muted/40 p-3">
                     <div className="flex items-center justify-between gap-3 text-sm">
                       <span className="font-medium">Límite máximo</span>
-                      <span className="text-muted-foreground">
+                      <span className="text-muted-foreground" aria-live="polite">
                         {selectedSubjectIds.length} de {enrollmentLimit} materias
                       </span>
                     </div>
                     <div className="mt-3 h-2 overflow-hidden rounded-full bg-background">
                       <div
-                        className="h-full rounded-full bg-primary transition-all"
+                        className="h-full rounded-full bg-primary transition-[width]"
                         style={{
                           width: `${(selectedSubjectIds.length / enrollmentLimit) * 100}%`,
                         }}
@@ -1302,12 +1419,16 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                     <StatusItem
                       icon={CreditCard}
                       label="Matrícula"
-                      value={tuitionStatus.paid ? 'Pagada' : 'Pendiente'}
+                      value={isTuitionPaid ? 'Pagada' : 'Pendiente'}
                     />
-                    <StatusItem icon={ReceiptText} label="Comprobante" value={tuitionStatus.receipt} />
+                    <StatusItem
+                      icon={ReceiptText}
+                      label="Comprobante"
+                      value={isTuitionPaid ? tuitionStatus.receipt : 'Pendiente'}
+                    />
                   </div>
 
-                  <div className="space-y-3">
+                  <div className="space-y-3" aria-live="polite" aria-atomic="false">
                     {selectedSubjects.map((subject) => (
                       <SelectedSubjectCard
                         key={subject.id}
@@ -1317,14 +1438,18 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                     ))}
                   </div>
 
-                  {!isCodeValidated && (
+                  {(!isTuitionPaid || !isCodeValidated) && (
                     <div className="rounded-md border border-warning/30 bg-warning/10 p-3 text-sm">
                       <div className="flex gap-2">
                         <AlertTriangle
                           aria-hidden="true"
                           className="mt-0.5 size-4 shrink-0 text-warning"
                         />
-                        <p>La cuenta debe estar habilitada antes de tomar materias.</p>
+                        <p id="finish-enrollment-requirements">
+                          {isTuitionPaid
+                            ? 'La cuenta debe estar habilitada antes de tomar materias.'
+                            : 'La matrícula debe estar validada antes de tomar materias.'}
+                        </p>
                       </div>
                     </div>
                   )}
@@ -1521,7 +1646,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                     <StatusItem
                       icon={CreditCard}
                       label="Matrícula"
-                      value={tuitionStatus.paid ? 'Pagada' : 'Pendiente'}
+                      value={isTuitionPaid ? 'Pagada' : 'Pendiente'}
                     />
                     <StatusItem
                       icon={ShieldCheck}
@@ -1540,15 +1665,23 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                       </label>
                       <Input
                         id="access-code-3"
+                        name="accessCode3"
                         value={accessCodes.third}
                         onChange={(event) =>
-                          setAccessCodes((current) => ({
-                            ...current,
-                            third: event.target.value.replace(/\D/g, '').slice(0, 8),
-                          }))
+                          {
+                            setCodeError('');
+                            setAccessCodes((current) => ({
+                              ...current,
+                              third: event.target.value.replace(/\D/g, '').slice(0, 8),
+                            }));
+                          }
                         }
                         inputMode="numeric"
-                        placeholder="Ingresa el código"
+                        autoComplete="off"
+                        spellCheck={false}
+                        placeholder="Ej. 12345678…"
+                        aria-invalid={Boolean(codeError)}
+                        aria-describedby={codeError ? 'access-code-error' : undefined}
                         disabled={isCodeValidated}
                         className="font-mono"
                       />
@@ -1562,23 +1695,37 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                       </label>
                       <Input
                         id="access-code-5"
+                        name="accessCode5"
                         value={accessCodes.fifth}
                         onChange={(event) =>
-                          setAccessCodes((current) => ({
-                            ...current,
-                            fifth: event.target.value.replace(/\D/g, '').slice(0, 8),
-                          }))
+                          {
+                            setCodeError('');
+                            setAccessCodes((current) => ({
+                              ...current,
+                              fifth: event.target.value.replace(/\D/g, '').slice(0, 8),
+                            }));
+                          }
                         }
                         inputMode="numeric"
-                        placeholder="Ingresa el código"
+                        autoComplete="off"
+                        spellCheck={false}
+                        placeholder="Ej. 87654321…"
+                        aria-invalid={Boolean(codeError)}
+                        aria-describedby={codeError ? 'access-code-error' : undefined}
                         disabled={isCodeValidated}
                         className="font-mono"
                       />
                     </div>
                   </div>
 
+                  {codeError && (
+                    <p id="access-code-error" className="text-sm font-medium text-destructive" aria-live="polite">
+                      {codeError}
+                    </p>
+                  )}
+
                   {isCodeValidated ? (
-                    <div className="rounded-md border border-success/30 bg-success/10 p-4">
+                    <div className="rounded-md border border-success/30 bg-success/10 p-4" aria-live="polite">
                       <div className="flex gap-3">
                         <CheckCircle2
                           aria-hidden="true"
@@ -1594,7 +1741,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                       </div>
                     </div>
                   ) : (
-                    <div className="rounded-md border border-warning/30 bg-warning/10 p-4">
+                    <div className="rounded-md border border-warning/30 bg-warning/10 p-4" aria-live="polite">
                       <div className="flex gap-3">
                         <AlertTriangle
                           aria-hidden="true"
@@ -1602,12 +1749,22 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                         />
                         <div>
                           <p className="text-sm font-medium">
-                            Ingresa correctamente ambos códigos para habilitar la cuenta.
+                            {isTuitionPaid
+                              ? 'Ingresa correctamente ambos códigos para habilitar la cuenta.'
+                              : 'Primero paga tu matrícula para continuar con los códigos.'}
                           </p>
                           <p className="mt-1 text-sm text-muted-foreground">
                             Solo se volverán a pedir códigos si el sistema detecta
                             actividad sospechosa.
                           </p>
+                          {!isTuitionPaid && (
+                            <Button asChild variant="outline" size="sm" className="mt-3 bg-background">
+                              <a href="/panel/matricula">
+                                <CreditCard aria-hidden="true" />
+                                <span>Ir a pagar matrícula</span>
+                              </a>
+                            </Button>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -1625,7 +1782,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                       <Button
                         type="button"
                         className="sm:w-fit"
-                        disabled={!codesReady}
+                        disabled={!canValidateCodes}
                         onClick={validateAccessCodes}
                       >
                         <ShieldCheck aria-hidden="true" />
@@ -1646,10 +1803,10 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                       description="La carrera permite inscripción para este periodo."
                     />
                     <ProcessStep
-                      state={tuitionStatus.paid ? 'done' : 'blocked'}
+                      state={isTuitionPaid ? 'done' : 'blocked'}
                       title="Matrícula pagada"
                       description={
-                        tuitionStatus.paid
+                        isTuitionPaid
                           ? `Pago registrado por ${tuitionStatus.method}.`
                           : 'Debe pagarse antes de habilitar la inscripción.'
                       }
@@ -1664,7 +1821,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                       }
                     />
                     <ProcessStep
-                      state={isCodeValidated ? 'done' : 'blocked'}
+                      state={isTuitionPaid && isCodeValidated ? 'done' : 'blocked'}
                       title="Inscripción sin fricción"
                       description="Durante el periodo solo se eligen materias y grupos."
                     />
@@ -1686,17 +1843,17 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                 </Badge>
                 <Badge
                   className={`rounded-sm ${
-                    tuitionStatus.paid
+                    isTuitionPaid
                       ? 'bg-success text-success-foreground'
                       : 'bg-warning text-warning-foreground'
                   }`}
                 >
-                  {tuitionStatus.paid ? 'Pago registrado' : 'Pago pendiente'}
+                  {isTuitionPaid ? 'Pago registrado' : 'Pago pendiente'}
                 </Badge>
               </div>
               <div>
                 <h2 className="font-serif text-2xl sm:text-3xl font-medium tracking-tight">
-                  Estado de matrícula
+                  Pagar matrícula
                 </h2>
                 <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
                   La inscripción depende de que la matrícula esté pagada y
@@ -1727,13 +1884,14 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
               <CardContent className="space-y-4 p-5 sm:p-6">
                 <div
                   className={`rounded-md border p-4 ${
-                    tuitionStatus.paid
+                    isTuitionPaid
                       ? 'border-success/30 bg-success/10'
                       : 'border-warning/30 bg-warning/10'
                   }`}
+                  aria-live="polite"
                 >
                   <div className="flex gap-3">
-                    {tuitionStatus.paid ? (
+                    {isTuitionPaid ? (
                       <CheckCircle2
                         aria-hidden="true"
                         className="mt-0.5 size-5 shrink-0 text-success"
@@ -1746,12 +1904,12 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                     )}
                     <div>
                       <p className="text-sm font-medium">
-                        {tuitionStatus.paid
+                        {isTuitionPaid
                           ? 'La matrícula ha sido pagada.'
                           : 'La matrícula aún no registra pago.'}
                       </p>
                       <p className="mt-1 text-sm text-muted-foreground">
-                        {tuitionStatus.paid
+                        {isTuitionPaid
                           ? `Comprobante ${tuitionStatus.receipt}, registrado el ${tuitionStatus.paidAt}.`
                           : 'Paga la matrícula para habilitar la inscripción de materias.'}
                       </p>
@@ -1760,15 +1918,19 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-3">
-                  <StatusItem icon={ReceiptText} label="Comprobante" value={tuitionStatus.receipt} />
+                  <StatusItem
+                    icon={ReceiptText}
+                    label="Comprobante"
+                    value={isTuitionPaid ? tuitionStatus.receipt : 'Pendiente'}
+                  />
                   <StatusItem icon={Building2} label="Entidad" value={tuitionStatus.method} />
                   <StatusItem icon={CreditCard} label="Monto" value={tuitionStatus.amount} />
                 </div>
 
                 <div className="flex flex-col gap-2 sm:flex-row">
-                  <Button type="button" disabled={tuitionStatus.paid}>
+                  <Button type="button" disabled={isTuitionPaid} onClick={payTuition}>
                     <CreditCard aria-hidden="true" />
-                    <span>Pagar matrícula</span>
+                    <span>{isTuitionPaid ? 'Matrícula pagada' : 'Pagar matrícula'}</span>
                   </Button>
                   <Button asChild variant="outline">
                     <a href="/panel/codigo">
@@ -1778,10 +1940,10 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                   </Button>
                 </div>
 
-                {tuitionStatus.paid && (
+                {isTuitionPaid && (
                   <p className="text-xs text-muted-foreground">
-                    El botón de pago permanece visible para ubicar la función,
-                    pero se desactiva cuando el pago ya fue confirmado.
+                    El botón permanece visible para ubicar la función, pero se
+                    desactiva cuando el pago ya fue confirmado.
                   </p>
                 )}
               </CardContent>
@@ -1796,9 +1958,9 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
               </CardHeader>
               <CardContent className="space-y-4">
                 <ProcessStep
-                  state={tuitionStatus.paid ? 'done' : 'blocked'}
+                  state={isTuitionPaid ? 'done' : 'blocked'}
                   title="Matrícula"
-                  description={tuitionStatus.paid ? 'Pago confirmado.' : 'Pendiente de pago.'}
+                  description={isTuitionPaid ? 'Pago confirmado.' : 'Pendiente de pago.'}
                 />
                 <ProcessStep
                   state={isCodeValidated ? 'done' : 'blocked'}
@@ -1810,7 +1972,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                   }
                 />
                 <ProcessStep
-                  state={tuitionStatus.paid && isCodeValidated ? 'done' : 'blocked'}
+                  state={isTuitionPaid && isCodeValidated ? 'done' : 'blocked'}
                   title="Inscripción"
                   description="Luego solo eliges materias, grupos y modalidad."
                 />
@@ -2221,6 +2383,9 @@ function SubjectOfferRow({ subject, disabled, onAdd }: SubjectOfferRowProps) {
   );
   const [selectedGroup, setSelectedGroup] = useState(subject.group);
   const hasModeChoice = subject.availableModes.length > 1;
+  const hasGroupChoice = subject.availableGroups.length > 1;
+  const fullGroups = 'fullGroups' in subject ? subject.fullGroups : [];
+  const selectedGroupIsFull = fullGroups.includes(selectedGroup);
 
   return (
     <article className="grid gap-4 px-5 py-4 lg:grid-cols-[1fr_auto] lg:items-center">
@@ -2261,36 +2426,38 @@ function SubjectOfferRow({ subject, disabled, onAdd }: SubjectOfferRowProps) {
       </div>
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end lg:flex-col lg:items-stretch">
-        <div className="space-y-1.5">
-          <label
-            htmlFor={`group-${subject.id}`}
-            className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground"
-          >
-            Grupo
-          </label>
-          <Select
-            value={selectedGroup}
-            disabled={disabled}
-            onValueChange={setSelectedGroup}
-          >
-            <SelectTrigger
-              id={`group-${subject.id}`}
-              className="w-full sm:w-32 lg:w-full"
-              aria-label={`Grupo para ${subject.name}`}
+        {hasGroupChoice && (
+          <div className="space-y-1.5">
+            <label
+              htmlFor={`group-${subject.id}`}
+              className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground"
             >
-              <SelectValue placeholder="Grupo" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                {subject.availableGroups.map((group) => (
-                  <SelectItem key={group} value={group}>
-                    Grupo {group}
-                  </SelectItem>
-                ))}
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </div>
+              Grupo
+            </label>
+            <Select
+              value={selectedGroup}
+              disabled={disabled}
+              onValueChange={setSelectedGroup}
+            >
+              <SelectTrigger
+                id={`group-${subject.id}`}
+                className="w-full sm:w-32 lg:w-full"
+                aria-label={`Grupo para ${subject.name}`}
+              >
+                <SelectValue placeholder="Grupo" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  {subject.availableGroups.map((group) => (
+                    <SelectItem key={group} value={group} disabled={fullGroups.includes(group)}>
+                      Grupo {group}{fullGroups.includes(group) ? ' - sin cupos' : ''}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+        )}
 
         <ToggleGroup
           type="single"
@@ -2324,7 +2491,7 @@ function SubjectOfferRow({ subject, disabled, onAdd }: SubjectOfferRowProps) {
         <Button
           type="button"
           onClick={() => onAdd(selectedMode, selectedGroup)}
-          disabled={disabled || !subject.availableModes.includes(selectedMode)}
+          disabled={disabled || selectedGroupIsFull || !subject.availableModes.includes(selectedMode)}
           className="sm:w-36 lg:w-full"
         >
           <Plus aria-hidden="true" />
