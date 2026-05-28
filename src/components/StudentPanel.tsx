@@ -71,6 +71,22 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+} from '@/components/ui/drawer';
 import { toast } from 'sonner';
 
 const student = {
@@ -109,171 +125,258 @@ const kardexSummary = {
 
 const kardexRows = [
   {
-    nro: 1,
     year: 2023,
     term: 1,
     code: '1803001',
     subject: 'Ingles I',
     level: 'A',
+    type: 'Regular',
+    mode: 'Me',
+    validation: '-',
     group: '4',
+    practicalGroup: '-',
+    partials: { t1: 78, t2: 84 },
+    finalExam: '-',
+    secondInstance: '-',
     final: 81,
     result: 'APR',
   },
   {
-    nro: 2,
     year: 2023,
     term: 1,
     code: '2006063',
     subject: 'Fisica General',
     level: 'A',
+    type: 'Regular',
+    mode: 'N',
+    validation: '-',
     group: 'B2',
+    practicalGroup: 'P3',
+    partials: { t1: 28, t2: 37, p1: 42, p2: 35 },
+    finalExam: 45,
+    secondInstance: 33,
     final: 33,
     result: 'REP',
   },
   {
-    nro: 3,
     year: 2023,
     term: 1,
     code: '2008019',
     subject: 'Algebra I',
     level: 'A',
+    type: 'Regular',
+    mode: 'N',
+    validation: '-',
     group: '10',
+    practicalGroup: '-',
+    partials: { t1: 55, t2: 62 },
+    finalExam: '-',
+    secondInstance: '-',
     final: 60,
     result: 'APR',
   },
   {
-    nro: 4,
     year: 2023,
     term: 1,
     code: '2008054',
     subject: 'Calculo I',
     level: 'A',
+    type: 'Regular',
+    mode: 'N',
+    validation: '-',
     group: '10',
+    practicalGroup: '-',
+    partials: { t1: 34, t2: 39 },
+    finalExam: 72,
+    secondInstance: '-',
     final: 51,
     result: 'APR',
   },
   {
-    nro: 5,
     year: 2023,
     term: 1,
     code: '2010010',
     subject: 'Introduccion a la Programacion',
     level: 'A',
+    type: 'Regular',
+    mode: 'N',
+    validation: '-',
     group: '2',
+    practicalGroup: '-',
+    partials: { t1: 58, t2: 54 },
+    finalExam: '-',
+    secondInstance: '-',
     final: 56,
     result: 'APR',
   },
   {
-    nro: 29,
     year: 2024,
     term: 2,
     code: '2010053',
     subject: 'Taller de Base de Datos',
     level: 'F',
+    type: 'Regular',
+    mode: 'N',
+    validation: '-',
     group: '3',
+    practicalGroup: '-',
+    partials: { t1: 22, t2: 30 },
+    finalExam: 39,
+    secondInstance: 26,
     final: 26,
     result: 'REP',
   },
   {
-    nro: 30,
     year: 2024,
     term: 2,
     code: '2010203',
     subject: 'Programacion Web',
     level: 'F',
+    type: 'Regular',
+    mode: 'N',
+    validation: 'CV',
     group: '1',
+    practicalGroup: '-',
+    partials: { t1: 100, t2: 100 },
+    finalExam: '-',
+    secondInstance: '-',
     final: 100,
     result: 'APR',
   },
   {
-    nro: 40,
     year: 2025,
     term: 2,
     code: '2010100',
     subject: 'Arquitectura de Software',
     level: 'G',
+    type: 'Regular',
+    mode: 'N',
+    validation: '-',
     group: '1',
+    practicalGroup: '-',
+    partials: { t1: 100, t2: 100 },
+    finalExam: '-',
+    secondInstance: '-',
     final: 100,
     result: 'APR',
   },
   {
-    nro: 43,
     year: 2025,
     term: 2,
     code: '2010209',
     subject: 'Seguridad de Sistemas',
     level: 'I',
+    type: 'Electiva',
+    mode: 'N',
+    validation: '-',
     group: '1',
+    practicalGroup: '-',
+    partials: { t1: 92, t2: 96 },
+    finalExam: '-',
+    secondInstance: '-',
     final: 94,
     result: 'APR',
   },
   {
-    nro: 44,
     year: 2025,
     term: 3,
     code: '2010040',
     subject: 'Teoria de Automatas y Leng. Formales',
     level: 'E',
+    type: 'Regular',
+    mode: 'N',
+    validation: '-',
     group: '1',
+    practicalGroup: '-',
     final: null,
     partials: { t1: 70, t2: 32 },
+    finalExam: '-',
+    secondInstance: '-',
     result: 'CUR',
   },
   {
-    nro: 45,
     year: 2026,
     term: 1,
     code: '2010019',
     subject: 'Simulacion de Sistemas',
     level: 'G',
+    type: 'Electiva',
+    mode: 'N',
+    validation: '-',
     group: '1',
+    practicalGroup: '-',
     final: null,
+    partials: { t1: '-', t2: '-' },
+    finalExam: '-',
+    secondInstance: '-',
     result: 'ABA',
   },
   {
-    nro: 47,
     year: 2026,
     term: 1,
     code: '2010102',
     subject: 'Evaluacion y Auditoria de Sistemas',
     level: 'H',
+    type: 'Regular',
+    mode: 'N',
+    validation: '-',
     group: '1',
+    practicalGroup: '-',
+    partials: { t1: 85, t2: 91 },
+    finalExam: '-',
+    secondInstance: '-',
     final: 88,
     result: 'APR',
   },
   {
-    nro: 48,
     year: 2026,
     term: 1,
     code: '2010214',
     subject: 'Taller de Grado I',
     level: 'H',
+    type: 'Regular',
+    mode: 'N',
+    validation: '-',
     group: '7',
+    practicalGroup: '-',
+    partials: { t1: 86, t2: 90 },
+    finalExam: '-',
+    secondInstance: '-',
     final: 88,
     result: 'APR',
   },
   {
-    nro: 49,
     year: 2026,
     term: 1,
     code: '2010066',
     subject: 'Procesos Agiles',
     level: 'I',
+    type: 'Electiva',
+    mode: 'N',
+    validation: '-',
     group: '1',
     final: null,
+    practicalGroup: '-',
     partials: { t1: 73, t2: 99 },
+    finalExam: '-',
+    secondInstance: '-',
     result: 'CUR',
   },
   {
-    nro: 50,
     year: 2026,
     term: 1,
     code: '2010079',
     subject: 'Web Semanticas',
     level: 'I',
+    type: 'Electiva',
+    mode: 'N',
+    validation: '-',
     group: '1',
     final: null,
-    partials: { t1: 88 },
+    practicalGroup: '-',
+    partials: { t1: 88, t2: '-' },
+    finalExam: '-',
+    secondInstance: '-',
     result: 'CUR',
   },
 ];
@@ -823,6 +926,8 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
   const [isCodeValidated, setIsCodeValidated] = useState<boolean>(false);
   const [isTuitionPaid, setIsTuitionPaid] = useState<boolean>(false);
   const [kardexQuery, setKardexQuery] = useState('');
+  const [selectedKardexRow, setSelectedKardexRow] = useState<KardexRow | null>(null);
+  const [isKardexDetailDesktop, setIsKardexDetailDesktop] = useState(false);
   const [accessCodes, setAccessCodes] = useState({ third: '', fifth: '' });
   const [codeError, setCodeError] = useState('');
   const [liveMessage, setLiveMessage] = useState('');
@@ -834,6 +939,16 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
     setIsCodeValidated(getInitialCodeValidation());
     setIsTuitionPaid(getInitialTuitionPaid());
     setSelectedEnrollments(getInitialSelectedEnrollments());
+  }, []);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const updateDetailMode = () => setIsKardexDetailDesktop(mediaQuery.matches);
+
+    updateDetailMode();
+    mediaQuery.addEventListener('change', updateDetailMode);
+
+    return () => mediaQuery.removeEventListener('change', updateDetailMode);
   }, []);
 
   const announce = (message: string) => {
@@ -859,6 +974,24 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
   };
 
   const initials = getInitials(student.fullName);
+  const closeKardexDetail = () => setSelectedKardexRow(null);
+  const openKardexPrintView = () => {
+    const printWindow = window.open('about:blank', '_blank', 'width=1200,height=900');
+
+    if (!printWindow) {
+      toast.error('No se pudo abrir la vista de impresión', {
+        description: 'Habilita ventanas emergentes para imprimir o guardar el Kardex en PDF.',
+      });
+      return;
+    }
+
+    printWindow.document.open();
+    printWindow.document.write(buildKardexPrintDocument());
+    printWindow.document.close();
+    setTimeout(() => {
+      printWindow.focus();
+    }, 50);
+  };
   const filteredKardexRows = useMemo(() => {
     const query = kardexQuery.trim().toLowerCase();
 
@@ -1580,11 +1713,11 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
             </div>
 
             <div className="flex flex-wrap gap-2">
-              <Button type="button" variant="outline" size="sm">
+              <Button type="button" variant="outline" size="sm" onClick={openKardexPrintView}>
                 <Printer aria-hidden="true" />
                 <span>Imprimir</span>
               </Button>
-              <Button type="button" variant="outline" size="sm">
+              <Button type="button" variant="outline" size="sm" onClick={openKardexPrintView}>
                 <Download aria-hidden="true" />
                 <span>Descargar</span>
               </Button>
@@ -2192,11 +2325,11 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
             </div>
 
             <div className="flex flex-wrap gap-2">
-              <Button type="button" variant="outline" size="sm">
+              <Button type="button" variant="outline" size="sm" onClick={openKardexPrintView}>
                 <Printer aria-hidden="true" />
                 <span>Imprimir</span>
               </Button>
-              <Button type="button" variant="outline" size="sm">
+              <Button type="button" variant="outline" size="sm" onClick={openKardexPrintView}>
                 <Download aria-hidden="true" />
                 <span>Descargar</span>
               </Button>
@@ -2250,53 +2383,83 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
               </div>
             </CardHeader>
             <CardContent className="p-0">
-              <Table>
-                <TableHeader>
-                  <TableRow className="bg-muted/60 hover:bg-muted/60">
-                    <TableHead className="hidden w-16 md:table-cell">Nro</TableHead>
-                    <TableHead className="hidden sm:table-cell">Año</TableHead>
-                    <TableHead className="hidden sm:table-cell">Gst</TableHead>
-                    <TableHead className="hidden sm:table-cell">Código</TableHead>
-                    <TableHead className="min-w-40 sm:min-w-72">Materia</TableHead>
-                    <TableHead className="hidden md:table-cell">Nv</TableHead>
-                    <TableHead className="hidden md:table-cell">Gr</TableHead>
-                    <TableHead className="hidden lg:table-cell">Avance</TableHead>
-                    <TableHead className="text-right">Nota final</TableHead>
-                    <TableHead>Estado</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {filteredKardexRows.map((row) => (
-                    <TableRow key={`${row.nro}-${row.code}-${row.year}-${row.term}`}>
-                      <TableCell className="hidden text-muted-foreground md:table-cell">
-                        {row.nro}
-                      </TableCell>
-                      <TableCell className="hidden sm:table-cell">{row.year}</TableCell>
-                      <TableCell className="hidden sm:table-cell">{row.term}</TableCell>
-                      <TableCell className="hidden font-mono text-xs sm:table-cell">
-                        {row.code}
-                      </TableCell>
-                      <TableCell className="font-medium whitespace-normal">
-                        {row.subject}
-                        <span className="mt-1 block font-mono text-[11px] font-normal text-muted-foreground sm:hidden">
-                          {row.code}
-                        </span>
-                      </TableCell>
-                      <TableCell className="hidden md:table-cell">{row.level}</TableCell>
-                      <TableCell className="hidden md:table-cell">{row.group}</TableCell>
-                      <TableCell className="hidden text-sm text-muted-foreground lg:table-cell">
-                        <KardexProgress row={row} />
-                      </TableCell>
-                      <TableCell className="text-right font-medium">
-                        {row.final ?? '-'}
-                      </TableCell>
-                      <TableCell>
-                        <ResultBadge result={row.result} />
-                      </TableCell>
+              <div className="divide-y divide-border/60 md:hidden">
+                {filteredKardexRows.map((row, index) => (
+                  <KardexMobileRow
+                    key={`${row.code}-${row.year}-${row.term}`}
+                    number={index + 1}
+                    row={row}
+                    onSelect={() => setSelectedKardexRow(row)}
+                  />
+                ))}
+              </div>
+
+              <div className="hidden md:block">
+                <Table>
+                  <TableHeader>
+                    <TableRow className="bg-muted/60 hover:bg-muted/60">
+                      <TableHead className="w-16">Nro</TableHead>
+                      <TableHead className="min-w-72">Materia</TableHead>
+                      <TableHead>Nv</TableHead>
+                      <TableHead>Tp</TableHead>
+                      <TableHead>Md</TableHead>
+                      <TableHead>Gr</TableHead>
+                      <TableHead className="text-right">T1</TableHead>
+                      <TableHead className="text-right">T2</TableHead>
+                      <TableHead className="text-right">EF</TableHead>
+                      <TableHead className="text-right">2da</TableHead>
+                      <TableHead className="text-right">Nota final</TableHead>
+                      <TableHead>Estado</TableHead>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+                  </TableHeader>
+                  <TableBody>
+                    {filteredKardexRows.map((row, index) => (
+                      <TableRow
+                        key={`${row.code}-${row.year}-${row.term}`}
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => setSelectedKardexRow(row)}
+                        onKeyDown={(event) => {
+                          if (event.key === 'Enter' || event.key === ' ') {
+                            event.preventDefault();
+                            setSelectedKardexRow(row);
+                          }
+                        }}
+                        className="cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
+                        aria-label={`Ver detalle de ${row.subject}`}
+                        title="Ver código, gestión y detalle completo"
+                      >
+                        <TableCell className="text-muted-foreground">{index + 1}</TableCell>
+                        <TableCell className="font-medium whitespace-normal">
+                          {row.subject}
+                        </TableCell>
+                        <TableCell>{row.level}</TableCell>
+                        <TableCell>{getKardexField(row, 'type')}</TableCell>
+                        <TableCell>{getKardexField(row, 'mode')}</TableCell>
+                        <TableCell>{row.group}</TableCell>
+                        <TableCell className="text-right font-medium">
+                          {getKardexPartialValue(row, 't1')}
+                        </TableCell>
+                        <TableCell className="text-right font-medium">
+                          {getKardexPartialValue(row, 't2')}
+                        </TableCell>
+                        <TableCell className="text-right font-medium">
+                          {getKardexField(row, 'finalExam')}
+                        </TableCell>
+                        <TableCell className="text-right font-medium">
+                          {getKardexField(row, 'secondInstance')}
+                        </TableCell>
+                        <TableCell className="text-right font-medium">
+                          {row.final ?? '-'}
+                        </TableCell>
+                        <TableCell>
+                          <ResultBadge result={row.result} />
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
 
               {filteredKardexRows.length === 0 && (
                 <div className="px-6 py-10 text-center text-sm text-muted-foreground">
@@ -2307,6 +2470,14 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
           </Card>
         </section>
         )}
+
+        <KardexDetailOverlay
+          row={selectedKardexRow}
+          isDesktop={isKardexDetailDesktop}
+          onOpenChange={(open) => {
+            if (!open) closeKardexDetail();
+          }}
+        />
 
         {page === 'seguridad' && (
         <section id="seguridad" className="scroll-mt-24 space-y-5">
@@ -2749,20 +2920,561 @@ function KardexMetric({ label, value, tone = 'default' }: KardexMetricProps) {
 
 type KardexRow = (typeof kardexRows)[number];
 
-function KardexProgress({ row }: { row: KardexRow }) {
-  if (row.final !== null) return <span>Nota final registrada</span>;
+function KardexDetailOverlay({
+  row,
+  isDesktop,
+  onOpenChange,
+}: {
+  row: KardexRow | null;
+  isDesktop: boolean;
+  onOpenChange: (open: boolean) => void;
+}) {
+  const isOpen = Boolean(row);
 
-  const partials = 'partials' in row ? row.partials as Record<string, number | undefined> : undefined;
-  if (!partials) return <span>Sin nota final</span>;
+  return (
+    <>
+      <Dialog open={isOpen && isDesktop} onOpenChange={onOpenChange}>
+        <DialogContent className="max-h-[calc(100vh-2rem)] overflow-y-auto sm:max-w-3xl">
+          <DialogHeader>
+            <DialogTitle>Detalle de materia</DialogTitle>
+            <DialogDescription>
+              Información académica registrada en el Kardex del estudiante.
+            </DialogDescription>
+          </DialogHeader>
+          {row && <KardexDetailContent row={row} />}
+        </DialogContent>
+      </Dialog>
 
-  const labels = [
-    partials.t1 !== undefined ? `T1 ${partials.t1}` : undefined,
-    partials.t2 !== undefined ? `T2 ${partials.t2}` : undefined,
-    partials.t3 !== undefined ? `T3 ${partials.t3}` : undefined,
-    partials.p1 !== undefined ? `P1 ${partials.p1}` : undefined,
-  ].filter(Boolean);
+      <Drawer open={isOpen && !isDesktop} onOpenChange={onOpenChange} direction="bottom">
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle>Detalle de materia</DrawerTitle>
+            <DrawerDescription>
+              Revisa todos los datos visibles del Kardex.
+            </DrawerDescription>
+          </DrawerHeader>
+          <div className="max-h-[62vh] overflow-y-auto px-4 pb-2">
+            {row && <KardexDetailContent row={row} />}
+          </div>
+          <DrawerFooter>
+            <DrawerClose asChild>
+              <Button type="button" variant="outline">Cerrar</Button>
+            </DrawerClose>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    </>
+  );
+}
 
-  return <span>{labels.length > 0 ? labels.join(' · ') : 'En evaluación'}</span>;
+function KardexMobileRow({
+  number,
+  row,
+  onSelect,
+}: {
+  number: number;
+  row: KardexRow;
+  onSelect: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      className="flex w-full flex-col gap-3 px-5 py-4 text-left transition-colors hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="font-medium leading-tight">{row.subject}</p>
+          <p className="mt-1 text-[11px] text-muted-foreground">
+            Nro {number} · Nv {row.level} · {getKardexField(row, 'mode')} · Grupo {row.group}
+          </p>
+        </div>
+        <ResultBadge result={row.result} />
+      </div>
+      <div className="grid grid-cols-5 gap-2 text-xs text-muted-foreground">
+        <span>
+          <strong className="block font-medium text-foreground">
+            {getKardexPartialValue(row, 't1')}
+          </strong>
+          T1
+        </span>
+        <span>
+          <strong className="block font-medium text-foreground">
+            {getKardexPartialValue(row, 't2')}
+          </strong>
+          T2
+        </span>
+        <span>
+          <strong className="block font-medium text-foreground">
+            {getKardexField(row, 'finalExam')}
+          </strong>
+          EF
+        </span>
+        <span>
+          <strong className="block font-medium text-foreground">
+            {getKardexField(row, 'secondInstance')}
+          </strong>
+          2da
+        </span>
+        <span>
+          <strong className="block font-medium text-foreground">{row.final ?? '-'}</strong>
+          Final
+        </span>
+      </div>
+    </button>
+  );
+}
+
+function KardexDetailContent({ row }: { row: KardexRow }) {
+  const detailItems: Array<{
+    label: string;
+    value: string | number;
+    monospace?: boolean;
+  }> = [
+    { label: 'Año', value: row.year },
+    { label: 'Gestión', value: row.term },
+    { label: 'Tipo', value: getKardexField(row, 'type') },
+    { label: 'Modalidad', value: getKardexField(row, 'mode') },
+    { label: 'Grupo', value: row.group },
+    { label: 'Grupo práctico', value: getKardexField(row, 'practicalGroup') },
+    { label: 'Convalidación', value: getKardexField(row, 'validation') },
+  ].filter((item) => shouldShowKardexValue(item.value));
+  const partialEntries = getKardexPartialEntries(row);
+  const practiceEntries = getKardexPracticeEntries(row);
+  const closingEntries = [
+    ['EF', getKardexField(row, 'finalExam')] as const,
+    ['2da', getKardexField(row, 'secondInstance')] as const,
+  ].filter(([, value]) => shouldShowKardexValue(value));
+
+  return (
+    <div className="flex flex-col gap-3">
+      <div className="grid gap-1.5 md:grid-cols-[minmax(0,1fr)_112px_112px] lg:grid-cols-[minmax(0,1.4fr)_112px_112px]">
+        <div className="rounded-md border border-border/50 bg-muted/20 px-3 py-3 md:py-2.5">
+          <div className="flex min-h-10 items-center justify-between gap-3">
+            <div className="min-w-0 self-center">
+              <h3 className="text-sm font-medium leading-tight sm:text-base">{row.subject}</h3>
+            </div>
+            <div className="flex shrink-0 items-center self-center">
+              <ResultBadge result={row.result} />
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-2 md:contents">
+          <KardexHeaderCard label="Código" value={row.code} monospace />
+          <KardexHeaderCard label="Nivel" value={row.level} />
+        </div>
+      </div>
+
+      <dl className="grid grid-cols-3 gap-2 md:grid-cols-4 lg:grid-cols-5">
+        {detailItems.map((item) => (
+          <KardexDetailItem
+            key={item.label}
+            label={item.label}
+            value={item.value}
+            monospace={item.monospace}
+            compact
+          />
+        ))}
+      </dl>
+
+      <div
+        className={`grid gap-3 md:items-stretch ${
+          closingEntries.length > 0
+            ? 'md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_220px]'
+            : 'md:grid-cols-[minmax(0,1fr)_220px]'
+        }`}
+      >
+        {partialEntries.length > 0 && (
+          <div className="rounded-md border border-border/70 p-3 text-center">
+            <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+              Parciales registrados
+            </p>
+            <div className="mt-2 flex flex-wrap justify-center gap-2">
+              {partialEntries.map(([label, value]) => (
+                <KardexScoreBox key={label} label={label.toUpperCase()} value={value} />
+              ))}
+            </div>
+
+            {practiceEntries.length > 0 && (
+              <div className="mt-3 border-t border-border/70 pt-3 text-center">
+                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                  Evaluaciones prácticas
+                </p>
+                <div className="mt-2 flex flex-wrap justify-center gap-2">
+                  {practiceEntries.map(([label, value]) => (
+                    <KardexScoreBox key={label} label={label.toUpperCase()} value={value} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {closingEntries.length > 0 && (
+          <div className="rounded-md border border-border/70 p-3 text-center">
+            <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+              Evaluaciones de cierre
+            </p>
+            <div className="mt-2 flex flex-wrap justify-center gap-2">
+              {closingEntries.map(([label, value]) => (
+                <KardexScoreBox key={label} label={label} value={value} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className="flex h-full flex-col items-center justify-center rounded-md border border-border/70 bg-muted/30 p-3 text-center">
+          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            Nota final
+          </p>
+          <p className="mt-2 text-4xl font-semibold tracking-tight">{row.final ?? '-'}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function KardexScoreBox({ label, value }: { label: string; value: string | number }) {
+  return (
+    <div className="flex w-[64px] flex-col items-center justify-center rounded-md bg-muted/50 px-2 py-1.5 text-center">
+      <p className="w-full text-center text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
+        {label}
+      </p>
+      <p className="mt-0.5 w-full text-center text-sm font-semibold leading-none text-foreground">
+        {value}
+      </p>
+    </div>
+  );
+}
+
+function KardexHeaderCard({
+  label,
+  value,
+  monospace = false,
+}: {
+  label: string;
+  value: string | number;
+  monospace?: boolean;
+}) {
+  return (
+    <div className="flex h-full flex-col items-center justify-center rounded-md border border-border/50 bg-muted/20 px-2.5 py-1.5 text-center">
+      <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
+        {label}
+      </p>
+      <p className={`mt-1 text-sm font-semibold ${monospace ? 'font-mono' : ''}`}>{value}</p>
+    </div>
+  );
+}
+
+function KardexDetailItem({
+  label,
+  value,
+  monospace = false,
+  compact = false,
+}: {
+  label: string;
+  value: string | number;
+  monospace?: boolean;
+  compact?: boolean;
+}) {
+  return (
+    <div className={`rounded-md border border-border/70 ${compact ? 'px-2 py-1.5' : 'px-2.5 py-2'}`}>
+      <dt className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
+        {label}
+      </dt>
+      <dd className={`mt-0.5 ${compact ? 'text-[15px]' : 'text-sm'} font-medium ${monospace ? 'font-mono' : ''}`}>
+        {value}
+      </dd>
+    </div>
+  );
+}
+
+function getKardexField(row: KardexRow, key: string) {
+  const value = key in row ? row[key as keyof KardexRow] : undefined;
+
+  return typeof value === 'string' || typeof value === 'number' ? value : '-';
+}
+
+function getKardexPartialValue(row: KardexRow, key: string) {
+  const partials = 'partials' in row ? row.partials as Record<string, string | number | undefined> : undefined;
+
+  return partials?.[key] ?? '-';
+}
+
+function getKardexPartialEntries(row: KardexRow) {
+  const partials = 'partials' in row ? row.partials as Record<string, string | number | undefined> : undefined;
+  const entries = ['t1', 't2']
+    .map((key) => [key, partials?.[key] ?? '-'] as const)
+    .filter(([, value]) => shouldShowKardexValue(value));
+
+  return entries;
+}
+
+function getKardexPracticeEntries(row: KardexRow) {
+  const partials = 'partials' in row ? row.partials as Record<string, string | number | undefined> : undefined;
+  const entries = ['p1', 'p2']
+    .map((key) => [key, partials?.[key] ?? '-'] as const)
+    .filter(([, value]) => shouldShowKardexValue(value));
+
+  return entries;
+}
+
+function shouldShowKardexValue(value: string | number) {
+  return value !== '-';
+}
+
+function getKardexModeLabel(mode: string | number) {
+  if (mode === 'N') return 'N - Normal';
+  if (mode === 'Me') return 'Me - Mesa';
+
+  return mode;
+}
+
+function getKardexResultLabel(result: string) {
+  if (result === 'APR') return 'Aprobado';
+  if (result === 'REP') return 'Reprobado';
+  if (result === 'ABA') return 'Abandonado';
+
+  return 'En curso';
+}
+
+function buildKardexPrintDocument() {
+  const printedAt = new Intl.DateTimeFormat('es-BO', {
+    dateStyle: 'short',
+    timeStyle: 'short',
+  }).format(new Date());
+
+  const rowsHtml = kardexRows
+    .map((row, index) => {
+      const cells = [
+        index + 1,
+        row.year,
+        row.term,
+        row.code,
+        row.subject,
+        row.level,
+        getKardexField(row, 'type'),
+        getKardexField(row, 'mode'),
+        getKardexField(row, 'validation'),
+        row.group,
+        getKardexField(row, 'practicalGroup'),
+        getKardexPartialValue(row, 't1'),
+        getKardexPartialValue(row, 't2'),
+        getKardexPartialValue(row, 'p1'),
+        getKardexPartialValue(row, 'p2'),
+        getKardexField(row, 'finalExam'),
+        getKardexField(row, 'secondInstance'),
+        row.final ?? '-',
+        row.result,
+      ];
+
+      return `<tr>${cells
+        .map((cell, cellIndex) => {
+          const alignCenter = cellIndex !== 4;
+          const className = alignCenter ? ' class="center"' : '';
+          return `<td${className}>${escapeHtml(String(cell))}</td>`;
+        })
+        .join('')}</tr>`;
+    })
+    .join('');
+
+  return `<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kardex ${escapeHtml(student.fullName)}</title>
+    <style>
+      :root { color-scheme: light; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #111827;
+        background: #ffffff;
+      }
+      .page {
+        padding: 10px 12px 14px;
+      }
+      .header {
+        display: block;
+        margin-bottom: 8px;
+      }
+      .title {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.2;
+      }
+      .subtitle,
+      .meta,
+      .note {
+        margin: 2px 0 0;
+        font-size: 10px;
+        line-height: 1.3;
+        color: #4b5563;
+      }
+      .warning {
+        margin: 0 0 6px;
+        font-size: 10px;
+        line-height: 1.35;
+        font-weight: 600;
+      }
+      .summary {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 4px;
+        margin: 8px 0;
+      }
+      .summary-card {
+        border: 1px solid #d1d5db;
+        padding: 5px 6px;
+        text-align: center;
+      }
+      .summary-card strong {
+        display: block;
+        font-size: 12px;
+        margin-bottom: 2px;
+      }
+      .summary-card span {
+        font-size: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #6b7280;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+        font-size: 8px;
+      }
+      th, td {
+        border: 1px solid #cbd5e1;
+        padding: 3px 4px;
+        vertical-align: top;
+        text-align: left;
+        word-break: break-word;
+      }
+      th {
+        background: #f3f4f6;
+        font-size: 7px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        text-align: center;
+      }
+      td.center {
+        text-align: center;
+      }
+      .mono {
+        font-family: "Courier New", monospace;
+      }
+      .footer {
+        margin-top: 6px;
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .footer .note {
+        font-size: 9px;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 8mm;
+      }
+      @media print {
+        .page { padding: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="header">
+        <p class="warning">${escapeHtml(student.fullName)} (${escapeHtml(student.sisCode)}) · La información que se presenta a continuación es privada. La presentación en forma impresa, electrónica o por otro medio no constituye documento oficial de la Universidad Mayor de San Simón.</p>
+        <h1 class="title">Kardex Académico</h1>
+        <p class="subtitle">Estudiante: ${escapeHtml(student.fullName)}</p>
+        <p class="meta">Plan de Estudios: ${escapeHtml(activePlan.name)} (${escapeHtml(activePlan.code)})</p>
+        <p class="meta">Gestión actual: ${escapeHtml(student.period)} · Emitido: ${escapeHtml(printedAt)}</p>
+      </header>
+
+      <section class="summary">
+        <div class="summary-card"><strong>${escapeHtml(String(kardexSummary.taken))}</strong><span>Cursadas</span></div>
+        <div class="summary-card"><strong>${escapeHtml(String(kardexSummary.approved))}</strong><span>Aprobadas</span></div>
+        <div class="summary-card"><strong>${escapeHtml(String(kardexSummary.failed))}</strong><span>Reprobadas</span></div>
+        <div class="summary-card"><strong>${escapeHtml(String(kardexSummary.abandoned))}</strong><span>Abandonadas</span></div>
+        <div class="summary-card"><strong>${escapeHtml(String(kardexSummary.generalAverage))}</strong><span>Prom. general</span></div>
+        <div class="summary-card"><strong>${escapeHtml(String(kardexSummary.approvedAverage))}</strong><span>Prom. aprob.</span></div>
+      </section>
+
+      <table>
+        <colgroup>
+          <col style="width: 4%;" />
+          <col style="width: 5%;" />
+          <col style="width: 4%;" />
+          <col style="width: 7%;" />
+          <col style="width: 13%;" />
+          <col style="width: 3.5%;" />
+          <col style="width: 5%;" />
+          <col style="width: 4.5%;" />
+          <col style="width: 3.5%;" />
+          <col style="width: 4%;" />
+          <col style="width: 5%;" />
+          <col style="width: 4.5%;" />
+          <col style="width: 4.5%;" />
+          <col style="width: 4.5%;" />
+          <col style="width: 4.5%;" />
+          <col style="width: 4.5%;" />
+          <col style="width: 4.5%;" />
+          <col style="width: 5%;" />
+          <col style="width: 4.5%;" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Nro</th>
+            <th>Año</th>
+            <th>Gst</th>
+            <th>Código</th>
+            <th>Materia</th>
+            <th>Nv</th>
+            <th>Tp</th>
+            <th>Md</th>
+            <th>Cv</th>
+            <th>Gr</th>
+            <th>GrPr</th>
+            <th>T1</th>
+            <th>T2</th>
+            <th>P1</th>
+            <th>P2</th>
+            <th>EF</th>
+            <th>2da</th>
+            <th>NFin</th>
+            <th>RFin</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rowsHtml}
+        </tbody>
+      </table>
+
+      <footer class="footer">
+        <p class="note">UMSS · DTIC · webSISS</p>
+        <p class="note">Usa la opción Guardar como PDF del navegador si necesitas descargarlo.</p>
+      </footer>
+    </main>
+    <script>
+      window.addEventListener('load', () => {
+        window.print();
+      });
+    </script>
+  </body>
+</html>`;
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
 }
 
 function ResultBadge({ result }: { result: string }) {
