@@ -198,7 +198,7 @@ export function LoginPanel() {
                   role="tab"
                   aria-selected={active}
                   onClick={() => setRole(r)}
-                  className={`flex-1 px-3 py-2 text-xs font-medium uppercase tracking-wider rounded-md transition-all ${
+                  className={`flex-1 px-3 py-2 text-xs font-medium uppercase tracking-wider rounded-md transition-[color,background-color,box-shadow] ${
                     active
                       ? `text-foreground bg-muted/50 ${activeTabShadow[r]}`
                       : 'text-muted-foreground hover:text-foreground hover:bg-muted/30'

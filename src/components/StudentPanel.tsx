@@ -442,7 +442,22 @@ const enrollmentLimit = 6;
 type EnrollmentMode = 'Normal' | 'Mesa';
 type SelectedEnrollment = { subjectId: string; mode: EnrollmentMode; group: string };
 
-const enrollmentSubjects = [
+interface EnrollmentSubjectOption {
+  id: string;
+  code: string;
+  name: string;
+  level: string;
+  availableModes: EnrollmentMode[];
+  group: string;
+  availableGroups: string[];
+  fullGroups?: string[];
+  teacher: string;
+  schedule: string;
+  room: string;
+  status: 'available' | 'exam';
+}
+
+const enrollmentSubjects: EnrollmentSubjectOption[] = [
   {
     id: '2010204',
     code: '2010204',
@@ -2365,7 +2380,7 @@ interface ScheduleSessionCardProps {
   featured?: boolean;
 }
 
-type EnrollmentSubject = (typeof enrollmentSubjects)[number];
+type EnrollmentSubject = EnrollmentSubjectOption;
 type SelectedEnrollmentSubject = EnrollmentSubject & {
   selectedMode: EnrollmentMode;
   selectedGroup: string;
@@ -2384,7 +2399,7 @@ function SubjectOfferRow({ subject, disabled, onAdd }: SubjectOfferRowProps) {
   const [selectedGroup, setSelectedGroup] = useState(subject.group);
   const hasModeChoice = subject.availableModes.length > 1;
   const hasGroupChoice = subject.availableGroups.length > 1;
-  const fullGroups = 'fullGroups' in subject ? subject.fullGroups : [];
+  const fullGroups = subject.fullGroups ?? [];
   const selectedGroupIsFull = fullGroups.includes(selectedGroup);
 
   return (
@@ -2655,7 +2670,7 @@ type KardexRow = (typeof kardexRows)[number];
 function KardexProgress({ row }: { row: KardexRow }) {
   if (row.final !== null) return <span>Nota final registrada</span>;
 
-  const partials = 'partials' in row ? row.partials : undefined;
+  const partials = 'partials' in row ? row.partials as Record<string, number | undefined> : undefined;
   if (!partials) return <span>Sin nota final</span>;
 
   const labels = [

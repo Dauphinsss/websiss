@@ -71,7 +71,7 @@ export function Postulantes() {
           {/* Pasos */}
           <ol className="lg:col-span-7 space-y-px bg-border/60 border border-border/60 rounded-md overflow-hidden">
             {pasos.map((paso) => (
-              <li key={paso.n} className="bg-background">
+              <li key={paso.n} id={paso.href.slice(1)} className="bg-background scroll-mt-24">
                 <a
                   href={paso.href}
                   className="group flex items-start gap-6 p-6 lg:p-7 hover:bg-muted/30 transition-colors"
@@ -83,7 +83,7 @@ export function Postulantes() {
                     <h3 className="font-medium text-foreground tracking-tight">{paso.titulo}</h3>
                     <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{paso.desc}</p>
                   </div>
-                  <span className="shrink-0 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 transition-all">
+                  <span className="shrink-0 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 transition-transform">
                     →
                   </span>
                 </a>

@@ -15,8 +15,8 @@ export function Footer() {
         </div>
 
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] text-muted-foreground">
-          <a href="#" className="hover:text-foreground transition-colors">Soporte técnico</a>
-          <a href="#" className="hover:text-foreground transition-colors">Mesa de ayuda</a>
+          <span>Soporte técnico</span>
+          <span>Mesa de ayuda</span>
           <a href="https://www.umss.edu.bo" className="hover:text-foreground transition-colors">www.umss.edu.bo</a>
         </div>
 

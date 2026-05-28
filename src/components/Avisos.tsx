@@ -62,7 +62,7 @@ export function Avisos() {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border/60 border border-border/60 rounded-md overflow-hidden">
+        <div id="todos-avisos" className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border/60 border border-border/60 rounded-md overflow-hidden scroll-mt-24">
           {avisos.map((aviso) => (
             <article
               key={aviso.titulo}
@@ -83,7 +83,7 @@ export function Avisos() {
               <p className="text-sm text-muted-foreground leading-relaxed flex-1">{aviso.bajada}</p>
 
               <a
-                href="#"
+                href="#todos-avisos"
                 className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground group-hover:text-primary transition-colors w-fit"
               >
                 Leer comunicado
