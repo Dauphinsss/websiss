@@ -754,6 +754,36 @@ function storeSelectedEnrollments(enrollments: SelectedEnrollment[]) {
   window.localStorage.setItem('websiss-selected-enrollments', JSON.stringify(enrollments));
 }
 
+const enrollmentReturnStorageKey = 'websiss-return-to-inscripcion';
+const enrollmentReturnToastStorageKey = 'websiss-return-to-inscripcion-toast';
+
+type EnrollmentReturnToast = 'tuition-paid' | 'codes-validated';
+
+function markReturnToEnrollment() {
+  window.sessionStorage.setItem(enrollmentReturnStorageKey, 'true');
+}
+
+function shouldReturnToEnrollment() {
+  return window.sessionStorage.getItem(enrollmentReturnStorageKey) === 'true';
+}
+
+function clearReturnToEnrollment() {
+  window.sessionStorage.removeItem(enrollmentReturnStorageKey);
+}
+
+function storeEnrollmentReturnToast(toastType: EnrollmentReturnToast) {
+  window.sessionStorage.setItem(enrollmentReturnToastStorageKey, toastType);
+}
+
+function consumeEnrollmentReturnToast() {
+  const toastType = window.sessionStorage.getItem(enrollmentReturnToastStorageKey);
+
+  if (toastType !== 'tuition-paid' && toastType !== 'codes-validated') return null;
+
+  window.sessionStorage.removeItem(enrollmentReturnToastStorageKey);
+  return toastType;
+}
+
 function getInitials(name: string) {
   return name
     .split(' ')
@@ -808,6 +838,17 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
 
   const announce = (message: string) => {
     setLiveMessage(message);
+  };
+
+  const redirectToEnrollmentIfNeeded = (toastType?: EnrollmentReturnToast) => {
+    if (!shouldReturnToEnrollment()) return false;
+
+    if (toastType) {
+      storeEnrollmentReturnToast(toastType);
+    }
+    clearReturnToEnrollment();
+    window.location.href = '/panel/inscripcion';
+    return true;
   };
 
   const toggleTheme = () => {
@@ -910,6 +951,8 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
     setCodeError('');
     window.localStorage.setItem('websiss-code-validated', 'true');
     setIsCodeValidated(true);
+    if (redirectToEnrollmentIfNeeded('codes-validated')) return;
+
     toast.success('Cuenta habilitada', {
       description: 'Ya puedes elegir materias y grupos durante el periodo de inscripción.',
     });
@@ -919,6 +962,8 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
   const payTuition = () => {
     window.localStorage.setItem('websiss-tuition-paid', 'true');
     setIsTuitionPaid(true);
+    if (redirectToEnrollmentIfNeeded('tuition-paid')) return;
+
     toast.success('Matrícula pagada', {
       description: `Pago registrado por ${tuitionStatus.method}.`,
     });
@@ -941,6 +986,43 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
     });
     announce('Inscripción finalizada. Revisa el estado de tus materias.');
   }, [page]);
+
+  useEffect(() => {
+    if (page !== 'inscripcion') return;
+
+    const toastType = consumeEnrollmentReturnToast();
+
+    if (toastType === 'tuition-paid') {
+      toast.success('Matrícula pagada', {
+        description: `Pago registrado por ${tuitionStatus.method}.`,
+      });
+      announce('Matrícula pagada. Puedes continuar el flujo de inscripción.');
+      return;
+    }
+
+    if (toastType === 'codes-validated') {
+      toast.success('Cuenta habilitada', {
+        description: 'Ya puedes elegir materias y grupos durante el periodo de inscripción.',
+      });
+      announce('Cuenta habilitada para inscripción.');
+    }
+  }, [page]);
+
+  useEffect(() => {
+    if (page === 'inscripcion') {
+      clearReturnToEnrollment();
+      return;
+    }
+
+    if (page === 'codigo' && isCodeValidated) {
+      redirectToEnrollmentIfNeeded();
+      return;
+    }
+
+    if (page === 'matricula' && isTuitionPaid) {
+      redirectToEnrollmentIfNeeded();
+    }
+  }, [isCodeValidated, isTuitionPaid, page]);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -1339,7 +1421,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                       </div>
                     </div>
                     <Button asChild variant="outline" className="bg-background">
-                      <a href="/panel/matricula">
+                      <a href="/panel/matricula" onClick={markReturnToEnrollment}>
                         <CreditCard aria-hidden="true" />
                         <span>Pagar matrícula</span>
                       </a>
@@ -1364,7 +1446,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                       </div>
                     </div>
                     <Button asChild variant="outline" className="bg-background">
-                      <a href="/panel/codigo">
+                      <a href="/panel/codigo" onClick={markReturnToEnrollment}>
                         <LockKeyhole aria-hidden="true" />
                         <span>Validar códigos</span>
                       </a>
