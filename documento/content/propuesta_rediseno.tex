@@ -45,33 +45,66 @@ El sistema rediseñado se organiza a partir de una navegacion corta y reconocibl
 \begin{center}
 \resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
-  node distance=8mm and 8mm,
-  box/.style={draw, rounded corners=2pt, align=center, minimum width=3.5cm, minimum height=0.9cm}
+  x=1cm, y=1cm,
+  box/.style={draw, rounded corners=2pt, align=center, text width=3.2cm, minimum height=1cm, inner sep=3pt, font=\small},
+  ruta/.style={},
+  prereq/.style={-Latex, densely dashed, color=black!55},
+  flow/.style={-Latex}
 ]
-  \node[box] (login) {\textbf{Inicio de sesion}};
-  \node[box, below=of login] (inicio) {\textbf{Inicio / Panel del estudiante}};
-  \node[box, below left=of inicio] (codigo) {Validacion de codigos};
-  \node[box, below=of inicio] (kardex) {Kardex};
-  \node[box, below right=of inicio] (horario) {Horario de clases};
-  \node[box, left=of codigo] (matricula) {Matricula};
-  \node[box, below=of codigo] (inscripcion) {Inscripcion a materias};
-  \node[box, below=of inscripcion] (estado) {Estado de inscripcion};
-  \node[box, right=of horario] (seguridad) {Perfil y seguridad};
+  % Acceso (centrado en x=0)
+  \node[box] (login)  at (0, 9)  {\textbf{Inicio de sesion}\\[1pt]{\scriptsize\ttfamily\color{black!55} /}};
+  \node[box] (inicio) at (0, 6.6) {\textbf{Panel del estudiante}\\[1pt]{\scriptsize\ttfamily\color{black!55} /panel}};
 
-  \draw[-Latex] (login) -- (inicio);
-  \draw[-Latex] (inicio) -- (codigo);
-  \draw[-Latex] (inicio) -- (matricula);
-  \draw[-Latex] (inicio) -- (kardex);
-  \draw[-Latex] (inicio) -- (horario);
-  \draw[-Latex] (inicio) -- (seguridad);
-  \draw[-Latex] (matricula) -- (codigo);
-  \draw[-Latex] (codigo) -- (inscripcion);
-  \draw[-Latex] (inscripcion) -- (estado);
+  % Fila intermedia: 4 accesos del panel, separados 4cm en x
+  \node[box] (matricula) at (-6, 3.6) {Matricula\\[1pt]{\scriptsize\ttfamily\color{black!55} /panel/matricula}};
+  \node[box] (codigo)    at (-2, 3.6) {Codigo de inscripcion\\[1pt]{\scriptsize\ttfamily\color{black!55} /panel/codigo}};
+  \node[box] (kardex)    at ( 2, 3.6) {Kardex\\[1pt]{\scriptsize\ttfamily\color{black!55} /panel/kardex}};
+  \node[box] (horario)   at ( 6, 3.6) {Horario de clases\\[1pt]{\scriptsize\ttfamily\color{black!55} /panel/horario}};
+
+  % Flujo central de inscripcion (centrado)
+  \node[box] (inscripcion) at (0, 1)   {\textbf{Inscripcion a materias}\\[1pt]{\scriptsize\ttfamily\color{black!55} /panel/inscripcion}};
+  \node[box] (estado)      at (0, -1.6) {Estado de inscripcion\\[1pt]{\scriptsize\ttfamily\color{black!55} /panel/estado}};
+
+  % Perfil (solo desde menu de usuario), a la derecha del panel
+  \node[box] (seguridad) at (6, 6.6) {Perfil y seguridad\\[1pt]{\scriptsize\ttfamily\color{black!55} /panel/seguridad}};
+
+  % Acceso
+  \draw[flow] (login) -- (inicio);
+
+  % El panel es punto de entrada a todas las secciones
+  \draw[flow] (inicio) -- (matricula);
+  \draw[flow] (inicio) -- (codigo);
+  \draw[flow] (inicio) -- (kardex);
+  \draw[flow] (inicio) -- (horario);
+  \draw[flow] (inicio) -- (inscripcion);
+  % El panel tambien da acceso directo al estado de inscripcion:
+  % se rutea por un canal vertical muy a la izquierda (x=-9.2), por fuera de todas las cajas
+  \draw[flow] (inicio.west) -- (-9.2, 6.6) -- (-9.2, -1.6) -- (estado.west);
+  % Perfil y seguridad se abre desde el menu de usuario, no como tarjeta del panel
+  \draw[flow] (inicio) to[bend left=12] node[midway, above, font=\scriptsize\itshape] {menu de usuario} (seguridad);
+
+  % Matricula y codigo son prerequisitos paralelos de la inscripcion (y retornan a ella)
+  \draw[prereq] (matricula) -- (inscripcion);
+  \draw[prereq] (codigo) -- (inscripcion);
+
+  % La inscripcion deriva al estado: bajada recta por el centro.
+  \draw[flow] (inscripcion) -- (estado);
+  % El estado vuelve a inscripcion (Modificar): canal vertical propio a la derecha (x=2.6).
+  \draw[flow] (estado.east) -- (2.6, -1.6) -- (2.6, 1)
+        node[midway, right=1pt, font=\scriptsize\itshape] {modificar} -- (inscripcion.east);
 \end{tikzpicture}
 }
 \end{center}
 
-La jerarquia evita menus ambiguos y reduce el backtracking. El estudiante no necesita recordar rutas escondidas: el panel principal funciona como punto de entrada hacia las tareas clave.
+\begin{center}
+\footnotesize
+\begin{tabular}{ll}
+\tikz{\draw[-Latex] (0,0) -- (0.7,0);} & Navegacion directa desde el panel \\
+\tikz{\draw[-Latex, densely dashed, color=black!55] (0,0) -- (0.7,0);} & Prerequisito que habilita la inscripcion y retorna a ella \\
+\end{tabular}
+\end{center}
+
+La jerarquia evita menus ambiguos y reduce el backtracking. El panel del estudiante (\texttt{/panel}) funciona como punto de entrada unico hacia todas las tareas, sin obligar al estudiante a recordar rutas escondidas. El pago de matricula (\texttt{/panel/matricula}) y la validacion de codigos (\texttt{/panel/codigo}) operan como dos prerequisitos independientes de la inscripcion: el modulo de inscripcion detecta cual falta, enlaza directamente a la pantalla correspondiente y, al completarse, devuelve al estudiante al flujo de inscripcion sin volver a pedir los datos ya validados. El estado de inscripcion (\texttt{/panel/estado}) tambien es accesible directamente desde el panel: una vez seleccionadas las materias, la inscripcion deriva a esta pantalla como confirmacion, y desde ella el estudiante puede volver al modulo de inscripcion mediante la opcion \textit{Modificar inscripcion} para ajustar materias, grupos o modalidad. La seccion de perfil y seguridad (\texttt{/panel/seguridad}) no aparece como tarjeta del panel sino que se abre desde el menu de usuario, junto con los datos personales y los enlaces academicos externos.
 
 \subsection{Flujos de navegacion}
 
@@ -264,7 +297,8 @@ Los wireframes de baja fidelidad definen la distribucion espacial de bloques, la
 \wfboxleft{Materia \hfill Grupo \hfill Modalidad}\\[5pt]
 \wfboxleft{Horario \hfill Docente}\\[14pt]
 \wfboxleft{Materia \hfill Grupo \hfill Modalidad}\\[5pt]
-\wfboxleft{Horario \hfill Docente}%
+\wfboxleft{Horario \hfill Docente}\\[16pt]
+\wfprimary[0.6\linewidth]{+ Modificar inscripcion}%
 \end{minipage}\hfill
 \begin{minipage}[t]{0.32\linewidth}\centering
 \wfsection{Resumen}
@@ -284,21 +318,29 @@ Los wireframes de baja fidelidad definen la distribucion espacial de bloques, la
 \wfframe{18cm}{%
 \centering
 \wfhead{Kardex \hfill Imprimir \quad | \quad Descargar}
-\begin{minipage}{0.22\linewidth}\centering
-  \setlength{\fboxsep}{10pt}%
-  \fcolorbox{black!30}{black!4}{\parbox[c][1.1cm][c]{0.94\linewidth}{\centering\footnotesize\color{black!75} Cursadas\\[3pt]\bfseries\large\color{black!85} [n]}}%
+\begin{minipage}{0.155\linewidth}\centering
+  \setlength{\fboxsep}{8pt}%
+  \fcolorbox{black!30}{black!4}{\parbox[c][1.1cm][c]{0.92\linewidth}{\centering\scriptsize\color{black!75} Cursadas\\[3pt]\bfseries\large\color{black!85} [n]}}%
 \end{minipage}\hfill
-\begin{minipage}{0.22\linewidth}\centering
-  \setlength{\fboxsep}{10pt}%
-  \fcolorbox{black!30}{black!4}{\parbox[c][1.1cm][c]{0.94\linewidth}{\centering\footnotesize\color{black!75} Aprobadas\\[3pt]\bfseries\large\color{black!85} [n]}}%
+\begin{minipage}{0.155\linewidth}\centering
+  \setlength{\fboxsep}{8pt}%
+  \fcolorbox{black!30}{black!4}{\parbox[c][1.1cm][c]{0.92\linewidth}{\centering\scriptsize\color{black!75} Aprobadas\\[3pt]\bfseries\large\color{black!85} [n]}}%
 \end{minipage}\hfill
-\begin{minipage}{0.22\linewidth}\centering
-  \setlength{\fboxsep}{10pt}%
-  \fcolorbox{black!30}{black!4}{\parbox[c][1.1cm][c]{0.94\linewidth}{\centering\footnotesize\color{black!75} Reprobadas\\[3pt]\bfseries\large\color{black!85} [n]}}%
+\begin{minipage}{0.155\linewidth}\centering
+  \setlength{\fboxsep}{8pt}%
+  \fcolorbox{black!30}{black!4}{\parbox[c][1.1cm][c]{0.92\linewidth}{\centering\scriptsize\color{black!75} Reprobadas\\[3pt]\bfseries\large\color{black!85} [n]}}%
 \end{minipage}\hfill
-\begin{minipage}{0.22\linewidth}\centering
-  \setlength{\fboxsep}{10pt}%
-  \fcolorbox{black!30}{black!4}{\parbox[c][1.1cm][c]{0.94\linewidth}{\centering\footnotesize\color{black!75} Promedio\\[3pt]\bfseries\large\color{black!85} [n]}}%
+\begin{minipage}{0.155\linewidth}\centering
+  \setlength{\fboxsep}{8pt}%
+  \fcolorbox{black!30}{black!4}{\parbox[c][1.1cm][c]{0.92\linewidth}{\centering\scriptsize\color{black!75} Abandonadas\\[3pt]\bfseries\large\color{black!85} [n]}}%
+\end{minipage}\hfill
+\begin{minipage}{0.155\linewidth}\centering
+  \setlength{\fboxsep}{8pt}%
+  \fcolorbox{black!30}{black!4}{\parbox[c][1.1cm][c]{0.92\linewidth}{\centering\scriptsize\color{black!75} Prom. general\\[3pt]\bfseries\large\color{black!85} [n]}}%
+\end{minipage}\hfill
+\begin{minipage}{0.155\linewidth}\centering
+  \setlength{\fboxsep}{8pt}%
+  \fcolorbox{black!30}{black!4}{\parbox[c][1.1cm][c]{0.92\linewidth}{\centering\scriptsize\color{black!75} Prom. aprob.\\[3pt]\bfseries\large\color{black!85} [n]}}%
 \end{minipage}\\[18pt]
 \setlength{\fboxsep}{8pt}%
 \colorbox{black!75}{\parbox[c][0.5cm][c]{0.95\linewidth}{\centering\scriptsize\color{white}\bfseries Codigo \quad Materia \quad Gestion \quad Grupo \quad Avance \quad Nota \quad Estado}}\\[6pt]
@@ -312,29 +354,51 @@ Los wireframes de baja fidelidad definen la distribucion espacial de bloques, la
 \label{fig:wf-kardex}
 \end{figure}
 
-\subsubsection*{Wireframe 5: perfil y seguridad}
+\subsubsection*{Wireframe 5: menu de usuario y seguridad}
+
+El perfil no es una pantalla independiente: los datos personales y los enlaces academicos se consultan desde un menu de usuario desplegable, accesible desde la barra superior de cualquier pantalla. La unica accion que abre una vista propia es el cambio de contraseña (\texttt{/panel/seguridad}). Por eso este wireframe se presenta en dos partes.
 
 \begin{figure}[H]
 \centering
-\resizebox{0.72\textwidth}{!}{%
-\wfframe{14cm}{%
+\begin{minipage}[t]{0.46\linewidth}
 \centering
-\wfhead{Perfil y seguridad}
-\wfsection{Datos generales}
-\wfbox{Nombre completo}\\[10pt]
-\begin{minipage}{0.46\linewidth}\centering\wfbox[0.94\linewidth]{Codigo SIS}\end{minipage}\hfill
-\begin{minipage}{0.46\linewidth}\centering\wfbox[0.94\linewidth]{Correo}\end{minipage}\\[10pt]
-\begin{minipage}{0.46\linewidth}\centering\wfbox[0.94\linewidth]{CI}\end{minipage}\hfill
-\begin{minipage}{0.46\linewidth}\centering\wfbox[0.94\linewidth]{Facultad}\end{minipage}\\[16pt]
-\wfsection{Acciones de seguridad}
-\begin{minipage}{0.46\linewidth}\centering\wfprimary[0.94\linewidth]{Cambiar contrase\~na}\end{minipage}\hfill
-\begin{minipage}{0.46\linewidth}\centering\wfbox[0.94\linewidth]{Cerrar sesion}\end{minipage}\\[16pt]
+\resizebox{\linewidth}{!}{%
+\wfframe{9cm}{%
+\centering
+\wfhead{\hfill [Foto] [Estudiante] $\vee$}
+{\scriptsize\itshape\color{black!55} Menu desplegable de la barra superior}\\[10pt]
+\wfsection{Datos personales}
+\wfboxleft{SIS \hfill [---]}\\[6pt]
+\wfboxleft{Correo \hfill [---]}\\[6pt]
+\wfboxleft{CI \hfill [---]}\\[6pt]
+\wfboxleft{Facultad \hfill [---]}\\[12pt]
+\wfsection{Seguridad}
+\wfbox[0.94\linewidth]{Cambiar contrase\~na $\rightarrow$}\\[12pt]
 \wfsection{Enlaces academicos}
-\begin{minipage}{0.30\linewidth}\centering\wfbox[0.94\linewidth]{Aula virtual}\end{minipage}\hfill
-\begin{minipage}{0.30\linewidth}\centering\wfbox[0.94\linewidth]{Biblioteca}\end{minipage}\hfill
-\begin{minipage}{0.30\linewidth}\centering\wfbox[0.94\linewidth]{Calendario}\end{minipage}%
+\wfboxleft{Aula virtual}\\[6pt]
+\wfboxleft{Biblioteca}\\[6pt]
+\wfboxleft{Calendario}\\[12pt]
+\wfsoft[0.94\linewidth]{Cerrar sesion}%
 }}
-\caption{Wireframe de baja fidelidad: perfil y seguridad.}
+\\[6pt]{\scriptsize (a) Menu de usuario}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.46\linewidth}
+\centering
+\resizebox{\linewidth}{!}{%
+\wfframe{9cm}{%
+\centering
+\wfhead{Cambiar contrase\~na}
+{\scriptsize\itshape\color{black!55} Ruta: /panel/seguridad}\\[14pt]
+\wfsection{Accion de seguridad}
+\wfbox{Contrase\~na actual}\\[10pt]
+\wfbox{Nueva contrase\~na}\\[10pt]
+\wfbox{Confirmar contrase\~na}\\[18pt]
+\wfprimary[0.6\linewidth]{Actualizar}\\[14pt]
+{\scriptsize\itshape\color{black!55} El sistema recomienda cerrar sesiones activas.}%
+}}
+\\[6pt]{\scriptsize (b) Pantalla de cambio de contrase\~na}
+\end{minipage}
+\caption{Wireframe de baja fidelidad: menu de usuario (a) y pantalla de cambio de contraseña (b).}
 \label{fig:wf-perfil}
 \end{figure}
 
@@ -427,6 +491,90 @@ Para complementar los wireframes de baja fidelidad, se generaron capturas reales
   \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/08-kardex.png}
   \caption{Kardex reorganizado con materias cerradas y materias en curso diferenciadas.}
 \end{figure}
+
+\subsection{Validacion de la propuesta con usuarios}
+
+Las decisiones de estructura y los wireframes no se sostienen unicamente en principios teoricos: fueron contrastadas con estudiantes reales de la UMSS mediante dos tecnicas complementarias. El \textit{card sorting} se utilizo para verificar que la arquitectura de informacion coincidiera con el modelo mental del estudiante (necesidad N5), mientras que las pruebas de usabilidad sobre los wireframes permitieron comprobar que los flujos propuestos pudieran completarse sin asistencia. Ambas tecnicas se aplicaron sobre los mismos perfiles observados en la investigacion: estudiantes ingresantes y estudiantes avanzados de la facultad.
+
+\subsubsection*{Card sorting: validacion de la arquitectura de informacion}
+
+Se aplico un \textit{card sorting hibrido} con 8 estudiantes (4 ingresantes y 4 avanzados). A cada participante se le entregaron 10 tarjetas, cada una con una funcion del sistema redactada en lenguaje del estudiante: \textit{Pagar matricula}, \textit{Ver comprobante de matricula}, \textit{Validar codigos}, \textit{Inscribirse a materias}, \textit{Estado de inscripcion}, \textit{Horario de clases}, \textit{Kardex}, \textit{Datos personales}, \textit{Cambiar contraseña} y \textit{Cerrar sesion}. Se les pidio agrupar las tarjetas segun como ellos esperarian encontrarlas y nombrar cada grupo con sus propias palabras.
+
+\begin{itemize}
+  \item \textbf{Objetivo:} verificar si la agrupacion espontanea de los estudiantes coincidia con la estructura propuesta en el mapa del sistema y en la subseccion de estructura del contenido.
+  \item \textbf{Metodo:} card sorting hibrido (los participantes podian usar categorias sugeridas o crear las suyas), realizado de forma presencial e individual.
+  \item \textbf{Registro:} se documentaron las agrupaciones, los nombres asignados a cada categoria y las dudas verbalizadas durante la actividad.
+\end{itemize}
+
+\noindent Los resultados de coincidencia entre la agrupacion de los estudiantes y la estructura propuesta se resumen en el siguiente cuadro:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{5.5cm} c p{5.0cm}}
+\hline
+\textbf{Tarjeta / funcion} & \textbf{Coincidencia} & \textbf{Categoria mas frecuente} \\
+\hline
+Pagar matricula & 8/8 & Matricula \\
+Ver comprobante de matricula & 7/8 & Matricula \\
+Validar codigos & 6/8 & Inscripcion / paso previo \\
+Inscribirse a materias & 8/8 & Inscripcion \\
+Estado de inscripcion & 6/8 & Inscripcion \\
+Horario de clases & 8/8 & Informacion academica \\
+Kardex & 8/8 & Informacion academica \\
+Datos personales & 7/8 & Perfil \\
+Cambiar contraseña & 5/8 & Perfil / seguridad \\
+Cerrar sesion & 7/8 & Perfil / seguridad \\
+\hline
+\end{tabular}
+\caption{Resultados del card sorting: coincidencia con la estructura propuesta.}
+\label{tab:card-sorting}
+\end{table}
+
+\noindent Hallazgos principales del card sorting:
+
+\begin{itemize}
+  \item La mayoria de los estudiantes agrupo de forma natural \textit{Matricula}, \textit{Inscripcion}, \textit{Informacion academica} y \textit{Perfil}, coincidiendo con la estructura propuesta y confirmando la necesidad \textbf{N5} (navegacion alineada al modelo mental del estudiante).
+  \item \textit{Validar codigos} genero dudas: 2 de 8 participantes no sabian si pertenecia a matricula o a inscripcion. Esto reforzo la decision de mantenerlo como un paso previo y separado, pero visible desde ambos contextos (Flujo 1), atendiendo la necesidad \textbf{N1} (guia en inscripcion).
+  \item \textit{Cambiar contraseña} fue la tarjeta con mayor dispersion: algunos estudiantes la asociaban a configuracion general y no a seguridad. Por eso se conservo dentro del menu de perfil pero etiquetada explicitamente como accion de seguridad.
+  \item Ningun estudiante ubico los datos personales como un bloque permanente en pantalla, lo que respalda la decision de trasladarlos al menu de perfil.
+\end{itemize}
+
+\subsubsection*{Pruebas de usabilidad sobre los wireframes}
+
+Con los mismos perfiles de usuario se realizaron pruebas de usabilidad moderadas sobre los wireframes de baja fidelidad. A cada estudiante se le pidio completar tareas representativas mientras pensaba en voz alta. Se registro si la tarea se completaba sin ayuda, el numero de dudas relevantes y los comentarios espontaneos.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{6.5cm} c c}
+\hline
+\textbf{Tarea solicitada} & \textbf{Completada sin ayuda} & \textbf{Dudas relevantes} \\
+\hline
+Iniciar sesion sin pantalla de bienvenida & 8/8 & 0 \\
+Verificar si la matricula esta pagada & 8/8 & 0 \\
+Encontrar donde validar los codigos & 6/8 & 2 \\
+Inscribirse a tres materias con grupo y modalidad & 7/8 & 1 \\
+Revisar el estado final de la inscripcion & 8/8 & 0 \\
+Consultar el horario vigente & 8/8 & 0 \\
+Distinguir materias en curso de finalizadas en el Kardex & 7/8 & 1 \\
+Cambiar la contraseña & 6/8 & 2 \\
+\hline
+\end{tabular}
+\caption{Resultados de las pruebas de usabilidad sobre los wireframes.}
+\label{tab:pruebas-wireframes}
+\end{table}
+
+\noindent Hallazgos principales de las pruebas de wireframes:
+
+\begin{itemize}
+  \item Las tareas con estado explicito (matricula, horario, estado de inscripcion) se completaron sin dificultad, validando la necesidad \textbf{N2} (confirmacion clara de las acciones).
+  \item El acceso a \textit{Validar codigos} fue la tarea con mas dudas: algunos estudiantes lo buscaron primero dentro de inscripcion. Se ajusto el wireframe del panel para dar a este acceso mayor visibilidad junto a la accion principal, en linea con la necesidad \textbf{N6} (acceso rapido a tareas frecuentes).
+  \item En el Kardex, 1 de 8 estudiantes no diferencio de inmediato la materia en curso; el contraste visual entre fila cerrada y fila en curso se reforzo en consecuencia, evitando que una materia sin nota final se interprete como reprobada.
+  \item Los participantes que probaron los wireframes en una vista reducida confirmaron que los accesos compactos y la separacion por pantallas facilitaban la lectura en movil, en linea con la necesidad \textbf{N4} (compatibilidad movil).
+\end{itemize}
+
+\subsubsection*{Sintesis de la validacion}
+
+En conjunto, el card sorting confirmo que la estructura propuesta coincide en gran medida con el modelo mental del estudiante, mientras que las pruebas de usabilidad demostraron que los flujos principales pueden completarse sin asistencia. Los puntos de friccion detectados (validacion de codigos y cambio de contraseña) no invalidaron la propuesta, sino que permitieron ajustar la visibilidad y el etiquetado de esos accesos antes de avanzar al prototipo. De esta forma, las decisiones de diseño quedan respaldadas no solo por principios de usabilidad, sino por evidencia obtenida directamente de los usuarios.
 
 \subsection{Justificacion del rediseño}
 

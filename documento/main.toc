@@ -32,12 +32,13 @@
 \contentsline {subsection}{\numberline {7.2}Estructura del contenido}{28}{subsection.7.2}%
 \contentsline {subsection}{\numberline {7.3}Mapa del sistema}{28}{subsection.7.3}%
 \contentsline {subsection}{\numberline {7.4}Flujos de navegacion}{29}{subsection.7.4}%
-\contentsline {subsection}{\numberline {7.5}Wireframes de baja fidelidad}{30}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.5}Wireframes de baja fidelidad}{31}{subsection.7.5}%
 \contentsline {subsection}{\numberline {7.6}Prototipo inicial}{37}{subsection.7.6}%
 \contentsline {subsection}{\numberline {7.7}Capturas del prototipo}{38}{subsection.7.7}%
-\contentsline {subsection}{\numberline {7.8}Justificacion del rediseño}{44}{subsection.7.8}%
-\contentsline {section}{\numberline {A}Instrumento: Cuestionario WebSIS}{47}{section.A}%
-\contentsline {paragraph}{Sección A: Datos del encuestado}{47}{section*.44}%
-\contentsline {paragraph}{Sección B: Uso de WebSIS}{47}{section*.45}%
-\contentsline {paragraph}{Sección C: Dificultades y usabilidad}{47}{section*.46}%
-\contentsline {paragraph}{Sección D: Experiencia emocional}{48}{section*.47}%
+\contentsline {subsection}{\numberline {7.8}Validacion de la propuesta con usuarios}{44}{subsection.7.8}%
+\contentsline {subsection}{\numberline {7.9}Justificacion del rediseño}{47}{subsection.7.9}%
+\contentsline {section}{\numberline {A}Instrumento: Cuestionario WebSIS}{50}{section.A}%
+\contentsline {paragraph}{Sección A: Datos del encuestado}{50}{section*.49}%
+\contentsline {paragraph}{Sección B: Uso de WebSIS}{50}{section*.50}%
+\contentsline {paragraph}{Sección C: Dificultades y usabilidad}{50}{section*.51}%
+\contentsline {paragraph}{Sección D: Experiencia emocional}{51}{section*.52}%

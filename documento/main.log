@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.11)  27 MAY 2026 12:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.11)  31 MAY 2026 19:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1593,24 +1593,24 @@ Underfull \hbox (badness 2689) in paragraph at lines 522--523
  []
 
 [16] [17] [18]
-<images/nuevos.jpg, id=200, 1256.695pt x 1251.67625pt>
+<images/nuevos.jpg, id=202, 1256.695pt x 1251.67625pt>
 File: images/nuevos.jpg Graphic file (type jpg)
 <use images/nuevos.jpg>
 Package pdftex.def Info: images/nuevos.jpg  used on input line 606.
 (pdftex.def)             Requested size: 399.29494pt x 397.69884pt.
-<images/nuevos1.jpg, id=202, 1949.2825pt x 807.015pt>
+<images/nuevos1.jpg, id=204, 1949.2825pt x 807.015pt>
 File: images/nuevos1.jpg Graphic file (type jpg)
 <use images/nuevos1.jpg>
 Package pdftex.def Info: images/nuevos1.jpg  used on input line 615.
 (pdftex.def)             Requested size: 446.26617pt x 184.74756pt.
  [19 <./images/nuevos.jpg>]
-<images/avanzados.jpg, id=211, 1241.63875pt x 1266.7325pt>
+<images/avanzados.jpg, id=213, 1241.63875pt x 1266.7325pt>
 File: images/avanzados.jpg Graphic file (type jpg)
 <use images/avanzados.jpg>
 Package pdftex.def Info: images/avanzados.jpg  used on input line 630.
 (pdftex.def)             Requested size: 399.29494pt x 407.35355pt.
  [20 <./images/nuevos1.jpg>]
-<images/avanzados1.jpg, id=218, 1968.35374pt x 798.985pt>
+<images/avanzados1.jpg, id=220, 1968.35374pt x 798.985pt>
 File: images/avanzados1.jpg Graphic file (type jpg)
 <use images/avanzados1.jpg>
 Package pdftex.def Info: images/avanzados1.jpg  used on input line 643.
@@ -1819,289 +1819,320 @@ Underfull \hbox (badness 1533) in paragraph at lines 104--104
 
 ) [26] (./content/propuesta_rediseno.tex [27
 
-] [28] [29]
-Overfull \hbox (2.34496pt too wide) in paragraph at lines 189--189
+] [28]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 101.
+ [29] [30]
+Overfull \hbox (2.34496pt too wide) in paragraph at lines 222--222
  [][][][][][][] 
  []
 
 
-Overfull \hbox (3.14494pt too wide) in paragraph at lines 189--189
+Overfull \hbox (3.14494pt too wide) in paragraph at lines 222--222
  [][][][] 
  []
 
 
-Overfull \hbox (3.14494pt too wide) in paragraph at lines 189--189
+Overfull \hbox (3.14494pt too wide) in paragraph at lines 222--222
  [][] 
  []
 
 
-Overfull \hbox (3.14494pt too wide) in paragraph at lines 189--189
+Overfull \hbox (3.14494pt too wide) in paragraph at lines 222--222
  [][] 
  []
 
 
-Overfull \hbox (3.14494pt too wide) in paragraph at lines 189--189
+Overfull \hbox (3.14494pt too wide) in paragraph at lines 222--222
  [][] 
  []
 
-[30]
-Overfull \hbox (6.36316pt too wide) in paragraph at lines 219--219
+
+Overfull \hbox (6.36316pt too wide) in paragraph at lines 252--252
  [][][][] 
  []
 
 
-Overfull \hbox (10.35266pt too wide) in paragraph at lines 219--219
+Overfull \hbox (10.35266pt too wide) in paragraph at lines 252--252
  [][][][] 
  []
 
 
-Overfull \hbox (2.66502pt too wide) in paragraph at lines 219--219
+Overfull \hbox (2.66502pt too wide) in paragraph at lines 252--252
  [][] 
  []
 
 
-Overfull \hbox (2.66502pt too wide) in paragraph at lines 219--219
+Overfull \hbox (2.66502pt too wide) in paragraph at lines 252--252
  [][] 
  []
 
 
-Overfull \hbox (9.83466pt too wide) in paragraph at lines 219--219
+Overfull \hbox (9.83466pt too wide) in paragraph at lines 252--252
  [][] 
  []
 
 
-Overfull \hbox (9.83466pt too wide) in paragraph at lines 219--219
+Overfull \hbox (9.83466pt too wide) in paragraph at lines 252--252
  [][] 
  []
 
 
-Overfull \hbox (9.83466pt too wide) in paragraph at lines 219--219
+Overfull \hbox (9.83466pt too wide) in paragraph at lines 252--252
  [][] 
  []
 
 
-Overfull \hbox (9.83466pt too wide) in paragraph at lines 219--219
+Overfull \hbox (9.83466pt too wide) in paragraph at lines 252--252
  [][] 
  []
 
 
-Overfull \hbox (9.83466pt too wide) in paragraph at lines 219--219
+Overfull \hbox (9.83466pt too wide) in paragraph at lines 252--252
  [][] 
  []
 
 [31]
-Overfull \hbox (4.1009pt too wide) in paragraph at lines 247--247
- [][] 
- []
-
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 247.
-
-Overfull \hbox (8.03638pt too wide) in paragraph at lines 247--247
+Overfull \hbox (4.1009pt too wide) in paragraph at lines 280--280
  [][] 
  []
 
 
-Overfull \hbox (8.03638pt too wide) in paragraph at lines 247--247
+Overfull \hbox (8.03638pt too wide) in paragraph at lines 280--280
  [][] 
  []
 
 
-Overfull \hbox (4.1009pt too wide) in paragraph at lines 247--247
+Overfull \hbox (8.03638pt too wide) in paragraph at lines 280--280
  [][] 
  []
 
 
-Overfull \hbox (4.1009pt too wide) in paragraph at lines 247--247
+Overfull \hbox (4.1009pt too wide) in paragraph at lines 280--280
  [][] 
  []
 
 
-Overfull \hbox (14.96689pt too wide) in paragraph at lines 247--247
+Overfull \hbox (4.1009pt too wide) in paragraph at lines 280--280
+ [][] 
+ []
+
+
+Overfull \hbox (14.96689pt too wide) in paragraph at lines 280--280
  [][][][] 
  []
 
 
-Overfull \hbox (10.96689pt too wide) in paragraph at lines 247--247
+Overfull \hbox (10.96689pt too wide) in paragraph at lines 280--280
  [][][][] 
  []
 
 [32]
-Overfull \hbox (3.69116pt too wide) in paragraph at lines 274--274
+Overfull \hbox (3.69116pt too wide) in paragraph at lines 308--308
  [][] 
  []
 
 
-Overfull \hbox (3.69116pt too wide) in paragraph at lines 274--274
+Overfull \hbox (3.69116pt too wide) in paragraph at lines 308--308
  [][] 
  []
 
 
-Overfull \hbox (3.69116pt too wide) in paragraph at lines 274--274
+Overfull \hbox (3.69116pt too wide) in paragraph at lines 308--308
  [][] 
  []
 
 
-Overfull \hbox (3.69116pt too wide) in paragraph at lines 274--274
+Overfull \hbox (3.69116pt too wide) in paragraph at lines 308--308
  [][] 
  []
 
 
-Overfull \hbox (3.69116pt too wide) in paragraph at lines 274--274
+Overfull \hbox (3.69116pt too wide) in paragraph at lines 308--308
  [][] 
  []
 
 
-Overfull \hbox (3.69116pt too wide) in paragraph at lines 274--274
+Overfull \hbox (3.69116pt too wide) in paragraph at lines 308--308
  [][] 
  []
 
 
-Overfull \hbox (14.96689pt too wide) in paragraph at lines 274--274
+Overfull \hbox (14.96689pt too wide) in paragraph at lines 308--308
  [][][][] 
  []
 
 [33]
-Overfull \hbox (14.03984pt too wide) in paragraph at lines 310--310
+Overfull \hbox (10.44923pt too wide) in paragraph at lines 352--352
  [][][][] 
  []
 
 
-Overfull \hbox (14.03984pt too wide) in paragraph at lines 310--310
+Overfull \hbox (10.44923pt too wide) in paragraph at lines 352--352
  [][][][] 
  []
 
 
-Overfull \hbox (14.03984pt too wide) in paragraph at lines 310--310
+Overfull \hbox (10.44923pt too wide) in paragraph at lines 352--352
  [][][][] 
  []
 
 
-Overfull \hbox (14.03984pt too wide) in paragraph at lines 310--310
+Overfull \hbox (10.44923pt too wide) in paragraph at lines 352--352
+ [][][][] 
+ []
+
+
+Overfull \hbox (10.44923pt too wide) in paragraph at lines 352--352
+ [][][][] 
+ []
+
+
+Overfull \hbox (10.44923pt too wide) in paragraph at lines 352--352
  [][][][] 
  []
 
 [34]
-Overfull \hbox (0.86911pt too wide) in paragraph at lines 336--336
+Overfull \hbox (5.75871pt too wide) in paragraph at lines 382--382
+ [][][][][][][] 
+ []
+
+
+Overfull \hbox (6.5587pt too wide) in paragraph at lines 382--382
  [][] 
  []
 
 
-Overfull \hbox (5.80612pt too wide) in paragraph at lines 336--336
+Overfull \hbox (6.5587pt too wide) in paragraph at lines 382--382
  [][] 
  []
 
 
-Overfull \hbox (5.80612pt too wide) in paragraph at lines 336--336
+Overfull \hbox (6.5587pt too wide) in paragraph at lines 382--382
  [][] 
  []
 
 
-Overfull \hbox (5.80612pt too wide) in paragraph at lines 336--336
+Overfull \hbox (6.5587pt too wide) in paragraph at lines 382--382
  [][] 
  []
 
 
-Overfull \hbox (5.80612pt too wide) in paragraph at lines 336--336
+Overfull \hbox (1.43611pt too wide) in paragraph at lines 382--382
  [][] 
  []
 
 
-Overfull \hbox (9.80612pt too wide) in paragraph at lines 336--336
+Overfull \hbox (6.5587pt too wide) in paragraph at lines 382--382
+ [][] 
+ []
+
+
+Overfull \hbox (6.5587pt too wide) in paragraph at lines 382--382
+ [][] 
+ []
+
+
+Overfull \hbox (6.5587pt too wide) in paragraph at lines 382--382
+ [][] 
+ []
+
+
+Overfull \hbox (1.43611pt too wide) in paragraph at lines 382--382
  [][][][] 
  []
 
 
-Overfull \hbox (5.80612pt too wide) in paragraph at lines 336--336
+Overfull \hbox (5.75871pt too wide) in paragraph at lines 398--398
+ [][][][][][][] 
+ []
+
+
+Overfull \hbox (6.5587pt too wide) in paragraph at lines 398--398
  [][] 
  []
 
 
-Overfull \hbox (9.63011pt too wide) in paragraph at lines 336--336
+Overfull \hbox (6.5587pt too wide) in paragraph at lines 398--398
  [][] 
  []
 
 
-Overfull \hbox (9.63011pt too wide) in paragraph at lines 336--336
- [][] 
- []
-
-
-Overfull \hbox (9.63011pt too wide) in paragraph at lines 336--336
+Overfull \hbox (6.5587pt too wide) in paragraph at lines 398--398
  [][] 
  []
 
 [35]
-Overfull \hbox (2.03639pt too wide) in paragraph at lines 361--361
+Overfull \hbox (2.03639pt too wide) in paragraph at lines 425--425
  [][][][] 
  []
 
 
-Overfull \hbox (8.33286pt too wide) in paragraph at lines 361--361
+Overfull \hbox (8.33286pt too wide) in paragraph at lines 425--425
  [][][][] 
  []
 
 
-Overfull \hbox (8.33286pt too wide) in paragraph at lines 361--361
+Overfull \hbox (8.33286pt too wide) in paragraph at lines 425--425
  [][] 
  []
 
 
-Overfull \hbox (12.33286pt too wide) in paragraph at lines 361--361
+Overfull \hbox (12.33286pt too wide) in paragraph at lines 425--425
  [][][][] 
  []
 
 [36] [37]
-<images/prototipo/01-login.png, id=353, 1445.4pt x 2223.30624pt>
+<images/prototipo/01-login.png, id=356, 1445.4pt x 2223.30624pt>
 File: images/prototipo/01-login.png Graphic file (type png)
 <use images/prototipo/01-login.png>
-Package pdftex.def Info: images/prototipo/01-login.png  used on input line 397.
+Package pdftex.def Info: images/prototipo/01-login.png  used on input line 461.
 
 (pdftex.def)             Requested size: 304.44722pt x 468.29901pt.
  [38]
-<images/prototipo/02-panel.png, id=358, 1445.4pt x 1104.125pt>
+<images/prototipo/02-panel.png, id=361, 1445.4pt x 1104.125pt>
 File: images/prototipo/02-panel.png Graphic file (type png)
 <use images/prototipo/02-panel.png>
-Package pdftex.def Info: images/prototipo/02-panel.png  used on input line 403.
+Package pdftex.def Info: images/prototipo/02-panel.png  used on input line 467.
 
 (pdftex.def)             Requested size: 469.74944pt x 358.83638pt.
  [39 <./images/prototipo/01-login.png (PNG copy)>]
-<images/prototipo/03-matricula.png, id=364, 1445.4pt x 1104.125pt>
+<images/prototipo/03-matricula.png, id=367, 1445.4pt x 1104.125pt>
 File: images/prototipo/03-matricula.png Graphic file (type png)
 <use images/prototipo/03-matricula.png>
 Package pdftex.def Info: images/prototipo/03-matricula.png  used on input line 
-409.
+473.
 (pdftex.def)             Requested size: 469.74944pt x 358.83638pt.
  [40 <./images/prototipo/02-panel.png (PNG copy)>]
-<images/prototipo/05-inscripcion.png, id=370, 1445.4pt x 2732.2075pt>
+<images/prototipo/05-inscripcion.png, id=373, 1445.4pt x 2732.2075pt>
 File: images/prototipo/05-inscripcion.png Graphic file (type png)
 <use images/prototipo/05-inscripcion.png>
 Package pdftex.def Info: images/prototipo/05-inscripcion.png  used on input lin
-e 415.
+e 479.
 (pdftex.def)             Requested size: 247.7438pt x 468.30463pt.
  [41 <./images/prototipo/03-matricula.png (PNG copy)>]
-<images/prototipo/07-horario.png, id=376, 1445.4pt x 2020.54875pt>
+<images/prototipo/07-horario.png, id=379, 1445.4pt x 2020.54875pt>
 File: images/prototipo/07-horario.png Graphic file (type png)
 <use images/prototipo/07-horario.png>
-Package pdftex.def Info: images/prototipo/07-horario.png  used on input line 42
-1.
+Package pdftex.def Info: images/prototipo/07-horario.png  used on input line 48
+5.
 (pdftex.def)             Requested size: 334.9934pt x 468.29285pt.
  [42 <./images/prototipo/05-inscripcion.png (PNG copy)>]
-<images/prototipo/08-kardex.png, id=382, 1445.4pt x 1461.46pt>
+<images/prototipo/08-kardex.png, id=385, 1445.4pt x 1461.46pt>
 File: images/prototipo/08-kardex.png Graphic file (type png)
 <use images/prototipo/08-kardex.png>
-Package pdftex.def Info: images/prototipo/08-kardex.png  used on input line 427
+Package pdftex.def Info: images/prototipo/08-kardex.png  used on input line 491
 .
 (pdftex.def)             Requested size: 463.155pt x 468.30116pt.
  [43 <./images/prototipo/07-horario.png (PNG copy)>] [44 <./images/prototipo/08
--kardex.png (PNG copy)>] [45]) [46] (./content/apendice.tex [47
+-kardex.png (PNG copy)>] [45] [46] [47]) [48] [49] (./content/apendice.tex [50
 
-]) [48]
+]) [51]
 
 Package biblatex Warning: No driver for 'standard'.
 (biblatex)                Using fallback driver on input line 96.
 
-[49
+[52
 
 ] (./main.aux
 LaTeX Info: Redefining \sptext on input line 13.
@@ -2117,18 +2148,25 @@ L3 programming layer <2026-03-20>
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.28pt have occurred.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package biblatex Warning: Please rerun LaTeX.
+(biblatex)                Page breaks have changed.
+
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46346 strings out of 467349
- 1064746 string characters out of 5419862
- 2087987 words of memory out of 5000000
- 74595 multiletter control sequences out of 15000+600000
- 643001 words of font info for 68 fonts, out of 8000000 for 9000
+ 46381 strings out of 467349
+ 1065321 string characters out of 5419862
+ 2088221 words of memory out of 5000000
+ 74620 multiletter control sequences out of 15000+600000
+ 643314 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,16n,107p,1197b,2811s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,16n,107p,1215b,2811s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/tex
 live/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2026/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2026/texmf-dist
@@ -2146,11 +2184,12 @@ frm1200.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pf
 b><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb><c:/texl
 ive/2026/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2026/t
 exmf-dist/fonts/type1/public/cm-super/sfti1200.pfb><c:/texlive/2026/texmf-dist/
-fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on main.pdf (49 pages, 2968800 bytes).
+fonts/type1/public/cm-super/sftt0800.pfb><c:/texlive/2026/texmf-dist/fonts/type
+1/public/cm-super/sftt1200.pfb>
+Output written on main.pdf (52 pages, 3008707 bytes).
 PDF statistics:
- 684 PDF objects out of 1000 (max. 8388607)
- 573 compressed objects within 6 object streams
- 189 named destinations out of 1000 (max. 500000)
- 377 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 712 PDF objects out of 1000 (max. 8388607)
+ 596 compressed objects within 6 object streams
+ 198 named destinations out of 1000 (max. 500000)
+ 385 words of extra memory for PDF output out of 10000 (max. 10000000)
 
