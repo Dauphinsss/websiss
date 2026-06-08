@@ -1,0 +1,66 @@
+\section{Marco Teórico}
+
+Este apartado reúne los conceptos que sustentan el análisis, el diseño y la evaluación desarrollados en el proyecto. Cada decisión de diseño tomada más adelante se apoya en alguno de estos fundamentos, de modo que la propuesta no descansa en preferencias estéticas sino en principios establecidos de la Interacción Humano-Computadora.
+
+\subsection{Interacción Humano-Computadora}
+
+La Interacción Humano-Computadora (IHC) es el área que estudia cómo las personas interactúan con los sistemas computacionales y cómo diseñar esa interacción para que sea efectiva, comprensible y satisfactoria. La IHC no se limita al funcionamiento técnico del software: considera también factores humanos como la percepción, la memoria, la atención, las emociones, la experiencia previa y el contexto de uso. Por ello, un sistema técnicamente correcto puede fallar si el usuario no logra operarlo sin esfuerzo excesivo \autocite{norman2002}.
+
+\subsection{Usabilidad}
+
+La usabilidad es la capacidad de un sistema para ser comprendido, aprendido, usado y resultar atractivo para usuarios específicos en condiciones específicas de uso. Según la norma ISO 9241-11, la usabilidad es el grado en que un producto puede ser usado por usuarios específicos para conseguir objetivos específicos con \textit{efectividad}, \textit{eficiencia} y \textit{satisfacción} en un contexto específico de uso \autocite{iso9241}. De esta definición se desprende que la usabilidad nunca puede evaluarse de forma aislada: siempre depende de quién usa el sistema, para qué, en qué condiciones y qué tan bien logra su objetivo.
+
+\begin{itemize}
+  \item \textbf{Efectividad:} si el usuario logra cumplir correctamente la tarea propuesta.
+  \item \textbf{Eficiencia:} cantidad de recursos —tiempo, esfuerzo, pasos, atención— que necesita para completarla.
+  \item \textbf{Satisfacción:} comodidad, confianza y percepción positiva durante y después de la interacción.
+\end{itemize}
+
+\subsection{Experiencia de Usuario y Diseño Centrado en el Usuario}
+
+La Experiencia de Usuario (UX) comprende las percepciones, emociones y respuestas que una persona tiene antes, durante y después de interactuar con un producto o servicio. La UX incluye la usabilidad, pero es más amplia, pues considera la confianza, las expectativas, el valor percibido y la satisfacción global \autocite{garrett2011}.
+
+El Diseño Centrado en el Usuario (DCU) es el enfoque que coloca al usuario en el centro del proceso de desarrollo, buscando que el producto responda a las necesidades, capacidades, tareas y contexto reales de las personas \autocite{iso9241}. Sus principios rectores son que los diseñadores no son los usuarios, que las decisiones deben basarse en evidencia, que el usuario debe participar en el proceso y que el diseño debe evaluarse y mejorarse de forma iterativa. El proceso general del DCU contempla la investigación de usuarios, la definición de perfiles, el análisis del contexto y de las tareas, la identificación de necesidades, el diseño de soluciones, el prototipado, la evaluación con usuarios reales y la iteración.
+
+\subsection{Factores cognitivos y carga cognitiva}
+
+La carga cognitiva es el esfuerzo mental que una persona debe realizar para entender, recordar o completar una tarea. Una interfaz la incrementa cuando presenta demasiada información, opciones mal organizadas, términos confusos o procesos largos sin guía, y obliga al usuario a memorizar rutas en lugar de reconocerlas. Reducir la carga cognitiva mediante organización clara, lenguaje simple, jerarquía visual y pasos guiados mejora la \textit{fluidez cognitiva}, es decir, la facilidad con que el cerebro procesa la información \autocite{norman2002}.
+
+Varios principios psicológicos permiten justificar decisiones de diseño orientadas a este fin. La \textbf{Ley de Hick} indica que a mayor número de opciones, más tiempo tarda el usuario en decidir, lo que respalda interfaces simples y procesos divididos en pasos. La \textbf{Ley de Fitts} señala que el tiempo para alcanzar un elemento depende de su tamaño y distancia, lo que justifica botones amplios para acciones frecuentes, especialmente en móvil. El principio de \textbf{reconocimiento antes que recuerdo} sostiene que el sistema debe permitir reconocer opciones visibles en lugar de obligar a memorizar rutas.
+
+\subsection{Leyes de la Gestalt}
+
+Las leyes de la Gestalt describen cómo las personas perciben y organizan visualmente los elementos de una interfaz. Resultan especialmente útiles para justificar la jerarquía visual y la agrupación de la información:
+
+\begin{itemize}
+  \item \textbf{Proximidad:} los elementos cercanos se perciben como pertenecientes a un mismo grupo.
+  \item \textbf{Similitud:} los elementos con apariencia semejante se interpretan como equivalentes.
+  \item \textbf{Figura-fondo:} la percepción distingue los elementos prioritarios del fondo o la información secundaria.
+  \item \textbf{Continuidad:} los elementos alineados en una secuencia se perciben como un flujo continuo.
+  \item \textbf{Región común:} los elementos dentro de un mismo límite visual se perciben como un conjunto.
+\end{itemize}
+
+\subsection{Arquitectura de la Información}
+
+La Arquitectura de la Información (AI) se encarga de organizar, estructurar, clasificar, rotular y facilitar el acceso a la información dentro de un sistema digital, de modo que el usuario pueda encontrarla y comprenderla sin esfuerzo excesivo \autocite{rosenfeld2015}. La AI trabaja con cuatro sistemas complementarios: el de \textit{organización} (cómo se agrupan y jerarquizan los contenidos), el de \textit{navegación} (cómo se mueve el usuario por el sistema), el de \textit{rotulado} (los nombres y etiquetas que representan cada sección) y el de \textit{búsqueda} (cómo se localiza información específica). Una arquitectura alineada con el modelo mental del usuario reduce la confusión y el \textit{backtracking}, mientras que un mal rotulado genera dificultades aun cuando la estructura sea correcta.
+
+\subsection{Wireframes, prototipos y evaluación}
+
+Un \textbf{wireframe} es una representación básica de la estructura de una interfaz que muestra la distribución de elementos, la jerarquía y el flujo de interacción, sin enfocarse en colores ni estilos finales; los de baja fidelidad permiten probar ideas y corregir a bajo costo. Un \textbf{prototipo} es una representación más avanzada que simula la interacción real y permite validar flujos antes de construir el producto \autocite{rubin2008}.
+
+La \textbf{evaluación de usabilidad} mide qué tan fácil, eficiente y satisfactorio resulta interactuar con un sistema. Dos métodos complementarios la sustentan en este proyecto. Las \textbf{pruebas con usuarios} consisten en pedir a usuarios reales que realicen tareas mientras se observa su comportamiento, revelando errores, dudas y puntos de abandono que el diseñador no percibe. La \textbf{evaluación heurística} es una inspección en la que se revisa la interfaz aplicando principios generales de usabilidad; las diez heurísticas de Nielsen son el referente más utilizado \autocite{nielsen1994}:
+
+\begin{enumerate}
+  \item Visibilidad del estado del sistema.
+  \item Correspondencia entre el sistema y el mundo real.
+  \item Control y libertad del usuario.
+  \item Consistencia y estándares.
+  \item Prevención de errores.
+  \item Reconocimiento antes que recuerdo.
+  \item Flexibilidad y eficiencia de uso.
+  \item Diseño estético y minimalista.
+  \item Ayudar a reconocer, diagnosticar y recuperarse de errores.
+  \item Ayuda y documentación.
+\end{enumerate}
+
+Los problemas detectados con estos métodos se clasifican según la escala de severidad de Nielsen, que va de 0 (no es un problema de usabilidad) a 4 (catastrófico, debe corregirse antes de lanzar), permitiendo priorizar las intervenciones de diseño.

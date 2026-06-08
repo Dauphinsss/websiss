@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.11)  31 MAY 2026 19:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.5.11)  8 JUN 2026 16:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1290,19 +1290,27 @@ LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [2
 
-])
+] [3])
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
- [3]) (./content/planteamiento_problema.tex
-[4
-
-] (./three.tex)) [5] (./content/justificacion.tex) [6
+ [4]) (./content/introduccion.tex) [5
 
 ]
-(./content/objetivos.tex) [7
+(./content/planteamiento_problema.tex [6
 
-] (./content/perfil_usuarios.tex
+] (./three.tex)) [7]
+(./content/justificacion.tex) [8
+
+] (./content/objetivos.tex) [9
+
+]
+(./content/marco_teorico.tex [10
+
+] [11]) [12] (./content/metodologia.tex
+[13
+
+]) [14] (./content/perfil_usuarios.tex
 Underfull \hbox (badness 10000) in paragraph at lines 25--26
 []|\T1/cmr/bx/n/12 Frecuencia
  []
@@ -1314,7 +1322,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[8
+[15
 
 
 ]
@@ -1322,8 +1330,8 @@ Underfull \hbox (badness 4341) in paragraph at lines 100--100
 []|\T1/cmr/m/n/12 Solo en pe-río-dos crí-ti-cos (ins-crip-cio-
  []
 
-[9]
-ignored: Infinite glue shrinkage found in box being split [10]
+[16]
+ignored: Infinite glue shrinkage found in box being split [17]
 Package pgfplots info on input line 231: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 
@@ -1346,12 +1354,12 @@ coord trafo unsupported.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[11] [12]
+[18] [19]
 Package pgfplots info on input line 393: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
 Package pgfplots info on input line 430: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
- [13]
+ [20]
 Underfull \hbox (badness 4217) in paragraph at lines 464--464
 []|\T1/cmr/bx/n/10 Hallazgos prin-ci-
  []
@@ -1572,7 +1580,7 @@ Underfull \hbox (badness 7522) in paragraph at lines 481--482
  []
 
 
-ignored: Infinite glue shrinkage found in box being split [14] [15]
+ignored: Infinite glue shrinkage found in box being split [21] [22]
 Underfull \hbox (badness 5345) in paragraph at lines 520--520
 []|\T1/cmr/m/n/10.95 Avanzado, 5to
  []
@@ -1592,30 +1600,30 @@ Underfull \hbox (badness 2689) in paragraph at lines 522--523
 []|\T1/cmr/m/n/10.95 No en-con-tró el pe-río-do
  []
 
-[16] [17] [18]
-<images/nuevos.jpg, id=202, 1256.695pt x 1251.67625pt>
+[23] [24] [25]
+<images/nuevos.jpg, id=327, 1256.695pt x 1251.67625pt>
 File: images/nuevos.jpg Graphic file (type jpg)
 <use images/nuevos.jpg>
 Package pdftex.def Info: images/nuevos.jpg  used on input line 606.
 (pdftex.def)             Requested size: 399.29494pt x 397.69884pt.
-<images/nuevos1.jpg, id=204, 1949.2825pt x 807.015pt>
+<images/nuevos1.jpg, id=329, 1949.2825pt x 807.015pt>
 File: images/nuevos1.jpg Graphic file (type jpg)
 <use images/nuevos1.jpg>
 Package pdftex.def Info: images/nuevos1.jpg  used on input line 615.
 (pdftex.def)             Requested size: 446.26617pt x 184.74756pt.
- [19 <./images/nuevos.jpg>]
-<images/avanzados.jpg, id=213, 1241.63875pt x 1266.7325pt>
+ [26 <./images/nuevos.jpg>]
+<images/avanzados.jpg, id=337, 1241.63875pt x 1266.7325pt>
 File: images/avanzados.jpg Graphic file (type jpg)
 <use images/avanzados.jpg>
 Package pdftex.def Info: images/avanzados.jpg  used on input line 630.
 (pdftex.def)             Requested size: 399.29494pt x 407.35355pt.
- [20 <./images/nuevos1.jpg>]
-<images/avanzados1.jpg, id=220, 1968.35374pt x 798.985pt>
+ [27 <./images/nuevos1.jpg>]
+<images/avanzados1.jpg, id=344, 1968.35374pt x 798.985pt>
 File: images/avanzados1.jpg Graphic file (type jpg)
 <use images/avanzados1.jpg>
 Package pdftex.def Info: images/avanzados1.jpg  used on input line 643.
 (pdftex.def)             Requested size: 446.26617pt x 181.14151pt.
-) [21 <./images/avanzados.jpg>] [22 <./images/avanzados1.jpg>]
+ [28 <./images/avanzados.jpg>] [29 <./images/avanzados1.jpg>]) [30]
 (./content/necesidades_destacadas.tex
 Underfull \hbox (badness 10000) in paragraph at lines 12--12
 []|\T1/cmr/m/n/8 Necesidad emo-cio-nal
@@ -1793,9 +1801,9 @@ Underfull \hbox (badness 5908) in paragraph at lines 94--94
 \T1/cmr/bx/n/10.95 mía aca-dé-mi-ca
  []
 
-[23
+[31
 
-]) [24] (./content/problemas_detectados.tex
+]) [32] (./content/problemas_detectados.tex
 Underfull \hbox (badness 5726) in paragraph at lines 38--39
 []|\T1/cmr/m/n/10.95 3 -- Moderado--
  []
@@ -1805,7 +1813,7 @@ Underfull \hbox (badness 5726) in paragraph at lines 47--48
 []|\T1/cmr/m/n/10.95 3 -- Moderado--
  []
 
-[25
+[33
 
 ]
 Underfull \hbox (badness 1270) in paragraph at lines 86--87
@@ -1817,12 +1825,12 @@ Underfull \hbox (badness 1533) in paragraph at lines 104--104
 []|\T1/cmr/m/n/10.95 P9: Eti-que-tas e íco-nos
  []
 
-) [26] (./content/propuesta_rediseno.tex [27
+) [34] (./content/propuesta_rediseno.tex [35
 
-] [28]
+] [36]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 101.
- [29] [30]
+ [37] [38]
 Overfull \hbox (2.34496pt too wide) in paragraph at lines 222--222
  [][][][][][][] 
  []
@@ -1892,7 +1900,7 @@ Overfull \hbox (9.83466pt too wide) in paragraph at lines 252--252
  [][] 
  []
 
-[31]
+[39]
 Overfull \hbox (4.1009pt too wide) in paragraph at lines 280--280
  [][] 
  []
@@ -1927,7 +1935,7 @@ Overfull \hbox (10.96689pt too wide) in paragraph at lines 280--280
  [][][][] 
  []
 
-[32]
+[40]
 Overfull \hbox (3.69116pt too wide) in paragraph at lines 308--308
  [][] 
  []
@@ -1962,7 +1970,7 @@ Overfull \hbox (14.96689pt too wide) in paragraph at lines 308--308
  [][][][] 
  []
 
-[33]
+[41]
 Overfull \hbox (10.44923pt too wide) in paragraph at lines 352--352
  [][][][] 
  []
@@ -1992,7 +2000,7 @@ Overfull \hbox (10.44923pt too wide) in paragraph at lines 352--352
  [][][][] 
  []
 
-[34]
+[42]
 Overfull \hbox (5.75871pt too wide) in paragraph at lines 382--382
  [][][][][][][] 
  []
@@ -2062,7 +2070,7 @@ Overfull \hbox (6.5587pt too wide) in paragraph at lines 398--398
  [][] 
  []
 
-[35]
+[43]
 Overfull \hbox (2.03639pt too wide) in paragraph at lines 425--425
  [][][][] 
  []
@@ -2082,57 +2090,177 @@ Overfull \hbox (12.33286pt too wide) in paragraph at lines 425--425
  [][][][] 
  []
 
-[36] [37]
-<images/prototipo/01-login.png, id=356, 1445.4pt x 2223.30624pt>
+[44] [45]
+<images/prototipo/01-login.png, id=486, 1445.4pt x 2223.30624pt>
 File: images/prototipo/01-login.png Graphic file (type png)
 <use images/prototipo/01-login.png>
 Package pdftex.def Info: images/prototipo/01-login.png  used on input line 461.
 
 (pdftex.def)             Requested size: 304.44722pt x 468.29901pt.
- [38]
-<images/prototipo/02-panel.png, id=361, 1445.4pt x 1104.125pt>
+ [46]
+<images/prototipo/02-panel.png, id=491, 2569.6pt x 2065.7175pt>
 File: images/prototipo/02-panel.png Graphic file (type png)
 <use images/prototipo/02-panel.png>
 Package pdftex.def Info: images/prototipo/02-panel.png  used on input line 467.
 
-(pdftex.def)             Requested size: 469.74944pt x 358.83638pt.
- [39 <./images/prototipo/01-login.png (PNG copy)>]
-<images/prototipo/03-matricula.png, id=367, 1445.4pt x 1104.125pt>
+(pdftex.def)             Requested size: 469.72249pt x 377.61284pt.
+ [47 <./images/prototipo/01-login.png (PNG copy)>]
+<images/prototipo/03-matricula.png, id=497, 1445.4pt x 1104.125pt>
 File: images/prototipo/03-matricula.png Graphic file (type png)
 <use images/prototipo/03-matricula.png>
 Package pdftex.def Info: images/prototipo/03-matricula.png  used on input line 
 473.
 (pdftex.def)             Requested size: 469.74944pt x 358.83638pt.
- [40 <./images/prototipo/02-panel.png (PNG copy)>]
-<images/prototipo/05-inscripcion.png, id=373, 1445.4pt x 2732.2075pt>
+ [48 <./images/prototipo/02-panel.png (PNG copy)>]
+<images/prototipo/05-inscripcion.png, id=503, 1445.4pt x 2732.2075pt>
 File: images/prototipo/05-inscripcion.png Graphic file (type png)
 <use images/prototipo/05-inscripcion.png>
 Package pdftex.def Info: images/prototipo/05-inscripcion.png  used on input lin
 e 479.
 (pdftex.def)             Requested size: 247.7438pt x 468.30463pt.
- [41 <./images/prototipo/03-matricula.png (PNG copy)>]
-<images/prototipo/07-horario.png, id=379, 1445.4pt x 2020.54875pt>
+ [49 <./images/prototipo/03-matricula.png (PNG copy)>]
+<images/prototipo/07-horario.png, id=510, 1445.4pt x 2020.54875pt>
 File: images/prototipo/07-horario.png Graphic file (type png)
 <use images/prototipo/07-horario.png>
 Package pdftex.def Info: images/prototipo/07-horario.png  used on input line 48
 5.
 (pdftex.def)             Requested size: 334.9934pt x 468.29285pt.
- [42 <./images/prototipo/05-inscripcion.png (PNG copy)>]
-<images/prototipo/08-kardex.png, id=385, 1445.4pt x 1461.46pt>
+ [50 <./images/prototipo/05-inscripcion.png (PNG copy)>]
+<images/prototipo/08-kardex.png, id=516, 2569.6pt x 3055.415pt>
 File: images/prototipo/08-kardex.png Graphic file (type png)
 <use images/prototipo/08-kardex.png>
 Package pdftex.def Info: images/prototipo/08-kardex.png  used on input line 491
 .
-(pdftex.def)             Requested size: 463.155pt x 468.30116pt.
- [43 <./images/prototipo/07-horario.png (PNG copy)>] [44 <./images/prototipo/08
--kardex.png (PNG copy)>] [45] [46] [47]) [48] [49] (./content/apendice.tex [50
+(pdftex.def)             Requested size: 393.81407pt x 468.26955pt.
+ [51 <./images/prototipo/07-horario.png (PNG copy)>] [52 <./images/prototipo/08
+-kardex.png (PNG copy)>] [53] [54] [55]) [56] [57] (./content/informe_evaluacio
+n.tex
+[58
 
-]) [51]
+]
+Underfull \hbox (badness 1527) in paragraph at lines 69--69
+[]|\T1/cmr/m/n/10.95 Bajo con-tras-te
+ []
+
+
+Underfull \hbox (badness 3271) in paragraph at lines 69--69
+\T1/cmr/m/n/10.95 del es-ta-do de
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+\T1/cmr/m/n/10.95 ma-trí-cu-la en
+ []
+
+
+Underfull \hbox (badness 3323) in paragraph at lines 69--69
+\T1/cmr/m/n/10.95 mo-do cla-ro y
+ []
+
+
+Underfull \hbox (badness 2351) in paragraph at lines 69--69
+[]|\T1/cmr/m/n/10.95 H1 -- Vi-si-bi-li-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+[]|\T1/cmr/m/n/10.95 Abreviaturas
+ []
+
+
+Underfull \hbox (badness 5345) in paragraph at lines 69--69
+\T1/cmr/m/n/10.95 le-yen-da, co-mo
+ []
+
+
+Underfull \hbox (badness 3219) in paragraph at lines 69--69
+\T1/cmr/m/n/10.95 APR, REP y
+ []
+
+
+Underfull \hbox (badness 5490) in paragraph at lines 69--69
+[]|\T1/cmr/m/n/10.95 H2 -- Coin-ci-
+ []
+
+
+Underfull \hbox (badness 3872) in paragraph at lines 69--69
+\T1/cmr/m/n/10.95 den-cia con el
+ []
+
+
+Underfull \hbox (badness 5548) in paragraph at lines 69--69
+[]|\T1/cmr/m/n/10.95 La ins-crip-ción
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+\T1/cmr/m/n/10.95 no ad-vier-te
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+\T1/cmr/m/n/10.95 cuan-do dos
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+\T1/cmr/m/n/10.95 ho-ra-rios so-la-
+ []
+
+
+Underfull \hbox (badness 2961) in paragraph at lines 69--69
+[]|\T1/cmr/m/n/10.95 H5 -- Pre-ven-
+ []
+
+[59] [60]
+<images/prototipo/10-inscripcion-conflicto.png, id=572, 2569.6pt x 5610.9625pt>
+
+File: images/prototipo/10-inscripcion-conflicto.png Graphic file (type png)
+<use images/prototipo/10-inscripcion-conflicto.png>
+Package pdftex.def Info: images/prototipo/10-inscripcion-conflicto.png  used on
+ input line 101.
+(pdftex.def)             Requested size: 214.43341pt x 468.23546pt.
+ [61]
+File: images/prototipo/08-kardex.png Graphic file (type png)
+<use images/prototipo/08-kardex.png>
+Package pdftex.def Info: images/prototipo/08-kardex.png  used on input line 108
+.
+(pdftex.def)             Requested size: 393.81407pt x 468.26955pt.
+ [62 <./images/prototipo/10-inscripcion-conflicto.png (PNG copy)>]
+<images/prototipo/12-retiro-confirmacion.png, id=586, 2569.6pt x 1806.75pt>
+File: images/prototipo/12-retiro-confirmacion.png Graphic file (type png)
+<use images/prototipo/12-retiro-confirmacion.png>
+Package pdftex.def Info: images/prototipo/12-retiro-confirmacion.png  used on i
+nput line 117.
+(pdftex.def)             Requested size: 469.72249pt x 330.27362pt.
+ [63]
+<images/prototipo/11-estado-vacio.png, id=594, 2569.6pt x 1806.75pt>
+File: images/prototipo/11-estado-vacio.png Graphic file (type png)
+<use images/prototipo/11-estado-vacio.png>
+Package pdftex.def Info: images/prototipo/11-estado-vacio.png  used on input li
+ne 124.
+(pdftex.def)             Requested size: 469.72249pt x 330.27362pt.
+ [64 <./images/prototipo/12-retiro-confirmacion.png (PNG copy)>])
+[65 <./images/prototipo/11-estado-vacio.png (PNG copy)>]
+(./content/resultados_mejoras.tex
+Underfull \hbox (badness 1584) in paragraph at lines 33--33
+[]|\T1/cmr/m/n/10.95 Arquitectura ba-sa-da en ló-gi-ca
+ []
+
+
+ignored: Infinite glue shrinkage found in box being split [66
+
+]) [67] (./content/conclusiones.tex [68
+
+]) [69] (./content/apendice.tex
+[70
+
+]) [71]
 
 Package biblatex Warning: No driver for 'standard'.
-(biblatex)                Using fallback driver on input line 96.
+(biblatex)                Using fallback driver on input line 114.
 
-[52
+[72
 
 ] (./main.aux
 LaTeX Info: Redefining \sptext on input line 13.
@@ -2148,25 +2276,18 @@ L3 programming layer <2026-03-20>
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.28pt have occurred.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package biblatex Warning: Please rerun LaTeX.
-(biblatex)                Page breaks have changed.
-
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46381 strings out of 467349
- 1065321 string characters out of 5419862
- 2088221 words of memory out of 5000000
- 74620 multiletter control sequences out of 15000+600000
- 643314 words of font info for 69 fonts, out of 8000000 for 9000
+ 46585 strings out of 467349
+ 1069218 string characters out of 5419862
+ 2089404 words of memory out of 5000000
+ 74731 multiletter control sequences out of 15000+600000
+ 644003 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,16n,107p,1215b,2811s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,16n,107p,1237b,2811s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/tex
 live/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2026/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2026/texmf-dist
@@ -2183,13 +2304,14 @@ cm-super/sfrm1095.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/s
 frm1200.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pf
 b><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb><c:/texl
 ive/2026/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2026/t
-exmf-dist/fonts/type1/public/cm-super/sfti1200.pfb><c:/texlive/2026/texmf-dist/
-fonts/type1/public/cm-super/sftt0800.pfb><c:/texlive/2026/texmf-dist/fonts/type
-1/public/cm-super/sftt1200.pfb>
-Output written on main.pdf (52 pages, 3008707 bytes).
+exmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><c:/texlive/2026/texmf-dist/
+fonts/type1/public/cm-super/sfti1200.pfb><c:/texlive/2026/texmf-dist/fonts/type
+1/public/cm-super/sftt0800.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/c
+m-super/sftt1200.pfb>
+Output written on main.pdf (72 pages, 5195777 bytes).
 PDF statistics:
- 712 PDF objects out of 1000 (max. 8388607)
- 596 compressed objects within 6 object streams
- 198 named destinations out of 1000 (max. 500000)
- 385 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1005 PDF objects out of 1200 (max. 8388607)
+ 861 compressed objects within 9 object streams
+ 272 named destinations out of 1000 (max. 500000)
+ 616 words of extra memory for PDF output out of 10000 (max. 10000000)
 

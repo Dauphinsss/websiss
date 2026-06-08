@@ -1,44 +1,71 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {section}{\numberline {1}Planteamiento del Problema}{4}{section.1}%
-\contentsline {section}{\numberline {2}Justificación}{6}{section.2}%
-\contentsline {section}{\numberline {3}Objetivos}{7}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Objetivo general}{7}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Objetivos específicos}{7}{subsection.3.2}%
-\contentsline {section}{\numberline {4}Perfil de Usuarios}{8}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Cuestionario aplicado}{8}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Resultados de la encuesta}{8}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}Perfil de los encuestados}{8}{subsubsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2}Frecuencia de uso, tareas y dispositivos}{9}{subsubsection.4.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.3}Dificultad percibida y problemas de uso}{10}{subsubsection.4.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.4}Satisfacción general con WebSIS}{11}{subsubsection.4.2.4}%
-\contentsline {subsubsection}{\numberline {4.2.5}Dimensión emocional de la experiencia}{11}{subsubsection.4.2.5}%
-\contentsline {subsection}{\numberline {4.3}Síntesis de hallazgos de la encuesta}{13}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Entrevistas: hallazgos}{14}{subsection.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}Patrones comunes en las entrevistas}{15}{subsubsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.5}Observación directa}{16}{subsection.4.5}%
-\contentsline {subsection}{\numberline {4.6}Perfiles de usuario identificados}{17}{subsection.4.6}%
-\contentsline {subsubsection}{\numberline {4.6.1}Perfil 1: Estudiante ingresante / usuario novato}{17}{subsubsection.4.6.1}%
-\contentsline {subsubsection}{\numberline {4.6.2}Perfil 2: Estudiante avanzado / usuario experimentado por adaptación}{18}{subsubsection.4.6.2}%
-\contentsline {subsection}{\numberline {4.7}Mapas de empatía}{19}{subsection.4.7}%
-\contentsline {subsubsection}{\numberline {4.7.1}Mapa de empatía - Perfil 1: Estudiante ingresante}{19}{subsubsection.4.7.1}%
-\contentsline {subsubsection}{\numberline {4.7.2}Mapa de empatía - Perfil 2: Estudiante avanzado}{20}{subsubsection.4.7.2}%
-\contentsline {section}{\numberline {5}Necesidades Detectadas}{23}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Relación entre necesidades y perfiles de usuario}{23}{subsection.5.1}%
-\contentsline {section}{\numberline {6}Problemas Detectados}{25}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Clasificación por severidad}{25}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Síntesis: Problemas prioritarios para el rediseño}{26}{subsection.6.2}%
-\contentsline {section}{\numberline {7}Propuesta de Rediseño}{27}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Funcionalidades intervenidas}{27}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Estructura del contenido}{28}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Mapa del sistema}{28}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Flujos de navegacion}{29}{subsection.7.4}%
-\contentsline {subsection}{\numberline {7.5}Wireframes de baja fidelidad}{31}{subsection.7.5}%
-\contentsline {subsection}{\numberline {7.6}Prototipo inicial}{37}{subsection.7.6}%
-\contentsline {subsection}{\numberline {7.7}Capturas del prototipo}{38}{subsection.7.7}%
-\contentsline {subsection}{\numberline {7.8}Validacion de la propuesta con usuarios}{44}{subsection.7.8}%
-\contentsline {subsection}{\numberline {7.9}Justificacion del rediseño}{47}{subsection.7.9}%
-\contentsline {section}{\numberline {A}Instrumento: Cuestionario WebSIS}{50}{section.A}%
-\contentsline {paragraph}{Sección A: Datos del encuestado}{50}{section*.49}%
-\contentsline {paragraph}{Sección B: Uso de WebSIS}{50}{section*.50}%
-\contentsline {paragraph}{Sección C: Dificultades y usabilidad}{50}{section*.51}%
-\contentsline {paragraph}{Sección D: Experiencia emocional}{51}{section*.52}%
+\contentsline {section}{\numberline {1}Introducción}{5}{section.1}%
+\contentsline {section}{\numberline {2}Planteamiento del Problema}{6}{section.2}%
+\contentsline {section}{\numberline {3}Justificación}{8}{section.3}%
+\contentsline {section}{\numberline {4}Objetivos}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Objetivo general}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Objetivos específicos}{9}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Marco Teórico}{10}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Interacción Humano-Computadora}{10}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Usabilidad}{10}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Experiencia de Usuario y Diseño Centrado en el Usuario}{10}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Factores cognitivos y carga cognitiva}{11}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Leyes de la Gestalt}{11}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Arquitectura de la Información}{11}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}Wireframes, prototipos y evaluación}{12}{subsection.5.7}%
+\contentsline {section}{\numberline {6}Metodología}{13}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Enfoque y fases del trabajo}{13}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Técnicas de investigación de usuarios}{13}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Técnicas de arquitectura de la información y diseño}{14}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Técnicas de evaluación}{14}{subsection.6.4}%
+\contentsline {section}{\numberline {7}Perfil de Usuarios}{15}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Cuestionario aplicado}{15}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Resultados de la encuesta}{15}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {7.2.1}Perfil de los encuestados}{15}{subsubsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.2}Frecuencia de uso, tareas y dispositivos}{16}{subsubsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.3}Dificultad percibida y problemas de uso}{17}{subsubsection.7.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.4}Satisfacción general con WebSIS}{18}{subsubsection.7.2.4}%
+\contentsline {subsubsection}{\numberline {7.2.5}Dimensión emocional de la experiencia}{18}{subsubsection.7.2.5}%
+\contentsline {subsection}{\numberline {7.3}Síntesis de hallazgos de la encuesta}{20}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Entrevistas: hallazgos}{21}{subsection.7.4}%
+\contentsline {subsubsection}{\numberline {7.4.1}Patrones comunes en las entrevistas}{22}{subsubsection.7.4.1}%
+\contentsline {subsection}{\numberline {7.5}Observación directa}{23}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Perfiles de usuario identificados}{24}{subsection.7.6}%
+\contentsline {subsubsection}{\numberline {7.6.1}Perfil 1: Estudiante ingresante / usuario novato}{24}{subsubsection.7.6.1}%
+\contentsline {subsubsection}{\numberline {7.6.2}Perfil 2: Estudiante avanzado / usuario experimentado por adaptación}{25}{subsubsection.7.6.2}%
+\contentsline {subsection}{\numberline {7.7}Mapas de empatía}{26}{subsection.7.7}%
+\contentsline {subsubsection}{\numberline {7.7.1}Mapa de empatía - Perfil 1: Estudiante ingresante}{26}{subsubsection.7.7.1}%
+\contentsline {subsubsection}{\numberline {7.7.2}Mapa de empatía - Perfil 2: Estudiante avanzado}{27}{subsubsection.7.7.2}%
+\contentsline {subsection}{\numberline {7.8}Escenarios de uso}{29}{subsection.7.8}%
+\contentsline {section}{\numberline {8}Necesidades Detectadas}{31}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Relación entre necesidades y perfiles de usuario}{31}{subsection.8.1}%
+\contentsline {section}{\numberline {9}Problemas Detectados}{33}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Clasificación por severidad}{33}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Síntesis: Problemas prioritarios para el rediseño}{34}{subsection.9.2}%
+\contentsline {section}{\numberline {10}Propuesta de Rediseño}{35}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Funcionalidades intervenidas}{35}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Estructura del contenido}{36}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Mapa del sistema}{36}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Flujos de navegación}{37}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}Wireframes de baja fidelidad}{39}{subsection.10.5}%
+\contentsline {subsection}{\numberline {10.6}Prototipo inicial}{45}{subsection.10.6}%
+\contentsline {subsection}{\numberline {10.7}Capturas del prototipo}{46}{subsection.10.7}%
+\contentsline {subsection}{\numberline {10.8}Validación de la propuesta con usuarios}{52}{subsection.10.8}%
+\contentsline {subsection}{\numberline {10.9}Justificación del rediseño}{55}{subsection.10.9}%
+\contentsline {section}{\numberline {11}Informe de Evaluación}{58}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Metodología de evaluación}{58}{subsection.11.1}%
+\contentsline {subsubsection}{\numberline {11.1.1}Pruebas de usabilidad}{58}{subsubsection.11.1.1}%
+\contentsline {subsubsection}{\numberline {11.1.2}Evaluación heurística}{58}{subsubsection.11.1.2}%
+\contentsline {subsection}{\numberline {11.2}Problemas encontrados}{58}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Nivel de severidad}{59}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Mejoras aplicadas tras la evaluación}{60}{subsection.11.4}%
+\contentsline {section}{\numberline {12}Resultados y Mejoras}{66}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Resultados de la investigación de usuarios}{66}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Mejoras del rediseño frente a los problemas detectados}{66}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Mejoras aplicadas tras la evaluación del prototipo}{67}{subsection.12.3}%
+\contentsline {section}{\numberline {13}Conclusiones}{68}{section.13}%
+\contentsline {section}{\numberline {A}Instrumento: Cuestionario WebSIS}{70}{section.A}%
+\contentsline {paragraph}{Sección A: Datos del encuestado}{70}{section*.60}%
+\contentsline {paragraph}{Sección B: Uso de WebSIS}{70}{section*.61}%
+\contentsline {paragraph}{Sección C: Dificultades y usabilidad}{70}{section*.62}%
+\contentsline {paragraph}{Sección D: Experiencia emocional}{71}{section*.63}%

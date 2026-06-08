@@ -55,7 +55,6 @@
       \field{urlyear}{2026}
       \field{year}{2025}
       \field{urldateera}{ce}
-      \true{nocite}
       \verb{urlraw}
       \verb https://ixdf.org/literature/article/personas-why-and-how-you-should-use-them
       \endverb
@@ -93,7 +92,6 @@
       \field{howpublished}{Material de cátedra}
       \field{title}{Análisis del Usuario}
       \field{year}{2026}
-      \true{nocite}
     \endentry
     \entry{garrett2011}{book}{}{}
       \name{author}{1}{}{%
@@ -125,7 +123,6 @@
       \field{edition}{2}
       \field{title}{The Elements of User Experience: User-Centered Design for the Web and Beyond}
       \field{year}{2011}
-      \true{nocite}
     \endentry
     \entry{iso9241}{standard}{}{}
       \name{author}{1}{}{%
@@ -153,7 +150,6 @@
       \field{labeltitlesource}{title}
       \field{title}{ISO 9241-210:2019 Ergonomics of human-system interaction -- Part 210: Human-centred design for interactive systems}
       \field{year}{2019}
-      \true{nocite}
     \endentry
     \entry{justaskUserAnalysis}{online}{}{}
       \name{author}{1}{}{%
@@ -217,7 +213,6 @@
       \field{urlyear}{2026}
       \field{year}{s.f.}
       \field{urldateera}{ce}
-      \true{nocite}
       \verb{urlraw}
       \verb https://miro.com/es/investigacion-diseno/que-es-mapa-empatia/
       \endverb
@@ -363,7 +358,6 @@
       \field{edition}{4}
       \field{title}{Information Architecture: For the Web and Beyond}
       \field{year}{2015}
-      \true{nocite}
     \endentry
     \entry{rubin2008}{book}{}{}
       \name{author}{2}{}{%
@@ -401,7 +395,6 @@
       \field{edition}{2}
       \field{title}{Handbook of Usability Testing: How to Plan, Design, and Conduct Effective Tests}
       \field{year}{2008}
-      \true{nocite}
     \endentry
   \enddatalist
   \datalist[entry]{apa/global//global/global/global}
@@ -441,7 +434,6 @@
       \field{urlyear}{2026}
       \field{year}{2025}
       \field{urldateera}{ce}
-      \true{nocite}
       \verb{urlraw}
       \verb https://ixdf.org/literature/article/personas-why-and-how-you-should-use-them
       \endverb
@@ -479,7 +471,6 @@
       \field{howpublished}{Material de cátedra}
       \field{title}{Análisis del Usuario}
       \field{year}{2026}
-      \true{nocite}
     \endentry
     \entry{garrett2011}{book}{}{}
       \name{author}{1}{}{%
@@ -511,7 +502,6 @@
       \field{edition}{2}
       \field{title}{The Elements of User Experience: User-Centered Design for the Web and Beyond}
       \field{year}{2011}
-      \true{nocite}
     \endentry
     \entry{iso9241}{standard}{}{}
       \name{author}{1}{}{%
@@ -539,7 +529,6 @@
       \field{labeltitlesource}{title}
       \field{title}{ISO 9241-210:2019 Ergonomics of human-system interaction -- Part 210: Human-centred design for interactive systems}
       \field{year}{2019}
-      \true{nocite}
     \endentry
     \entry{justaskUserAnalysis}{online}{}{}
       \name{author}{1}{}{%
@@ -603,7 +592,6 @@
       \field{urlyear}{2026}
       \field{year}{s.f.}
       \field{urldateera}{ce}
-      \true{nocite}
       \verb{urlraw}
       \verb https://miro.com/es/investigacion-diseno/que-es-mapa-empatia/
       \endverb
@@ -749,7 +737,6 @@
       \field{edition}{4}
       \field{title}{Information Architecture: For the Web and Beyond}
       \field{year}{2015}
-      \true{nocite}
     \endentry
     \entry{rubin2008}{book}{}{}
       \name{author}{2}{}{%
@@ -787,7 +774,6 @@
       \field{edition}{2}
       \field{title}{Handbook of Usability Testing: How to Plan, Design, and Conduct Effective Tests}
       \field{year}{2008}
-      \true{nocite}
     \endentry
   \enddatalist
 \endrefsection

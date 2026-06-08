@@ -1,21 +1,21 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is 'main.blg'
-[257] biber-MSWIN64:342> INFO - === 
-[357] Biber.pm:421> INFO - Reading 'main.bcf'
-[505] Biber.pm:1002> INFO - Found 11 citekeys in bib section 0
-[537] Biber.pm:4487> INFO - Processing section 0
-[559] Biber.pm:4678> INFO - Looking for bibtex file 'referencias.bib' for section 0
-[613] bibtex.pm:1713> INFO - LaTeX decoding ...
-[633] bibtex.pm:1519> INFO - Found BibTeX data source 'referencias.bib'
-[766] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[766] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
-[766] Biber.pm:4307> INFO - Sorting list 'apa/apasortcite//global/global/global' of type 'entry' with template 'apa' and locale 'es-ES'
-[794] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[794] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
-[794] Biber.pm:4307> INFO - Sorting list 'apa/global//global/global/global' of type 'entry' with template 'apa' and locale 'es-ES'
-[855] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[867] bbl.pm:779> INFO - Output to main.bbl
-[867] Biber.pm:132> WARN - legacy year field 's.f.' in entry 'justaskUserAnalysis' is not an integer - this will probably not sort properly.
-[867] Biber.pm:132> WARN - legacy year field 's.f.' in entry 'miroMapaEmpatia' is not an integer - this will probably not sort properly.
-[867] Biber.pm:132> WARN - legacy year field 's.f.' in entry 'redsummaDesignThinking' is not an integer - this will probably not sort properly.
-[867] Biber.pm:134> INFO - WARNINGS: 3
+[140] biber-MSWIN64:342> INFO - === 
+[185] Biber.pm:421> INFO - Reading 'main.bcf'
+[341] Biber.pm:1002> INFO - Found 11 citekeys in bib section 0
+[368] Biber.pm:4487> INFO - Processing section 0
+[381] Biber.pm:4678> INFO - Looking for bibtex file 'referencias.bib' for section 0
+[446] bibtex.pm:1713> INFO - LaTeX decoding ...
+[461] bibtex.pm:1519> INFO - Found BibTeX data source 'referencias.bib'
+[570] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[570] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[570] Biber.pm:4307> INFO - Sorting list 'apa/apasortcite//global/global/global' of type 'entry' with template 'apa' and locale 'es-ES'
+[602] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[603] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[603] Biber.pm:4307> INFO - Sorting list 'apa/global//global/global/global' of type 'entry' with template 'apa' and locale 'es-ES'
+[623] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[637] bbl.pm:779> INFO - Output to main.bbl
+[637] Biber.pm:132> WARN - legacy year field 's.f.' in entry 'miroMapaEmpatia' is not an integer - this will probably not sort properly.
+[637] Biber.pm:132> WARN - legacy year field 's.f.' in entry 'justaskUserAnalysis' is not an integer - this will probably not sort properly.
+[637] Biber.pm:132> WARN - legacy year field 's.f.' in entry 'redsummaDesignThinking' is not an integer - this will probably not sort properly.
+[638] Biber.pm:134> INFO - WARNINGS: 3

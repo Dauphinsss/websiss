@@ -43,6 +43,16 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
@@ -121,6 +131,20 @@ const kardexSummary = {
   abandoned: 7,
   generalAverage: 72.53,
   approvedAverage: 76.21,
+};
+
+const kardexLegend = [
+  { code: 'APR', label: 'Aprobada' },
+  { code: 'REP', label: 'Reprobada' },
+  { code: 'ABA', label: 'Abandonada' },
+  { code: 'CUR', label: 'En curso' },
+] as const;
+
+const resultLabels: Record<string, string> = {
+  APR: 'Aprobada',
+  REP: 'Reprobada',
+  ABA: 'Abandonada',
+  CUR: 'En curso',
 };
 
 const kardexRows = [
@@ -847,7 +871,10 @@ function getInitialSelectedEnrollments(): SelectedEnrollment[] {
       return { subjectId: item.subjectId, mode: item.mode, group };
     });
 
-    return valid.length > 0 ? valid.slice(0, enrollmentLimit) : defaultSelectedEnrollments;
+    // Si el estudiante ya interactuó (la clave existe y es un arreglo válido), se respeta
+    // su selección aunque haya quedado vacía tras retirar todas las materias. Los valores por
+    // defecto solo se usan en la primera visita, cuando la clave aún no existe.
+    return valid.slice(0, enrollmentLimit);
   } catch {
     return defaultSelectedEnrollments;
   }
@@ -885,6 +912,67 @@ function consumeEnrollmentReturnToast() {
 
   window.sessionStorage.removeItem(enrollmentReturnToastStorageKey);
   return toastType;
+}
+
+interface ScheduleBlock {
+  day: string;
+  start: number;
+  end: number;
+}
+
+function toMinutes(time: string): number {
+  const [hours, minutes] = time.split(':').map((part) => Number.parseInt(part, 10));
+  if (Number.isNaN(hours) || Number.isNaN(minutes)) return Number.NaN;
+  return hours * 60 + minutes;
+}
+
+// Parsea un horario tipo "Mar 6:45-8:15 · Jue 18:45-20:15" en bloques comparables.
+// Ignora entradas sin horario real (p. ej. exámenes de mesa por confirmar).
+function parseSchedule(schedule: string): ScheduleBlock[] {
+  return schedule
+    .split('·')
+    .map((segment) => segment.trim())
+    .map((segment) => {
+      const match = segment.match(/^(\S+)\s+(\d{1,2}:\d{2})-(\d{1,2}:\d{2})$/);
+      if (!match) return null;
+      const [, day, start, end] = match;
+      const startMin = toMinutes(start);
+      const endMin = toMinutes(end);
+      if (Number.isNaN(startMin) || Number.isNaN(endMin)) return null;
+      return { day, start: startMin, end: endMin } satisfies ScheduleBlock;
+    })
+    .filter((block): block is ScheduleBlock => block !== null);
+}
+
+function blocksOverlap(a: ScheduleBlock, b: ScheduleBlock): boolean {
+  return a.day === b.day && a.start < b.end && b.start < a.end;
+}
+
+interface ScheduleConflict {
+  a: string;
+  b: string;
+}
+
+// Devuelve los pares de materias seleccionadas cuyos horarios se solapan.
+function getScheduleConflicts(
+  subjects: { name: string; schedule: string }[],
+): ScheduleConflict[] {
+  const conflicts: ScheduleConflict[] = [];
+
+  for (let i = 0; i < subjects.length; i += 1) {
+    for (let j = i + 1; j < subjects.length; j += 1) {
+      const blocksA = parseSchedule(subjects[i].schedule);
+      const blocksB = parseSchedule(subjects[j].schedule);
+      const clashes = blocksA.some((blockA) =>
+        blocksB.some((blockB) => blocksOverlap(blockA, blockB)),
+      );
+      if (clashes) {
+        conflicts.push({ a: subjects[i].name, b: subjects[j].name });
+      }
+    }
+  }
+
+  return conflicts;
 }
 
 function getInitials(name: string) {
@@ -927,6 +1015,8 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
   const [isTuitionPaid, setIsTuitionPaid] = useState<boolean>(false);
   const [kardexQuery, setKardexQuery] = useState('');
   const [selectedKardexRow, setSelectedKardexRow] = useState<KardexRow | null>(null);
+  const [subjectPendingRemoval, setSubjectPendingRemoval] =
+    useState<SelectedEnrollmentSubject | null>(null);
   const [isKardexDetailDesktop, setIsKardexDetailDesktop] = useState(false);
   const [accessCodes, setAccessCodes] = useState({ third: '', fifth: '' });
   const [codeError, setCodeError] = useState('');
@@ -975,23 +1065,27 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
 
   const initials = getInitials(student.fullName);
   const closeKardexDetail = () => setSelectedKardexRow(null);
-  const openKardexPrintView = () => {
+  const openPrintView = (buildDocument: () => string, label: string) => {
     const printWindow = window.open('about:blank', '_blank', 'width=1200,height=900');
 
     if (!printWindow) {
       toast.error('No se pudo abrir la vista de impresión', {
-        description: 'Habilita ventanas emergentes para imprimir o guardar el Kardex en PDF.',
+        description: `Habilita ventanas emergentes para imprimir o guardar ${label} en PDF.`,
       });
       return;
     }
 
     printWindow.document.open();
-    printWindow.document.write(buildKardexPrintDocument());
+    printWindow.document.write(buildDocument());
     printWindow.document.close();
     setTimeout(() => {
       printWindow.focus();
     }, 50);
   };
+  const openKardexPrintView = () =>
+    openPrintView(buildKardexPrintDocument, 'el Kardex');
+  const openSchedulePrintView = () =>
+    openPrintView(buildSchedulePrintDocument, 'el horario');
   const filteredKardexRows = useMemo(() => {
     const query = kardexQuery.trim().toLowerCase();
 
@@ -1029,6 +1123,11 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
     (subject) => !selectedSubjectIds.includes(subject.id),
   );
   const remainingSlots = enrollmentLimit - selectedEnrollments.length;
+  const scheduleConflicts = useMemo(
+    () => getScheduleConflicts(selectedSubjects),
+    [selectedSubjects],
+  );
+  const hasScheduleConflict = scheduleConflicts.length > 0;
 
   const addSubject = (subjectId: string, mode: EnrollmentMode, group: string) => {
     setSelectedEnrollments((current) => {
@@ -1355,15 +1454,15 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
               />
               <div className="relative grid gap-6 p-6 sm:p-8 lg:p-10 sm:grid-cols-[1fr_auto] sm:items-center">
                 <div className="space-y-3 max-w-2xl">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-warning/15 px-2.5 py-1 text-[11px] font-medium text-warning-foreground ring-1 ring-warning/30">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-warning px-2.5 py-1 text-[11px] font-medium text-warning-foreground ring-1 ring-warning/40">
                     <AlertTriangle aria-hidden="true" className="size-3" />
                     Abierto hasta el 31 de mayo
                   </span>
                   <span
                     className={`ml-2 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium ring-1 ${
                       isTuitionPaid
-                        ? 'bg-success/15 text-success ring-success/30'
-                        : 'bg-warning/15 text-warning-foreground ring-warning/30'
+                        ? 'bg-success text-success-foreground ring-success/40'
+                        : 'bg-warning text-warning-foreground ring-warning/40'
                     }`}
                   >
                     {isTuitionPaid ? (
@@ -1518,7 +1617,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
               </div>
             </div>
 
-            {isTuitionPaid && isCodeValidated && selectedSubjectIds.length > 0 ? (
+            {isTuitionPaid && isCodeValidated && selectedSubjectIds.length > 0 && !hasScheduleConflict ? (
               <Button type="button" onClick={finalizeEnrollment}>
                 <ListChecks aria-hidden="true" />
                 <span>Finalizar inscripción</span>
@@ -1663,10 +1762,39 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                       <SelectedSubjectCard
                         key={subject.id}
                         subject={subject}
-                        onRemove={() => removeSubject(subject.id)}
+                        onRemove={() => setSubjectPendingRemoval(subject)}
                       />
                     ))}
                   </div>
+
+                  {hasScheduleConflict && (
+                    <div
+                      className="rounded-md border border-destructive/40 bg-destructive/10 p-3 text-sm"
+                      role="alert"
+                    >
+                      <div className="flex gap-2">
+                        <AlertTriangle
+                          aria-hidden="true"
+                          className="mt-0.5 size-4 shrink-0 text-destructive"
+                        />
+                        <div className="space-y-1">
+                          <p className="font-medium text-destructive">
+                            Choque de horarios detectado
+                          </p>
+                          <ul className="list-disc space-y-0.5 pl-4 text-muted-foreground">
+                            {scheduleConflicts.map((conflict) => (
+                              <li key={`${conflict.a}-${conflict.b}`}>
+                                {conflict.a} y {conflict.b} se solapan.
+                              </li>
+                            ))}
+                          </ul>
+                          <p className="text-muted-foreground">
+                            Ajusta los grupos o retira una materia antes de finalizar.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
 
                   {(!isTuitionPaid || !isCodeValidated) && (
                     <div className="rounded-md border border-warning/30 bg-warning/10 p-3 text-sm">
@@ -1713,13 +1841,9 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
             </div>
 
             <div className="flex flex-wrap gap-2">
-              <Button type="button" variant="outline" size="sm" onClick={openKardexPrintView}>
+              <Button type="button" variant="outline" size="sm" onClick={openSchedulePrintView}>
                 <Printer aria-hidden="true" />
-                <span>Imprimir</span>
-              </Button>
-              <Button type="button" variant="outline" size="sm" onClick={openKardexPrintView}>
-                <Download aria-hidden="true" />
-                <span>Descargar</span>
+                <span>Imprimir / Descargar PDF</span>
               </Button>
             </div>
           </div>
@@ -2251,6 +2375,25 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-0">
+                {selectedSubjects.length === 0 ? (
+                  <div className="flex flex-col items-center gap-3 px-6 py-12 text-center">
+                    <div className="flex size-12 items-center justify-center rounded-full bg-muted text-muted-foreground">
+                      <ClipboardCheck aria-hidden="true" className="size-6" />
+                    </div>
+                    <div className="space-y-1">
+                      <p className="font-medium">Aún no tienes materias inscritas</p>
+                      <p className="text-sm text-muted-foreground">
+                        Cuando inscribas materias aparecerán aquí con su grupo y modalidad.
+                      </p>
+                    </div>
+                    <Button asChild size="sm" className="mt-1">
+                      <a href="/panel/inscripcion">
+                        <Plus aria-hidden="true" />
+                        <span>Inscribirme a materias</span>
+                      </a>
+                    </Button>
+                  </div>
+                ) : (
                 <div className="divide-y divide-border/60">
                   {selectedSubjects.map((subject, index) => (
                     <article
@@ -2278,6 +2421,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                     </article>
                   ))}
                 </div>
+                )}
               </CardContent>
             </Card>
 
@@ -2327,11 +2471,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
             <div className="flex flex-wrap gap-2">
               <Button type="button" variant="outline" size="sm" onClick={openKardexPrintView}>
                 <Printer aria-hidden="true" />
-                <span>Imprimir</span>
-              </Button>
-              <Button type="button" variant="outline" size="sm" onClick={openKardexPrintView}>
-                <Download aria-hidden="true" />
-                <span>Descargar</span>
+                <span>Imprimir / Descargar PDF</span>
               </Button>
             </div>
           </div>
@@ -2355,6 +2495,16 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
             <KardexMetric label="Abandonadas" value={kardexSummary.abandoned} tone="warning" />
             <KardexMetric label="Prom. general" value={kardexSummary.generalAverage} />
             <KardexMetric label="Prom. aprob." value={kardexSummary.approvedAverage} />
+          </div>
+
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 rounded-md border border-border/60 bg-muted/40 px-4 py-3 text-xs">
+            <span className="font-medium text-muted-foreground">Estados:</span>
+            {kardexLegend.map((item) => (
+              <span key={item.code} className="inline-flex items-center gap-1.5">
+                <ResultBadge result={item.code} />
+                <span className="text-muted-foreground">= {item.label}</span>
+              </span>
+            ))}
           </div>
 
           <Card className="overflow-hidden">
@@ -2606,6 +2756,37 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
           <p>webSISS · Portal académico oficial</p>
         </div>
       </footer>
+
+      <AlertDialog
+        open={subjectPendingRemoval !== null}
+        onOpenChange={(open) => {
+          if (!open) setSubjectPendingRemoval(null);
+        }}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>¿Retirar esta materia?</AlertDialogTitle>
+            <AlertDialogDescription>
+              {subjectPendingRemoval
+                ? `Se quitará "${subjectPendingRemoval.name}" de tu inscripción. Puedes volver a agregarla mientras el periodo siga abierto.`
+                : ''}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={() => {
+                if (subjectPendingRemoval) {
+                  removeSubject(subjectPendingRemoval.id);
+                }
+                setSubjectPendingRemoval(null);
+              }}
+            >
+              Retirar materia
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
@@ -3468,6 +3649,143 @@ function buildKardexPrintDocument() {
 </html>`;
 }
 
+function buildSchedulePrintDocument() {
+  const printedAt = new Intl.DateTimeFormat('es-BO', {
+    dateStyle: 'short',
+    timeStyle: 'short',
+  }).format(new Date());
+
+  const days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+
+  const rowsHtml = days
+    .map((day) => {
+      const sessions = scheduleSessions.filter((session) => session.day === day);
+
+      if (sessions.length === 0) {
+        return `<tr><td class="center">${escapeHtml(day)}</td><td colspan="5" class="muted">Sin clases</td></tr>`;
+      }
+
+      return sessions
+        .map((session, index) => {
+          const cells = [
+            `${escapeHtml(session.start)} - ${escapeHtml(session.end)}`,
+            `${escapeHtml(session.subject)} (${escapeHtml(session.code)})`,
+            escapeHtml(session.group),
+            escapeHtml(session.teacher),
+            `${escapeHtml(session.building)} · ${escapeHtml(session.room)}`,
+          ];
+          const dayCell =
+            index === 0
+              ? `<td class="center" rowspan="${sessions.length}">${escapeHtml(day)}</td>`
+              : '';
+          return `<tr>${dayCell}${cells.map((cell) => `<td>${cell}</td>`).join('')}</tr>`;
+        })
+        .join('');
+    })
+    .join('');
+
+  return `<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Horario ${escapeHtml(student.fullName)}</title>
+    <style>
+      :root { color-scheme: light; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #111827;
+        background: #ffffff;
+      }
+      .page { padding: 10px 12px 14px; }
+      .header { display: block; margin-bottom: 8px; }
+      .title { margin: 0; font-size: 15px; line-height: 1.2; }
+      .subtitle, .meta {
+        margin: 2px 0 0;
+        font-size: 10px;
+        line-height: 1.3;
+        color: #4b5563;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+        font-size: 9px;
+      }
+      th, td {
+        border: 1px solid #cbd5e1;
+        padding: 4px 5px;
+        vertical-align: top;
+        text-align: left;
+        word-break: break-word;
+      }
+      th {
+        background: #f3f4f6;
+        font-size: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        text-align: center;
+      }
+      td.center { text-align: center; vertical-align: middle; font-weight: 600; }
+      td.muted { color: #6b7280; }
+      .footer {
+        margin-top: 6px;
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .footer .note { font-size: 9px; color: #4b5563; }
+      @page { size: A4 portrait; margin: 8mm; }
+      @media print { .page { padding: 0; } }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="header">
+        <h1 class="title">Horario de Clases</h1>
+        <p class="subtitle">Estudiante: ${escapeHtml(student.fullName)} (${escapeHtml(student.sisCode)})</p>
+        <p class="meta">${escapeHtml(activePlan.name)} · Gestión ${escapeHtml(scheduleContext.term)} · Emitido: ${escapeHtml(printedAt)}</p>
+      </header>
+
+      <table>
+        <colgroup>
+          <col style="width: 10%;" />
+          <col style="width: 13%;" />
+          <col style="width: 30%;" />
+          <col style="width: 7%;" />
+          <col style="width: 20%;" />
+          <col style="width: 20%;" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Día</th>
+            <th>Horario</th>
+            <th>Materia</th>
+            <th>Gr</th>
+            <th>Docente</th>
+            <th>Aula</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rowsHtml}
+        </tbody>
+      </table>
+
+      <footer class="footer">
+        <p class="note">UMSS · DTIC · webSISS</p>
+        <p class="note">Usa la opción Guardar como PDF del navegador si necesitas descargarlo.</p>
+      </footer>
+    </main>
+    <script>
+      window.addEventListener('load', () => {
+        window.print();
+      });
+    </script>
+  </body>
+</html>`;
+}
+
 function escapeHtml(value: string) {
   return value
     .replaceAll('&', '&amp;')
@@ -3480,7 +3798,11 @@ function escapeHtml(value: string) {
 function ResultBadge({ result }: { result: string }) {
   if (result === 'APR') {
     return (
-      <Badge className="rounded-sm bg-success text-success-foreground">
+      <Badge
+        title={resultLabels.APR}
+        aria-label={resultLabels.APR}
+        className="rounded-sm bg-success text-success-foreground"
+      >
         <CheckCircle2 aria-hidden="true" data-icon="inline-start" />
         APR
       </Badge>
@@ -3489,7 +3811,12 @@ function ResultBadge({ result }: { result: string }) {
 
   if (result === 'REP') {
     return (
-      <Badge variant="destructive" className="rounded-sm">
+      <Badge
+        variant="destructive"
+        title={resultLabels.REP}
+        aria-label={resultLabels.REP}
+        className="rounded-sm"
+      >
         <XCircle aria-hidden="true" data-icon="inline-start" />
         REP
       </Badge>
@@ -3498,7 +3825,11 @@ function ResultBadge({ result }: { result: string }) {
 
   if (result === 'ABA') {
     return (
-      <Badge className="rounded-sm bg-warning text-warning-foreground">
+      <Badge
+        title={resultLabels.ABA}
+        aria-label={resultLabels.ABA}
+        className="rounded-sm bg-warning text-warning-foreground"
+      >
         <XCircle aria-hidden="true" data-icon="inline-start" />
         ABA
       </Badge>
@@ -3506,7 +3837,11 @@ function ResultBadge({ result }: { result: string }) {
   }
 
   return (
-    <Badge className="rounded-sm bg-primary/10 text-primary hover:bg-primary/10">
+    <Badge
+      title={resultLabels.CUR}
+      aria-label={resultLabels.CUR}
+      className="rounded-sm bg-primary/10 text-primary hover:bg-primary/10"
+    >
       <Clock3 aria-hidden="true" data-icon="inline-start" />
       En curso
     </Badge>

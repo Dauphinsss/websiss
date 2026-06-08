@@ -3072,20 +3072,38 @@
   </bcf:bibdata>
   <bcf:section number="0">
     <bcf:citekey order="1" intorder="1">nielsen1994</bcf:citekey>
-    <bcf:citekey order="2" intorder="1">nielsen1994</bcf:citekey>
-    <bcf:citekey order="3" intorder="1">norman2002</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">norman2002</bcf:citekey>
-    <bcf:citekey order="5" intorder="1">nielsen1994</bcf:citekey>
-    <bcf:citekey order="6" intorder="2">norman2002</bcf:citekey>
-    <bcf:citekey order="7" intorder="3" nocite="1">garrett2011</bcf:citekey>
-    <bcf:citekey order="8" intorder="4" nocite="1">rosenfeld2015</bcf:citekey>
-    <bcf:citekey order="9" intorder="5" nocite="1">rubin2008</bcf:citekey>
-    <bcf:citekey order="10" intorder="6" nocite="1">iso9241</bcf:citekey>
-    <bcf:citekey order="11" intorder="7" nocite="1">justaskUserAnalysis</bcf:citekey>
-    <bcf:citekey order="12" intorder="8" nocite="1">flores2026</bcf:citekey>
-    <bcf:citekey order="13" intorder="9" nocite="1">miroMapaEmpatia</bcf:citekey>
-    <bcf:citekey order="14" intorder="10" nocite="1">redsummaDesignThinking</bcf:citekey>
-    <bcf:citekey order="15" intorder="11" nocite="1">ixdfPersonas</bcf:citekey>
+    <bcf:citekey order="1" intorder="2">norman2002</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">rosenfeld2015</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">nielsen1994</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">nielsen1994</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">norman2002</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">norman2002</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">norman2002</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">iso9241</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">garrett2011</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">iso9241</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">norman2002</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">rosenfeld2015</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">rubin2008</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">nielsen1994</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">iso9241</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">ixdfPersonas</bcf:citekey>
+    <bcf:citekey order="16" intorder="2">miroMapaEmpatia</bcf:citekey>
+    <bcf:citekey order="16" intorder="3">flores2026</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">rosenfeld2015</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">rubin2008</bcf:citekey>
+    <bcf:citekey order="18" intorder="2">nielsen1994</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">nielsen1994</bcf:citekey>
+    <bcf:citekey order="20" intorder="2">norman2002</bcf:citekey>
+    <bcf:citekey order="21" intorder="3">garrett2011</bcf:citekey>
+    <bcf:citekey order="22" intorder="4">rosenfeld2015</bcf:citekey>
+    <bcf:citekey order="23" intorder="5">rubin2008</bcf:citekey>
+    <bcf:citekey order="24" intorder="6">iso9241</bcf:citekey>
+    <bcf:citekey order="25" intorder="7" nocite="1">justaskUserAnalysis</bcf:citekey>
+    <bcf:citekey order="26" intorder="8">flores2026</bcf:citekey>
+    <bcf:citekey order="27" intorder="9">miroMapaEmpatia</bcf:citekey>
+    <bcf:citekey order="28" intorder="10" nocite="1">redsummaDesignThinking</bcf:citekey>
+    <bcf:citekey order="29" intorder="11">ixdfPersonas</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="apa">

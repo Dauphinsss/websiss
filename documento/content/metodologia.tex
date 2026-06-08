@@ -1,0 +1,42 @@
+\section{Metodología}
+
+El proyecto se desarrolló siguiendo un enfoque de Diseño Centrado en el Usuario (DCU), en el cual las necesidades, capacidades, tareas y contexto de los estudiantes guían cada etapa del proceso, y las decisiones de diseño se fundamentan en evidencia recolectada con usuarios reales y no en suposiciones del equipo \autocite{iso9241}. El proceso se organizó de forma iterativa: los hallazgos de cada fase alimentaron la siguiente, y la evaluación final retroalimentó la propuesta.
+
+\subsection{Enfoque y fases del trabajo}
+
+El trabajo se estructuró en cinco fases alineadas con el proceso general del DCU:
+
+\begin{enumerate}
+  \item \textbf{Definición del problema y contexto:} identificación de la problemática de interacción en WebSIS, delimitación de los usuarios objetivo, el contexto de uso y las necesidades principales.
+  \item \textbf{Investigación de usuarios:} relevamiento de necesidades, expectativas y puntos de fricción mediante técnicas cuantitativas y cualitativas, y construcción de perfiles y mapas de empatía.
+  \item \textbf{Arquitectura de la información y diseño de la interfaz:} definición de la estructura del contenido, el mapa del sistema y los flujos de navegación, y elaboración de wireframes de baja fidelidad.
+  \item \textbf{Prototipo funcional y evaluación:} desarrollo de un prototipo de media/alta fidelidad y aplicación de pruebas de usabilidad y evaluación heurística.
+  \item \textbf{Iteración y cierre:} análisis de resultados, definición de mejoras priorizadas y elaboración del informe final.
+\end{enumerate}
+
+\subsection{Técnicas de investigación de usuarios}
+
+Para comprender el contexto de uso de forma integral se aplicó la \textit{triangulación} de tres técnicas complementarias, de modo que los datos cuantitativos y cualitativos se contrastaran entre sí:
+
+\begin{itemize}
+  \item \textbf{Encuesta:} cuestionario aplicado a una muestra de estudiantes, con preguntas cerradas y de escala Likert, orientado a cuantificar patrones de uso, dificultades percibidas, satisfacción general y experiencia emocional. Permite obtener datos cuantitativos y patrones generales.
+  \item \textbf{Entrevistas semiestructuradas:} sesiones individuales con estudiantes de distintos perfiles para profundizar en experiencias, motivaciones y estrategias de adaptación frente al sistema. Aportan información cualitativa detallada.
+  \item \textbf{Observación directa:} sesiones estructuradas en las que los participantes intentaron completar tareas reales, registrando tiempos, dudas y errores. Revela comportamientos y dificultades que los usuarios no siempre verbalizan.
+\end{itemize}
+
+A partir de estos datos se construyeron \textbf{perfiles de usuario} (personas) y \textbf{mapas de empatía}, que sintetizan la fase de empatía del proceso y traducen lo observado en necesidades concretas \autocite{ixdfPersonas,miroMapaEmpatia,flores2026}.
+
+\subsection{Técnicas de arquitectura de la información y diseño}
+
+La estructura del contenido se definió desde la lógica de tareas del estudiante y se validó con \textbf{card sorting}, técnica que verifica si la agrupación espontánea de las funciones por parte de los usuarios coincide con la estructura propuesta, contrastándola con su modelo mental \autocite{rosenfeld2015}. Sobre esa base se elaboraron el mapa del sistema, los flujos de navegación y los \textbf{wireframes de baja fidelidad}, que definen la distribución y la jerarquía de cada pantalla antes de cualquier tratamiento visual. Los wireframes se sometieron a pruebas de usabilidad moderadas para confirmar que los flujos podían completarse sin asistencia.
+
+\subsection{Técnicas de evaluación}
+
+El prototipo funcional se evaluó combinando dos métodos complementarios, siguiendo la recomendación de no depender de una sola técnica \autocite{rubin2008,nielsen1994}:
+
+\begin{itemize}
+  \item \textbf{Pruebas de usabilidad con usuarios reales:} los participantes ejecutaron tareas representativas mientras se registraban tiempos, dudas y errores, observando el uso real del sistema.
+  \item \textbf{Evaluación heurística:} inspección de la interfaz aplicando las diez heurísticas de Nielsen, clasificando cada problema según la heurística afectada y su nivel de severidad.
+\end{itemize}
+
+La convergencia de ambos métodos sobre los mismos problemas refuerza la validez de los hallazgos. Cada problema se clasificó con la escala de severidad de Nielsen (0 a 4) para priorizar las recomendaciones de mejora.
