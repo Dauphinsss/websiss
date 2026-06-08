@@ -569,6 +569,12 @@ const enrollmentLimit = 6;
 type EnrollmentMode = 'Normal' | 'Mesa';
 type SelectedEnrollment = { subjectId: string; mode: EnrollmentMode; group: string };
 
+interface GroupDetail {
+  teacher: string;
+  schedule: string;
+  room: string;
+}
+
 interface EnrollmentSubjectOption {
   id: string;
   code: string;
@@ -581,7 +587,22 @@ interface EnrollmentSubjectOption {
   teacher: string;
   schedule: string;
   room: string;
+  // Docente, horario y aula propios de cada grupo (en la UMSS un mismo curso
+  // se dicta en varios grupos con docentes distintos). Si un grupo no aparece
+  // aquí, se usan los campos base (teacher/schedule/room) como respaldo.
+  groupDetails?: Record<string, GroupDetail>;
   status: 'available' | 'exam';
+}
+
+// Resuelve el docente/horario/aula que corresponden a un grupo concreto.
+function getGroupDetail(subject: EnrollmentSubjectOption, group: string): GroupDetail {
+  return (
+    subject.groupDetails?.[group] ?? {
+      teacher: subject.teacher,
+      schedule: subject.schedule,
+      room: subject.room,
+    }
+  );
 }
 
 const enrollmentSubjects: EnrollmentSubjectOption[] = [
@@ -597,6 +618,23 @@ const enrollmentSubjects: EnrollmentSubjectOption[] = [
     teacher: 'Flores Villarroel Corina',
     schedule: 'Mar 6:45-8:15 · Jue 18:45-20:15',
     room: '690D / 690E',
+    groupDetails: {
+      '1': {
+        teacher: 'Flores Villarroel Corina',
+        schedule: 'Mar 6:45-8:15 · Jue 18:45-20:15',
+        room: '690D / 690E',
+      },
+      '2': {
+        teacher: 'Vargas Mariscal Rodrigo',
+        schedule: 'Lun 9:45-11:15 · Mié 9:45-11:15',
+        room: '691A / 691A',
+      },
+      '3': {
+        teacher: 'Camacho Soliz Daniela',
+        schedule: 'Mar 14:15-15:45 · Jue 14:15-15:45',
+        room: '692B / 692B',
+      },
+    },
     status: 'available',
   },
   {
@@ -610,6 +648,18 @@ const enrollmentSubjects: EnrollmentSubjectOption[] = [
     teacher: 'Villarroel Tapia Henry Frank',
     schedule: 'Lun 14:15-15:45 · Mié 6:45-8:15',
     room: '692G / 651',
+    groupDetails: {
+      '1': {
+        teacher: 'Villarroel Tapia Henry Frank',
+        schedule: 'Lun 14:15-15:45 · Mié 6:45-8:15',
+        room: '692G / 651',
+      },
+      '2': {
+        teacher: 'Aguilar Peñaranda Marcelo',
+        schedule: 'Mar 16:30-18:00 · Jue 16:30-18:00',
+        room: '690F / 690F',
+      },
+    },
     status: 'available',
   },
   {
@@ -623,6 +673,23 @@ const enrollmentSubjects: EnrollmentSubjectOption[] = [
     teacher: 'Romero Rodriguez Patricia',
     schedule: 'Mar 11:15-12:45 · Mié 8:15-10:30 · Jue 8:15-9:45',
     room: '691F / 690B / 690C',
+    groupDetails: {
+      '1': {
+        teacher: 'Romero Rodriguez Patricia',
+        schedule: 'Mar 11:15-12:45 · Mié 8:15-10:30 · Jue 8:15-9:45',
+        room: '691F / 690B / 690C',
+      },
+      '2': {
+        teacher: 'Terrazas Quiroga Iván',
+        schedule: 'Lun 7:30-9:00 · Mié 7:30-9:00',
+        room: '690A / 690A',
+      },
+      '3': {
+        teacher: 'Salinas Crespo Lucía',
+        schedule: 'Mar 18:45-20:15 · Jue 18:45-20:15',
+        room: '692C / 692C',
+      },
+    },
     status: 'available',
   },
   {
@@ -1114,9 +1181,17 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
     .map((enrollment) => {
       const subject = enrollmentSubjects.find((item) => item.id === enrollment.subjectId);
 
-      return subject
-        ? { ...subject, selectedMode: enrollment.mode, selectedGroup: enrollment.group }
-        : undefined;
+      if (!subject) return undefined;
+
+      // El horario, docente y aula corresponden al grupo elegido, no al grupo base.
+      const detail = getGroupDetail(subject, enrollment.group);
+
+      return {
+        ...subject,
+        ...detail,
+        selectedMode: enrollment.mode,
+        selectedGroup: enrollment.group,
+      };
     })
     .filter((subject): subject is SelectedEnrollmentSubject => Boolean(subject));
   const availableSubjects = enrollmentSubjects.filter(
@@ -2408,6 +2483,9 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                         <div className="mt-1 text-sm text-muted-foreground">
                           {subject.code} · Grupo {subject.selectedGroup} · {subject.schedule}
                         </div>
+                        <div className="text-sm text-muted-foreground">
+                          {subject.teacher}
+                        </div>
                       </div>
                       <Badge
                         className={`w-fit rounded-sm ${
@@ -2835,6 +2913,8 @@ function SubjectOfferRow({ subject, disabled, onAdd }: SubjectOfferRowProps) {
   const hasGroupChoice = subject.availableGroups.length > 1;
   const fullGroups = subject.fullGroups ?? [];
   const selectedGroupIsFull = fullGroups.includes(selectedGroup);
+  // El docente, horario y aula dependen del grupo elegido.
+  const groupDetail = getGroupDetail(subject, selectedGroup);
 
   return (
     <article className="grid gap-4 px-5 py-4 lg:grid-cols-[1fr_auto] lg:items-center">
@@ -2861,15 +2941,15 @@ function SubjectOfferRow({ subject, disabled, onAdd }: SubjectOfferRowProps) {
           </span>
           <span className="flex items-center gap-2">
             <CalendarClock aria-hidden="true" className="size-4 shrink-0" />
-            {subject.schedule}
+            {groupDetail.schedule}
           </span>
           <span className="flex items-center gap-2">
             <User aria-hidden="true" className="size-4 shrink-0" />
-            {subject.teacher}
+            {groupDetail.teacher}
           </span>
           <span className="flex items-center gap-2">
             <Building2 aria-hidden="true" className="size-4 shrink-0" />
-            Aula {subject.room}
+            Aula {groupDetail.room}
           </span>
         </div>
       </div>
