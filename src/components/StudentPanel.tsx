@@ -605,6 +605,22 @@ function getGroupDetail(subject: EnrollmentSubjectOption, group: string): GroupD
   );
 }
 
+function getEnrollmentDetail(
+  subject: EnrollmentSubjectOption,
+  group: string,
+  mode: EnrollmentMode,
+): GroupDetail {
+  if (mode === 'Mesa') {
+    return {
+      teacher: 'Docente por confirmar',
+      schedule: 'Examen de mesa · fecha por confirmar',
+      room: 'Por confirmar',
+    };
+  }
+
+  return getGroupDetail(subject, group);
+}
+
 const enrollmentSubjects: EnrollmentSubjectOption[] = [
   {
     id: '2010204',
@@ -752,9 +768,26 @@ const enrollmentSubjects: EnrollmentSubjectOption[] = [
     availableModes: ['Normal', 'Mesa'] as EnrollmentMode[],
     group: '1',
     availableGroups: ['1', '2', '3'],
-    teacher: 'Docente por confirmar',
+    teacher: 'Soruco Maita Jose Antonio',
     schedule: 'Lun 7:30-9:00 · Mié 7:30-9:00',
     room: '690A',
+    groupDetails: {
+      '1': {
+        teacher: 'Soruco Maita Jose Antonio',
+        schedule: 'Lun 7:30-9:00 · Mié 7:30-9:00',
+        room: '690A',
+      },
+      '2': {
+        teacher: 'Catari Rios Raul',
+        schedule: 'Lun 15:45-17:15 · Mié 15:45-17:15',
+        room: '691B',
+      },
+      '3': {
+        teacher: 'Manchego Castellon Roberto Juan',
+        schedule: 'Mar 7:30-9:00 · Jue 7:30-9:00',
+        room: '690C',
+      },
+    },
     status: 'available',
   },
   {
@@ -766,9 +799,26 @@ const enrollmentSubjects: EnrollmentSubjectOption[] = [
     group: '3',
     availableGroups: ['1', '2', '3'],
     fullGroups: ['1'],
-    teacher: 'Docente por confirmar',
+    teacher: 'Hoepfner Reynolds Mauricio',
     schedule: 'Mar 14:15-15:45 · Jue 14:15-15:45',
     room: '692C',
+    groupDetails: {
+      '1': {
+        teacher: 'Hoepfner Reynolds Mauricio',
+        schedule: 'Lun 11:15-12:45 · Mié 11:15-12:45',
+        room: '691E',
+      },
+      '2': {
+        teacher: 'Lucano Lucano Marcelo Javier',
+        schedule: 'Mar 9:45-11:15 · Jue 9:45-11:15',
+        room: '692A',
+      },
+      '3': {
+        teacher: 'Flores Soliz Juan Marcelo',
+        schedule: 'Mar 14:15-15:45 · Jue 14:15-15:45',
+        room: '692C',
+      },
+    },
     status: 'available',
   },
   {
@@ -779,9 +829,21 @@ const enrollmentSubjects: EnrollmentSubjectOption[] = [
     availableModes: ['Normal', 'Mesa'] as EnrollmentMode[],
     group: '1',
     availableGroups: ['1', '2'],
-    teacher: 'Docente por confirmar',
+    teacher: 'Orellana Araoz Jorge Walter',
     schedule: 'Lun 18:45-20:15 · Mié 18:45-20:15',
     room: '691D',
+    groupDetails: {
+      '1': {
+        teacher: 'Orellana Araoz Jorge Walter',
+        schedule: 'Lun 18:45-20:15 · Mié 18:45-20:15',
+        room: '691D',
+      },
+      '2': {
+        teacher: 'Vargas Antezana Ademar Marcelo',
+        schedule: 'Mar 16:30-18:00 · Jue 16:30-18:00',
+        room: '690B',
+      },
+    },
     status: 'available',
   },
   {
@@ -792,9 +854,21 @@ const enrollmentSubjects: EnrollmentSubjectOption[] = [
     availableModes: ['Normal', 'Mesa'] as EnrollmentMode[],
     group: '1',
     availableGroups: ['1', '2'],
-    teacher: 'Docente por confirmar',
+    teacher: 'Montecinos Choque Marco Antonio',
     schedule: 'Mar 18:45-20:15 · Jue 20:15-21:45',
     room: '692F',
+    groupDetails: {
+      '1': {
+        teacher: 'Montecinos Choque Marco Antonio',
+        schedule: 'Mar 18:45-20:15 · Jue 20:15-21:45',
+        room: '692F',
+      },
+      '2': {
+        teacher: 'Bustillos Vargas Alex Israel',
+        schedule: 'Lun 20:15-21:45 · Mié 20:15-21:45',
+        room: '691F',
+      },
+    },
     status: 'available',
   },
   {
@@ -805,9 +879,21 @@ const enrollmentSubjects: EnrollmentSubjectOption[] = [
     availableModes: ['Normal', 'Mesa'] as EnrollmentMode[],
     group: '2',
     availableGroups: ['1', '2'],
-    teacher: 'Docente por confirmar',
+    teacher: 'Costas Jauregui Vladimir',
     schedule: 'Lun 15:00-16:30 · Vie 15:00-16:30',
     room: '691A',
+    groupDetails: {
+      '1': {
+        teacher: 'Jaldin Rosales K. Rolando',
+        schedule: 'Lun 9:45-11:15 · Vie 9:45-11:15',
+        room: '690D',
+      },
+      '2': {
+        teacher: 'Costas Jauregui Vladimir',
+        schedule: 'Lun 15:00-16:30 · Vie 15:00-16:30',
+        room: '691A',
+      },
+    },
     status: 'available',
   },
   {
@@ -818,9 +904,21 @@ const enrollmentSubjects: EnrollmentSubjectOption[] = [
     availableModes: ['Normal'] as EnrollmentMode[],
     group: '1',
     availableGroups: ['1', '2'],
-    teacher: 'Docente por confirmar',
+    teacher: 'Vargas Antezana Ademar Marcelo',
     schedule: 'Mié 10:30-12:00 · Vie 10:30-12:00',
     room: '690F',
+    groupDetails: {
+      '1': {
+        teacher: 'Vargas Antezana Ademar Marcelo',
+        schedule: 'Mié 10:30-12:00 · Vie 10:30-12:00',
+        room: '690F',
+      },
+      '2': {
+        teacher: 'Zabalaga Montano Oscar A',
+        schedule: 'Mar 11:15-12:45 · Jue 11:15-12:45',
+        room: '692B',
+      },
+    },
     status: 'available',
   },
   {
@@ -831,9 +929,26 @@ const enrollmentSubjects: EnrollmentSubjectOption[] = [
     availableModes: ['Normal', 'Mesa'] as EnrollmentMode[],
     group: '1',
     availableGroups: ['1', '2', '3'],
-    teacher: 'Docente por confirmar',
+    teacher: 'Montoya Burgos Yony Richard',
     schedule: 'Mar 9:45-11:15 · Jue 9:45-11:15',
     room: '691E',
+    groupDetails: {
+      '1': {
+        teacher: 'Montoya Burgos Yony Richard',
+        schedule: 'Mar 9:45-11:15 · Jue 9:45-11:15',
+        room: '691E',
+      },
+      '2': {
+        teacher: 'Davalos Brozovic Jorge',
+        schedule: 'Lun 16:30-18:00 · Mié 16:30-18:00',
+        room: '690E',
+      },
+      '3': {
+        teacher: 'Peeters Ilonaa Magda Lena',
+        schedule: 'Vie 18:45-21:45',
+        room: '692D',
+      },
+    },
     status: 'available',
   },
   {
@@ -1084,6 +1199,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
   const [selectedKardexRow, setSelectedKardexRow] = useState<KardexRow | null>(null);
   const [subjectPendingRemoval, setSubjectPendingRemoval] =
     useState<SelectedEnrollmentSubject | null>(null);
+  const [isConflictConfirmationOpen, setIsConflictConfirmationOpen] = useState(false);
   const [isKardexDetailDesktop, setIsKardexDetailDesktop] = useState(false);
   const [accessCodes, setAccessCodes] = useState({ third: '', fifth: '' });
   const [codeError, setCodeError] = useState('');
@@ -1183,8 +1299,9 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
 
       if (!subject) return undefined;
 
-      // El horario, docente y aula corresponden al grupo elegido, no al grupo base.
-      const detail = getGroupDetail(subject, enrollment.group);
+      // El horario, docente y aula corresponden al grupo elegido.
+      // En modalidad Mesa no se usa horario de clases, por eso no genera choques.
+      const detail = getEnrollmentDetail(subject, enrollment.group, enrollment.mode);
 
       return {
         ...subject,
@@ -1217,9 +1334,10 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
       const subject = enrollmentSubjects.find((item) => item.id === subjectId);
       storeSelectedEnrollments(next);
       if (subject) {
+        const detail = getEnrollmentDetail(subject, group, mode);
         const message = `${subject.name} fue agregada a tu inscripción.`;
         toast.success(subject.name, {
-          description: `Materia agregada · Grupo ${group} · ${mode}`,
+          description: `Materia agregada · Grupo ${group} · ${detail.teacher} · ${mode}`,
         });
         announce(message);
       }
@@ -1281,6 +1399,16 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
     window.sessionStorage.setItem('websiss-enrollment-finalized', 'true');
     announce('Inscripción lista para revisar. Abriendo estado de inscripción.');
     window.location.href = '/panel/estado';
+  };
+
+  const requestFinalizeEnrollment = () => {
+    if (hasScheduleConflict) {
+      setIsConflictConfirmationOpen(true);
+      announce('Choque de horarios detectado. Confirma si deseas continuar.');
+      return;
+    }
+
+    finalizeEnrollment();
   };
 
   useEffect(() => {
@@ -1692,8 +1820,8 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
               </div>
             </div>
 
-            {isTuitionPaid && isCodeValidated && selectedSubjectIds.length > 0 && !hasScheduleConflict ? (
-              <Button type="button" onClick={finalizeEnrollment}>
+            {isTuitionPaid && isCodeValidated && selectedSubjectIds.length > 0 ? (
+              <Button type="button" onClick={requestFinalizeEnrollment}>
                 <ListChecks aria-hidden="true" />
                 <span>Finalizar inscripción</span>
               </Button>
@@ -1864,7 +1992,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                             ))}
                           </ul>
                           <p className="text-muted-foreground">
-                            Ajusta los grupos o retira una materia antes de finalizar.
+                            Puedes cambiar grupo, retirar una materia o continuar bajo tu responsabilidad.
                           </p>
                         </div>
                       </div>
@@ -2836,6 +2964,38 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
       </footer>
 
       <AlertDialog
+        open={isConflictConfirmationOpen}
+        onOpenChange={setIsConflictConfirmationOpen}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>¿Inscribirte con choque de horarios?</AlertDialogTitle>
+            <AlertDialogDescription asChild>
+              <div className="flex flex-col gap-3">
+                <p>
+                  Estas materias se solapan. Puedes volver para cambiar grupo o asumir el
+                  choque y finalizar la inscripción.
+                </p>
+                <ul className="list-disc pl-4">
+                  {scheduleConflicts.map((conflict) => (
+                    <li key={`${conflict.a}-${conflict.b}`}>
+                      {conflict.a} y {conflict.b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Revisar grupos</AlertDialogCancel>
+            <AlertDialogAction onClick={finalizeEnrollment}>
+              Asumir choque y finalizar
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <AlertDialog
         open={subjectPendingRemoval !== null}
         onOpenChange={(open) => {
           if (!open) setSubjectPendingRemoval(null);
@@ -2913,8 +3073,8 @@ function SubjectOfferRow({ subject, disabled, onAdd }: SubjectOfferRowProps) {
   const hasGroupChoice = subject.availableGroups.length > 1;
   const fullGroups = subject.fullGroups ?? [];
   const selectedGroupIsFull = fullGroups.includes(selectedGroup);
-  // El docente, horario y aula dependen del grupo elegido.
-  const groupDetail = getGroupDetail(subject, selectedGroup);
+  // En modalidad Mesa no se muestra horario/aula de clases ni genera choques.
+  const groupDetail = getEnrollmentDetail(subject, selectedGroup, selectedMode);
 
   return (
     <article className="grid gap-4 px-5 py-4 lg:grid-cols-[1fr_auto] lg:items-center">
@@ -2954,7 +3114,7 @@ function SubjectOfferRow({ subject, disabled, onAdd }: SubjectOfferRowProps) {
         </div>
       </div>
 
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-end lg:flex-col lg:items-stretch">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end lg:flex-col lg:items-end">
         {hasGroupChoice && (
           <div className="space-y-1.5">
             <label
@@ -2970,18 +3130,31 @@ function SubjectOfferRow({ subject, disabled, onAdd }: SubjectOfferRowProps) {
             >
               <SelectTrigger
                 id={`group-${subject.id}`}
-                className="w-full sm:w-32 lg:w-full"
+                className="relative w-full sm:w-36 [&_[data-slot=select-value]]:invisible"
                 aria-label={`Grupo para ${subject.name}`}
               >
                 <SelectValue placeholder="Grupo" />
+                <span className="pointer-events-none absolute left-3 right-9 truncate text-left">
+                  Grupo {selectedGroup}
+                </span>
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  {subject.availableGroups.map((group) => (
-                    <SelectItem key={group} value={group} disabled={fullGroups.includes(group)}>
-                      Grupo {group}{fullGroups.includes(group) ? ' - sin cupos' : ''}
-                    </SelectItem>
-                  ))}
+                  {subject.availableGroups.map((group) => {
+                    const detail = getGroupDetail(subject, group);
+                    const isFull = fullGroups.includes(group);
+
+                    return (
+                      <SelectItem
+                        key={group}
+                        value={group}
+                        textValue={`Grupo ${group}`}
+                        disabled={isFull}
+                      >
+                        Grupo {group} · {detail.teacher}{isFull ? ' - sin cupos' : ''}
+                      </SelectItem>
+                    );
+                  })}
                 </SelectGroup>
               </SelectContent>
             </Select>
@@ -2998,7 +3171,7 @@ function SubjectOfferRow({ subject, disabled, onAdd }: SubjectOfferRowProps) {
           variant="outline"
           spacing={0}
           aria-label={`Modalidad para ${subject.name}`}
-          className="grid grid-cols-2 sm:w-44 lg:w-full"
+          className="grid grid-cols-2 sm:w-36"
         >
           {(['Normal', 'Mesa'] as EnrollmentMode[]).map((mode) => {
             const enabled = subject.availableModes.includes(mode);
@@ -3021,7 +3194,7 @@ function SubjectOfferRow({ subject, disabled, onAdd }: SubjectOfferRowProps) {
           type="button"
           onClick={() => onAdd(selectedMode, selectedGroup)}
           disabled={disabled || selectedGroupIsFull || !subject.availableModes.includes(selectedMode)}
-          className="sm:w-36 lg:w-full"
+          className="sm:w-36"
         >
           <Plus aria-hidden="true" />
           <span>{hasModeChoice ? 'Inscribir' : `Inscribir ${selectedMode}`}</span>
@@ -3044,6 +3217,9 @@ function SelectedSubjectCard({ subject, onRemove }: SelectedSubjectCardProps) {
           <div className="font-medium leading-tight">{subject.name}</div>
           <div className="mt-1 text-xs text-muted-foreground">
             {subject.code} · Grupo {subject.selectedGroup} · {subject.selectedMode}
+          </div>
+          <div className="mt-1 text-xs text-muted-foreground">
+            Docente: {subject.teacher}
           </div>
         </div>
         <Button
