@@ -578,6 +578,34 @@ En conjunto, el card sorting confirmó que la estructura propuesta coincide en g
 
 \subsection{Justificación del rediseño}
 
+\vspace{0.3cm}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    pillar/.style={draw=blue!80, fill=blue!10, rectangle, rounded corners, minimum width=4.5cm, minimum height=1.5cm, align=center, font=\small\bfseries, text width=4.2cm},
+    base/.style={draw=black!70, fill=black!5, rectangle, rounded corners, minimum width=14cm, minimum height=1.2cm, align=center, font=\large\bfseries, text=black!80},
+    arrow/.style={->, ultra thick, >=stealth, draw=blue!60}
+]
+
+% Base arriba
+\node[base] (red) at (0, 2.5) {Decisiones de Rediseño de WebSIS};
+
+% Pilares abajo
+\node[pillar] (usa) at (-4.8, 0) {Principios de Usabilidad\\ \normalfont\scriptsize (Nielsen, Prevención, Visibilidad)};
+\node[pillar] (ges) at (0, 0) {Leyes de la Gestalt\\ \normalfont\scriptsize (Proximidad, Similitud, Continuidad)};
+\node[pillar] (car) at (4.8, 0) {Carga Cognitiva\\ \normalfont\scriptsize (Reducción de pasos, Memoria)};
+
+% Flechas
+\draw[arrow] (usa.north) -- (red.south -| usa.north);
+\draw[arrow] (ges.north) -- (red.south);
+\draw[arrow] (car.north) -- (red.south -| car.north);
+
+\end{tikzpicture}
+\caption{Los tres pilares teóricos que fundamentan el rediseño centrado en el estudiante.}
+\label{fig:pilares-rediseno}
+\end{figure}
+\vspace{0.3cm}
+
 \subsubsection*{Justificación basada en usabilidad}
 
 La propuesta responde a los principales problemas detectados heurísticamente en WebSIS y los traduce en decisiones concretas de interfaz. No se trata solo de cambiar la apariencia, sino de reducir pasos innecesarios, hacer visibles los estados críticos y usar un lenguaje cercano al estudiante de la UMSS.

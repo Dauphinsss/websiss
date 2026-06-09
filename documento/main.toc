@@ -59,13 +59,13 @@
 \contentsline {subsection}{\numberline {11.2}Problemas encontrados}{58}{subsection.11.2}%
 \contentsline {subsection}{\numberline {11.3}Nivel de severidad}{59}{subsection.11.3}%
 \contentsline {subsection}{\numberline {11.4}Mejoras aplicadas tras la evaluación}{60}{subsection.11.4}%
-\contentsline {section}{\numberline {12}Resultados y Mejoras}{66}{section.12}%
-\contentsline {subsection}{\numberline {12.1}Resultados de la investigación de usuarios}{66}{subsection.12.1}%
-\contentsline {subsection}{\numberline {12.2}Mejoras del rediseño frente a los problemas detectados}{66}{subsection.12.2}%
-\contentsline {subsection}{\numberline {12.3}Mejoras aplicadas tras la evaluación del prototipo}{67}{subsection.12.3}%
-\contentsline {section}{\numberline {13}Conclusiones}{68}{section.13}%
-\contentsline {section}{\numberline {A}Instrumento: Cuestionario WebSIS}{70}{section.A}%
-\contentsline {paragraph}{Sección A: Datos del encuestado}{70}{section*.60}%
-\contentsline {paragraph}{Sección B: Uso de WebSIS}{70}{section*.61}%
-\contentsline {paragraph}{Sección C: Dificultades y usabilidad}{70}{section*.62}%
-\contentsline {paragraph}{Sección D: Experiencia emocional}{71}{section*.63}%
+\contentsline {section}{\numberline {12}Resultados y Mejoras}{67}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Resultados de la investigación de usuarios}{67}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Mejoras del rediseño frente a los problemas detectados}{67}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Mejoras aplicadas tras la evaluación del prototipo}{68}{subsection.12.3}%
+\contentsline {section}{\numberline {13}Conclusiones}{70}{section.13}%
+\contentsline {section}{\numberline {A}Instrumento: Cuestionario WebSIS}{72}{appendix.Alph1}%
+\contentsline {paragraph}{Sección A: Datos del encuestado}{72}{section*.65}%
+\contentsline {paragraph}{Sección B: Uso de WebSIS}{72}{section*.66}%
+\contentsline {paragraph}{Sección C: Dificultades y usabilidad}{72}{section*.67}%
+\contentsline {paragraph}{Sección D: Experiencia emocional}{73}{section*.68}%
