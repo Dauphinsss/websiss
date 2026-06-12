@@ -8,25 +8,31 @@
 
             \item \textbf{Estudiantes ingresantes:} se enfrentan por primera vez a una interfaz desconocida en un contexto de alta presión académica, sin experiencia previa que les permita anticipar la lógica de navegación ni los procedimientos requeridos.
 
-            \item \textbf{Estudiantes avanzados:} han acumulado semestres de uso continuo, pero han desarrollado atajos y rutinas no evidentes para compensar las deficiencias del sistema. Esta adaptación individual no constituye una experiencia de uso exitosa, sino la normalización de fallos de diseño que el sistema debería haber resuelto.
+            \item \textbf{Estudiantes regulares:} han acumulado semestres de uso continuo, pero han desarrollado atajos y rutinas no evidentes para compensar las deficiencias del sistema. Esta adaptación individual no constituye una experiencia de uso exitosa, sino la normalización de fallos de diseño que el sistema debería haber resuelto.
 
         \end{itemize}
 
     En ambos casos, la experiencia de uso se ve comprometida por las mismas deficiencias estructurales de la interfaz, con independencia del nivel de familiaridad del usuario.
 
-    Los escenarios de uso de mayor criticidad son los siguientes:
+    Los principales escenarios de uso del sistema son los siguientes:
 
         \begin{itemize}
 
-            \item \textbf{Inscripción a materias:} proceso que ocurre en ventanas de tiempo acotadas con consecuencias académicas directas si no se completa correctamente dentro del plazo habilitado.
+            \item \textbf{Acceso e inicio de sesión:} constituye la puerta de entrada obligatoria a todas las gestiones académicas, por lo que cualquier dificultad en este punto retrasa o bloquea el resto de tareas del sistema.
 
-            \item \textbf{Consulta de notas y situación académica:} concentra accesos masivos inmediatamente después de los periodos evaluativos, cuando el estudiante necesita obtener información con rapidez y certeza.
+            \item \textbf{Verificación de matrícula y validación de códigos:} son gestiones previas necesarias para habilitar la inscripción, y su comprensión deficiente puede impedir que el estudiante continúe con el proceso dentro del plazo establecido.
 
-            \item \textbf{Consulta de horarios al inicio del semestre:} la información debe ser localizada y comprendida con rapidez para organizar la carga académica antes del inicio de clases.
+            \item \textbf{Inscripción a materias y consulta del estado de inscripción:} proceso que ocurre en ventanas de tiempo acotadas y con consecuencias académicas directas si no se completa correctamente o si el sistema no confirma con claridad el resultado de la acción.
+
+            \item \textbf{Consulta de horarios:} la información debe ser localizada y comprendida con rapidez para organizar la carga académica, verificar choques y planificar la asistencia a clases.
+
+            \item \textbf{Consulta de notas, Kardex y situación académica:} concentra accesos frecuentes al cierre de evaluaciones y durante el seguimiento del avance académico, cuando el estudiante necesita información clara, rápida y confiable sobre su rendimiento y sus créditos.
+
+            \item \textbf{Acceso desde dispositivos móviles:} constituye un escenario real de uso para estudiantes que dependen del celular como medio principal o inmediato de acceso. En este contexto, tareas como inscribirse, consultar horarios o revisar notas se realizan en pantallas reducidas y bajo condiciones de urgencia, por lo que una interfaz no adaptada incrementa la dificultad de navegación y la posibilidad de error.
             
         \end{itemize}
 
-    En los tres escenarios, las dificultades de navegación tienen un impacto directo en el desempeño y la tranquilidad del estudiante.
+    En todos estos escenarios, las dificultades de navegación tienen un impacto directo en el desempeño, la autonomía y la tranquilidad del estudiante, especialmente cuando las tareas deben resolverse bajo presión de tiempo o desde dispositivos que el sistema no atiende adecuadamente.
 
     La problemática se manifiesta en un conjunto de deficiencias observables desde la perspectiva de la Interacción Humano-Computadora:
 
@@ -45,6 +51,8 @@
             \item \textbf{Ausencia de soporte en periodos críticos:} en los momentos de mayor demanda, como el inicio de inscripciones o la publicación de calificaciones, estas deficiencias se concentran y afectan a la mayor cantidad de usuarios de forma simultánea, sin que el sistema ofrezca ningún soporte contextual adicional.
 
         \end{itemize}
+
+    La Figura~\ref{fig:arbol-problemas} sintetiza de manera estructurada las principales causas y efectos de esta problemática en la experiencia de uso de WebSIS.
 
     \input{three}
 

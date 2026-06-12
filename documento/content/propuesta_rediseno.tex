@@ -1,6 +1,6 @@
 \section{Propuesta de Rediseño}
 
-La propuesta de rediseño se construye a partir de los problemas prioritarios identificados en WebSIS y de las necesidades detectadas en estudiantes ingresantes y avanzados. Su objetivo no es agregar funciones nuevas, sino reorganizar las existentes para que las tareas críticas puedan completarse con menor carga cognitiva, mayor claridad de estado y mejor compatibilidad móvil.
+La propuesta de rediseño se construye a partir de los problemas prioritarios identificados en WebSIS y de las necesidades detectadas en estudiantes ingresantes y regulares. Su objetivo no es agregar funciones nuevas, sino reorganizar las existentes para que las tareas críticas puedan completarse con menor carga cognitiva, mayor claridad de estado y mejor compatibilidad móvil. En esta sección, las referencias N1--N9 corresponden a las necesidades sintetizadas en la Tabla~\ref{tab:necesidades-detectadas} de la sección \textit{Necesidades Detectadas}; cuando se cite evidencia de entrevistas o perfiles de usuario, esta proviene de la Tabla~\ref{tab:sintesis-entrevistas} y de la sección \textit{Perfil de Usuarios}.
 
 \subsection{Funcionalidades intervenidas}
 
@@ -36,7 +36,7 @@ La estructura del contenido fue redefinida desde la lógica de tareas del estudi
   \item \textbf{Soporte contextual:} mensajes, aclaraciones y estados integrados dentro de cada pantalla en lugar de depender de ayuda externa.
 \end{itemize}
 
-Esta estructura responde directamente a las necesidades N1, N2, N5, N6 y N8 detectadas en la investigación.
+Esta estructura responde directamente a las necesidades N1, N2, N5, N6 y N8 detectadas en la investigación (véase Tabla~\ref{tab:necesidades-detectadas}).
 
 \subsection{Mapa del sistema}
 
@@ -122,8 +122,8 @@ La jerarquía evita menús ambiguos y reduce el backtracking. El panel del estud
 
 \begin{enumerate}
   \item El estudiante ingresa al panel principal.
-  \item Verifica el estado de \textit{Matrícula}. Si está pagada, el sistema muestra comprobante, entidad y fecha de registro.
-  \item Si no está pagada, utiliza el acceso \textit{Pagar matrícula}; si ya fue confirmada, el botón queda visible pero deshabilitado para evitar pagos duplicados.
+  \item Verifica el estado de \textit{Matrícula}. Si está pagada, el sistema muestra comprobante, entidad y fecha de registro validados automáticamente.
+  \item Si no está pagada, utiliza el acceso \textit{Pagar matrícula}, que redirige a una pasarela de pago institucional; una vez completada la transacción, el sistema recibe la confirmación y actualiza automáticamente el estado de matrícula. Si el pago ya fue confirmado, el botón queda visible pero deshabilitado para evitar pagos duplicados.
   \item Accede a \textit{Validación de códigos}.
   \item Ingresa dos códigos de acceso requeridos.
   \item El sistema confirma que la cuenta quedó habilitada para inscripción.
@@ -167,6 +167,90 @@ La jerarquía evita menús ambiguos y reduce el backtracking. El panel del estud
   \item Ingresa contraseña actual, nueva contraseña y confirmación.
   \item El sistema confirma el cambio y recomienda cerrar sesiones activas.
 \end{enumerate}
+
+\subsection{Validación de la propuesta con usuarios}
+
+Las decisiones de estructura y los wireframes no se sostienen únicamente en principios teóricos: fueron contrastadas con estudiantes reales de la UMSS mediante dos técnicas complementarias. El \textit{card sorting} se utilizó para verificar que la arquitectura de información coincidiera con el modelo mental del estudiante (necesidad N5; véase Tabla~\ref{tab:necesidades-detectadas}), mientras que las pruebas de usabilidad sobre los wireframes permitieron comprobar que los flujos propuestos pudieran completarse sin asistencia. Ambas técnicas se aplicaron sobre los mismos perfiles observados en la investigación, documentados en la sección \textit{Perfil de Usuarios}.
+
+\subsubsection*{Card sorting: validación de la arquitectura de información}
+
+Se aplicó un \textit{card sorting híbrido} con 8 estudiantes (4 ingresantes y 4 regulares). A cada participante se le entregaron 10 tarjetas, cada una con una función del sistema redactada en lenguaje del estudiante: \textit{Pagar matrícula}, \textit{Ver comprobante de matrícula}, \textit{Validar códigos}, \textit{Inscribirse a materias}, \textit{Estado de inscripción}, \textit{Horario de clases}, \textit{Kardex}, \textit{Datos personales}, \textit{Cambiar contraseña} y \textit{Cerrar sesión}. Se les pidió agrupar las tarjetas según cómo ellos esperarían encontrarlas y nombrar cada grupo con sus propias palabras.
+
+\begin{itemize}
+  \item \textbf{Objetivo:} verificar si la agrupación espontánea de los estudiantes coincidía con la estructura propuesta en el mapa del sistema y en la subsección de estructura del contenido.
+  \item \textbf{Método:} card sorting híbrido (los participantes podían usar categorías sugeridas o crear las suyas), realizado de forma presencial e individual.
+  \item \textbf{Registro:} se documentaron las agrupaciones, los nombres asignados a cada categoría y las dudas verbalizadas durante la actividad.
+\end{itemize}
+
+\noindent Los resultados de coincidencia entre la agrupación de los estudiantes y la estructura propuesta se resumen en el siguiente cuadro:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{5.5cm} c p{5.0cm}}
+\hline
+\textbf{Tarjeta / función} & \textbf{Coincidencia} & \textbf{Categoría más frecuente} \\
+\hline
+Pagar matrícula & 8/8 & Matrícula \\
+Ver comprobante de matrícula & 7/8 & Matrícula \\
+Validar códigos & 6/8 & Inscripción / paso previo \\
+Inscribirse a materias & 8/8 & Inscripción \\
+Estado de inscripción & 6/8 & Inscripción \\
+Horario de clases & 8/8 & Información académica \\
+Kardex & 8/8 & Información académica \\
+Datos personales & 7/8 & Perfil \\
+Cambiar contraseña & 5/8 & Perfil / seguridad \\
+Cerrar sesión & 7/8 & Perfil / seguridad \\
+\hline
+\end{tabular}
+\caption{Resultados del card sorting: coincidencia con la estructura propuesta.}
+\label{tab:card-sorting}
+\end{table}
+
+\noindent Hallazgos principales del card sorting:
+
+\begin{itemize}
+  \item La mayoría de los estudiantes agrupó de forma natural \textit{Matrícula}, \textit{Inscripción}, \textit{Información académica} y \textit{Perfil}, coincidiendo con la estructura propuesta y confirmando la necesidad \textbf{N5} (navegación alineada al modelo mental del estudiante; véase Tabla~\ref{tab:necesidades-detectadas}).
+  \item \textit{Validar códigos} generó dudas: 2 de 8 participantes no sabían si pertenecía a matrícula o a inscripción. Esto reforzó la decisión de mantenerlo como un paso previo y separado, pero visible desde ambos contextos (Flujo 1), atendiendo la necesidad \textbf{N1} (guía en inscripción; véase Tabla~\ref{tab:necesidades-detectadas}).
+  \item \textit{Cambiar contraseña} fue la tarjeta con mayor dispersión: algunos estudiantes la asociaban a configuración general y no a seguridad. Por eso se conservó dentro del menú de perfil pero etiquetada explícitamente como acción de seguridad.
+  \item Ningún estudiante ubicó los datos personales como un bloque permanente en pantalla, lo que respalda la decisión de trasladarlos al menú de perfil.
+\end{itemize}
+
+\subsubsection*{Pruebas de usabilidad sobre los wireframes}
+
+Con los mismos perfiles de usuario se realizaron pruebas de usabilidad moderadas sobre los wireframes de baja fidelidad. A cada estudiante se le pidió completar tareas representativas mientras pensaba en voz alta. Se registró si la tarea se completaba sin ayuda, el número de dudas relevantes y los comentarios espontáneos.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{6.5cm} c c}
+\hline
+\textbf{Tarea solicitada} & \textbf{Completada sin ayuda} & \textbf{Dudas relevantes} \\
+\hline
+Iniciar sesión sin pantalla de bienvenida & 8/8 & 0 \\
+Verificar si la matrícula está pagada & 8/8 & 0 \\
+Encontrar dónde validar los códigos & 6/8 & 2 \\
+Inscribirse a tres materias con grupo y modalidad & 7/8 & 1 \\
+Revisar el estado final de la inscripción & 8/8 & 0 \\
+Consultar el horario vigente & 8/8 & 0 \\
+Distinguir materias en curso de finalizadas en el Kardex & 7/8 & 1 \\
+Cambiar la contraseña & 6/8 & 2 \\
+\hline
+\end{tabular}
+\caption{Resultados de las pruebas de usabilidad sobre los wireframes.}
+\label{tab:pruebas-wireframes}
+\end{table}
+
+\noindent Hallazgos principales de las pruebas de wireframes:
+
+\begin{itemize}
+  \item Las tareas con estado explícito (matrícula, horario, estado de inscripción) se completaron sin dificultad, validando la necesidad \textbf{N2} (confirmación clara de las acciones; véase Tabla~\ref{tab:necesidades-detectadas}).
+  \item El acceso a \textit{Validar códigos} fue la tarea con más dudas: algunos estudiantes lo buscaron primero dentro de inscripción. Se ajustó el wireframe del panel para dar a este acceso mayor visibilidad junto a la acción principal, en línea con la necesidad \textbf{N6} (acceso rápido a tareas frecuentes; véase Tabla~\ref{tab:necesidades-detectadas}).
+  \item En el Kardex, 1 de 8 estudiantes no diferenció de inmediato la materia en curso; el contraste visual entre fila cerrada y fila en curso se reforzó en consecuencia, evitando que una materia sin nota final se interprete como reprobada.
+  \item Los participantes que probaron los wireframes en una vista reducida confirmaron que los accesos compactos y la separación por pantallas facilitaban la lectura en móvil, en línea con la necesidad \textbf{N4} (compatibilidad móvil; véase Tabla~\ref{tab:necesidades-detectadas}).
+\end{itemize}
+
+\subsubsection*{Síntesis de la validación}
+
+En conjunto, el card sorting confirmó que la estructura propuesta coincide en gran medida con el modelo mental del estudiante, mientras que las pruebas de usabilidad demostraron que los flujos principales pueden completarse sin asistencia. Los puntos de fricción detectados (validación de códigos y cambio de contraseña) no invalidaron la propuesta, sino que permitieron ajustar la visibilidad y el etiquetado de esos accesos antes de avanzar al prototipo. De esta forma, las decisiones de diseño quedan respaldadas no solo por principios de usabilidad, sino por evidencia obtenida directamente de los usuarios.
 
 \subsection{Wireframes de baja fidelidad}
 
@@ -491,90 +575,6 @@ Para complementar los wireframes de baja fidelidad, se generaron capturas reales
   \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/08-kardex.png}
   \caption{Kardex reorganizado con materias cerradas y materias en curso diferenciadas.}
 \end{figure}
-
-\subsection{Validación de la propuesta con usuarios}
-
-Las decisiones de estructura y los wireframes no se sostienen únicamente en principios teóricos: fueron contrastadas con estudiantes reales de la UMSS mediante dos técnicas complementarias. El \textit{card sorting} se utilizó para verificar que la arquitectura de información coincidiera con el modelo mental del estudiante (necesidad N5), mientras que las pruebas de usabilidad sobre los wireframes permitieron comprobar que los flujos propuestos pudieran completarse sin asistencia. Ambas técnicas se aplicaron sobre los mismos perfiles observados en la investigación: estudiantes ingresantes y estudiantes avanzados de la facultad.
-
-\subsubsection*{Card sorting: validación de la arquitectura de información}
-
-Se aplicó un \textit{card sorting híbrido} con 8 estudiantes (4 ingresantes y 4 avanzados). A cada participante se le entregaron 10 tarjetas, cada una con una función del sistema redactada en lenguaje del estudiante: \textit{Pagar matrícula}, \textit{Ver comprobante de matrícula}, \textit{Validar códigos}, \textit{Inscribirse a materias}, \textit{Estado de inscripción}, \textit{Horario de clases}, \textit{Kardex}, \textit{Datos personales}, \textit{Cambiar contraseña} y \textit{Cerrar sesión}. Se les pidió agrupar las tarjetas según cómo ellos esperarían encontrarlas y nombrar cada grupo con sus propias palabras.
-
-\begin{itemize}
-  \item \textbf{Objetivo:} verificar si la agrupación espontánea de los estudiantes coincidía con la estructura propuesta en el mapa del sistema y en la subsección de estructura del contenido.
-  \item \textbf{Método:} card sorting híbrido (los participantes podían usar categorías sugeridas o crear las suyas), realizado de forma presencial e individual.
-  \item \textbf{Registro:} se documentaron las agrupaciones, los nombres asignados a cada categoría y las dudas verbalizadas durante la actividad.
-\end{itemize}
-
-\noindent Los resultados de coincidencia entre la agrupación de los estudiantes y la estructura propuesta se resumen en el siguiente cuadro:
-
-\begin{table}[H]
-\centering
-\begin{tabular}{p{5.5cm} c p{5.0cm}}
-\hline
-\textbf{Tarjeta / función} & \textbf{Coincidencia} & \textbf{Categoría más frecuente} \\
-\hline
-Pagar matrícula & 8/8 & Matrícula \\
-Ver comprobante de matrícula & 7/8 & Matrícula \\
-Validar códigos & 6/8 & Inscripción / paso previo \\
-Inscribirse a materias & 8/8 & Inscripción \\
-Estado de inscripción & 6/8 & Inscripción \\
-Horario de clases & 8/8 & Información académica \\
-Kardex & 8/8 & Información académica \\
-Datos personales & 7/8 & Perfil \\
-Cambiar contraseña & 5/8 & Perfil / seguridad \\
-Cerrar sesión & 7/8 & Perfil / seguridad \\
-\hline
-\end{tabular}
-\caption{Resultados del card sorting: coincidencia con la estructura propuesta.}
-\label{tab:card-sorting}
-\end{table}
-
-\noindent Hallazgos principales del card sorting:
-
-\begin{itemize}
-  \item La mayoría de los estudiantes agrupó de forma natural \textit{Matrícula}, \textit{Inscripción}, \textit{Información académica} y \textit{Perfil}, coincidiendo con la estructura propuesta y confirmando la necesidad \textbf{N5} (navegación alineada al modelo mental del estudiante).
-  \item \textit{Validar códigos} generó dudas: 2 de 8 participantes no sabían si pertenecía a matrícula o a inscripción. Esto reforzó la decisión de mantenerlo como un paso previo y separado, pero visible desde ambos contextos (Flujo 1), atendiendo la necesidad \textbf{N1} (guía en inscripción).
-  \item \textit{Cambiar contraseña} fue la tarjeta con mayor dispersión: algunos estudiantes la asociaban a configuración general y no a seguridad. Por eso se conservó dentro del menú de perfil pero etiquetada explícitamente como acción de seguridad.
-  \item Ningún estudiante ubicó los datos personales como un bloque permanente en pantalla, lo que respalda la decisión de trasladarlos al menú de perfil.
-\end{itemize}
-
-\subsubsection*{Pruebas de usabilidad sobre los wireframes}
-
-Con los mismos perfiles de usuario se realizaron pruebas de usabilidad moderadas sobre los wireframes de baja fidelidad. A cada estudiante se le pidió completar tareas representativas mientras pensaba en voz alta. Se registró si la tarea se completaba sin ayuda, el número de dudas relevantes y los comentarios espontáneos.
-
-\begin{table}[H]
-\centering
-\begin{tabular}{p{6.5cm} c c}
-\hline
-\textbf{Tarea solicitada} & \textbf{Completada sin ayuda} & \textbf{Dudas relevantes} \\
-\hline
-Iniciar sesión sin pantalla de bienvenida & 8/8 & 0 \\
-Verificar si la matrícula está pagada & 8/8 & 0 \\
-Encontrar dónde validar los códigos & 6/8 & 2 \\
-Inscribirse a tres materias con grupo y modalidad & 7/8 & 1 \\
-Revisar el estado final de la inscripción & 8/8 & 0 \\
-Consultar el horario vigente & 8/8 & 0 \\
-Distinguir materias en curso de finalizadas en el Kardex & 7/8 & 1 \\
-Cambiar la contraseña & 6/8 & 2 \\
-\hline
-\end{tabular}
-\caption{Resultados de las pruebas de usabilidad sobre los wireframes.}
-\label{tab:pruebas-wireframes}
-\end{table}
-
-\noindent Hallazgos principales de las pruebas de wireframes:
-
-\begin{itemize}
-  \item Las tareas con estado explícito (matrícula, horario, estado de inscripción) se completaron sin dificultad, validando la necesidad \textbf{N2} (confirmación clara de las acciones).
-  \item El acceso a \textit{Validar códigos} fue la tarea con más dudas: algunos estudiantes lo buscaron primero dentro de inscripción. Se ajustó el wireframe del panel para dar a este acceso mayor visibilidad junto a la acción principal, en línea con la necesidad \textbf{N6} (acceso rápido a tareas frecuentes).
-  \item En el Kardex, 1 de 8 estudiantes no diferenció de inmediato la materia en curso; el contraste visual entre fila cerrada y fila en curso se reforzó en consecuencia, evitando que una materia sin nota final se interprete como reprobada.
-  \item Los participantes que probaron los wireframes en una vista reducida confirmaron que los accesos compactos y la separación por pantallas facilitaban la lectura en móvil, en línea con la necesidad \textbf{N4} (compatibilidad móvil).
-\end{itemize}
-
-\subsubsection*{Síntesis de la validación}
-
-En conjunto, el card sorting confirmó que la estructura propuesta coincide en gran medida con el modelo mental del estudiante, mientras que las pruebas de usabilidad demostraron que los flujos principales pueden completarse sin asistencia. Los puntos de fricción detectados (validación de códigos y cambio de contraseña) no invalidaron la propuesta, sino que permitieron ajustar la visibilidad y el etiquetado de esos accesos antes de avanzar al prototipo. De esta forma, las decisiones de diseño quedan respaldadas no solo por principios de usabilidad, sino por evidencia obtenida directamente de los usuarios.
 
 \subsection{Justificación del rediseño}
 
