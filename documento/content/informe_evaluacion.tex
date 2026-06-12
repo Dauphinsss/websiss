@@ -112,7 +112,7 @@ Coherentemente con el carácter iterativo del Diseño Centrado en el Usuario, lo
 \hline
 \textbf{ID} & \textbf{Heurística} & \textbf{Mejora aplicada en el prototipo} & \textbf{Estado} \\
 \hline
-P-03 & H5 -- Prevención de errores. & Se implementó la detección automática de solapamiento de horarios: al seleccionar materias, el sistema compara sus bloques y, si dos se solapan, muestra una alerta que identifica el conflicto y bloquea la finalización de la inscripción hasta resolverlo. & Corregido \\
+P-03 & H5 -- Prevención de errores. & Se implementó la detección automática de solapamiento de horarios: al seleccionar materias, el sistema compara sus bloques y, si dos se solapan, muestra una alerta que identifica el conflicto antes de finalizar, permitiendo revisar los grupos o asumir el choque de forma explícita. & Corregido \\
 \hline
 P-01 & H1 -- Visibilidad del estado. & Se aumentó el contraste del indicador de estado de matrícula usando fondo sólido y texto de alto contraste, verificando el resultado en modo claro y oscuro. & Corregido \\
 \hline
@@ -126,37 +126,37 @@ P-02 & H2 -- Coincidencia con el mundo real. & Se agregó una leyenda visible so
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/10-inscripcion-conflicto.png}
-  \caption{P-03 corregido: la inscripción detecta el choque de horarios entre dos materias y bloquea la finalización hasta resolverlo.}
+  \caption{P-03 corregido: la inscripción detecta el choque de horarios entre dos materias antes de finalizar y permite revisar grupos o asumir el conflicto explícitamente.}
   \label{fig:fix-conflicto}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/13-estado-materia.png}
-  \caption{P-01 corregido: el contraste del indicador de estado de matrícula usa fondo sólido y texto de alto contraste, verificado en modo claro y oscuro.}
+  \includegraphics[width=\textwidth,height=0.22\textheight,keepaspectratio]{images/prototipo/13-estado-materia.png}
+  \caption{P-01: El contraste del estado de matrícula usa fondo sólido y texto alto contraste.}
   \label{fig:fix-estado-matricula}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/08-kardex.png}
-  \caption{P-02 corregido: el Kardex incorpora una leyenda visible de las abreviaturas de estado sobre la tabla.}
+  \includegraphics[width=\textwidth,height=0.65\textheight,keepaspectratio]{images/prototipo/08-kardex.png}
+  \caption{P-02: El Kardex incorpora una leyenda de las abreviaturas de estado en la tabla.}
   \label{fig:fix-leyenda}
 \end{figure}
 
-Además de las correcciones derivadas de los tres problemas evaluados, se ajustaron otros detalles detectados durante la revisión del prototipo, en línea con las heurísticas de Nielsen: se diferenció la acción de imprimir el horario de la del Kardex (consistencia), se incorporó una confirmación explícita antes de retirar una materia de la inscripción (control y libertad del usuario, prevención de errores) y se añadió un estado vacío con orientación cuando el estudiante no tiene materias inscritas (retroalimentación). La Figura~\ref{fig:fix-retiro} y la Figura~\ref{fig:fix-vacio} muestran estos dos últimos ajustes.
+Además de las correcciones derivadas de los tres problemas evaluados, se ajustaron otros detalles detectados durante la revisión del prototipo, en línea con las heurísticas de Nielsen: se diferenció la acción de imprimir el horario de la del Kardex (consistencia), se incorporó una confirmación explícita antes de retirar una materia de la inscripción (control y libertad del usuario, prevención de errores) y se añadió un estado vacío cuando el estudiante no tiene materias inscritas (retroalimentación). La Figura~\ref{fig:fix-retiro} y la Figura~\ref{fig:fix-vacio} muestran estos dos últimos ajustes.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/12-retiro-confirmacion.png}
-  \caption{Confirmación explícita antes de retirar una materia de la inscripción, evitando acciones irreversibles accidentales.}
+  \includegraphics[width=\textwidth,height=0.22\textheight,keepaspectratio]{images/prototipo/12-retiro-confirmacion.png}
+  \caption{Confirmación explícita antes de retirar una materia de la inscripción.}
   \label{fig:fix-retiro}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/11-estado-vacio.png}
-  \caption{Estado vacío del módulo de inscripción, con mensaje orientativo y acceso directo para inscribirse.}
+  \includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{images/prototipo/11-estado-vacio.png}
+  \caption{Estado vacío del módulo de inscripción, con mensaje orientativo.}
   \label{fig:fix-vacio}
 \end{figure}
 

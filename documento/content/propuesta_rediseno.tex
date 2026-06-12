@@ -38,11 +38,14 @@ La estructura del contenido fue redefinida desde la lógica de tareas del estudi
 
 Esta estructura responde directamente a las necesidades N1, N2, N5, N6 y N8 detectadas en la investigación (véase Tabla~\ref{tab:necesidades-detectadas}).
 
+La consulta de situación académica no se plantea como una pantalla aislada, sino como una necesidad distribuida entre las secciones que el estudiante usa para tomar decisiones: el estado de inscripción confirma las materias registradas en la gestión actual, el horario muestra la organización vigente de clases y el Kardex concentra el historial académico, créditos y estado de avance. Esta separación evita reunir información distinta en una sola vista genérica y permite que cada dato aparezca en el contexto donde resulta útil.
+
 \subsection{Mapa del sistema}
 
 El sistema rediseñado se organiza a partir de una navegación corta y reconocible:
 
-\begin{center}
+\begin{figure}[H]
+\centering
 \resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
   x=1cm, y=1cm,
@@ -94,15 +97,19 @@ El sistema rediseñado se organiza a partir de una navegación corta y reconocib
         node[midway, right=1pt, font=\scriptsize\itshape] {modificar} -- (inscripcion.east);
 \end{tikzpicture}
 }
-\end{center}
+\vspace{0.25cm}
 
-\begin{center}
 \footnotesize
-\begin{tabular}{ll}
-\tikz{\draw[-Latex] (0,0) -- (0.7,0);} & Navegación directa desde el panel \\
-\tikz{\draw[-Latex, densely dashed, color=black!55] (0,0) -- (0.7,0);} & Prerequisito que habilita la inscripción y retorna a ella \\
+\begin{tabular}{|l|l|}
+\hline
+\tikz{\draw[-Latex] (0,0) -- (0.7,0);} & Navegaci\'on directa desde el panel \\
+\hline
+\tikz{\draw[-Latex, densely dashed, color=black!55] (0,0) -- (0.7,0);} & Prerequisito que habilita la inscripci\'on y retorna a ella \\
+\hline
 \end{tabular}
-\end{center}
+\caption{Mapa del sistema rediseñado de WebSIS}
+\label{fig:mapa-sistema}
+\end{figure}
 
 La jerarquía evita menús ambiguos y reduce el backtracking. El panel del estudiante (\texttt{/panel}) funciona como punto de entrada único hacia todas las tareas, sin obligar al estudiante a recordar rutas escondidas. El pago de matrícula (\texttt{/panel/matricula}) y la validación de códigos (\texttt{/panel/codigo}) operan como dos prerequisitos independientes de la inscripción: el módulo de inscripción detecta cuál falta, enlaza directamente a la pantalla correspondiente y, al completarse, devuelve al estudiante al flujo de inscripción sin volver a pedir los datos ya validados. El estado de inscripción (\texttt{/panel/estado}) también es accesible directamente desde el panel: una vez seleccionadas las materias, la inscripción deriva a esta pantalla como confirmación, y desde ella el estudiante puede volver al módulo de inscripción mediante la opción \textit{Modificar inscripción} para ajustar materias, grupos o modalidad. La sección de perfil y seguridad (\texttt{/panel/seguridad}) no aparece como tarjeta del panel sino que se abre desde el menú de usuario, junto con los datos personales y los enlaces académicos externos.
 
@@ -168,11 +175,11 @@ La jerarquía evita menús ambiguos y reduce el backtracking. El panel del estud
   \item El sistema confirma el cambio y recomienda cerrar sesiones activas.
 \end{enumerate}
 
-\subsection{Validación de la propuesta con usuarios}
+\subsection{Validación temprana de la arquitectura de información}
 
-Las decisiones de estructura y los wireframes no se sostienen únicamente en principios teóricos: fueron contrastadas con estudiantes reales de la UMSS mediante dos técnicas complementarias. El \textit{card sorting} se utilizó para verificar que la arquitectura de información coincidiera con el modelo mental del estudiante (necesidad N5; véase Tabla~\ref{tab:necesidades-detectadas}), mientras que las pruebas de usabilidad sobre los wireframes permitieron comprobar que los flujos propuestos pudieran completarse sin asistencia. Ambas técnicas se aplicaron sobre los mismos perfiles observados en la investigación, documentados en la sección \textit{Perfil de Usuarios}.
+Antes de materializar la propuesta en wireframes, la organización del contenido fue contrastada con estudiantes reales de la UMSS mediante \textit{card sorting}. Esta técnica permitió verificar si la agrupación de funciones, las etiquetas y la lógica de acceso coincidían con el modelo mental del estudiante (necesidad N5; véase Tabla~\ref{tab:necesidades-detectadas}) y ajustar la estructura propuesta antes de avanzar al nivel de pantalla.
 
-\subsubsection*{Card sorting: validación de la arquitectura de información}
+\subsubsection*{Card sorting: contraste de la estructura propuesta}
 
 Se aplicó un \textit{card sorting híbrido} con 8 estudiantes (4 ingresantes y 4 regulares). A cada participante se le entregaron 10 tarjetas, cada una con una función del sistema redactada en lenguaje del estudiante: \textit{Pagar matrícula}, \textit{Ver comprobante de matrícula}, \textit{Validar códigos}, \textit{Inscribirse a materias}, \textit{Estado de inscripción}, \textit{Horario de clases}, \textit{Kardex}, \textit{Datos personales}, \textit{Cambiar contraseña} y \textit{Cerrar sesión}. Se les pidió agrupar las tarjetas según cómo ellos esperarían encontrarlas y nombrar cada grupo con sus propias palabras.
 
@@ -186,19 +193,28 @@ Se aplicó un \textit{card sorting híbrido} con 8 estudiantes (4 ingresantes y 
 
 \begin{table}[H]
 \centering
-\begin{tabular}{p{5.5cm} c p{5.0cm}}
+\begin{tabular}{|p{5.5cm}|c|p{5.0cm}|}
 \hline
-\textbf{Tarjeta / función} & \textbf{Coincidencia} & \textbf{Categoría más frecuente} \\
+\textbf{Tarjeta / funci\'on} & \textbf{Coincidencia} & \textbf{Categor\'ia m\'as frecuente} \\
 \hline
 Pagar matrícula & 8/8 & Matrícula \\
+\hline
 Ver comprobante de matrícula & 7/8 & Matrícula \\
+\hline
 Validar códigos & 6/8 & Inscripción / paso previo \\
+\hline
 Inscribirse a materias & 8/8 & Inscripción \\
+\hline
 Estado de inscripción & 6/8 & Inscripción \\
+\hline
 Horario de clases & 8/8 & Información académica \\
+\hline
 Kardex & 8/8 & Información académica \\
+\hline
 Datos personales & 7/8 & Perfil \\
+\hline
 Cambiar contraseña & 5/8 & Perfil / seguridad \\
+\hline
 Cerrar sesión & 7/8 & Perfil / seguridad \\
 \hline
 \end{tabular}
@@ -214,43 +230,6 @@ Cerrar sesión & 7/8 & Perfil / seguridad \\
   \item \textit{Cambiar contraseña} fue la tarjeta con mayor dispersión: algunos estudiantes la asociaban a configuración general y no a seguridad. Por eso se conservó dentro del menú de perfil pero etiquetada explícitamente como acción de seguridad.
   \item Ningún estudiante ubicó los datos personales como un bloque permanente en pantalla, lo que respalda la decisión de trasladarlos al menú de perfil.
 \end{itemize}
-
-\subsubsection*{Pruebas de usabilidad sobre los wireframes}
-
-Con los mismos perfiles de usuario se realizaron pruebas de usabilidad moderadas sobre los wireframes de baja fidelidad. A cada estudiante se le pidió completar tareas representativas mientras pensaba en voz alta. Se registró si la tarea se completaba sin ayuda, el número de dudas relevantes y los comentarios espontáneos.
-
-\begin{table}[H]
-\centering
-\begin{tabular}{p{6.5cm} c c}
-\hline
-\textbf{Tarea solicitada} & \textbf{Completada sin ayuda} & \textbf{Dudas relevantes} \\
-\hline
-Iniciar sesión sin pantalla de bienvenida & 8/8 & 0 \\
-Verificar si la matrícula está pagada & 8/8 & 0 \\
-Encontrar dónde validar los códigos & 6/8 & 2 \\
-Inscribirse a tres materias con grupo y modalidad & 7/8 & 1 \\
-Revisar el estado final de la inscripción & 8/8 & 0 \\
-Consultar el horario vigente & 8/8 & 0 \\
-Distinguir materias en curso de finalizadas en el Kardex & 7/8 & 1 \\
-Cambiar la contraseña & 6/8 & 2 \\
-\hline
-\end{tabular}
-\caption{Resultados de las pruebas de usabilidad sobre los wireframes.}
-\label{tab:pruebas-wireframes}
-\end{table}
-
-\noindent Hallazgos principales de las pruebas de wireframes:
-
-\begin{itemize}
-  \item Las tareas con estado explícito (matrícula, horario, estado de inscripción) se completaron sin dificultad, validando la necesidad \textbf{N2} (confirmación clara de las acciones; véase Tabla~\ref{tab:necesidades-detectadas}).
-  \item El acceso a \textit{Validar códigos} fue la tarea con más dudas: algunos estudiantes lo buscaron primero dentro de inscripción. Se ajustó el wireframe del panel para dar a este acceso mayor visibilidad junto a la acción principal, en línea con la necesidad \textbf{N6} (acceso rápido a tareas frecuentes; véase Tabla~\ref{tab:necesidades-detectadas}).
-  \item En el Kardex, 1 de 8 estudiantes no diferenció de inmediato la materia en curso; el contraste visual entre fila cerrada y fila en curso se reforzó en consecuencia, evitando que una materia sin nota final se interprete como reprobada.
-  \item Los participantes que probaron los wireframes en una vista reducida confirmaron que los accesos compactos y la separación por pantallas facilitaban la lectura en móvil, en línea con la necesidad \textbf{N4} (compatibilidad móvil; véase Tabla~\ref{tab:necesidades-detectadas}).
-\end{itemize}
-
-\subsubsection*{Síntesis de la validación}
-
-En conjunto, el card sorting confirmó que la estructura propuesta coincide en gran medida con el modelo mental del estudiante, mientras que las pruebas de usabilidad demostraron que los flujos principales pueden completarse sin asistencia. Los puntos de fricción detectados (validación de códigos y cambio de contraseña) no invalidaron la propuesta, sino que permitieron ajustar la visibilidad y el etiquetado de esos accesos antes de avanzar al prototipo. De esta forma, las decisiones de diseño quedan respaldadas no solo por principios de usabilidad, sino por evidencia obtenida directamente de los usuarios.
 
 \subsection{Wireframes de baja fidelidad}
 
@@ -291,7 +270,7 @@ Los wireframes de baja fidelidad definen la distribución espacial de bloques, l
 
 \begin{figure}[H]
 \centering
-\resizebox{0.62\textwidth}{!}{%
+\resizebox{0.56\textwidth}{!}{%
 \wfframe{12cm}{%
 \centering
 \wfhead{Acceso al sistema}
@@ -312,7 +291,7 @@ Los wireframes de baja fidelidad definen la distribución espacial de bloques, l
 
 \begin{figure}[H]
 \centering
-\resizebox{0.94\textwidth}{!}{%
+\resizebox{0.85\textwidth}{!}{%
 \wfframe{18cm}{%
 \centering
 \wfhead{Logo \hfill Perfil \quad | \quad Tema}
@@ -342,7 +321,7 @@ Los wireframes de baja fidelidad definen la distribución espacial de bloques, l
 
 \begin{figure}[H]
 \centering
-\resizebox{0.94\textwidth}{!}{%
+\resizebox{0.83\textwidth}{!}{%
 \wfframe{18cm}{%
 \centering
 \wfhead{Inscripción \hfill cuenta habilitada \quad | \quad [n/máx] materias}
@@ -370,7 +349,7 @@ Los wireframes de baja fidelidad definen la distribución espacial de bloques, l
 
 \begin{figure}[H]
 \centering
-\resizebox{0.94\textwidth}{!}{%
+\resizebox{0.81\textwidth}{!}{%
 \wfframe{18cm}{%
 \centering
 \wfhead{Estado de inscripción \hfill Modificar}
@@ -511,6 +490,85 @@ El perfil no es una pantalla independiente: los datos personales y los enlaces a
 \label{fig:wf-matricula}
 \end{figure}
 
+\subsection{Pruebas de usabilidad sobre los wireframes}
+
+Una vez definidos los wireframes de baja fidelidad, se realizaron pruebas de usabilidad moderadas para evaluar la claridad de los flujos propuestos antes de construir el prototipo. La técnica combinó observación directa moderada y protocolo de \textit{pensamiento en voz alta}, de modo que cada participante verbalizara qué esperaba encontrar, qué entendía de cada pantalla y por qué tomaba determinadas decisiones durante la navegación. Esto permitió registrar no solo si las tareas se completaban, sino también las dudas, interpretaciones erróneas y puntos de fricción que aparecían durante el recorrido.
+
+Para evitar evaluar pantallas aisladas, las tareas se plantearon como escenarios breves de uso vinculados a los flujos principales del sistema:
+
+\begin{itemize}
+  \item \textbf{Escenario 1: acceso e inicio de gestión.} El estudiante debía iniciar sesión e identificar desde el panel principal por dónde comenzar una gestión académica.
+  \item \textbf{Escenario 2: habilitación para inscripción.} El estudiante debía verificar si su matrícula estaba pagada, localizar la validación de códigos y confirmar si su cuenta quedaba habilitada para inscribirse.
+  \item \textbf{Escenario 3: inscripción a materias.} El estudiante debía seleccionar materias, definir grupo y modalidad, y comprobar el resultado final de la inscripción.
+  \item \textbf{Escenario 4: consulta de situación académica.} El estudiante debía consultar el horario vigente, revisar el estado de inscripción y leer el Kardex distinguiendo materias en curso de materias finalizadas.
+  \item \textbf{Escenario 5: seguridad de cuenta.} El estudiante debía ubicar la opción de cambio de contraseña dentro del menú de usuario.
+\end{itemize}
+
+De estos escenarios se derivaron las tareas observadas en la prueba: iniciar sesión sin pantalla de bienvenida, verificar el estado de matrícula, encontrar dónde validar los códigos, inscribirse a tres materias con grupo y modalidad, revisar el estado final de la inscripción, consultar el horario vigente, distinguir materias en curso de finalizadas en el Kardex y cambiar la contraseña. La situación académica se evaluó de forma distribuida mediante el estado de inscripción, el horario y el Kardex, ya que esos tres puntos concentran la información que el estudiante necesita para verificar su avance y su situación actual. En cada caso se registró si la tarea se completaba sin ayuda, el número de dudas relevantes detectadas mediante observación y los comentarios espontáneos expresados durante el pensamiento en voz alta.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{6.5cm}|c|c|}
+\hline
+\textbf{Tarea solicitada} & \textbf{Completada sin ayuda} & \textbf{Dudas relevantes} \\
+\hline
+Iniciar sesión sin pantalla de bienvenida & 8/8 & 0 \\
+\hline
+Verificar si la matrícula está pagada & 8/8 & 0 \\
+\hline
+Encontrar dónde validar los códigos & 6/8 & 2 \\
+\hline
+Inscribirse a tres materias con grupo y modalidad & 7/8 & 1 \\
+\hline
+Revisar el estado final de la inscripción & 8/8 & 0 \\
+\hline
+Consultar el horario vigente & 8/8 & 0 \\
+\hline
+Distinguir materias en curso de finalizadas en el Kardex & 7/8 & 1 \\
+\hline
+Cambiar la contraseña & 6/8 & 2 \\
+\hline
+\end{tabular}
+\caption{Resultados de las pruebas de usabilidad sobre los wireframes.}
+\label{tab:pruebas-wireframes}
+\end{table}
+
+\noindent A partir de las tareas que presentaron dudas relevantes, se definieron los siguientes ajustes de diseño antes de avanzar al prototipo:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{6.0cm}|p{2.3cm}|p{6.5cm}|}
+\hline
+\textbf{Tarea con dudas} & \textbf{Dudas} & \textbf{Cambio planteado} \\
+\hline
+Encontrar d\'onde validar los c\'odigos & 2 & Reforzar la visibilidad de \textit{Validar c\'odigos}, mostrar el estado del tr\'amite y destacar la acci\'on principal para habilitar la cuenta. \\
+\hline
+Inscribirse a materias con grupo y modalidad & 1 & Hacer expl\'icitos los prerrequisitos y reforzar la relaci\'on entre materia, grupo y modalidad en cada tarjeta. \\
+\hline
+Revisar y corregir conflictos durante la inscripci\'on & 1 & Incorporar un resumen persistente, permitir cambiar de grupo y advertir los choques antes de finalizar. \\
+\hline
+Distinguir materias en curso de finalizadas en el Kardex & 1 & Aumentar el contraste entre materias en curso y cerradas, con indicadores m\'as claros de avance parcial. \\
+\hline
+Cambiar la contrase\~na & 2 & Dar mayor jerarqu\'ia a \textit{Cambiar contrase\~na} y presentarla claramente como una acci\'on de seguridad. \\
+\hline
+\end{tabular}
+\caption{Cambios de diseño planteados a partir de las dudas detectadas en las pruebas.}
+\label{tab:ajustes-wireframes-dudas}
+\end{table}
+
+\noindent Hallazgos principales de las pruebas de wireframes:
+
+\begin{itemize}
+  \item Las tareas con estado explícito (matrícula, horario, estado de inscripción) se completaron sin dificultad, validando la necesidad \textbf{N2} (confirmación clara de las acciones; véase Tabla~\ref{tab:necesidades-detectadas}).
+  \item El acceso a \textit{Validar códigos} fue la tarea con más dudas: algunos estudiantes lo buscaron primero dentro de inscripción. Se ajustó el wireframe del panel para dar a este acceso mayor visibilidad junto a la acción principal, en línea con la necesidad \textbf{N6} (acceso rápido a tareas frecuentes; véase Tabla~\ref{tab:necesidades-detectadas}).
+  \item En el Kardex, 1 de 8 estudiantes no diferenció de inmediato la materia en curso; el contraste visual entre fila cerrada y fila en curso se reforzó en consecuencia, evitando que una materia sin nota final se interprete como reprobada.
+  \item Los participantes que probaron los wireframes en una vista reducida confirmaron que los accesos compactos y la separación por pantallas facilitaban la lectura en móvil, en línea con la necesidad \textbf{N4} (compatibilidad móvil; véase Tabla~\ref{tab:necesidades-detectadas}).
+\end{itemize}
+
+\subsubsection*{Síntesis de validación de la propuesta}
+
+En conjunto, el \textit{card sorting} confirmó que la estructura propuesta coincide en gran medida con el modelo mental del estudiante, mientras que las pruebas de usabilidad sobre los wireframes permitieron verificar que los flujos principales podían recorrerse con un bajo nivel de duda antes de construir el prototipo. Los puntos de fricción detectados no invalidaron la propuesta, sino que orientaron ajustes concretos de visibilidad, etiquetado y jerarquía en pantallas clave. De esta forma, el paso al prototipo inicial queda respaldado tanto por la validación de la arquitectura de información como por la evaluación temprana de la interacción. La materialización de estos ajustes puede observarse posteriormente en las capturas del prototipo y en las evidencias visuales de los ajustes realizados.
+
 \subsection{Prototipo inicial}
 
 El prototipo inicial implementado se estructuró como un conjunto de rutas independientes para evitar una sola pantalla sobrecargada:
@@ -536,6 +594,7 @@ Esta decisión permite:
   \item sostener una arquitectura de información consistente con el modelo mental del estudiante.
 \end{itemize}
 
+\newpage
 \subsection{Capturas del prototipo}
 
 Para complementar los wireframes de baja fidelidad, se generaron capturas reales del prototipo con Playwright. Se incluyen solo las pantallas representativas del flujo principal para evitar repetir vistas con la misma estructura visual.
@@ -548,20 +607,20 @@ Para complementar los wireframes de baja fidelidad, se generaron capturas reales
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/02-panel.png}
-  \caption{Panel principal con acciones priorizadas, estado de matrícula y accesos académicos compactos.}
+  \includegraphics[width=\textwidth,height=0.48\textheight,keepaspectratio]{images/prototipo/02-panel.png}
+  \caption{Panel principal con acciones priorizadas, estado de matrícula y accesos académicos.}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/03-matricula.png}
-  \caption{Estado de matrícula con comprobante, entidad de pago y botón de pago contextual.}
+  \includegraphics[width=\textwidth,height=0.41\textheight,keepaspectratio]{images/prototipo/03-matricula.png}
+  \caption{Estado de matrícula con comprobante, entidad de pago y botón de pago.}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/05-inscripcion.png}
-  \caption{Módulo de inscripción con límite visible, selección de grupo, modalidad y resumen lateral.}
+  \caption{Módulo de inscripción con límite visible, selección de grupo, modalidad y resumen.}
 \end{figure}
 
 \begin{figure}[H]
@@ -575,6 +634,108 @@ Para complementar los wireframes de baja fidelidad, se generaron capturas reales
   \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{images/prototipo/08-kardex.png}
   \caption{Kardex reorganizado con materias cerradas y materias en curso diferenciadas.}
 \end{figure}
+
+\subsection{Evidencias visuales de los ajustes realizados}
+
+Las siguientes capturas muestran c\'omo los ajustes definidos a partir de la validaci\'on con usuarios fueron materializados en el prototipo. Se presentan agrupadas por tarea para relacionar con claridad la duda detectada, la decisi\'on de dise\~no y su expresi\'on final en la interfaz.
+
+\subsubsection*{Tarea 1: acceso a validaci\'on de c\'odigos}
+
+\begin{center}
+  \begin{minipage}[t]{0.47\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/zona-acceso-codigos-dashboard.png}
+    \captionof{figure}{Acceso visible a la validaci\'on de c\'odigos desde el panel principal.}
+    \label{fig:ajuste-codigos-acceso}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.47\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/pantalla-codigos.png}
+    \captionof{figure}{Pantalla de validaci\'on con feedback visual del estado del tr\'amite.}
+    \label{fig:ajuste-codigos-pantalla}
+  \end{minipage}
+\end{center}
+
+Estas capturas responden a la duda detectada en la tarea \textit{Encontrar d\'onde validar los c\'odigos}. La Figura~\ref{fig:ajuste-codigos-acceso} muestra que existe una secci\'on claramente visible desde el panel para acceder a la validaci\'on. La Figura~\ref{fig:ajuste-codigos-pantalla} muestra que, al ingresar, el estudiante recibe feedback visual claro sobre su estado, sobre lo que debe completar y sobre la acci\'on principal necesaria para habilitar la cuenta.
+
+\subsubsection*{Tarea 2: estado de prerrequisitos para inscripci\'on}
+
+\begin{center}
+  \begin{minipage}[t]{0.47\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/inscripcion-con-matricula-codigos-pendientes.png}
+    \captionof{figure}{Pantalla de inscripci\'on con matr\'icula y c\'odigos pendientes, mostrando alertas y bloqueos previos.}
+    \label{fig:ajuste-inscripcion-pendiente}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.47\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/inscripcion-con-prerrequisitos-cumplidos.png}
+    \captionof{figure}{Pantalla de inscripci\'on con prerrequisitos cumplidos y habilitaci\'on completa del flujo.}
+    \label{fig:ajuste-inscripcion-cumplida}
+  \end{minipage}
+\end{center}
+
+Estas capturas se relacionan con la tarea de inscripci\'on cuando a\'un existen o ya se resolvieron los prerrequisitos. La Figura~\ref{fig:ajuste-inscripcion-pendiente} muestra que la propia pantalla informa de forma expl\'icita si la matr\'icula o los c\'odigos siguen pendientes: aparecen insignias de estado, tarjetas de alerta, botones para pagar matr\'icula o validar c\'odigos y el bot\'on de finalizar queda deshabilitado. La Figura~\ref{fig:ajuste-inscripcion-cumplida} muestra el estado posterior, cuando la matr\'icula est\'a pagada y la cuenta ya fue habilitada, permitiendo continuar con la selecci\'on normal de materias.
+
+\subsubsection*{Tarea 3: selecci\'on y edici\'on de grupo}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.67\textwidth]{images/pantalla-editar-grupo.png}
+  \caption{Edici\'on de grupo desde la tarjeta de una materia ya seleccionada.}
+  \label{fig:ajuste-editar-grupo}
+\end{figure}
+
+Esta evidencia corresponde a la parte de la tarea en la que el estudiante debe modificar su selecci\'on sin reiniciar la inscripci\'on. La pantalla muestra que la interacci\'on se realiza desde la propia tarjeta de la materia inscrita: el usuario presiona sobre el grupo seleccionado, accede a la opci\'on de cambio y visualiza la actualizaci\'on dentro del mismo contexto de inscripci\'on.
+
+\subsubsection*{Tarea 4: revisi\'on de choques antes de finalizar}
+
+\begin{center}
+  \begin{minipage}[t]{0.47\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/pantalla-inscripcion-con-materias-inscritas-choque.png}
+    \captionof{figure}{Resumen de materias inscritas con choque de horarios detectado en la tarjeta lateral.}
+    \label{fig:ajuste-choque-resumen}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.47\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/ventana-emergente-aviso-choque-revisar-o-asumir.png}
+    \captionof{figure}{Ventana emergente al finalizar la inscripci\'on con opciones para revisar grupos o asumir el choque.}
+    \label{fig:ajuste-choque-modal}
+  \end{minipage}
+\end{center}
+
+Estas capturas responden a la parte de la tarea donde el estudiante debe revisar un conflicto antes de concluir la inscripci\'on. La Figura~\ref{fig:ajuste-choque-resumen} muestra que el choque se detecta y se comunica directamente en el resumen de la inscripci\'on, indicando que las materias se solapan. La Figura~\ref{fig:ajuste-choque-modal} muestra lo que ocurre cuando el estudiante intenta finalizar: el sistema presenta una ventana emergente que le permite revisar grupos o asumir el choque bajo su responsabilidad.
+
+\subsubsection*{Tarea 5: lectura del Kardex}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.68\textwidth]{images/zona-kardex-estado-materia.png}
+  \caption{Diferenciaci\'on visual entre estados de materia dentro del Kardex.}
+  \label{fig:ajuste-kardex}
+\end{figure}
+
+Esta captura responde a la duda detectada en la tarea \textit{Distinguir materias en curso de finalizadas en el Kardex}. El ajuste se concentra en reforzar el contraste visual y el etiquetado de estado para que una materia con avance parcial no sea interpretada como cerrada o reprobada. De este modo, la lectura del historial acad\'emico se vuelve m\'as inmediata y menos dependiente de inferencias del usuario.
+
+\subsubsection*{Tarea 6: cambio de contrase\~na}
+
+\begin{center}
+  \begin{minipage}[t]{0.47\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/apretar-perfil-contrasena.png}
+    \captionof{figure}{Ubicaci\'on de la opci\'on de cambio de contrase\~na dentro del men\'u de perfil.}
+    \label{fig:ajuste-contrasena-menu}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.47\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/pantalla-contrasena.png}
+    \captionof{figure}{Pantalla espec\'ifica de seguridad para actualizar la contrase\~na.}
+    \label{fig:ajuste-contrasena-pantalla}
+  \end{minipage}
+\end{center}
+
+Estas capturas responden a la duda detectada en la tarea \textit{Cambiar la contrase\~na}. La Figura~\ref{fig:ajuste-contrasena-menu} muestra que la acci\'on est\'a jerarquizada dentro del men\'u de perfil, mientras que la Figura~\ref{fig:ajuste-contrasena-pantalla} muestra que dicha acci\'on abre una pantalla de seguridad claramente separada del resto de tareas acad\'emicas. As\'i, el usuario reconoce mejor d\'onde se encuentra la acci\'on y en qu\'e contexto debe ejecutarla.
 
 \subsection{Justificación del rediseño}
 

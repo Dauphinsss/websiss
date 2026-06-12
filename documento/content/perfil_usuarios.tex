@@ -6,14 +6,14 @@ En concordancia con la metodología definida para la investigación de usuarios,
 % ------------------------------------------------------------
 \subsection{Cuestionario aplicado}
  
-Se administró un cuestionario a estudiantes de la UMSS durante la primera quincena de mayo de 2026, mediante distribución digital a través de formulario en línea. La muestra fue seleccionada de forma intencional para incluir ingresantes (semestres 1--2) y estudiantes regulares (semestres 3 en adelante) de distintas facultades. El instrumento combinó preguntas cerradas y de escala Likert para cuantificar patrones de uso, dificultades percibidas, satisfacción general y experiencia emocional frente al sistema. Las preguntas B2 y C6 admitían selección múltiple, por lo que sus porcentajes suman más del 100\%.
+Se administró un cuestionario a estudiantes de la UMSS durante la primera quincena de mayo de 2026, mediante distribución digital a través de formulario en línea. La muestra fue seleccionada de forma intencional para incluir ingresantes (semestres 1--2) y estudiantes regulares (semestres 3 en adelante). El instrumento combinó preguntas cerradas y de escala Likert para cuantificar patrones de uso, dificultades percibidas, satisfacción general y experiencia emocional frente al sistema.
  
 El instrumento completo se encuentra en el \hyperref[apx:cuestionario]{Apéndice A}.
  
 % ------------------------------------------------------------
 \subsection{Resultados de la encuesta}
  
-A continuación se presentan los resultados obtenidos de la aplicación del cuestionario a los 25 estudiantes participantes.
+A continuación se presentan los resultados obtenidos de la aplicación del cuestionario a los estudiantes participantes.
  
 % ---- Tabla 1: Perfil de encuestados ------------------------
 \subsubsection{Perfil de los encuestados}
@@ -45,10 +45,10 @@ A continuación se presentan los resultados obtenidos de la aplicación del cues
 \label{tab:perfil-encuestados}
 \end{table}
 
-La Tabla~\ref{tab:perfil-encuestados} muestra una muestra relativamente equilibrada por sexo y con mayor concentración en estudiantes de semestres intermedios. El 72\% de los participantes pertenece a semestres 3 en adelante, mientras que el 28\% corresponde a ingresantes. Esta distribución resulta pertinente para el proyecto porque permite contrastar experiencias de primer contacto con experiencias de uso acumulado, identificando tanto dificultades de orientación inicial como estrategias de adaptación desarrolladas con el tiempo.
+La Tabla~\ref{tab:perfil-encuestados} muestra una muestra relativamente equilibrada por sexo y con mayor concentración en estudiantes de semestres intermedios. El 72\% de los participantes pertenece a semestres 3 en adelante, mientras que el 28\% a ingresantes. Esta distribución resulta pertinente, porque permite contrastar experiencias de primer contacto con experiencias de uso acumulado, identificando tanto dificultades de orientación inicial como estrategias de adaptación desarrolladas con el tiempo.
  
 % ---- Figura 1: Distribución por semestre -------------------
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}
 \begin{axis}[
@@ -82,8 +82,6 @@ La Tabla~\ref{tab:perfil-encuestados} muestra una muestra relativamente equilibr
 
 La Figura~\ref{fig:dist-semestre} complementa esta caracterización al mostrar con mayor claridad la concentración de la muestra en los semestres 3--4 y 5--6. Para el desarrollo del proyecto, esta composición es útil porque WebSIS no solo es utilizado por estudiantes que recién ingresan, sino también por usuarios que ya han debido aprender a navegarlo por repetición, lo que permite observar si la familiaridad disminuye o solo oculta los problemas de usabilidad.
  
-% ---- Tabla 2: Frecuencia de uso y dispositivo --------------
-\newpage
 \subsubsection{Frecuencia de uso, tareas y dispositivos}
  
 \begin{longtable}{|p{9.5cm}|p{2cm}|p{2.5cm}|}
@@ -123,8 +121,6 @@ Otro                         & 1  & 4\%  \\
 
 Los resultados de la Tabla~\ref{tab:frecuencia-uso} muestran que el uso de WebSIS es predominantemente esporádico y concentrado en momentos de alta exigencia: el 68\% de los estudiantes accede solo en períodos críticos, como inscripciones o publicación de notas. Al mismo tiempo, las tareas más frecuentes son precisamente aquellas con mayor impacto académico directo: inscripción a materias (96\%), consulta de notas (92\%) y consulta de horarios (72\%). Esto indica que la mayoría de las interacciones con el sistema no son exploratorias ni opcionales, sino orientadas a resolver gestiones concretas bajo presión temporal. Además, el hecho de que el 80\% acceda habitualmente desde casa sugiere que la experiencia depende en gran medida de la autonomía del estudiante, sin mediación institucional inmediata.
  
-% ---- Figura 2: Dispositivo de acceso (pastel) --------------
-\newpage
 \begin{figure}[h!]
 \centering
 \begin{tikzpicture}
@@ -203,10 +199,10 @@ Diseño más moderno               & 3  & 12\% \\
 \caption{Resultados sobre dificultad percibida, problemas y mejoras prioritarias}\label{tab:dificultad-problemas}
 \end{longtable}
 
-La Tabla~\ref{tab:dificultad-problemas} permite identificar un patrón consistente: la mayor dificultad no se concentra en la consulta de información, sino en la ejecución de tareas que requieren decisión y seguimiento del proceso. La inscripción a materias es percibida como neutral o difícil por el 76\% de los encuestados, y el 80\% declara haber necesitado ayuda externa al menos a veces. A esto se suma que el 56\% reporta no haber podido completar alguna tarea académica importante, lo que indica que los problemas de uso trascienden la incomodidad y llegan a tener consecuencias reales. En cuanto a los problemas más frecuentes, predominan los pasos no obvios (40\%) y la interfaz confusa (32\%), por encima de la lentitud del sistema (24\%), lo que sugiere que el problema central no es solo técnico, sino también estructural y de arquitectura de información. Esta lectura se refuerza con las mejoras priorizadas: la organización del menú (44\%) y la guía integrada (32\%) aparecen por encima de una demanda meramente estética.
+La Tabla~\ref{tab:dificultad-problemas} permite identificar un patrón consistente: la mayor dificultad no se concentra en la consulta de información, sino en la ejecución de tareas que requieren decisión y seguimiento del proceso. La inscripción a materias es percibida como neutral o difícil por el 76\% de los encuestados, y el 80\% declara haber necesitado ayuda externa al menos a veces, mientras que el 56\% reporta no haber podido completar alguna tarea académica importante. En cuanto a los problemas más frecuentes, predominan los pasos no obvios (40\%) y la interfaz confusa (32\%), por encima de la lentitud del sistema (24\%), lo que sugiere que el problema central no es solo técnico, sino también estructural y de arquitectura de información.
  
 % ---- Figura 3: Problemas más frecuentes (barras horizontales)
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}
 \begin{axis}[
@@ -374,9 +370,7 @@ Confianza    & 0  & 0\%  \\
 
 Los datos de la Tabla~\ref{tab:dimension-emocional} muestran que la problemática de WebSIS no se limita a la eficiencia funcional. El 72\% de los estudiantes ingresa al sistema con ansiedad en períodos críticos, el 56\% termina sus tareas con alivio pero aún con dudas, y el 68\% busca ayuda de un compañero cuando se bloquea. Además, el 64\% percibe que rara vez o casi nunca recibe información suficiente para actuar con autonomía. En conjunto, estos resultados indican que la interfaz no solo dificulta completar tareas, sino que también deteriora la confianza del estudiante en su propia capacidad para gestionarlas correctamente.
  
-% ---- Figura 5: Relación emocional con WebSIS (D5) ----------
-\newpage
-\begin{figure}[h!]
+\begin{figure}[h]
 \centering
 \begin{tikzpicture}
 \begin{axis}[
@@ -413,7 +407,7 @@ Los datos de la Tabla~\ref{tab:dimension-emocional} muestran que la problemátic
   };
 \end{axis}
 \end{tikzpicture}
-\caption{Palabra que describe la relación del estudiante con WebSIS (D5, n=25)}
+\caption{Palabra que describe la relación del estudiante con WebSIS}
 \label{fig:relacion-emocional}
 \end{figure}
 
@@ -446,7 +440,7 @@ La Figura~\ref{fig:relacion-emocional} refuerza esta interpretación al mostrar 
   coordinates {(Ansioso/a,18) (Tranquilo/a,5) (Indiferente,2)};
 \end{axis}
 \end{tikzpicture}
-\caption{Estado emocional del estudiante antes de ingresar a WebSIS en períodos críticos (D1, n=25)}
+\caption{Estado emocional del estudiante antes de ingresar a WebSIS en períodos críticos}
 \label{fig:ansiedad-previa}
 \end{figure}
 
