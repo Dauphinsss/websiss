@@ -1907,14 +1907,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
               </div>
             </div>
 
-            {isEnrollmentFinalized ? (
-              <Button asChild>
-                <a href="/panel/estado">
-                  <ClipboardCheck aria-hidden="true" />
-                  <span>Ver estado de inscripción</span>
-                </a>
-              </Button>
-            ) : isTuitionPaid && isCodeValidated && selectedSubjectIds.length > 0 ? (
+            {isTuitionPaid && isCodeValidated && selectedSubjectIds.length > 0 && !isEnrollmentFinalized ? (
               <Button type="button" onClick={requestFinalizeEnrollment}>
                 <ListChecks aria-hidden="true" />
                 <span>Finalizar inscripción</span>
