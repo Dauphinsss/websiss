@@ -1907,21 +1907,23 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
               </div>
             </div>
 
-            {isTuitionPaid && isCodeValidated && selectedSubjectIds.length > 0 && !isEnrollmentFinalized ? (
-              <Button type="button" onClick={requestFinalizeEnrollment}>
-                <ListChecks aria-hidden="true" />
-                <span>Finalizar inscripción</span>
-              </Button>
-            ) : (
-              <Button
-                type="button"
-                variant="outline"
-                disabled
-                aria-describedby="finish-enrollment-requirements"
-              >
-                <ListChecks aria-hidden="true" />
-                <span>Finalizar inscripción</span>
-              </Button>
+            {!isEnrollmentFinalized && (
+              isTuitionPaid && isCodeValidated && selectedSubjectIds.length > 0 ? (
+                <Button type="button" onClick={requestFinalizeEnrollment}>
+                  <ListChecks aria-hidden="true" />
+                  <span>Finalizar inscripción</span>
+                </Button>
+              ) : (
+                <Button
+                  type="button"
+                  variant="outline"
+                  disabled
+                  aria-describedby="finish-enrollment-requirements"
+                >
+                  <ListChecks aria-hidden="true" />
+                  <span>Finalizar inscripción</span>
+                </Button>
+              )
             )}
           </div>
 
