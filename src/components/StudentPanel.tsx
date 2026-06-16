@@ -1583,7 +1583,6 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                     <span>Cambiar contraseña</span>
                   </a>
                 </DropdownMenuItem>
-
                 <DropdownMenuSeparator className="my-0" />
 
                 {/* Enlaces académicos externos */}
@@ -1627,7 +1626,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-5 sm:px-8 py-10 lg:py-14 space-y-10">
+      <main id="main-content" className="mx-auto max-w-6xl px-5 sm:px-8 py-10 lg:py-14 space-y-10">
         {page !== 'home' && <h1 className="sr-only">{pageTitles[page]}</h1>}
 
         {page === 'home' && (
@@ -2752,10 +2751,10 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
 
               <div className="hidden md:block">
                 <Table>
-                  <TableHeader>
-                    <TableRow className="bg-muted/60 hover:bg-muted/60">
-                      <TableHead className="w-16">Nro</TableHead>
-                      <TableHead className="min-w-72">Materia</TableHead>
+                    <TableHeader>
+                      <TableRow className="bg-muted/60 hover:bg-muted/60">
+                        <TableHead className="w-16">Nro</TableHead>
+                        <TableHead className="min-w-72">Materia</TableHead>
                       <TableHead>Nv</TableHead>
                       <TableHead>Tp</TableHead>
                       <TableHead>Md</TableHead>
@@ -2763,27 +2762,17 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                       <TableHead className="text-right">T1</TableHead>
                       <TableHead className="text-right">T2</TableHead>
                       <TableHead className="text-right">EF</TableHead>
-                      <TableHead className="text-right">2da</TableHead>
-                      <TableHead className="text-right">Nota final</TableHead>
-                      <TableHead>Estado</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {filteredKardexRows.map((row, index) => (
+                        <TableHead className="text-right">2da</TableHead>
+                        <TableHead className="text-right">Nota final</TableHead>
+                        <TableHead>Estado</TableHead>
+                        <TableHead className="text-right">Detalle</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {filteredKardexRows.map((row, index) => (
                       <TableRow
                         key={`${row.code}-${row.year}-${row.term}`}
-                        role="button"
-                        tabIndex={0}
-                        onClick={() => setSelectedKardexRow(row)}
-                        onKeyDown={(event) => {
-                          if (event.key === 'Enter' || event.key === ' ') {
-                            event.preventDefault();
-                            setSelectedKardexRow(row);
-                          }
-                        }}
-                        className="cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
-                        aria-label={`Ver detalle de ${row.subject}`}
-                        title="Ver código, gestión y detalle completo"
+                        className="hover:bg-muted/30"
                       >
                         <TableCell className="text-muted-foreground">{index + 1}</TableCell>
                         <TableCell className="font-medium whitespace-normal">
@@ -2810,6 +2799,17 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                         </TableCell>
                         <TableCell>
                           <ResultBadge result={row.result} />
+                        </TableCell>
+                        <TableCell className="text-right">
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setSelectedKardexRow(row)}
+                            aria-label={`Ver detalle de ${row.subject}`}
+                          >
+                            Ver detalle
+                          </Button>
                         </TableCell>
                       </TableRow>
                     ))}

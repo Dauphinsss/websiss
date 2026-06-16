@@ -44,7 +44,7 @@ export function Navbar() {
           </div>
         </a>
 
-        <nav className="ml-auto hidden md:flex items-center gap-1">
+        <nav aria-label="Secciones principales" className="ml-auto hidden md:flex items-center gap-1">
           {navItems.map((item) => (
             <a
               key={item.href}

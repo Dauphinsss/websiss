@@ -187,28 +187,32 @@ export function LoginPanel() {
         </div>
 
         <div className="p-7 lg:p-8">
-          {/* Selector de rol — pestañas principales */}
-          <div role="tablist" aria-label="Tipo de usuario" className="flex gap-1 mb-6 -mx-1">
-            {primaryRoles.map((r) => {
-              const active = role === r;
-              return (
-                <button
-                  key={r}
-                  type="button"
-                  role="tab"
-                  aria-selected={active}
-                  onClick={() => setRole(r)}
-                  className={`flex-1 px-3 py-2 text-xs font-medium uppercase tracking-wider rounded-md transition-[color,background-color,box-shadow] ${
-                    active
-                      ? `text-foreground bg-muted/50 ${activeTabShadow[r]}`
-                      : 'text-muted-foreground hover:text-foreground hover:bg-muted/30'
-                  }`}
-                >
-                  {roles[r].label}
-                </button>
-              );
-            })}
-          </div>
+          {/* Selector de rol accesible: mismo formulario, sin simular tabs incompletas. */}
+          <fieldset className="mb-6 space-y-3">
+            <legend className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+              Tipo de usuario
+            </legend>
+            <div className="flex gap-1 -mx-1">
+              {primaryRoles.map((r) => {
+                const active = role === r;
+                return (
+                  <button
+                    key={r}
+                    type="button"
+                    aria-pressed={active}
+                    onClick={() => setRole(r)}
+                    className={`flex-1 px-3 py-2 text-xs font-medium uppercase tracking-wider rounded-md transition-[color,background-color,box-shadow] ${
+                      active
+                        ? `text-foreground bg-muted/50 ${activeTabShadow[r]}`
+                        : 'text-muted-foreground hover:text-foreground hover:bg-muted/30'
+                    }`}
+                  >
+                    {roles[r].label}
+                  </button>
+                );
+              })}
+            </div>
+          </fieldset>
 
           <div className="flex items-baseline justify-between mb-1">
             <h2 className="font-serif text-2xl font-medium text-foreground">
