@@ -1434,9 +1434,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
   };
 
   const finalizeEnrollment = () => {
-    window.localStorage.setItem('websiss-enrollment-finalized', 'true');
     window.sessionStorage.setItem('websiss-enrollment-finalized', 'true');
-    setIsEnrollmentFinalized(true);
     announce('Inscripción lista para revisar. Abriendo estado de inscripción.');
     window.location.href = '/panel/estado';
   };
