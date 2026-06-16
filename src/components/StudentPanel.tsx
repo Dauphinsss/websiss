@@ -17,7 +17,6 @@ import {
   ExternalLink,
   School,
   ChevronDown,
-  Download,
   Printer,
   Search,
   CheckCircle2,
@@ -1011,11 +1010,6 @@ const externalLinks = [
   { label: 'Calendario académico', href: '#calendario' },
 ];
 
-function getInitialDark(): boolean {
-  if (typeof document === 'undefined') return false;
-  return document.documentElement.classList.contains('dark');
-}
-
 function getInitialCodeValidation(): boolean {
   if (typeof window === 'undefined') return false;
   return window.localStorage.getItem('websiss-code-validated') === 'true';
@@ -1024,6 +1018,11 @@ function getInitialCodeValidation(): boolean {
 function getInitialTuitionPaid(): boolean {
   if (typeof window === 'undefined') return false;
   return window.localStorage.getItem('websiss-tuition-paid') === 'true';
+}
+
+function getInitialEnrollmentFinalized(): boolean {
+  if (typeof window === 'undefined') return false;
+  return window.localStorage.getItem('websiss-enrollment-finalized') === 'true';
 }
 
 function isEnrollmentMode(value: unknown): value is EnrollmentMode {
@@ -1192,9 +1191,10 @@ interface StudentPanelProps {
 }
 
 export function StudentPanel({ page = 'home' }: StudentPanelProps) {
-  const [isDark, setIsDark] = useState<boolean>(getInitialDark);
+  const [isDark, setIsDark] = useState(false);
   const [isCodeValidated, setIsCodeValidated] = useState<boolean>(false);
   const [isTuitionPaid, setIsTuitionPaid] = useState<boolean>(false);
+  const [isEnrollmentFinalized, setIsEnrollmentFinalized] = useState(false);
   const [kardexQuery, setKardexQuery] = useState('');
   const [selectedKardexRow, setSelectedKardexRow] = useState<KardexRow | null>(null);
   const [subjectPendingRemoval, setSubjectPendingRemoval] =
@@ -1209,8 +1209,13 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
   );
 
   useEffect(() => {
+    setIsDark(document.documentElement.classList.contains('dark'));
+  }, []);
+
+  useEffect(() => {
     setIsCodeValidated(getInitialCodeValidation());
     setIsTuitionPaid(getInitialTuitionPaid());
+    setIsEnrollmentFinalized(getInitialEnrollmentFinalized());
     setSelectedEnrollments(getInitialSelectedEnrollments());
   }, []);
 
@@ -1398,12 +1403,14 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
   const resetEnrollmentDemoState = () => {
     window.localStorage.setItem('websiss-code-validated', 'false');
     window.localStorage.setItem('websiss-tuition-paid', 'false');
+    window.localStorage.setItem('websiss-enrollment-finalized', 'false');
     window.sessionStorage.removeItem(enrollmentReturnStorageKey);
     window.sessionStorage.removeItem(enrollmentReturnToastStorageKey);
     window.sessionStorage.removeItem('websiss-enrollment-finalized');
 
     setIsCodeValidated(false);
     setIsTuitionPaid(false);
+    setIsEnrollmentFinalized(false);
     setAccessCodes({ third: '', fifth: '' });
     setCodeError('');
 
@@ -1413,8 +1420,23 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
     announce('Se reinició el estado de matrícula y de los códigos.');
   };
 
+  const toggleEnrollmentDemoState = () => {
+    const next = !isEnrollmentFinalized;
+    window.localStorage.setItem('websiss-enrollment-finalized', next ? 'true' : 'false');
+    setIsEnrollmentFinalized(next);
+
+    toast.info(next ? 'Inscripción marcada como finalizada' : 'Inscripción reabierta', {
+      description: next
+        ? 'La sección de inscripción mostrará el estado final del proceso.'
+        : 'La inscripción vuelve a permitir edición y selección de materias.',
+    });
+    announce(next ? 'Inscripción marcada como finalizada.' : 'Inscripción reabierta.');
+  };
+
   const finalizeEnrollment = () => {
+    window.localStorage.setItem('websiss-enrollment-finalized', 'true');
     window.sessionStorage.setItem('websiss-enrollment-finalized', 'true');
+    setIsEnrollmentFinalized(true);
     announce('Inscripción lista para revisar. Abriendo estado de inscripción.');
     window.location.href = '/panel/estado';
   };
@@ -1626,7 +1648,28 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                       ? 'Completo'
                       : isTuitionPaid || isCodeValidated
                         ? 'En curso'
-                        : 'Pendiente'}
+                    : 'Pendiente'}
+                  </span>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onSelect={(event) => {
+                    event.preventDefault();
+                    toggleEnrollmentDemoState();
+                  }}
+                  className="justify-between gap-3"
+                >
+                  <span className="flex items-center gap-2">
+                    <ListChecks aria-hidden="true" />
+                    <span>Estado inscripción</span>
+                  </span>
+                  <span
+                    className={`rounded-full px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider ${
+                      isEnrollmentFinalized
+                        ? 'bg-success/15 text-success'
+                        : 'bg-warning/15 text-warning'
+                    }`}
+                  >
+                    {isEnrollmentFinalized ? 'Finalizada' : 'Abierta'}
                   </span>
                 </DropdownMenuItem>
 
@@ -1705,7 +1748,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                 <div className="space-y-3 max-w-2xl">
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-warning px-2.5 py-1 text-[11px] font-medium text-warning-foreground ring-1 ring-warning/40">
                     <AlertTriangle aria-hidden="true" className="size-3" />
-                    Abierto hasta el 31 de mayo
+                    Abierto hasta el 30 de junio
                   </span>
                   <span
                     className={`ml-2 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium ring-1 ${
@@ -1866,7 +1909,14 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
               </div>
             </div>
 
-            {isTuitionPaid && isCodeValidated && selectedSubjectIds.length > 0 ? (
+            {isEnrollmentFinalized ? (
+              <Button asChild>
+                <a href="/panel/estado">
+                  <ClipboardCheck aria-hidden="true" />
+                  <span>Ver estado de inscripción</span>
+                </a>
+              </Button>
+            ) : isTuitionPaid && isCodeValidated && selectedSubjectIds.length > 0 ? (
               <Button type="button" onClick={requestFinalizeEnrollment}>
                 <ListChecks aria-hidden="true" />
                 <span>Finalizar inscripción</span>
@@ -1884,6 +1934,46 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
             )}
           </div>
 
+          {isEnrollmentFinalized ? (
+            <Card className="border-success/25 bg-success/10">
+              <CardContent className="grid gap-5 p-6 lg:grid-cols-[1fr_auto] lg:items-center">
+                <div className="flex gap-4">
+                  <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-success text-success-foreground">
+                    <CheckCircle2 aria-hidden="true" className="size-5" />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="font-serif text-xl font-medium tracking-tight">
+                      Inscripción finalizada
+                    </h3>
+                    <p className="max-w-2xl text-sm text-muted-foreground">
+                      Tu inscripción ya fue enviada. Desde aquí puedes revisar el estado,
+                      consultar tu horario o volver al panel para otras actividades académicas.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2 sm:flex-row lg:flex-col">
+                  <Button asChild>
+                    <a href="/panel/estado">
+                      <ClipboardCheck aria-hidden="true" />
+                      <span>Ver estado de inscripción</span>
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" className="bg-background">
+                    <a href="/panel/horario">
+                      <CalendarClock aria-hidden="true" />
+                      <span>Ver horario</span>
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" className="bg-background">
+                    <a href="/panel">
+                      <ArrowRight aria-hidden="true" />
+                      <span>Otras actividades</span>
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ) : (
           <div className="grid gap-4 lg:grid-cols-[1fr_360px]">
             <div className="space-y-4">
               {!isTuitionPaid && (
@@ -2064,6 +2154,7 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
               </Card>
             </aside>
           </div>
+          )}
         </section>
         )}
 
@@ -2607,12 +2698,14 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
               </div>
             </div>
 
-            <Button asChild>
-              <a href="/panel/inscripcion">
-                <Plus aria-hidden="true" />
-                <span>Modificar inscripción</span>
-              </a>
-            </Button>
+            {!isEnrollmentFinalized && (
+              <Button asChild>
+                <a href="/panel/inscripcion">
+                  <Plus aria-hidden="true" />
+                  <span>Modificar inscripción</span>
+                </a>
+              </Button>
+            )}
           </div>
 
           <div className="grid gap-4 lg:grid-cols-[1fr_320px]">
@@ -2635,12 +2728,14 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                         Cuando inscribas materias aparecerán aquí con su grupo y modalidad.
                       </p>
                     </div>
-                    <Button asChild size="sm" className="mt-1">
-                      <a href="/panel/inscripcion">
-                        <Plus aria-hidden="true" />
-                        <span>Inscribirme a materias</span>
-                      </a>
-                    </Button>
+                    {!isEnrollmentFinalized && (
+                      <Button asChild size="sm" className="mt-1">
+                        <a href="/panel/inscripcion">
+                          <Plus aria-hidden="true" />
+                          <span>Inscribirme a materias</span>
+                        </a>
+                      </Button>
+                    )}
                   </div>
                 ) : (
                 <div className="divide-y divide-border/60">
@@ -2798,10 +2893,10 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
 
               <div className="hidden md:block">
                 <Table>
-                    <TableHeader>
-                      <TableRow className="bg-muted/60 hover:bg-muted/60">
-                        <TableHead className="w-16">Nro</TableHead>
-                        <TableHead className="min-w-72">Materia</TableHead>
+                  <TableHeader>
+                    <TableRow className="bg-muted/60 hover:bg-muted/60">
+                      <TableHead className="w-16">Nro</TableHead>
+                      <TableHead className="min-w-72">Materia</TableHead>
                       <TableHead>Nv</TableHead>
                       <TableHead>Tp</TableHead>
                       <TableHead>Md</TableHead>
@@ -2809,17 +2904,27 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                       <TableHead className="text-right">T1</TableHead>
                       <TableHead className="text-right">T2</TableHead>
                       <TableHead className="text-right">EF</TableHead>
-                        <TableHead className="text-right">2da</TableHead>
-                        <TableHead className="text-right">Nota final</TableHead>
-                        <TableHead>Estado</TableHead>
-                        <TableHead className="text-right">Detalle</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {filteredKardexRows.map((row, index) => (
+                      <TableHead className="text-right">2da</TableHead>
+                      <TableHead className="text-right">Nota final</TableHead>
+                      <TableHead>Estado</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {filteredKardexRows.map((row, index) => (
                       <TableRow
                         key={`${row.code}-${row.year}-${row.term}`}
-                        className="hover:bg-muted/30"
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => setSelectedKardexRow(row)}
+                        onKeyDown={(event) => {
+                          if (event.key === 'Enter' || event.key === ' ') {
+                            event.preventDefault();
+                            setSelectedKardexRow(row);
+                          }
+                        }}
+                        className="cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
+                        aria-label={`Ver detalle de ${row.subject}`}
+                        title="Ver código, gestión y detalle completo"
                       >
                         <TableCell className="text-muted-foreground">{index + 1}</TableCell>
                         <TableCell className="font-medium whitespace-normal">
@@ -2846,17 +2951,6 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                         </TableCell>
                         <TableCell>
                           <ResultBadge result={row.result} />
-                        </TableCell>
-                        <TableCell className="text-right">
-                          <Button
-                            type="button"
-                            variant="outline"
-                            size="sm"
-                            onClick={() => setSelectedKardexRow(row)}
-                            aria-label={`Ver detalle de ${row.subject}`}
-                          >
-                            Ver detalle
-                          </Button>
                         </TableCell>
                       </TableRow>
                     ))}

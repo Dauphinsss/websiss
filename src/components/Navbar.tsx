@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -8,13 +8,12 @@ const navItems = [
   { label: 'Postulantes', href: '#postulantes' },
 ];
 
-function getInitialDark(): boolean {
-  if (typeof document === 'undefined') return false;
-  return document.documentElement.classList.contains('dark');
-}
-
 export function Navbar() {
-  const [isDark, setIsDark] = useState<boolean>(getInitialDark);
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    setIsDark(document.documentElement.classList.contains('dark'));
+  }, []);
 
   const toggleTheme = () => {
     const next = !document.documentElement.classList.contains('dark');
