@@ -1395,6 +1395,24 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
     announce('Matrícula pagada. Puedes continuar el flujo de inscripción.');
   };
 
+  const resetEnrollmentDemoState = () => {
+    window.localStorage.setItem('websiss-code-validated', 'false');
+    window.localStorage.setItem('websiss-tuition-paid', 'false');
+    window.sessionStorage.removeItem(enrollmentReturnStorageKey);
+    window.sessionStorage.removeItem(enrollmentReturnToastStorageKey);
+    window.sessionStorage.removeItem('websiss-enrollment-finalized');
+
+    setIsCodeValidated(false);
+    setIsTuitionPaid(false);
+    setAccessCodes({ third: '', fifth: '' });
+    setCodeError('');
+
+    toast.info('Estado reiniciado', {
+      description: 'La matrícula y la validación de códigos volvieron a pendiente.',
+    });
+    announce('Se reinició el estado de matrícula y de los códigos.');
+  };
+
   const finalizeEnrollment = () => {
     window.sessionStorage.setItem('websiss-enrollment-finalized', 'true');
     announce('Inscripción lista para revisar. Abriendo estado de inscripción.');
@@ -1583,6 +1601,35 @@ export function StudentPanel({ page = 'home' }: StudentPanelProps) {
                     <span>Cambiar contraseña</span>
                   </a>
                 </DropdownMenuItem>
+                <DropdownMenuItem
+                  variant="destructive"
+                  onSelect={(event) => {
+                    event.preventDefault();
+                    resetEnrollmentDemoState();
+                  }}
+                  className="justify-between gap-3"
+                >
+                  <span className="flex items-center gap-2">
+                    <Trash2 aria-hidden="true" />
+                    <span>Reiniciar demo</span>
+                  </span>
+                  <span
+                    className={`rounded-full px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider ${
+                      isTuitionPaid && isCodeValidated
+                        ? 'bg-success/15 text-success'
+                        : isTuitionPaid || isCodeValidated
+                          ? 'bg-primary/12 text-primary'
+                          : 'bg-warning/15 text-warning'
+                    }`}
+                  >
+                    {isTuitionPaid && isCodeValidated
+                      ? 'Completo'
+                      : isTuitionPaid || isCodeValidated
+                        ? 'En curso'
+                        : 'Pendiente'}
+                  </span>
+                </DropdownMenuItem>
+
                 <DropdownMenuSeparator className="my-0" />
 
                 {/* Enlaces académicos externos */}
